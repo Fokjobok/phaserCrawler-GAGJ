@@ -1,0 +1,34 @@
+{
+    "usable": {
+        "pickaxe": {
+            "id": "pickaxe",
+            "name": "Pico",
+            "desc": "Utilizado para extraer mineral.",
+            "icon": "⛏️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "handshovel": {
+            "id": "handshovel",
+            "name": "Pico",
+            "desc": "Utilizado para extraer mineral.",
+            "icon": "🔧",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "smith_hammer": {
+            "id": "smith_hammer",
+            "name": "Martillo de herrero",
+            "desc": "El mejor amigo de un herrero. Usado para mejorar armas y armaduras.",
+            "icon": "🔧",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+/* Estilos para el menú principal */
+#menuContainer {
+    position: relative;
+    bottom: 15%;
+
+
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+#menuContainer button {
+    font-family: 'Roboto Mono', monospace; /* O la fuente que definas en CONFIG.TEXT.FONT */
+    font-size: 32px;
+    padding: 10px 15px;
+    cursor: pointer;
+    
+}
+
+/* Estilos para el submenú de NPC para hablar */
+#npcTalkMenuContainer {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 45%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 650px;
+}
+
+/* Cada fila del submenú de NPC */
+.npcRow {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.2rem 0.2rem 0.2rem 0.8rem;
+    border-radius: 0.4rem;
+}
+
+/* Contenedor de botones en cada fila */
+.npcBtnContainer {
+    display: flex;
+    gap: 0.3rem;
+    
+
+}
+
+/* Botones dentro del submenú de NPC */
+#npcTalkMenuContainer button {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
+    padding: 1rem 1rem;
+    cursor: pointer;
+}
+
+/* Estilo específico para el botón "Volver" */
+#npcTalkMenuContainer .backButton {
+    margin-top: 10px;
+}

@@ -1,0 +1,364 @@
+{
+    "innkeeper_001": {
+        "name": "Hesper",
+        "gender": "male",
+        "role_category": "common",
+        "role": "Posadero",
+        "days_left": -1,
+        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "dialogues": [
+            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
+            "Tenemos las mejores bebidas de la región.",
+            "Si necesitas descansar, la posada está a tu disposición.",
+            "Espero que disfrutes tu estancia aquí.",
+            "No dudes en pedir si necesitas algo más."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "ale", "name": "Cerveza", 
+                "price": 3, "affinity": 0
+            },
+            { 
+                "id": "bread", "name": "Pan", 
+                "price": 2, "affinity": 0
+            },
+            { 
+                "id": "apple", "name": "Manzana", 
+                "price": 5, "affinity": 1
+            }
+        ],
+        "image_path": "inn"
+        
+    },
+    "innkeeper_002": {
+        "name": "Andreau",
+        "gender": "female",
+        "role_category": "common",
+        "role": "Posadero",
+        "days_left": -1,
+        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "dialogues": [
+            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
+            "Tenemos las mejores bebidas de la región.",
+            "Si necesitas descansar, la posada está a tu disposición.",
+            "Espero que disfrutes tu estancia aquí.",
+            "No dudes en pedir si necesitas algo más."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "ale", "name": "Cerveza", 
+                "price": 3, "affinity": 0
+            },
+            { 
+                "id": "bread", "name": "Pan", 
+                "price": 2, "affinity": 0
+            },
+            { 
+                "id": "lute", "name": "Laúd", 
+                "price": 45, "affinity": 2
+            },
+            { 
+                "id": "flute", "name": "flauta", 
+                "price": 24, "affinity": 2
+            }
+        ],
+        "image_path": "guard"
+    },
+    "tailor_001": {
+        "name": "taylor",
+        "gender": "male",
+        "role_category": "common",
+        "role": "tejedor",
+        "days_left": -1,
+        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "dialogues": [
+            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
+            "Tenemos las mejores bebidas de la región.",
+            "Si necesitas descansar, la posada está a tu disposición.",
+            "Espero que disfrutes tu estancia aquí.",
+            "No dudes en pedir si necesitas algo más."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "simple_tunic", "cat": "armor", 
+                "name": "Túnica simple", "affinity": 0
+            },
+            { 
+                "id": "archer_suit", "cat": "armor", 
+                "name": "Traje de arquero", "affinity": 0
+            },
+            {   
+                "id": "jacket", "cat": "armor", 
+                "name": "Chaqueta","affinity": 1
+            },
+            { 
+                "id": "leather_tunic", "cat": "armor", 
+                "name": "Túnica de cuero", "affinity": 1
+            },
+            { 
+                "id": "coat", "cat": "armor", 
+                "name": "Abrigo", "affinity": 2
+            },
+            { 
+                "id": "saint_robe", "cat": "armor", 
+                "name": "Ropa santa", "affinity": 0
+            },
+            { 
+                "id": "brigadine", "cat": "armor", 
+                "name": "Brigadina", "affinity": 3
+            },
+            { 
+                "id": "padded_armor", "cat": "armor", 
+                "name": "Armadura acolchada", "affinity": 1
+            },
+            { 
+                "id": "regal_gambeson", "cat": "armor", 
+                "name": "Gambesón real", "affinity": 3
+            }
+        ],
+        "image_path": "guard"
+    },
+    "librarian_001": {
+        "name": "Szejsa",
+        "gender": "female",
+        "role_category": "scholarly",
+        "role": "escribano",
+        "days_left": -1,
+        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "dialogues": [
+            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
+            "Tenemos las mejores bebidas de la región.",
+            "Si necesitas descansar, la posada está a tu disposición.",
+            "Espero que disfrutes tu estancia aquí.",
+            "No dudes en pedir si necesitas algo más."
+        ],
+        "shop": true,
+        "store": [
+            {   
+                "id": "old_book", "cat": "misc", 
+                "name": "Libro viejo", "affinity": 0
+            },
+            { 
+                "id": "blank_scroll", "cat": "misc", 
+                "name": "Pergamino", "affinity": 0
+            },
+            { 
+                "id": "alcohol", "cat": "misc", 
+                "name": "", "affinity": 1
+            },
+            { 
+                "id": "zircon", "cat": "misc", 
+                "name": "zirconio", "affinity": 2
+            }
+            
+        ],
+        "image_path": "guard"
+    },
+    "blacksmith_001": {
+        "name": "Baldric",
+        "gender": "male",
+        "role_category": "common",
+        "role": "Herrero",
+        "days_left": -1,
+        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "intro": [
+            "..."
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
+        "dialogues": [
+            "¡Bienvenido de nuevo! ¿Qué necesitas que forje hoy?",
+            "El acero puro es la clave para una buena espada.",
+            "Si buscas una herramienta resistente, has venido al lugar correcto.",
+            "El fuego y el martillo son mis mejores aliados.",
+            "Cada arma que fabrico lleva una parte de mi.",
+            "¿Has probado alguna vez una hoja recién forjada?",
+            "La paciencia es esencial para trabajar el metal correctamente.",
+            "Mis piezas son conocidas por su durabilidad.",
+            "¿Te gustaría personalizar tu equipo con algún grabado especial?",
+            "La herrería nunca duerme; siempre estamos creando."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "pickaxe", "cat": "usable", 
+                "name": "Pico", "affinity": 0
+            },
+            { 
+                "id": "handshovel", "cat": "usable", 
+                "name": "Pala de mano", "affinity": 0
+            },
+            { 
+                "id": "smith_hammer", "cat": "usable", 
+                "name": "Martillo de herrero", "affinity": 0
+            },
+            { 
+                "id": "iron_ore", "cat": "misc", 
+                "name": "Mineral de hierro", "affinity": 1
+            },
+            { 
+                "id": "steel_ingot", "cat": "misc", 
+                "name": "Lingote de acero", "affinity": 2
+            }
+        ],
+        "image_path": "blacksmith"
+    },
+    "merchant_001": {
+        "name": "Melbert",
+        "gender": "male",
+        "role_category": "common",
+        "role": "Mercader",
+        "days_left": -1,
+        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "intro": [
+            "Bajo los coloridos toldos del mercado, la mercancía brilla a la espera de compradores curiosos.",
+            "El bullicio de regateos y el aroma de especias llenan el aire con la promesa de buenos tratos.",
+            "Aquí encontrarás desde víveres básicos hasta objetos peculiares difíciles de encontrar en otro lugar.",
+            "Vas paseando tranquilamente por el mercado cuando un hombre te mira y alza su mano."
+        ],
+        "dialogues_force": [
+            "¡Bienvenido aventurero! Veo que eres nuevo en estas tierras. Soy Melbert, el cocinero del pueblo.", 
+            "Aprovecho el tiempo libre para obtener un extra con mi mercancía. Si buscas provisiones o artículos inesperados, seguramente los tengo o los puedo conseguir. Revisa mis productos y no temas preguntar lo que necesites.",
+            "Si necesitas una cama puedes hablar con Hesper, el dueño de la posada. Es un experto cocinero. Su mujer, Andreau, además de cocinar unos platos exquisitos, también tiene buenos conocimientos en medicina.",
+            "¡Siéntete como en casa, amigo!"
+        ],
+        "dialogues": [
+            "¡Ah, un cliente! ¿Qué necesitas que forje hoy?",
+            "El acero puro es la clave para una buena espada.",
+            "Si buscas una herramienta resistente, has venido al lugar correcto."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "banana", "cat": "consumible", 
+                "name": "Plátano", "affinity": 0
+            },
+            { 
+                "id": "apple", "cat": "consumible", 
+                "name": "Manzana", "affinity": 0
+            },
+            { 
+                "id": "milk", "cat": "consumible", 
+                "name": "Leche", "affinity": 0
+            },
+            { 
+                "id": "bread", "cat": "consumible", 
+                "name": "Pan", "affinity": 0
+            },
+            { 
+                "id": "rolling_pin", "cat": "misc", 
+                "name": "Rodillo", "affinity": 0
+            }
+        ],
+        "image_path": "trader"
+    },
+    "merchant_002": {
+        "name": "mercadona",
+        "gender": "male",
+        "role_category": "common",
+        "role": "Mercader",
+        "days_left": -1,
+        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "dialogues": [
+            "¡Ah, un cliente! ¿Qué necesitas que forje hoy?",
+            "El acero puro es la clave para una buena espada.",
+            "Si buscas una herramienta resistente, has venido al lugar correcto."
+        ],
+        "shop": true,
+        "store": [
+            { 
+                "id": "rags", "cat": "consumible", 
+                "name": "Harapos", "affinity": 0
+            },
+            { 
+                "id": "wooden_spoon", "cat": "misc", 
+                "name": "Cuchara de madera", "affinity": 0
+            },
+            { 
+                "id": "wooden_chalice", "cat": "misc", 
+                "name": "Cáliz de madera", "affinity": 0
+            },
+            { 
+                "id": "wooden_dish", "cat": "misc", 
+                "name": "Plato de madera", "affinity": 0
+            }
+        ],
+        "image_path": "trader"
+    },
+    "wanderman_001": {
+        "name": "Anthonius",
+        "gender": "male",
+        "role_category": "marginal",
+        "role": "Mendigo",
+        "days_left": -1,
+        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "dialogues": [
+            "Perdona amigo... ¿Me das una moneda?"
+        ],
+        "image_path": "villager"
+    },
+    "guard_001": {
+        "name": "Guillaume",
+        "gender": "male",
+        "role_category": "military",
+        "role": "Soldado",
+        "days_left": -1,
+        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "dialogues": [
+            "Mantén la calma y sigue las órdenes.",
+            "Estamos protegiendo la ciudad de cualquier amenaza.",
+            "La disciplina es clave en el campo de batalla.",
+            "Si ves algo inusual, repórtalo inmediatamente."
+        ],
+        "image_path": "guard"
+    },
+    "guard_002": {
+        "name": "Hayla",
+        "gender": "female",
+        "role_category": "military",
+        "role": "Soldado",
+        "days_left": -1,
+        "appearance": "Una soldado poderosamente equipada con una gran espada y una pesada armadura.",
+        "dialogues": [
+            "Mantén la calma y sigue las órdenes.",
+            "Estamos protegiendo la ciudad de cualquier amenaza.",
+            "La disciplina es clave en el campo de batalla.",
+            "Si ves algo inusual, repórtalo inmediatamente."
+        ],
+        "image_path": "guard"
+    },
+    "royalguard_001": {
+        "name": "Croix",
+        "gender": "male",
+        "role_category": "military",
+        "role": "Guardia real",
+        "days_left": -1,
+        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "dialogues": [
+            "Mantén la calma y sigue las órdenes.",
+            "Estamos protegiendo la ciudad de cualquier amenaza.",
+            "La disciplina es clave en el campo de batalla.",
+            "Si ves algo inusual, repórtalo inmediatamente."
+        ],
+        "image_path": "guard"
+    },
+    "royalguard_002": {
+        "name": "Cercle",
+        "gender": "male",
+        "role_category": "military",
+        "role": "Guardia real",
+        "days_left": -1,
+        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "dialogues": [
+            "Mantén la calma y sigue las órdenes.",
+            "Estamos protegiendo la ciudad de cualquier amenaza.",
+            "La disciplina es clave en el campo de batalla.",
+            "Si ves algo inusual, repórtalo inmediatamente."
+        ],
+        "image_path": "guard"
+    }
+}

@@ -1,0 +1,412 @@
+{
+    "aldeano": {
+        "male": [
+            "un hombre de mediana edad con una barba descuidada",
+            "un hombre mayor con cicatrices visibles",
+            "un joven sonriente con ojos curiosos",
+            "un hombre delgado con la mirada perdida",
+            "un hombre corpulento con musculatura evidente"
+        ],
+        "female": [
+            "una mujer joven vestida con ropas sencillas",
+            "una mujer robusta con manos callosas",
+            "una anciana encorvada con un bastón",
+            "una mujer alta con cabello recogido",
+            "una mujer de rostro amable y manos trabajadas"
+        ]
+    },
+    "granjero": {
+        "male": [
+            "un hombre fuerte con brazos robustos",
+            "un hombre con sombrero de paja y ropa desgastada",
+            "un joven con herramientas en la cintura",
+            "un hombre mayor con una mirada sabia",
+            "un hombre con cicatrices de trabajos anteriores"
+        ],
+        "female": [
+            "una mujer de rostro amable y manos trabajadas",
+            "una mujer con largas trenzas y vestimenta práctica",
+            "una mujer sonriente sosteniendo una cesta de frutas",
+            "una mujer con ojos atentos observando el campo",
+            "una mujer con ojos atentos observando el campo"
+        ]
+    },
+    "herrero": {
+        "male": [
+            "un hombre con brazos musculosos y una barba espesa",
+            "un hombre sudoroso con cicatrices de quemaduras",
+            "un hombre con ojos concentrados detrás de gafas protectoras",
+            "un hombre con una expresión seria y fuerte presencia",
+            "un hombre alto con una postura imponente"
+        ],
+        "female": [
+            "una mujer robusta con manos llenas de callos",
+            "una mujer con cabellos oscuros recogidos en una trenza",
+            "una mujer de mirada determinada y postura erguida",
+            "una mujer con herramientas de herrería colgando de su cinturón",
+            "una mujer con una sonrisa mientras trabaja el metal"
+        ]
+    },
+    "carpintero": {
+        "male": [
+            "un hombre con manos fuertes y callosas",
+            "un hombre joven con virutas de madera en su ropa",
+            "un hombre con una sonrisa amistosa y herramientas en la cintura",
+            "un hombre con barba bien cuidada y ojos atentos",
+            "un hombre corpulento trabajando meticulosamente en una pieza de madera"
+        ],
+        "female": [
+            "una mujer ágil con una sonrisa mientras talla la madera",
+            "una mujer con cabello recogido y herramientas organizadas",
+            "una mujer concentrada con virutas de madera alrededor",
+            "una mujer con una expresión serena y manos hábiles",
+            "una mujer sonriente construyendo cuidadosamente una estructura de madera"
+        ]
+    },
+    "panadero": {
+        "male": [
+            "un hombre con harina en las manos y una sonrisa acogedora",
+            "un hombre robusto con un delantal manchado de masa",
+            "un hombre joven con ojos brillantes detrás de una media cara de harina",
+            "un hombre con cabello desordenado y una actitud amistosa",
+            "un hombre concentrado horneando panes dorados"
+        ],
+        "female": [
+            "una mujer sonriente con manos hábiles amasando el pan",
+            "una mujer joven con cabello recogido y ojos atentos",
+            "una mujer con una sonrisa cálida y productos frescos en sus manos",
+            "una mujer con rostro amable decorando panes con semillas",
+            "una mujer concentrada vigilando el horno mientras hornea"
+        ]
+    },
+    "mercader": {
+        "male": [
+            "un hombre con un turbante colorido y una capa adornada",
+            "un hombre joven con ojos astutos y un bastón decorado",
+            "un hombre corpulento con ropa resistente y gestos animados",
+            "un hombre con una barba bien cuidada y una chaqueta adornada",
+            "un hombre con un sombrero ancho y un saco lleno de productos"
+        ],
+        "female": [
+            "una mujer con un delantal lleno de bolsas y mercancías",
+            "una mujer elegante con joyas brillantes y una sonrisa amable",
+            "una mujer de ojos vivaces con una bolsa llena de mercancías exóticas",
+            "una mujer con una túnica colorida y una actitud comercial",
+            "una mujer con cabellos sueltos y un carrito de mercancías"
+        ]
+    },
+    "posadero": {
+        "male": {
+            "male": [
+                "un hombre robusto sirviendo bebidas con una sonrisa acogedora",
+                "un hombre mayor con ojos bondadosos y una barba bien cuidada",
+                "un hombre joven con cabellos recogidos y manos rápidas",
+                "un hombre corpulento con una presencia tranquilizadora",
+                "un hombre de rostro amable sirviendo bebidas con destreza"
+            ],
+            "female": [
+                "una mujer sonriente sirviendo bebidas con gracia",
+                "una mujer de mediana edad con una sonrisa acogedora",
+                "una mujer joven con cabellos recogidos y manos rápidas",
+                "una mujer con una voz cálida y ojos atentos",
+                "una mujer con un delantal manchado de trabajo"
+            ]
+        }
+    },
+    "guardia": {
+        "male": [
+            "un hombre en armadura brillante con una mirada vigilante",
+            "un hombre robusto con cicatrices de batallas pasadas",
+            "un hombre joven con uniforme impecable y pasos firmes",
+            "un hombre con una expresión seria y mirada penetrante",
+            "un hombre de presencia imponente patrullando el área"
+        ],
+        "female": [
+            "una mujer fuerte con cabello corto y postura erguida",
+            "una mujer con ojos atentos y una espada al cinto",
+            "una mujer determinada con armadura adornada",
+            "una mujer con una armadura ligera y movimientos ágiles",
+            "una mujer con una mirada amigable pero firme"
+        ]
+    },
+    "guardia real": {
+        "male": [
+            "un caballero elegante con armadura reluciente y espada ceremonial",
+            "un guardia con insignias doradas y una mirada noble",
+            "un caballero de rostro sereno y movimientos precisos",
+            "un guardia con detalles ornamentales en su armadura",
+            "un caballero con un escudo real y una postura protectora"
+        ],
+        "female": [
+            "una mujer con un emblema real en su armadura y postura digna",
+            "una mujer con cabellos recogidos y una túnica adornada",
+            "una guardia real con ojos atentos y una postura firme",
+            "una mujer con una espada brillante y una expresión leal",
+            "una mujer con una presencia majestuosa y mirada vigilante"
+        ]
+    },
+    "sacerdote": {
+        "male": [
+            "un sacerdote con túnica sagrada y ojos compasivos",
+            "un hombre anciano con una barba larga y vestimenta ceremonial",
+            "un sacerdote con un rosario colgando de su cuello",
+            "un hombre con una túnica blanca y una expresión serena",
+            "un sacerdote con manos extendidas en bendición"
+        ]
+    },
+    "monje": {
+        "male": [
+            "un monje con túnica sencilla y ojos meditativos",
+            "un hombre anciano con una barba corta y vestimenta monástica",
+            "un monje con una actitud tranquila y una mirada profunda",
+            "un hombre con un hábito marrón y una postura serena",
+            "un monje con libros antiguos bajo el brazo"
+        ]
+    },
+    "monja": {
+        "female": [
+            "una monja con hábito blanco y rostro amable",
+            "una mujer joven con cabello recogido y vestimenta religiosa",
+            "una monja con ojos atentos y manos diligentes",
+            "una mujer con un hábito gris y una sonrisa serena",
+            "una monja concentrada en sus oraciones"
+        ]
+    },
+    "abad": {
+        "male": [
+            "un abad con túnica ceremonial y una mirada sabia",
+            "un hombre con barba larga y vestimenta de liderazgo religioso",
+            "un abad con libros sagrados en sus manos",
+            "un hombre con una túnica adornada y una expresión serena",
+            "un abad con una postura digna y ojos compasivos"
+        ]
+    },
+    "abadesa": {
+        "female": [
+            "una abadesa con hábito adornado y una mirada sabia",
+            "una mujer anciana con túnica ceremonial y ojos bondadosos",
+            "una abadesa con libros sagrados y una postura digna",
+            "una mujer con hábito delicado y una sonrisa serena",
+            "una abadesa concentrada en sus responsabilidades religiosas"
+        ]
+    },
+    "obispo": {
+        "male": [
+            "un obispo con sotana adornada y una mirada autoritaria",
+            "un hombre joven con túnica ceremonial y ojos penetrantes",
+            "un obispo con un anillo sagrado y una postura digna",
+            "un hombre con una túnica elegante y una expresión solemne",
+            "un obispo liderando una ceremonia religiosa con gracia"
+        ]
+    },
+    "clérigo": {
+        "male": [
+            "un clérigo con túnica simple y una actitud compasiva",
+            "un hombre con símbolos religiosos y una mirada tranquila",
+            "un clérigo con manos extendidas en bendición",
+            "un hombre joven con túnica adornada y una expresión serena",
+            "un clérigo meditando en un rincón tranquilo"
+        ]
+    },
+    "fraile": {
+        "male": [
+            "un fraile con hábito marrón y una expresión amable",
+            "un hombre anciano con túnica sencilla y ojos sabios",
+            "un fraile orando en silencio con una postura recta",
+            "un hombre joven con túnica fluida y una mirada pacífica",
+            "un fraile con libros sagrados bajo el brazo"
+        ]
+    },
+    "profeta": {
+        "male": [
+            "un profeta con túnica deshilachada y ojos visionarios",
+            "un hombre con gestos expansivos y una postura intensa",
+            "un profeta hablando apasionadamente sobre el futuro",
+            "un hombre con barba larga y vestimenta mística",
+            "un profeta con símbolos sagrados y una mirada profunda"
+        ],
+        "female": [
+            "una profeta con túnica colorida y ojos llenos de sabiduría",
+            "una mujer con gestos fluidos y una postura inspiradora",
+            "una profeta hablando apasionadamente sobre el destino",
+            "una mujer con cabello suelto y vestimenta mística",
+            "una profeta con símbolos sagrados y una mirada penetrante"
+        ]
+    },
+    "ermitaño": {
+        "male": [
+            "un ermitaño con túnica desgastada y barba desordenada",
+            "un hombre solitario con una mirada introspectiva",
+            "un ermitaño viviendo en soledad con pocas pertenencias",
+            "un hombre anciano con una postura encorvada y ojos profundos",
+            "un ermitaño meditando cerca de un arroyo tranquilo"
+        ],
+        "female": [
+            "una ermitaña con túnica sencilla y cabello recogido",
+            "una mujer solitaria con una mirada serena",
+            "una ermitaña viviendo en soledad con pocas pertenencias",
+            "una mujer anciana con una postura encorvada y ojos sabios",
+            "una ermitaña meditando cerca de un jardín tranquilo"
+        ]
+    },
+    "adivino": {
+        "male": [
+            "un adivino con túnica oscura y ojos misteriosos",
+            "un hombre joven con una bola de cristal en manos",
+            "un adivino con símbolos místicos y una expresión enigmática",
+            "un hombre con túnica adornada y gestos fluidos",
+            "un adivino leyendo el futuro con cartas extendidas"
+        ],
+        "female": [
+            "una adivina con túnica brillante y ojos penetrantes",
+            "una mujer joven con una bola de cristal en manos",
+            "una adivina con símbolos místicos y una expresión enigmática",
+            "una mujer con túnica adornada y gestos fluidos",
+            "una adivina leyendo el futuro con cartas extendidas"
+        ]
+    },
+    "curandero": {
+        "male": [
+            "un curandero con túnica sencilla y hierbas en sus manos",
+            "un hombre joven con ojos atentos y una actitud amable",
+            "un curandero preparando remedios naturales con concentración",
+            "un hombre anciano con una postura tranquila y manos hábiles",
+            "un curandero recogiendo hierbas en el bosque con cuidado"
+        ],
+        "female": [
+            "una curandera con túnica colorida y ojos compasivos",
+            "una mujer joven con ojos atentos y una actitud amable",
+            "una curandera preparando remedios naturales con concentración",
+            "una mujer anciana con una postura tranquila y manos hábiles",
+            "una curandera recogiendo hierbas en el jardín con cuidado"
+        ]
+    },
+    "bandido": {
+        "male": [
+            "un bandido con capa oscura y ojos furtivos",
+            "un hombre robusto con cicatrices y una expresión intimidante",
+            "un bandido armado con espada y mirada desafiante",
+            "un hombre joven con tatuajes y una actitud rebelde",
+            "un bandido con una máscara cubriendo parte de su rostro"
+        ],
+        "female": [
+            "una bandida con capa oscura y ojos furtivos",
+            "una mujer robusta con cicatrices y una expresión intimidante",
+            "una bandida armada con espada y mirada desafiante",
+            "una mujer joven con tatuajes y una actitud rebelde",
+            "una bandida con una máscara cubriendo parte de su rostro"
+        ]
+    },
+    "ladrón": {
+        "male": [
+            "un ladrón con capa oscura y ojos astutos",
+            "un hombre ágil con movimientos rápidos y silenciosos",
+            "un ladrón con herramientas de robo en el cinturón",
+            "un hombre joven con una sonrisa engañosa y mirada vigilante",
+            "un ladrón encapuchado moviéndose sigilosamente"
+        ],
+        "female": [
+            "una ladrona con capa oscura y ojos astutos",
+            "una mujer ágil con movimientos rápidos y silenciosos",
+            "una ladrona con herramientas de robo en el cinturón",
+            "una mujer joven con una sonrisa engañosa y mirada vigilante",
+            "una ladrona encapuchada moviéndose sigilosamente"
+        ]
+    },
+    "espía": {
+        "male": [
+            "un espía con traje oscuro y ojos observadores",
+            "un hombre joven con una expresión inquisitiva y movimientos discretos",
+            "un espía armado con gadgets ocultos",
+            "un hombre con mirada penetrante y postura alerta",
+            "un espía encubierto observando a su alrededor"
+        ],
+        "female": [
+            "una espía con traje oscuro y ojos observadores",
+            "una mujer joven con una expresión inquisitiva y movimientos discretos",
+            "una espía armada con gadgets ocultos",
+            "una mujer con mirada penetrante y postura alerta",
+            "una espía encubierta observando a su alrededor"
+        ]
+    },
+    "fugitivo": {
+        "male": [
+            "un fugitivo con ropa desgastada y mirada desesperada",
+            "un hombre joven corriendo con prisa y ojos inquietos",
+            "un fugitivo escondiéndose en las sombras con expresión cautelosa",
+            "un hombre con cicatrices y postura alerta",
+            "un fugitivo con una mochila llena de pertenencias básicas"
+        ],
+        "female": [
+            "una fugitiva con ropa desgastada y mirada desesperada",
+            "una mujer joven corriendo con prisa y ojos inquietos",
+            "una fugitiva escondiéndose en las sombras con expresión cautelosa",
+            "una mujer con cicatrices y postura alerta",
+            "una fugitiva con una mochila llena de pertenencias básicas"
+        ]
+    },
+    "asesino": {
+        "male": [
+            "un asesino con túnica oscura y ojos siniestros",
+            "un hombre joven con movimientos silenciosos y letales",
+            "un asesino armado con dagas ocultas",
+            "un hombre con una expresión fría y calculadora",
+            "un asesino encapuchado acechando en la oscuridad"
+        ],
+        "female": [
+            "una asesina con túnica oscura y ojos siniestros",
+            "una mujer joven con movimientos silenciosos y letales",
+            "una asesina armada con dagas ocultas",
+            "una mujer con una expresión fría y calculadora",
+            "una asesina encapuchada acechando en la oscuridad"
+        ]
+    },
+    "mercenario": {
+        "male": [
+            "un mercenario con armadura desgastada y mirada desafiante",
+            "un hombre robusto con cicatrices y espada al cinto",
+            "un mercenario con tatuajes que narran batallas pasadas",
+            "un hombre joven con postura agresiva y movimientos rápidos",
+            "un mercenario con capa oscura y armas ocultas"
+        ],
+        "female": [
+            "una mercenaria con armadura desgastada y mirada desafiante",
+            "una mujer robusta con cicatrices y espada al cinto",
+            "una mercenaria con tatuajes que narran batallas pasadas",
+            "una mujer joven con postura agresiva y movimientos rápidos",
+            "una mercenaria con capa oscura y armas ocultas"
+        ]
+    },
+    "erudito": {
+        "male": [
+            "un erudito con túnica elegante y ojos brillantes",
+            "un hombre joven con libros antiguos bajo el brazo",
+            "un erudito con una barba bien cuidada y una postura intelectual",
+            "un hombre con gafas redondas y una mirada profunda",
+            "un erudito concentrado leyendo un manuscrito antiguo"
+        ],
+        "female": [
+            "una erudita con túnica elegante y ojos brillantes",
+            "una mujer joven con libros antiguos bajo el brazo",
+            "una erudita con cabello recogido y una postura intelectual",
+            "una mujer con gafas redondas y una mirada profunda",
+            "una erudita concentrada leyendo un manuscrito antiguo"
+        ]
+    },
+    "alquimista": {
+        "male": [
+            "un alquimista con túnica manchada de pociones y ojos curiosos",
+            "un hombre joven mezclando ingredientes con concentración",
+            "un alquimista con un bastón adornado y una sonrisa enigmática",
+            "un hombre con cabello desordenado y herramientas de alquimia",
+            "un alquimista concentrado observando burbujas en un caldero"
+        ],
+        "female": [
+            "una alquimista con túnica manchada de pociones y ojos curiosos",
+            "una mujer joven mezclando ingredientes con concentración",
+            "una alquimista con un bastón adornado y una sonrisa enigmática",
+            "una mujer con cabello desordenado y herramientas de alquimia",
+            "una alquimista concentrada observando burbujas en un caldero"
+        ]
+    }
+}

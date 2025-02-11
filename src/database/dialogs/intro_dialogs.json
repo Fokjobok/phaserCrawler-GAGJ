@@ -1,0 +1,98 @@
+[
+    {
+        "background": "black",
+        "text": [
+            "${player.name}, te damos la bienvenida a PyCrawler. Has elegido la clase: ${player.job}"
+        ]
+    },
+    
+    {
+        "background": "nforest",
+        "text": [
+            "Más allá de las colinas bañadas por brumas eternas, donde el viento susurra antiguas canciones olvidadas,",
+            "se alza Northaven, una gran ciudad situada al borde del mundo conocido.",
+            "Este remoto lugar, rodeado por densos bosques que parecieran murmurar secretos en noches de luna llena,",
+            "es un punto de encuentro para los audaces, los desesperados, los ambiciosos y los más crueles."
+        ]   
+    },
+
+    {
+        "background": "market",
+        "text": [
+            "Su mercado central, un caos de carretas y tenderetes, vibra con el eco de idiomas provenientes de todos los rincones del mundo.",
+            "Aquí convergen los caminantes de sendas olvidadas, portando cicatrices que cuentan historias que ni ellos mismos se atreven a relatar.",
+            "Sin embargo, la verdadera razón de su renombre yace en un secreto que, por siglos, ha desafiado la comprensión",
+            "tanto de elfos como demonios, quienes son capaces de almacenar milenios de conocimiento y experiencia."
+        ]
+    },
+
+    {
+        "background": "dungate",
+        "text": [
+            "Las ruinas de Kael’Tharok, una antigua fortaleza cuya sombra se extiende más allá de la imaginación.",
+            "Cuenta la leyenda que en las profundidades de las ruinas, oculta tras trampas mortales y pasajes que desafían la lógica misma,",
+            "yace la entrada a una cripta que esconde el legendario tesoro de la antigua diosa de Northaven."
+        ]
+    },
+
+    {
+        "background": "goddess",
+        "text": [
+            "Rhai, la diosa protectora del equilibrio y el tiempo, es venerada como una entidad de sabiduría y misterio.",
+            "Se dice que su existencia trasciende la realidad, y su figura representa la unión perfecta entre la luz y la oscuridad.",
+            "Su imagen, grabada en los corazones de aquellos que la veneran, no es solo un símbolo de prosperidad",
+            "sino también un recordatorio del precio de la ambición desmedida."
+        ]
+    },
+
+    {
+        "background": "treasure",
+        "text": [
+            "Un tesoro de valor incalculable, protegido por guardianes que ningún acero ha logrado atravesar y enigmas que han ",
+            "hecho perder la cordura a más de un erudito. En las tabernas, el aire está impregnado de rumores y mitos.",
+            "Unos afirman que el tesoro no es oro ni joyas, sino un antiguo artefacto mágico que escapa a nuestro entendimiento.",
+            "Otros, con voces temblorosas y miradas huidizas, murmuran que es un lugar donde las reglas de este mundo no aplican,",
+            "un bastión donde los susurros del abismo pueden ser oídos por aquellos lo suficientemente valientes —o insensatos—",
+            "para escuchar."
+        ]
+    },
+
+    {
+        "background": "battle",
+        "text": [
+            "La búsqueda de este tesoro ha atraído a individuos y grupos cuyas hazañas son cantadas en los fuegos de campamento.",
+            "Desde los Fera\u00A0Grosella, un grupo de mercenarios que nunca retrocede ante un enemigo hasta",
+            "los eruditos de la Orden\u00A0de\u00A0Aeralis, obsesionados con los misterios de lo desconocido.",
+            "También se habla del solitario hechicero Aldrinh, tan temido como respetado con influencia intercontinental."
+        ]
+    },
+
+    {
+        "background": "forest",
+        "text": [
+            "Estás en un bosque cercano. Puede verse el sol ocultándose en el horizonte. Tu orientación te dice que no debes",
+            "estar lejos de una de las entradas."
+        ]
+    },
+
+    {
+        "background": "black",
+        "text": [
+            "...comienzas a caminar más rápido que de costumbre..."
+        ]
+    },
+
+    {
+        "background": "black",
+        "text": [
+            "...una hora más tarde..."
+        ]
+    },
+
+    {
+        "background": "mgate",
+        "text": [
+            "Estás en lo que parece ser una puerta secundaria poco vigilada de una zona aparentemente abandonada."
+        ]
+    }
+]

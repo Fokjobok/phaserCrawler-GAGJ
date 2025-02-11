@@ -1,0 +1,56 @@
+{
+    "ring": {
+        "name": "Anillo",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 1,
+        "mdef": 0,
+        "stats": { "str": 1 },
+        "slots": [0, 1]
+    },
+    "earring": {
+        "name": "Pendiente",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 0,
+        "mdef": 2,
+        "stats": { "wis": 2 },
+        "slots": [0, 1]
+    },
+    "bracelet": {
+        "name": "Brazalete",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 2,
+        "mdef": 0,
+        "stats": { "sou": 1 },
+        "slots": [0, 1]
+    },
+    "circlet": {
+        "name": "Diadema",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 1,
+        "mdef": 1,
+        "stats": { "dex": 1 },
+        "slots": [0, 1]
+    },
+    "glasses": {
+        "name": "Gafas",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 0,
+        "mdef": 0,
+        "stats": { "wis": 1 },
+        "slots": [0, 1]
+    },
+    "blinker": {
+        "name": "Cinta",
+        "type": "accessory",
+        "class": ["all"],
+        "def": 0,
+        "mdef": 1,
+        "stats": { "vit": 1 },
+        "slots": [0, 1]
+    }
+}

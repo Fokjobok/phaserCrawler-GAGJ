@@ -1,0 +1,283 @@
+{
+    "consumible": {
+        "red_herb": {
+            "id": "red_herb",
+            "name": "hierba roja",
+            "desc": "Cura una pequeña cantidad de HP. Puede usarse como ingrediente.",
+            "icon": "🍁",
+            "price": {
+                "buy": 2,
+                "sell": 1
+            }
+        },
+        "soul_herb": {
+            "id": "soul_herb",
+            "name": "Hoja espíritu",
+            "desc": "Cura una pequeña cantidad de SP. Puede usarse como ingrediente.",
+            "icon": "🌸",
+            "price": {
+                "buy": 12,
+                "sell": 6
+            }
+        },
+        "green_herb": {
+            "id": "green_herb",
+            "name": "Hierba verde",
+            "desc": "Cura el envenenamiento. Puede usarse como ingrediente para crear remedios caseros.",
+            "icon": "🌿",
+            "price": {
+                "buy": 2,
+                "sell": 1
+            }
+        },
+        "yellow_herb": {
+            "id": "yellow_herb",
+            "name": "Hierba amarilla",
+            "desc": "Cura una pequeña cantidad de HP. Puede usarse como ingrediente.",
+            "icon": "🌾",
+            "price": {
+                "buy": 2,
+                "sell": 1
+            }
+        },
+
+
+        "red_potion": {
+            "id": "red_potion",
+            "name": "Poción roja",
+            "desc": "Cura una pequeña cantidad de HP. Brilla en la oscuridad.",
+            "icon": "🍷",
+            "price": {
+                "buy": 5,
+                "sell": 3
+            }
+        },
+        "blue_potion": {
+            "id": "blue_potion",
+            "name": "Poción azul",
+            "desc": "Cura una pequeña cantidad de SP. Brilla en la oscuridad.",
+            "icon": "🧪",
+            "price": {
+                "buy": 9,
+                "sell": 4
+            }
+        },
+        "green_potion": {
+            "id": "green_potion",
+            "name": "Poción azul",
+            "desc": "Cura varios estados alterados. Brilla en la oscuridad.",
+            "icon": "🧪",
+            "price": {
+                "buy": 9,
+                "sell": 4
+            }
+        },
+        "yellow_potion": {
+            "id": "yellow_potion",
+            "name": "Poción amarilla",
+            "desc": "Cura una cantidad considerable de HP. La intensidad del amarillo indica su pureza.",
+            "icon": "🧪",
+            "price": {
+                "buy": 9,
+                "sell": 4
+            }
+        },
+
+
+        "slim_red_potion": {
+            "id": "slim_red_potion",
+            "name": "Poción roja condensada",
+            "desc": "Cura una pequeña cantidad de HP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
+            "icon": "🍷",
+            "price": {
+                "buy": 5,
+                "sell": 3
+            }
+        },
+        "slim_blue_potion": {
+            "id": "slim_blue_potion",
+            "name": "Poción azul condensada",
+            "desc": "Cura una pequeña cantidad de SP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
+            "icon": "🧪",
+            "price": {
+                "buy": 9,
+                "sell": 4
+            }
+        },
+        "slim_yellow_potion": {
+            "id": "slim_yellow_potion",
+            "name": "Poción amarilla condensada",
+            "desc": "Cura una cantidad considerable de HP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
+            "icon": "🧪",
+            "price": {
+                "buy": 9,
+                "sell": 4
+            }
+        },
+
+
+        "rags": {
+            "id": "rags",
+            "name": "Harapos",
+            "desc": "Algunos trozos de tela y harapos viejos, aunque limpios. Puede detener hemorragias.",
+            "icon": "🩹",
+            "price": {
+                "buy": 3,
+                "sell": 1
+            }
+        },
+        "detoxify_herbs": {
+            "id": "detoxify_herbs",
+            "name": "Hierbas medicinales",
+            "desc": "Usado comúnmente para curar intoxicaciones y envenenamientos leves. Creado a partir de hierbas verdes.",
+            "icon": "🍵",
+            "price": {
+                "buy": 4,
+                "sell": 2
+            }
+        },
+
+
+        "grapes": {
+            "id": "grapes",
+            "name": "Uvas",
+            "desc": "Cura una pequeña cantidad de SP. Fruta muy preciada por seres mágicos. Según las leyendas la uva puede sanar tu alma.",
+            "icon": "🍇",
+            "price": {
+                "buy": 15,
+                "sell": 0
+            }
+        },
+        "bread": {
+            "id": "bread",
+            "name": "Pan",
+            "desc": "Recupera una pequeña cantidad de HP cada turno. Sacia un poco el hambre.",
+            "icon": "🍞",
+            "price": {
+                "buy": 5,
+                "sell": 1
+            }
+        },
+        "banana": {
+            "id": "banana",
+            "name": "Plátano",
+            "desc": "Recupera un poco de fatiga. Una fruta rara en estas tierras rica en carbohidratos, que son buenos para combatir el cansacio.",
+            "icon": "🍌",
+            "price": {
+                "buy": 20,
+                "sell": 5
+            }
+        },
+        "apple": {
+            "id": "apple",
+            "name": "Manzana",
+            "desc": "Recupera un poco de fatiga.",
+            "icon": "🍎",
+            "price": {
+                "buy": 20,
+                "sell": 5
+            }
+        },
+        "milk": {
+            "id": "milk",
+            "name": "Leche",
+            "desc": "Reduce durante 5 turnos el daño físico entrante en 5%. Un bien muy querido por todos que tiene muchos beneficios. Ayuda a mejorar la salud y los huesos.",
+            "icon": "🥛",
+            "price": {
+                "buy": 10,
+                "sell": 3
+            }
+        },
+        "cookie": {
+            "id": "cookie",
+            "name": "Galleta",
+            "desc": "Recupera un poco de fatiga. Un dulce lujo que mejora el ánimo y la energía.",
+            "icon": "🍪",
+            "price": {
+                "buy": 15,
+                "sell": 5
+            }
+        },
+        "porridge": {
+            "id": "porridge",
+            "name": "Papilla",
+            "desc": "Recupera un poco de HP cada turno o descansando. Un plato básico y sencillo para llenar el estómago. No se conocen los ingredientes con exactitud.",
+            "icon": "🥣",
+            "price": {
+                "buy": 7,
+                "sell": 2
+            }
+        },
+        "carrot": {
+            "id": "carrot",
+            "name": "Zanahoria",
+            "desc": "Recupera un poco de HP cada turno o descansando. Una hortaliza común y humilde pero bastante nutritiva. Una gran ayuda para las masas.",
+            "icon": "🥕",
+            "price": {
+                "buy": 3,
+                "sell": 1
+            }
+        },
+        "beef_stew": {
+            "id": "beef_stew",
+            "name": "Estofado",
+            "desc": "Recupera un poco de HP cada turno o descansando. Un plato caliente con buenos ingredientes hecho por un cocinero experto.",
+            "icon": "🥘",
+            "price": {
+                "buy": 12,
+                "sell": 4
+            }
+        },
+        "dry_meat": {
+            "id": "dry_meat",
+            "name": "Carne seca",
+            "desc": "Recupera un poco de HP cada turno o descansando. Carne salada que puede durar semanas. Dificil de comer pero nutritivo.",
+            "icon": "🍖",
+            "price": {
+                "buy": 10,
+                "sell": 3
+            }
+        },
+        "ale": {
+            "id": "ale",
+            "name": "Cerveza",
+            "desc": "Cura una pequeña cantidad de HP. Una jarra de la bebida de los dioses que brinda un sinfín de beneficios para la salud.",
+            "icon": "🍺",
+            "price": {
+                "buy": 8,
+                "sell": 2
+            }
+        },
+        "cabbage": {
+            "id": "cabbage",
+            "name": "Repollo",
+            "desc": "Recupera un poco de HP cada turno o descansando. Un alimento barato, común en lugares con escasez de alimento.",
+            "icon": "🥬",
+            "price": {
+                "buy": 4,
+                "sell": 1
+            }
+        },
+        "fire_scroll": {
+            "id": "fire_scroll",
+            "name": "Pergamino incendiario",
+            "desc": "Inflige daño de fuego a un objetivo (base MATK). Creado por un hechicero escriba. Arrojarlo hace que comience a arder. Contiene una pequeña cantidad de poder mágico. Puede ser útil para cortar el paso.",
+            "icon": "📜",
+            "price": {
+                "buy": 15,
+                "sell": 7
+            }
+        },
+        "ice_scroll": {
+            "id": "ice_scroll",
+            "name": "Pergamino explosivo de hielo",
+            "desc": "Inflige daño de hielo a un objetivo (base MATK). Creado por un hechicero escriba. Arrojarlo provoca una explosión de escarcha. Contiene una pequeña cantidad de poder mágico.",
+            "icon": "📜",
+            "price": {
+                "buy": 15,
+                "sell": 7
+            }
+        }
+
+    }
+}

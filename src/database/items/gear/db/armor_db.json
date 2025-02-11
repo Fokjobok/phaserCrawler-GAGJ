@@ -1,0 +1,124 @@
+{
+    "simple_tunic": {
+        "name": "Túnica simple",
+        "type": "cloth",
+        "class": ["all"],
+        "def": 0,
+        "mdef": 0,
+        "stats": { "agi": 2 },
+        "slots": [0, 1]
+    },
+    "archer_suit": {
+        "name": "Traje de arquero",
+        "type": "cloth",
+        "class": ["archer", "rogue", "warrior",
+                  "fighter", "monk", "bard",
+                  "ranger", "slayer"],
+        "def": 1,
+        "mdef": 0,
+        "stats": { "agi": 1, "dex": 2 },
+        "slots": [0, 1]
+    },
+    "coat": {
+        "name": "Abrigo",
+        "type": "cloth",
+        "class": ["all"],
+        "def": 5,
+        "mdef": 0,
+        "slots": [0, 1]
+    },
+    "jacket": {
+        "name": "Chaqueta",
+        "type": "leather",
+        "class": ["all"],
+        "def": 3,
+        "mdef": 0,
+        "slots": [0, 1]
+    },
+    "leather_tunic": {
+        "name": "Túnica de cuero",
+        "type": "leather",
+        "class": ["all"],
+        "def": 3,
+        "mdef": 0,
+        "stats": { "vit": 2, "dex": 1 },
+        "slots": [0, 1]
+    },
+    "regal_gambeson": {
+        "name": "Gambesón real",
+        "type": "leather",
+        "class": ["archer", "rogue", "cleric",
+                  "warrior", "fighter", "monk",
+                  "bard", "ranger", "slayer"],
+        "def": 4,
+        "mdef": 4,
+        "stats": { "dex": 1 },
+        "slots": [0, 1]
+    },
+    "brigadine": {
+        "name": "Brigadina",
+        "type": "leather",
+        "class": ["archer", "rogue", "cleric",
+                  "warrior", "fighter", "monk",
+                  "bard", "ranger", "slayer"],
+        "def": 5,
+        "mdef": 0,
+        "stats": { "str": 1 },
+        "slots": [0, 1]
+    },
+    "padded_armor": {
+        "name": "Armadura acolchada",
+        "type": "leather",
+        "class": ["cleric", "warrior", "fighter",
+                  "monk", "slayer"],
+        "def": 6,
+        "mdef": 0,
+        "stats": { "str": 2 },
+        "slots": [0, 1]
+    },
+    "breastplate": {
+        "name": "Coraza",
+        "type": "plate",
+        "class": ["cleric", "warrior", "fighter"],
+        "def": 6,
+        "mdef": -3,
+        "stats": { "vit": 1 },
+        "slots": [0, 1]
+    },
+    "chain_mail": {
+        "name": "Cota de malla",
+        "type": "plate",
+        "class": ["cleric", "warrior", "fighter"],
+        "def": 8,
+        "mdef": -5,
+        "stats": { "agi": 1 },
+        "slots": [0, 1]
+    },
+    "full_plate": {
+        "name": "Armadura de placas",
+        "type": "plate",
+        "class": ["fighter"],
+        "def": 10,
+        "mdef": -5,
+        "stats": { "vit": 2 },
+        "slots": [0, 1]
+    },
+    "saint_robe": {
+        "name": "Ropa santa",
+        "type": "cloth",
+        "class": ["sorcerer", "cleric", "monk"],
+        "def": 1,
+        "mdef": 5,
+        "stats": { "sou": 1 },
+        "slots": [0, 1]
+    },
+    "mage_coat": {
+        "name": "Abrigo de mago",
+        "type": "cloth",
+        "class": ["wizard", "sorcerer", "cleric"],
+        "def": 0,
+        "mdef": 7,
+        "stats": { "vit": 1, "wis": 1 },
+        "slots": [0, 1]
+    }
+}

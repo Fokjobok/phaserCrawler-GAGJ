@@ -1,0 +1,266 @@
+{
+    "misc": {
+        "old_key": {
+            "id": "old_key",
+            "name": "Llave antigua",
+            "desc": "¿Abrirá la puerta de algún lugar?",
+            "icon": "🗝️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "old_rusty_key": {
+            "id": "old_rusty_key",
+            "name": "Llave antigua oxidada",
+            "desc": "¿Abrirá la puerta de algún lugar?",
+            "icon": "🗝️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "golden_key": {
+            "id": "golden_key",
+            "name": "Llave dorada",
+            "desc": "¿Abrirá la puerta de algún lugar?",
+            "icon": "🗝️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "blank_scroll": {
+            "id": "blank_scroll",
+            "name": "Pergamino en blanco",
+            "desc": "Es posible escribir en él. Es usado por escribanos y magos.",
+            "icon": "📜",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "old_scroll": {
+            "id": "old_scroll",
+            "name": "Pergamino antiguo",
+            "desc": "Contiene texto ilegible, similar a las escrituras mágicas.",
+            "icon": "📜",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "old_book": {
+            "id": "old_book",
+            "name": "Libro viejo",
+            "desc": "Sus páginas están rasgadas. Solamente es posible leer fragmentos inconexos.",
+            "icon": "📘",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "mysterious_egg": {
+            "id": "mysterious_egg",
+            "name": "Huevo misterioso",
+            "desc": "Un huevo que emite calor, tal vez eclosione en algo interesante. Ayuda a no pasar frío.",
+            "icon": "🥚",
+            "price": {
+                "buy": 30,
+                "sell": 15
+            }
+        },
+        "zircon": {
+            "id": "zircon",
+            "name": "Zirconio",
+            "desc": "Una piedra común en las tierras de Northaven",
+            "icon": "💎",
+            "price": {
+                "buy": 180,
+                "sell": 90
+            }
+        },
+        "alcohol": {
+            "id": "alcohol",
+            "name": "Alcohol",
+            "desc": "Alcohol casi puro extraido de las plantas. Puede usarse como ingrediente.",
+            "icon": "⚗️",
+            "price": {
+                "buy": 60,
+                "sell": 30
+            }
+        },
+        "poison_mushroom": {
+            "id": "poison_mushroom",
+            "name": "Seta venenosa",
+            "desc": "Un hongo venenoso común. Es mejor no tocarlo. Puede llegar a ser mortal en altas dosis.",
+            "icon": "🍄",
+            "price": {
+                "buy": 8,
+                "sell": 4
+            }
+        },
+        "rare_mushroom": {
+            "id": "rare_mushroom",
+            "name": "Seta rara",
+            "desc": "Un hongo raro con propiedades mayormente desconocidas. Bastante codiciados por alquimistas.",
+            "icon": "🍄",
+            "price": {
+                "buy": 8,
+                "sell": 4
+            }
+        },
+        "ashrium": {
+            "id": "ashrium",
+            "name": "Ashrium",
+            "desc": "Mineral utilizado para mejorar equipamiento. Está en todas partes.",
+            "icon": "🌑",
+            "price": {
+                "buy": 75,
+                "sell": 10
+            }
+        },
+        "ferralium": {
+            "id": "ferralium",
+            "name": "Ferralium",
+            "desc": "Mineral utilizado para mejorar armas. Es más ligero y consistente que el hierro.",
+            "icon": "🌑",
+            "price": {
+                "buy": 75,
+                "sell": 10
+            }
+        },
+        "celerium": {
+            "id": "celerium",
+            "name": "Celerium",
+            "desc": "Mineral utilizado para mejorar la eficiencia de piezas de armadura y utensilios gracias a su firmeza, flexibilidad y ligereza.",
+            "icon": "🌑",
+            "price": {
+                "buy": 125,
+                "sell": 10
+            }
+        },
+        "broken_sword": {
+            "id": "broken_sword",
+            "name": "Espada rota",
+            "desc": "Una vieja espada oxidada, casi inservible.",
+            "icon": "🗡️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "rusty_helmet": {
+            "id": "rusty_helmet",
+            "name": "casco oxidado",
+            "desc": "Un trozo de chatarra oxidada que una vez fue un casco.",
+            "icon": "⬜️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "moldy_bread": {
+            "id": "moldy_bread",
+            "name": "Pan mohoso",
+            "desc": "Parece comestible... pero no es buena idea.",
+            "icon": "🍞",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "rolling_pin": {
+            "id": "rolling_pin",
+            "name": "Rodillo",
+            "desc": "Un rodillo de cocina hecho de madera.",
+            "icon": "⬜️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "wooden_spoon": {
+            "id": "wooden_spoon",
+            "name": "Cuchara de madera",
+            "desc": "",
+            "icon": "🥄",
+            "price": {
+                "buy": 15,
+                "sell": 7
+            }
+        },
+        "wooden_chalice": {
+            "id": "wooden_chalice",
+            "name": "Cáliz de madera",
+            "desc": "",
+            "icon": "🥃",
+            "price": {
+                "buy": 15,
+                "sell": 7
+            }
+        },
+        "wooden_dish": {
+            "id": "wooden_dish",
+            "name": "Plato de madera",
+            "desc": "",
+            "icon": "⬜️",
+            "price": {
+                "buy": 15,
+                "sell": 7
+            }
+        },
+
+        "empty_flask": {
+            "id": "empty_flask",
+            "name": "Frasco vacío",
+            "desc": "Podría ser útil para guardar líquidos.",
+            "icon": "⚗️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "ancient_coin": {
+            "id": "ancient_coin",
+            "name": "Moneda antigua",
+            "desc": "Una vieja moneda que ya no se usa como dinero.",
+            "icon": "💰",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+
+        "iron_ore": {
+            "id": "iron_ore",
+            "name": "Mineral de hierro",
+            "desc": "Un pequeño trozo de mineral de hierro.",
+            "icon": "🌑",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "iron_ingot": {
+            "id": "iron_ingot",
+            "name": "Lingote de hierro",
+            "desc": "Un simple lingote de hierro para la forja.",
+            "icon": "⬜️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "steel_ingot": {
+            "id": "steel_ingot",
+            "name": "Lingote de acero",
+            "desc": "Un simple lingote de acero para la forja.",
+            "icon": "⬜️",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        }
+    }
+}

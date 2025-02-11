@@ -1,0 +1,37 @@
+{
+    "common": {
+        "dialog": 0.5,
+        "quest": 0.3,
+        "trade": 0.2
+    },
+    "military": {
+        "dialog": 0.9,
+        "quest": 0.0,
+        "trade": 0.0
+    },
+    "noble": {
+        "dialog": 0.6,
+        "quest": 0.4,
+        "trade": 0.0
+    },
+    "religious": {
+        "dialog": 0.2,
+        "quest": 0.7,
+        "trade": 0.1
+    },
+    "marginal": {
+        "dialog": 0.0,
+        "quest": 0.05,
+        "coin": 0.95
+    },
+    "scholarly": {
+        "dialog": 0.5,
+        "quest": 0.5,
+        "trade": 0.0
+    },
+    "entertainment": {
+        "dialog": 0.8,
+        "quest": 0.2,
+        "trade": 0.0
+    }
+}

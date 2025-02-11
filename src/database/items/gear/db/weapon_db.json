@@ -1,0 +1,269 @@
+{
+    "stiletto": {
+        "name": "Estilete",
+        "type": "dagger",
+        "class": ["wizard", "archer", "rogue",
+                  "sorcerer", "fighter", "bard",
+                  "ranger", "slayer"],
+        "atk": 4,
+        "damage_type": ["pierce"],
+        "stats": {},
+        "slots": [2, 3]
+    },
+    "rondel_dagger": {
+        "name": "Daga rodela",
+        "type": "dagger",
+        "class": ["wizard", "archer", "rogue",
+                  "sorcerer", "fighter", "bard",
+                  "ranger", "slayer"],
+        "atk": 5,
+        "damage_type": ["pierce"],
+        "stats": {},
+        "slots": [2, 3]
+    },
+
+
+    "short_sword": {
+        "name": "Espada corta",
+        "type": "sword",
+        "class": ["archer", "rogue", "warrior",
+                  "fighter", "bard", "ranger",
+                  "slayer"],
+        "atk": 7,
+        "damage_type": ["slash", "pierce"],
+        "stats": {},
+        "slots": [2, 3]
+    },
+    "rapier": {
+        "name": "Ropera",
+        "type": "sword",
+        "class": ["archer", "rogue", "fighter",
+                  "bard", "ranger", "slayer"],
+        "atk": 8,
+        "damage_type": ["pierce"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+    "armin_sword": {
+        "name": "Espada de armar",
+        "type": "sword",
+        "class": ["barbarian", "archer", "warrior", 
+                  "fighter", "bard", "ranger",
+                  "slayer"],
+        "atk": 11,
+        "damage_type": ["slash", "pierce"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+    "falchion": {
+        "name": "Bracamarte",
+        "type": "sword",
+        "class": ["archer", "warrior", "fighter",
+                  "bard", "ranger", "slayer"],
+        "atk": 14,
+        "damage_type": ["slash"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+
+
+    "tomahawk": {
+        "name": "Tomahawk",
+        "type": "axe",
+        "class": ["barbarian", "warrior", "fighter"],
+        "atk": 9,
+        "damage_type": ["slash"],
+        "stats": {},
+        "slots": [2, 3]
+    },
+    "axe": {
+        "name": "Hacha Skeggox",
+        "type": "axe",
+        "class": ["barbarian", "warrior", "fighter"],
+        "atk": 12,
+        "damage_type": ["slash", "blunt"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+    "battle_axe": {
+        "name": "Hacha de batalla",
+        "type": "twohanded_axe",
+        "class": ["barbarian", "warrior", "fighter"],
+        "atk": 14,
+        "damage_type": ["slash"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+    "double_axe": {
+        "name": "Hacha de doble filo",
+        "type": "twohanded_axe",
+        "class": ["barbarian", "warrior", "fighter"],
+        "atk": 18,
+        "damage_type": ["slash", "blunt"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+    
+
+    "club": {
+        "name": "Garrote",
+        "type": "mace",
+        "class": ["barbarian", "cleric", "warrior", "fighter", "monk"],
+        "atk": 9,
+        "damage_type": ["blunt"],
+        "stats": {},
+        "slots": [2, 3]
+    },
+    "flanged_mace": {
+        "name": "Maza bridada",
+        "type": "mace",
+        "class": ["cleric", "fighter", "monk"],
+        "atk": 11,
+        "damage_type": ["blunt"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+    "morning_star": {
+        "name": "Lucero del alba",
+        "type": "mace",
+        "class": ["cleric", "fighter", "monk"],
+        "atk": 13,
+        "damage_type": ["blunt"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+    "long_sword": {
+        "name": "Espada larga",
+        "type": "twohanded_sword",
+        "class": ["fighter", "slayer"],
+        "atk": 10,
+        "damage_type": ["pierce", "slash"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+    "zweihander": {
+        "name": "Espada zweihander",
+        "type": "twohanded_sword",
+        "class": ["barbarian", "warrior", "fighter"],
+        "atk": 14,
+        "damage_type": ["slash", "pierce"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+    "bastard_sword": {
+        "name": "Espada bastarda",
+        "type": "twohanded_sword",
+        "class": ["warrior", "fighter"],
+        "atk": 16,
+        "damage_type": ["slash"],
+        "stats": {},
+        "slots": [0, 1]
+    },
+
+
+    "short_bow": {
+        "name": "Arco corto",
+        "type": "bow",
+        "class": ["archer", "fighter", "bard", "ranger", "slayer"],
+        "atk": 6,
+        "damage_type": ["pierce"],
+        "stats": { "agi": 1 },
+        "slots": [2, 3]
+    },
+    "composite_bow": {
+        "name": "Arco compuesto",
+        "type": "bow",
+        "class": ["archer", "fighter", "ranger"],
+        "atk": 8,
+        "damage_type": ["pierce"],
+        "stats": { "dex": 1 },
+        "slots": [1, 2]
+    },
+    "long_bow": {
+        "name": "Arco largo",
+        "type": "bow",
+        "class": ["archer"],
+        "atk": 11,
+        "damage_type": ["pierce"],
+        "stats": { "str": 1 },
+        "slots": [0, 1]
+    },
+    "hand_crossbow": {
+        "name": "Ballesta de mano",
+        "type": "crossbow",
+        "class": ["wizard", "archer", "rogue", "sorcerer", "warrior", "fighter", "bard", "ranger"],
+        "atk": 11,
+        "damage_type": ["pierce"],
+        "stats": {},
+        "slots": [1, 2]
+    },
+    "crossbow": {
+        "name": "Ballesta",
+        "type": "crossbow",
+        "class": ["wizard", "ranger", "fighter"],
+        "atk": 11,
+        "damage_type": ["pierce"],
+        "stats": { "dex": 2 },
+        "slots": [0, 1]
+    },
+
+
+    "spear": {
+        "name": "Lanza",
+        "type": "spear",
+        "class": ["rogue", "warrior", "fighter", "ranger"],
+        "atk": 12,
+        "damage_type": ["pierce"],
+        "stats": { "vit": 1 },
+        "slots": [1, 2]
+    },
+    "halberd": {
+        "name": "Alabarda",
+        "type": "spear",
+        "class": ["warrior", "fighter"],
+        "atk": 14,
+        "damage_type": ["slash", "pierce"],
+        "stats": { "dex": 1 },
+        "slots": [0, 1]
+    },
+
+
+    "wand": {
+        "name": "Varita",
+        "type": "wand",
+        "class": ["wizard", "sorcerer"],
+        "matk": 3,
+        "damage_type": ["magic"],
+        "stats": { "dex": 1 },
+        "slots": [2, 3]
+    },
+    "crystal_ball": {
+        "name": "Bola de cristal",
+        "type": "wand",
+        "class": ["wizard", "sorcerer"],
+        "matk": 5,
+        "damage_type": ["magic"],
+        "stats": { "sou": 2 },
+        "slots": [1, 2]
+    },
+    "staff": {
+        "name": "Bastón",
+        "type": "staff",
+        "class": ["wizard", "sorcerer", "cleric", "fighter", "monk"],
+        "atk": 6,
+        "matk": 6,
+        "damage_type": ["blunt", "magic"],
+        "stats": { "wis": 1 },
+        "slots": [1, 2]
+    },
+    "arc_wand": {
+        "name": "Bastón de mago",
+        "type": "staff",
+        "class": ["wizard", "sorcerer", "cleric", "fighter", "monk"],
+        "atk": 6,
+        "matk": 6,
+        "damage_type": ["blunt", "magic"],
+        "stats": { "wis": 2 },
+        "slots": [0, 1]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "male": [
+        "aldric", "baldric", "cedric", "eldwin", "godfrey", "harwin", "lancel", "osric", "perrin", "roland",
+        "sigmund", "thaddeus", "ulric", "wulfric", "gideon", "leofric", "eadric", "tiberius", "gareth", "bertram",
+        "renfred", "everard", "emory", "cuthbert", "anselm", "edric", "hugh", "armand", "faramond", "gisborne",
+        "lothar", "roderick", "geoffrey", "simon", "isidore", "bartolome", "havelock", "oswald", "crispin", "hubert",
+        "morgan", "rowan", "tarian", "francis", "jordan", "blaise", "gervase", "laurence", "bryn", "corin", "elric",
+        "merrick", "reynard"
+    ],
+    "female": [
+        "adelaide", "beatrice", "cecily", "edith", "eleanor", "giselle", "isolde", "juliana", "margery", "rosamund",
+        "winifred", "aveline", "clarimond", "emmeline", "gwenllian", "isabeau", "matilda", "yseult", "berengaria",
+        "constance", "florence", "guinevere", "henrietta", "lavinia", "melisande", "philippa", "rhiannon", "sabine",
+        "theodora", "wilhelmina", "sybilla", "agnes", "blanche", "evelyne", "thyra", "ottilia", "heloise", "avice",
+        "lysandra", "rowena", "catrin", "brigid", "morwenna", "aethelwyn", "euphemia", "joan", "clotilde", "ida",
+        "robin", "auden", "alwyn", "ellis", "lioren", "quinn", "valerian", "cassian", "hadrian", "sylvain", "hale",
+        "lorien", "theron"
+    ]
+}

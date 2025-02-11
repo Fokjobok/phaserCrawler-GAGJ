@@ -1,0 +1,67 @@
+{
+    "old_woman": {
+      "name": "Hesper",
+      "clase": 2,
+      "introLines": [
+        "¡Bienvenido al Mesón del Roble! ¿Necesitas ayuda o vienes por la misión?"
+      ],
+      "conversationRoutes": [
+        {
+          "label": "Preguntar por la misión 'Princesas Envenenadas'",
+          "questChanges": [
+            {
+              "questId": "poisoned_princesses",
+              "nextStep": 1
+            }
+          ],
+          "lines": [
+            "Se rumorea que unas princesas fueron envenenadas en el castillo. Nadie sabe quién fue...",
+            "Si te interesa investigar, deberías empezar hablando con la Hermana Clarisa en la Catedral."
+          ],
+          "subOptions": [
+            {
+              "label": "Aceptar la misión",
+              "lines": [
+                "¡Excelente! Habla con la Hermana Clarisa para averiguar más.",
+                "Por favor, devuélveme noticias. Estoy muy preocupado."
+              ],
+              "questChanges": [
+                {
+                  "questId": "poisoned_princesses",
+                  "nextStep": 2
+                }
+              ],
+              "affinityChange": 1
+            },
+            {
+              "label": "Rechazar",
+              "lines": [
+                "Bueno, si cambias de opinión, aquí estaré. Aunque la situación es grave...",
+                "La gente del reino sufre bastante."
+              ],
+              "affinityChange": 0
+            }
+          ]
+        },
+        {
+          "label": "Pedir rumores recientes",
+          "lines": [
+            "Dicen que la taberna de la ciudad vecina sufrió un ataque. Pero a mí me preocupa más el tema de las princesas...",
+            "Aun así, puedo contarte más si completas la misión en curso."
+          ],
+          "questChanges": [], 
+          "subOptions": [
+            {
+              "label": "Despedirse educadamente",
+              "lines": [
+                "Vuelve cuando quieras. Mis puertas están abiertas, viajero."
+              ],
+              "onComplete": {
+                "affinityChange": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }

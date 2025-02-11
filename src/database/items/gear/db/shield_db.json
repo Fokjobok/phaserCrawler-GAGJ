@@ -1,0 +1,77 @@
+{
+    "guard": {
+        "name": "Protector",
+        "type": "shield",
+        "class": ["all"],
+        "def": 2,
+        "mdef": 0,
+        "block": 1,
+        "slots": [0, 1]
+    },
+    "buckler": {
+        "name": "Rodela",
+        "type": "shield",
+        "class": ["sorcerer", "cleric", "warrior",
+                  "fighter", "monk", "bard",
+                  "ranger", "slayer"],
+        "def": 4,
+        "mdef": 0,
+        "block": 2,
+        "slots": [0, 1]
+    },
+    "round_shield": {
+        "name": "Escudo redondo",
+        "type": "shield",
+        "class": ["barbarian", "cleric", "warrior",
+                  "fighter", "monk"],
+        "def": 7,
+        "mdef": 1,
+        "block": 3,
+        "slots": [0, 1]
+    },
+    "shield": {
+        "name": "Escudo de caballero",
+        "type": "shield",
+        "class": ["cleric", "warrior", "fighter"],
+        "def": 9,
+        "mdef": -3,
+        "block": 3,
+        "slots": [0, 1]
+    },
+    "pavise": {
+        "name": "Escudo pavisar",
+        "type": "shield",
+        "class": ["archer", "fighter", "ranger"],
+        "def": 13,
+        "mdef": 5,
+        "block": 4,
+        "slots": [0, 1]
+    },
+    "bible": {
+        "name": "Biblia",
+        "type": "shield",
+        "class": ["wizard", "cleric"],
+        "def": 1,
+        "mdef": 4,
+        "block": 0,
+        "slots": [0, 1]
+    },
+    "magic_plate": {
+        "name": "Bandeja mágica",
+        "type": "shield",
+        "class": ["wizard", "sorcerer", "cleric"],
+        "def": 1,
+        "mdef": 6,
+        "block": 0,
+        "slots": [0, 1]
+    },
+    "holy_guard": {
+        "name": "Protector sagrado",
+        "type": "shield",
+        "class": ["sorcerer", "cleric", "fighter"],
+        "def": 5,
+        "mdef": 5,
+        "block": 2,
+        "slots": [0, 1]
+    }
+}

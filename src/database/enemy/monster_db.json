@@ -1,0 +1,499 @@
+{
+    "monster": {
+        "skeleton": {
+            "id": 1,
+            "name": "Esqueleto",
+            "icon": "💀",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 12, "agi": 6, "vit": 1,
+                "wis": 3, "dex": 6, "sou": 4
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "short_sword": 7,
+                "skel-bone": 0.5,
+                "skeleton_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Corte",
+                "skill_02": "Golpe"
+            }
+        },
+        "mummy": {
+            "id": 2,
+            "name": "Momia",
+            "icon": "🧟",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 16, "agi": 4, "vit": 1,
+                "wis": 1, "dex": 5, "sou": 2
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 2,
+            "loot": {
+            "ruby": 0.2,
+                "old_clothes": 0.4,
+                "mummy_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Golpe",
+                "skill_02": "Empujón"
+            }
+        },
+        "zombie": {
+            "id": 3,
+            "name": "Zombi",
+            "icon": "🧟",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 8, "agi": 2, "vit": 2,
+                "wis": 0, "dex": 3, "sou": 1
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 2,
+            "loot": {
+                "rotten_flesh": 0.4,
+                "zombie_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Mordisco",
+                "skill_02": "Golpe"
+            }
+        },
+        "bat": {
+            "id": 4,
+            "name": "Murciélago",
+            "icon": "🦇",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 3, "agi": 5, "vit": 1,
+                "dex": 2, "wis": 0, "sou": 0
+            },
+            "magical_basic_hit": false,
+            "element": "neutral",
+            "element_level": 1,
+            "loot": {
+                "bat_fang": 0.2,
+                "bat_card": 0.02
+            },
+            "skill": {
+                "skill_02": "Mordisco",
+                "skill_01": "Ultrasonido"
+            }
+        },
+        "archer_skeleton": {
+            "id": 6,
+            "name": "Esqueleto Arquero",
+            "icon": "💀",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 4, "agi": 9, "vit": 1,
+                "wis": 2, "dex": 10, "sou": 5
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "bone_arrow": 0.4,
+                "archer_skeleton_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Flechazo",
+                "skill_02": "Disparo Certero",
+                "skill_03": "Lluvia de flechas"
+            }
+        },
+        "skeleton_shielder": {
+            "id": 7,
+            "name": "Esqueleto Escudero",
+            "icon": "💀",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 10, "agi": 3, "vit": 1,
+                "dex": 9, "wis": 2, "sou": 3
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "shield_fragment": 0.25,
+                "shielder_card": 0.02
+            },
+            "skill": {
+                "skill_02": "Corte",
+                "skill_01": "Bloqueo"
+            }
+        },
+        "skeleton_crossbowman": {
+            "id": 8,
+            "name": "Esqueleto Ballestero",
+            "icon": "💀",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 4, "agi": 8, "vit": 1,
+                "wis": 3, "dex": 11, "sou": 4
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "crossbow_bolt": 0.3,
+                "ballestero_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Ballestazo",
+                "skill_02": "Virote rápido"
+            }
+        },
+        "slime": {
+            "id": 9,
+            "name": "Slime",
+            "icon": "🦠",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 7, "vit": 1,
+                "dex": 8, "wis": 2, "sou": 3
+            },
+            "magical_basic_hit": true,
+            "element": "poison",
+            "element_level": 1,
+            "loot": {
+                "slime_jelly": 0.4,
+                "slime_card": 0.02
+            },
+                "skill": {
+                "skill_01": "Escupir"
+            }
+        },
+        "wolf": {
+            "id": 10,
+            "name": "Lobo",
+            "icon": "🐺",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 7, "agi": 8, "vit": 3,
+                "wis": 2, "dex": 6, "sou": 5
+            },
+            "magical_basic_hit": false,
+            "element": "neutral",
+            "element_level": 0,
+            "loot": {
+                "wolf_skin": 0.25,
+                "wolf_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Mordisco",
+                "skill_02": "Aullido",
+                "skill_03": "Mofa",
+                "skill_04": "Huida"
+            }
+        },
+        "spider": {
+            "id": 5,
+            "name": "Araña",
+            "icon": "🕷️",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 4, "agi": 9, "vit": 9,
+                "wis": 1, "dex": 3, "sou": 3
+            },
+            "magical_basic_hit": false,
+            "element": "poison",
+            "element_level": 1,
+            "loot": {
+                "spider_silk": 0.3,
+                "spider_leg": 0.35,
+                "spider_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Picadura",
+                "skill_02": "Telaraña pegajosa"
+            }
+        },
+        "giant_spider": {
+            "id": 11,
+            "name": "Araña Gigante",
+            "icon": "🕷️",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 6, "agi": 6, "vit": 12,
+                "wis": 1, "dex": 2, "sou": 4
+            },
+            "magical_basic_hit": false,
+            "element": "poison",
+            "element_level": 1,
+            "loot": {
+                "spider_silk": 0.55,
+                "spider_leg": 0.35,
+                "giant_spider_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Picadura",
+                "skill_02": "Escupir"
+            }
+        },
+        "living_armor": {
+            "id": 12,
+            "name": "Armadura Viviente",
+            "icon": "⚔️",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 14, "agi": 5, "vit": 8,
+                "wis": 4, "dex": 11, "sou": 1
+            },
+            "magical_basic_hit": false,
+            "element": "dark",
+            "element_level": 2,
+            "loot": {
+                "armor_scrap": 0.3,
+                "long_sword": 0.1,
+                "living_armor_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Corte",
+                "skill_02": "Corte circular",
+                "skill_03": "Culatazo"
+            }
+        },
+        "stone_gargoyle": {
+            "id": 13,
+            "name": "Gárgola de Piedra",
+            "icon": "🦇",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 12, "agi": 3, "vit": 9,
+                "wis": 5, "dex": 3, "sou": 8
+            },
+            "magical_basic_hit": false,
+            "element": "earth",
+            "element_level": 2,
+            "loot": {
+                "gargoyle_fragment": 0.3,
+                "stone_gargoyle_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Mordisco",
+                "skill_02": "Pedrada",
+                "skill_03": "Mirada Pétrea"
+            }
+        },
+        "fliying_head": {
+            "id": 14,
+            "name": "Cabeza Voladora",
+            "icon": "🦇",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 4, "agi": 9, "vit": 5,
+                "wis": 5, "dex": 6, "sou": 1
+            },
+            "magical_basic_hit": false,
+            "element": "dark",
+            "element_level": 1,
+            "loot": {
+                "flying_head_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Mordisco",
+                "skill_02": "Alarido",
+                "skill_03": "Impulso"
+            }
+        },
+        "dwarf": {
+            "id": 15,
+            "name": "Enano",
+            "icon": "🧝",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 14, "agi": 3, "vit": 15,
+                "wis": 2, "dex": 7, "sou": 5
+            },
+            "magical_basic_hit": false,
+            "element": "neutral",
+            "element_level": 1,
+            "loot": {
+                "dwarf_axe": 10,
+                "dwarf_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Hachazo",
+                "skill_02": "Cabezazo"
+            }
+        },
+        "shadow": {
+            "id": 16,
+            "name": "Sombra",
+            "icon": "👻",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 11, "vit": 1,
+                "wis": 9, "dex": 11, "sou": 14
+            },
+            "magical_basic_hit": true,
+            "element": "dark",
+            "element_level": 3,
+            "loot": {
+                "shadow_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Maldición",
+                "skill_02": "Forma etérea",
+                "skill_03": "Persecución"
+            }
+        },
+        "giant_mushroom": {
+            "id": 17,
+            "name": "Hongo Gigante",
+            "icon": "🍄",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 1, "vit": 7,
+                "wis": 5, "dex": 1, "sou": 1
+            },
+            "magical_basic_hit": false,
+            "element": "poison",
+            "element_level": 3,
+            "loot": {
+                "mushroom_spore": 0.35,
+                "giant_mushroom_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Golpe",
+                "skill_02": "Disparo de esporas",
+                "skill_03": "Tormenta venenosa"
+            }
+        },
+        "fire_elemental": {
+            "id": 18,
+            "name": "Elemental de Fuego",
+            "icon": "🌋",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 8, "vit": 14,
+                "wis": 11, "dex": 9, "sou": 13
+            },
+            "magical_basic_hit": true,
+            "element": "fire",
+            "element_level": 1,
+            "loot": {
+                "fire_elemental_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Bola de fuego",
+                "skill_02": "Presión"
+            }
+        },
+        "water_elemental": {
+            "id": 19,
+            "name": "Elemental de Agua",
+            "icon": "🌊",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 8, "agi": 2, "vit": 19,
+                "wis": 7, "dex": 2, "sou": 9
+            },
+            "magical_basic_hit": true,
+            "element": "water",
+            "element_level": 1,
+            "loot": {
+                "ice_stone": 0.45,
+                "water": 1
+            },
+            "skill": {
+                "skill_01": "Disparo a presión",
+                "skill_02": "Humedad"
+            }
+        },
+        "chobekko": {
+            "id": 20,
+            "name": "Chobekko",
+            "icon": "🦩",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 7, "agi": 14, "vit": 8,
+                "wis": 3, "dex": 8, "sou": 2
+            },
+            "magical_basic_hit": false,
+            "element": "fire",
+            "element_level": 2,
+            "loot": {
+                "bird_wing": 0.55,
+                "bird_claw": 0.25,
+                "chobekko_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Picotazo",
+                "skill_02": "Golpe rápido"
+            }
+        },
+        "golem": {
+            "id": 21,
+            "name": "Gólem",
+            "icon": "🏔️",
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 25, "agi": 1, "vit": 20,
+                "wis": 1, "dex": 1, "sou": 1
+            },
+            "magical_basic_hit": false,
+            "element": "earth",
+            "element_level": 3,
+            "loot": {
+                "stone": 1,
+                "sand": 1,
+                "golem_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Pedrada",
+                "skill_02": "Golpe sísmico",
+                "skill_03": "Endurecer"
+            }
+        }
+    }
+}

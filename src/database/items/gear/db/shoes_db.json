@@ -1,0 +1,100 @@
+{
+    "sandals": {
+        "name": "Sandalias",
+        "type": "cloth",
+        "class": ["all"],
+        "def": 0,
+        "mdef": 1,
+        "stats": { "dex": 1 },
+        "slots": [0, 1]
+    },
+    "librarian_sandals": {
+        "name": "Sandalias de mago",
+        "type": "leather",
+        "class": ["wizard", "sorcerer", "cleric", "monk"],
+        "def": 1,
+        "mdef": 4,
+        "stats": { "wis": 1 },
+        "slots": [0, 1]
+    },
+
+
+    "shoes": {
+        "name": "Zapatos",
+        "type": "cloth",
+        "class": ["all"],
+        "def": 1,
+        "mdef": 0,
+        "stats": { "agi": 1 },
+        "slots": [0, 1]
+    },
+    "leather_shoes": {
+        "name": "Zapatos de cuero",
+        "type": "leather",
+        "class": ["all"],
+        "def": 3,
+        "mdef": 2,
+        "stats": {},
+        "slots": [0, 1]
+    },
+
+
+    "adventurer_boots": {
+        "name": "Botas de aventurero",
+        "type": "leather",
+        "class": ["all"],
+        "def": 3,
+        "mdef": 0,
+        "stats": { "dex": 2 },
+        "slots": [0, 1]
+    },
+    "hunter_boots": {
+        "name": "Botas de cazador",
+        "type": "leather",
+        "class": ["archer", "ranger"],
+        "def": 3,
+        "mdef": 3,
+        "stats": {},
+        "slots": [0, 1]
+    },
+    "mercenary_greaves": {
+        "name": "Grebas de mercenario",
+        "type": "leather",
+        "class": ["barbarian", "archer", "rogue",
+                  "cleric", "warrior", "monk",
+                  "bard", "ranger", "slayer"],
+        "def": 5,
+        "mdef": 0,
+        "stats": { "str": 1 },
+        "slots": [0, 1]
+    },
+
+
+    "chain_boots": {
+        "name": "Botas de malla",
+        "type": "plate",
+        "class": ["barbarian", "warrior", "fighter"],
+        "def": 6,
+        "mdef": -2,
+        "stats": { "vit": 1 },
+        "slots": [0, 1]
+    },
+    "heavy_greaves": {
+        "name": "Grebas pesadas",
+        "type": "plate",
+        "class": ["barbarian", "cleric", "warrior", "fighter"],
+        "def": 7,
+        "mdef": -5,
+        "stats": { "agi": -3, "vit": 1, "dex": 1 },
+        "slots": [0, 1]
+    },
+    "enhanced_greaves": {
+        "name": "Grebas mejoradas",
+        "type": "plate",
+        "class": ["cleric", "fighter"],
+        "def": 9,
+        "mdef": -5,
+        "stats": { "agi": -2 },
+        "slots": [0, 1]
+    }
+}

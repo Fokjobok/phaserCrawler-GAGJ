@@ -1,0 +1,90 @@
+{
+	"la plaza principal": {
+		"name": "la plaza principal",
+		"background": "plaza",
+		"description": "El corazón de la ciudad, llena de vida y comercio.",
+		"npc_count": 3,
+		"role_category": "marginal",
+		"npc_type": "mendigo",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["wanderman_001"]
+	},
+
+	"el mercado": {
+		"name": "el mercado",
+		"background": "market",
+		"description": "Un bullicioso mercado donde comerciantes venden sus productos. Multitud de personas sobreviven aquí\ngracias a la alta demanda.",
+		"npc_count": 4,
+		"role_category": "common",
+		"npc_type": "mercader",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["merchant_001", "merchant_002"]
+	},
+
+	"la herrería": {
+		"name": "la herrería",
+		"background": "smith",
+		"description": "El calor del horno y el sonido del martillo resuenan aquí.",
+		"npc_count": 2,
+		"role_category": "common",
+		"npc_type": "herrero",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["blacksmith_001"]
+	},
+
+	"la biblioteca": {
+		"name": "la biblioteca",
+		"background": "library",
+		"description": "Gran cantidad de libros de todas partes del mundo se concentran aquí.",
+		"npc_count": 5,
+		"role_category": "scholarly",
+		"npc_type": "escribano",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["librarian_001"]
+	},
+
+	"la posada": {
+		"name": "la posada",
+		"background": "inn",
+		"description": "Una posada con pocos lujos y algo sucia y descuidada, aunque acogedora.",
+		"npc_count": 3,
+		"role_category": "common",
+		"npc_type": "posadero",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["innkeeper_001"]
+	},
+
+	"la sastrería": {
+		"name": "sastrería",
+		"background": "taylor",
+		"description": "Muy valoradas por aventureros, entre telas, hilos y pieles fabrican ropajes dignos de héroes.",
+		"npc_count": 2,
+		"role_category": "common",
+		"npc_type": "tejedor",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["tailor_001"]
+	},
+
+	"la puerta principal": {
+		"name": "la puerta principal",
+		"background": "mgate",
+		"description": "El interior de una muralla fortificada de piedra para proteger al pueblo. \nParece que no existe otra entrada en kilómetros.",
+		"npc_count": 1,
+		"role_category": "military",
+		"npc_type": "guardia",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["guard_001", "guard_002"]
+	},
+    
+	"la puerta hacia el castillo": {
+		"name": "la puerta hacia el castillo",
+		"background": "",
+		"description": "Una puerta que conduce al interior de una muralla. En el interior hay un camino\nal castillo del rey. No puede cruzarse sin una autorización.",
+		"npc_count": 0,
+		"role_category": "military",
+		"npc_type": "guardia real",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["royalguard_001", "royalguard_002"]
+	}
+}
+

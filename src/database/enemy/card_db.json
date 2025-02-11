@@ -1,0 +1,235 @@
+{
+    "card": {
+        "skeleton_card": {
+            "id": 1,
+            "name": "Carta de Esqueleto",
+            "desc": "+5% daño con espadas",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "mummy_card": {
+            "id": 2,
+            "name": "Carta de Momia",
+            "desc": "+2 DEX, -1 AGI",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "zombie_card": {
+            "id": 3,
+            "name": "Carta de Zombi",
+            "desc": "Encanta una armadura con propiedad 'Veneno'.",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "bat_card": {
+            "id": 4,
+            "name": "Carta de Murciélago",
+            "desc": "+1 AGI",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "spider_card": {
+            "id": 5,
+            "name": "Carta de Araña",
+            "desc": "Añade un 7% de probabilidad de envenenar a un objetivo con un ataque básico.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "archer_skeleton_card": {
+            "id": 6,
+            "name": "Carta de Esqueleto Arquero",
+            "desc": "Incrementa en 5% el daño a distancia.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "skeleton_shielder_card": {
+            "id": 7,
+            "name": "Carta de Escudero",
+            "desc": "+5 DEF",
+            "slot": "shield",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "skeleton_crossbowman": {
+            "id": 8,
+            "name": "Carta de Ballestero",
+            "desc": "Añade un 15% de probabilidad de obtener 'virote' al golpear a un enemigo.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "slime_card": {
+            "id": 9,
+            "name": "Carta de Slime",
+            "desc": "+2 SOU",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "wolf_card": {
+            "id": 10,
+            "name": "Carta de Lobo",
+            "desc": "Incrementa en 5% el daño con dagas. Añade un 7% probabilidad de obtener 'moneda de plata' al golpear a un enemigo.",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "giant_spider_card": {
+            "id": 11,
+            "name": "Carta de Araña Gigante",
+            "desc": "Encanta un arma con propiedad 'Veneno'.",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "living_armor_card": {
+            "id": 12,
+            "name": "Carta de Armadura Viviente",
+            "desc": "Incrementa en 10% el daño con espadas a dos manos. -5 MDEF.",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "stone_gargoyle_card": {
+            "id": 13,
+            "name": "Carta de Gárgola de Piedra",
+            "desc": "Aumenta en 25% la resistencia al elemento 'earth'",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "flying_head_card": {
+            "id": 14,
+            "name": "Carta de Cabeza Voladora",
+            "desc": "+1 SOU",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "dwarf_card": {
+            "id": 15,
+            "name": "Carta de Enano",
+            "desc": "+50 HP, +1 STR",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "shadow_card": {
+            "id": 16,
+            "name": "Carta de Sombra",
+            "desc": "Encanta una armadura con propiedad 'Oscuridad'.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "giant_mushroom_card": {
+            "id": 17,
+            "name": "Carta de Hongo Gigante",
+            "desc": "Añade un 9% de probabilidad de envenenar al objetivo cuando el usuario recibe un golpe físico.",
+            "slot": "armor",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "fire_elemental_card": {
+            "id": 18,
+            "name": "Carta de Elemental de Fuego",
+            "desc": "Incrementa en 12% el daño a distancia infligido a enemigos tipo 'Tierra'.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "water_elemental_card": {
+            "id": 19,
+            "name": "Carta de Elemental de Agua",
+            "desc": "Incrementa en 12% el daño a distancia infligido a enemigos tipo 'Fuego'.",
+            "slot": "weapon",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "chobekko_card": {
+            "id": 20,
+            "name": "Carta de Chobekko",
+            "desc": "+25 SP, +1 AGI",
+            "slot": "accessory",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        },
+        "golem_card": {
+            "id": 21,
+            "name": "Carta de Gólem",
+            "desc": "+3 DEF",
+            "slot": "accessory",
+            "icon": "🃏",
+            "price": {
+                "buy": 50,
+                "sell": 25
+            }
+        }
+    }
+}

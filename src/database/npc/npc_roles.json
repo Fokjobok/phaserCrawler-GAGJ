@@ -1,0 +1,31 @@
+{
+    "common": [
+        "aldeano", "granjero", "herrero", "carpintero", "panadero", "tejedor", "mercader", "posadero", 
+        "cazador", "leñador", "pastor", "artesano", "herrador", "alfarero", "vendedor ambulante"
+    ],
+    "military": [
+        "guardia", "soldado", "capitán", "guardia real", "comandante", "caballero", "arquero", 
+        "lancero", "escudero"
+    ],
+    "noble": [
+        "rey", "reina", "príncipe", "princesa", "duque", "duquesa", "conde", "condesa", "barón", "baronesa",
+        "marqués", "marquesa", "vizconde", "vizcondesa", "canciller", "senescal", "consejero real"
+    ],
+    "religious": [
+        "sacerdote", "monje", "monja", "abad", "abadesa", "obispo", "clérigo", "fraile", "profeta", "ermitaño",
+        "adivino", "curandero"
+    ],
+    "marginal": [
+        "vagabundo", "mendigo"
+    ],
+    "dangerous": [
+        "bandido", "ladrón", "espía", "fugitivo", "asesino", "mercenario"
+    ],
+    "scholarly": [
+        "erudito", "alquimista", "hechicero", "mago", "aprendiz", "escribano", "astrólogo", "arquitecto", 
+        "inventor", "filósofo"
+    ],
+    "entertainment": [
+        "bardo", "músico", "poeta", "malabarista", "bailarín", "actor", "trovador", "bufón", "titiritero"
+    ]
+}

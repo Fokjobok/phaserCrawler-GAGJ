@@ -54,44 +54,71 @@ export class SelectClassScene extends Phaser.Scene {
 
     handleInput(event) {
         switch (event.code) {
+
             case 'ArrowLeft':
                 if (this.selectedIndex > 0) {
                     this.selectedIndex--
+
                     console.log(`Columna: ${this.selectedIndex}`)
+
+
                     this.updateSelection()
                 }
                 break
+
+
             case 'ArrowRight':
                 if (this.selectedIndex < this.cardsPerPage - 1 && this.selectedIndex < this.getCurrentPageClasses().length - 1) {
                     this.selectedIndex++
+
                     console.log(`Columna: ${this.selectedIndex}`)
+
+
                     this.updateSelection()
                 }
                 break
+
+
             case 'ArrowUp':
                 if (this.currentPage > 0) {
                     this.currentPage--
                     this.selectedIndex = this.selectedIndex
+
                     console.log(`Fila: ${this.currentPage}`)
+
+
                     this.renderPage()
                 }
                 break
+
+
             case 'ArrowDown':
                 if (this.currentPage < this.totalPages - 1) {
                     this.currentPage++
                     this.selectedIndex = this.selectedIndex
+
                     console.log(`Fila: ${this.currentPage}`)
+
+
                     this.renderPage()
                 }
                 break
+
+
             case 'KeyZ':
                 let selectedClassKey = this.getCurrentPageClasses()[this.selectedIndex]
                 let selectedClassData = this.jobStats[selectedClassKey]
+
                 console.log('Clase seleccionada:', selectedClassKey, selectedClassData)
+
+
                 // Crear el objeto Player (asumiendo que el constructor de Player espera (name, job))
                 let player = new Player(this.playerName, selectedClassKey)
+
                 // Transición a IntroScene pasando el objeto Player
                 this.scene.start('IntroScene', { player: player })
+
+
                 break
         }
     }
@@ -99,7 +126,10 @@ export class SelectClassScene extends Phaser.Scene {
     getCurrentPageClasses() {
         let start = this.currentPage * this.cardsPerPage
         let end = start + this.cardsPerPage
+
+
         return this.classKeys.slice(start, end)
+
     }
 
 
@@ -180,7 +210,8 @@ export class SelectClassScene extends Phaser.Scene {
 
             if (cardElement) {
                 cardElement.setAttribute('data-card-color', cardColor)
-                //console.log("Color asignado a la tarjeta:", cardElement.getAttribute('data-card-color'))
+                //console.log("Color de tarjeta:", cardElement.getAttribute('data-card-color'))
+
             }
             
 
@@ -198,6 +229,7 @@ export class SelectClassScene extends Phaser.Scene {
 
 
             this.cards.push(domElement)
+
         })
 
 
@@ -216,11 +248,9 @@ export class SelectClassScene extends Phaser.Scene {
                 // Recupera el color desde el atributo data‑card‑color
                 const neonColor = cardElement.getAttribute('data-card-color') || '#f0f'
                 cardElement.style.setProperty('--neon-color', neonColor)
-
-                // Si se quiere forzar el borde negro, se puede hacer:
                 cardElement.style.setProperty('border-color', 'black')
-            }
-            else {
+
+            } else {
                 cardElement.classList.remove('selected')
 
                 // Restaura el borde original usando el valor almacenado
@@ -232,6 +262,7 @@ export class SelectClassScene extends Phaser.Scene {
         })
     }
 
+    
     update() {
         
     }

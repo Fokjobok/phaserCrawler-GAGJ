@@ -82,7 +82,7 @@ export class VnScene extends Phaser.Scene {
     constructor() {
         super({ key: "VnScene" })
 
-        this.currentScenarioKey = "la herrería"  
+        this.currentScenarioKey = "el mercado"  
 
     }
 

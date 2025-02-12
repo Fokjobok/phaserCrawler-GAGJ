@@ -6,8 +6,8 @@
             "desc": "Cura una pequeña cantidad de HP. Puede usarse como ingrediente.",
             "icon": "🍁",
             "price": {
-                "buy": 2,
-                "sell": 1
+                "buy": 15,
+                "sell": 7
             }
         },
         "soul_herb": {
@@ -16,8 +16,8 @@
             "desc": "Cura una pequeña cantidad de SP. Puede usarse como ingrediente.",
             "icon": "🌸",
             "price": {
-                "buy": 12,
-                "sell": 6
+                "buy": 18,
+                "sell": 9
             }
         },
         "green_herb": {
@@ -26,8 +26,8 @@
             "desc": "Cura el envenenamiento. Puede usarse como ingrediente para crear remedios caseros.",
             "icon": "🌿",
             "price": {
-                "buy": 2,
-                "sell": 1
+                "buy": 7,
+                "sell": 3
             }
         },
         "yellow_herb": {
@@ -36,8 +36,8 @@
             "desc": "Cura una pequeña cantidad de HP. Puede usarse como ingrediente.",
             "icon": "🌾",
             "price": {
-                "buy": 2,
-                "sell": 1
+                "buy": 25,
+                "sell": 12
             }
         },
 
@@ -48,8 +48,8 @@
             "desc": "Cura una pequeña cantidad de HP. Brilla en la oscuridad.",
             "icon": "🍷",
             "price": {
-                "buy": 5,
-                "sell": 3
+                "buy": 100,
+                "sell": 25
             }
         },
         "blue_potion": {
@@ -58,8 +58,8 @@
             "desc": "Cura una pequeña cantidad de SP. Brilla en la oscuridad.",
             "icon": "🧪",
             "price": {
-                "buy": 9,
-                "sell": 4
+                "buy": 200,
+                "sell": 25
             }
         },
         "green_potion": {
@@ -68,8 +68,8 @@
             "desc": "Cura varios estados alterados. Brilla en la oscuridad.",
             "icon": "🧪",
             "price": {
-                "buy": 9,
-                "sell": 4
+                "buy": 65,
+                "sell": 15
             }
         },
         "yellow_potion": {
@@ -78,8 +78,8 @@
             "desc": "Cura una cantidad considerable de HP. La intensidad del amarillo indica su pureza.",
             "icon": "🧪",
             "price": {
-                "buy": 9,
-                "sell": 4
+                "buy": 250,
+                "sell": 65
             }
         },
 
@@ -90,7 +90,7 @@
             "desc": "Cura una pequeña cantidad de HP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
             "icon": "🍷",
             "price": {
-                "buy": 5,
+                "buy": 150,
                 "sell": 3
             }
         },
@@ -100,7 +100,7 @@
             "desc": "Cura una pequeña cantidad de SP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
             "icon": "🧪",
             "price": {
-                "buy": 9,
+                "buy": 250,
                 "sell": 4
             }
         },
@@ -110,7 +110,7 @@
             "desc": "Cura una cantidad considerable de HP. Al estar condensada, su peso es reducido. Brilla en la oscuridad.",
             "icon": "🧪",
             "price": {
-                "buy": 9,
+                "buy": 300,
                 "sell": 4
             }
         },

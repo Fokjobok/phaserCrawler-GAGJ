@@ -11,7 +11,7 @@ const sConfig = {
     parent: 'game-container',
     dom: { createContainer: true },
 
-    scene: [VnScene],
+    scene: [IntroScene],
     scale: {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH

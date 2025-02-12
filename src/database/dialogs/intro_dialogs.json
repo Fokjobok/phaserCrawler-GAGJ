@@ -2,7 +2,7 @@
     {
         "background": "black",
         "text": [
-            "${player.name}, te damos la bienvenida a PyCrawler. Has elegido la clase: ${player.job}"
+            "Te damos la bienvenida a PyCrawler. Has elegido la clase: "
         ]
     },
     

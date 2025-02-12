@@ -6,7 +6,7 @@
             "desc": "Utilizado para extraer mineral.",
             "icon": "⛏️",
             "price": {
-                "buy": 50,
+                "buy": 75,
                 "sell": 25
             }
         },
@@ -16,7 +16,7 @@
             "desc": "Utilizado para extraer mineral.",
             "icon": "🔧",
             "price": {
-                "buy": 50,
+                "buy": 125,
                 "sell": 25
             }
         },
@@ -26,7 +26,7 @@
             "desc": "El mejor amigo de un herrero. Usado para mejorar armas y armaduras.",
             "icon": "🔧",
             "price": {
-                "buy": 50,
+                "buy": 265,
                 "sell": 25
             }
         }

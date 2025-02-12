@@ -6,7 +6,7 @@ const CONFIG = {
         SIZE: "28px",
         COLOR: "#ffffff",
         SPEED: 50, // (ms)
-        FAST_MULTIPLIER: 0.2, // (aceleración)
+        FAST_MULTIPLIER: 0.2, // (acel)
     },
 
     // Configuración de Transiciones
@@ -22,53 +22,54 @@ const CONFIG = {
         RATIO: 16 / 9,
 
     },
+
     // Palabras clave
     KEYWORDS: {
-        "Northaven": "#44DDFF",                  // Amarillo
-        "Kael’Tharok": "#FF2222",                // Rojo
-        "Rhai": "#FFDD44",                       // Azul
-        "Aldrinh": "#FF0000",    // Verde
-        "Fera\u00A0Grosella": "#7D1B48",         // Grosella
+        "Northaven": "#44DDFF",
+        "Kael’Tharok": "#FF2222",
+        "Rhai": "#FFDD44",
+        "Aldrinh": "#FF0000",
+        "Fera\u00A0Grosella": "#7D1B48",
         "Orden\u00A0de\u00A0Aeralis": "#DC143C"
     },
 
     // Jugador
-// Colores:
+    // Colores:
     COLOR_MAP: {
-            red: [210, 15, 15],
-            deep_sky_blue4: [0, 104, 139],
-            chartreuse4: [49, 119, 0],
+            red:                        [210, 15, 15],  //barbarian
+            deep_sky_blue4:             [0, 104, 139],  //wizard
+            chartreuse4:                [49, 119, 0],   //archer
 
-            royal_blue1: [72, 118, 255],
-            plum1: [142, 69, 133],
-            medium_spring_green: [0, 200, 120],
+            royal_blue1:                [72, 118, 255], //rogue
+            plum1:                      [142, 69, 133], //sorcerer
+            medium_spring_green:        [0, 200, 120],  //cleric
 
-            dark_goldenrod: [160, 110, 10], 
-            sky_blue1: [75, 156, 175],
-            orange1: [210, 145, 0],
+            dark_goldenrod:             [160, 110, 10], //warrior
+            sky_blue1:                  [75, 156, 175], //fighter
+            orange1:                    [210, 145, 0],  //monk
 
-            gold1: [185, 140, 0],
-            dark_green: [0, 100, 0],
-            dark_red: [139, 0, 0],
+            gold1:                      [185, 140, 0],  //bard
+            dark_green:                 [0, 100, 0],    //ranger
+            dark_red:                   [139, 0, 0],    //slayer
 
 
 
             // Subcolores (colores pastel)
-            red_pastel: [255, 160, 160],
-            deep_sky_blue4_pastel: [148, 184, 209],
-            chartreuse4_pastel: [144, 190, 128],
+            red_pastel:                 [255, 160, 160],
+            deep_sky_blue4_pastel:      [148, 184, 209],
+            chartreuse4_pastel:         [144, 190, 128],
 
-            royal_blue1_pastel: [160, 188, 255],
-            plum1_pastel: [210, 160, 205],
+            royal_blue1_pastel:         [160, 188, 255],
+            plum1_pastel:               [210, 160, 205],
             medium_spring_green_pastel: [128, 220, 180],
 
-            dark_goldenrod_pastel: [244, 194, 110],
-            sky_blue1_pastel: [165, 206, 235], 
-            orange1_pastel: [255, 200, 140],
+            dark_goldenrod_pastel:      [244, 194, 110],
+            sky_blue1_pastel:           [165, 206, 235], 
+            orange1_pastel:             [255, 200, 140],
 
-            gold1_pastel: [255, 235, 150],
-            dark_green_pastel: [170, 190, 160],
-            dark_red_pastel: [190, 150, 150],
+            gold1_pastel:               [255, 235, 150],
+            dark_green_pastel:          [170, 190, 160],
+            dark_red_pastel:            [190, 150, 150],
     }
 }
 

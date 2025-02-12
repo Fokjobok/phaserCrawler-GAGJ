@@ -4,10 +4,7 @@ import { initNpcData } from "../src/character/npc.js"
 
 
 
-/**
- * 🔹 Creates the dialog container to hold the textbox, NPC image, and speaker name box
- * @param {Phaser.Scene} scene - The scene where the dialog container will be used
- */
+
 export function create_dialogContainer(scene) {
 	scene.dialogContainer = document.createElement('div')
 	scene.dialogContainer.className = 'dialogContainer'
@@ -18,10 +15,7 @@ export function create_dialogContainer(scene) {
 	console.log("✅ Dialog container created.")
 }
 
-/**
- * 🔹 Creates the main textbox for dialogues
- * @param {Phaser.Scene} scene - The scene in which the textbox is used
- */
+
 export function create_textBox(scene) {
 	scene.textboxText = document.createElement('div')
 	scene.textboxText.className = 'textbox'
@@ -34,13 +28,11 @@ export function create_textBox(scene) {
 	scene.textboxText.style.overflow = "hidden"
 	// Append textbox to the dialog container instead of directly to document.body
 	scene.dialogContainer.appendChild(scene.textboxText)
-	console.log("✅ Textbox created.")
+	console.log("☑️ Textbox creada.")
 }
 
-/**
- * 🔹 Creates the NPC image used in dialogues
- * @param {Phaser.Scene} scene - The scene where the NPC image will be displayed
- */
+
+
 export function create_npcImage(scene) {
 	scene.npcImage = document.createElement("img")
 	scene.npcImage.className = "npcImage"
@@ -48,7 +40,7 @@ export function create_npcImage(scene) {
 	scene.npcImage.style.maxWidth = "42%"
 	// Append NPC image to the dialog container
 	scene.dialogContainer.appendChild(scene.npcImage)
-	console.log("✅ NPC image created.")
+	console.log("☑️ Imagen NPC creada.")
 }
 
 /**
@@ -60,31 +52,33 @@ export function create_speakerNameBox(scene) {
 	scene.speakerNameBox.className = "speakerNameBox"
 	// Append speaker name box to the dialog container
 	scene.dialogContainer.appendChild(scene.speakerNameBox)
-	console.log("✅ Speaker name box created.")
+	console.log("☑️ speakerNameBox creado.")
 }
 
 
 
 
-/**
- * 🔹 Carga los datos del escenario y de los NPCs
- * @param {Phaser.Scene} scene - La escena que cargará los datos
- */
+//🔹 Carga los datos del escenario y de los NPCs
 export function create_scenarioData(scene) {
     scene.scenarioData = scene.cache.json.get("scenario_db") // ✅ Carga los datos del escenario
     const npcPredefinedData = scene.cache.json.get("npc_predefined") // ✅ Carga los NPCs
 
     if (!scene.scenarioData) {
         console.error("❌ Error: No se pudo cargar scenario_db.json")
-        return;
+
+
+        return
     }
 
     if (!npcPredefinedData) {
         console.error("❌ Error: No se pudo cargar npc_predefined.json")
+
+
         return
     }
 
+
     initNpcData({ predefinedNpcs: npcPredefinedData }) // 🔹 Inicializa la data de NPCs
 
-    console.log("✅ Datos del escenario y NPCs inicializados correctamente.")
+    console.log("☑️ Datos del escenario y NPCs inicializados correctamente.")
 }

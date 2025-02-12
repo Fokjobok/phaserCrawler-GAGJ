@@ -6,8 +6,8 @@
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 2,
+                "sell": 1
             }
         },
         "old_rusty_key": {
@@ -16,8 +16,8 @@
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 1,
+                "sell": 2
             }
         },
         "golden_key": {
@@ -26,8 +26,8 @@
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 1,
+                "sell": 2
             }
         },
         "blank_scroll": {
@@ -36,8 +36,8 @@
             "desc": "Es posible escribir en él. Es usado por escribanos y magos.",
             "icon": "📜",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 6,
+                "sell": 3
             }
         },
         "old_scroll": {
@@ -46,8 +46,8 @@
             "desc": "Contiene texto ilegible, similar a las escrituras mágicas.",
             "icon": "📜",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 9,
+                "sell": 4
             }
         },
         "old_book": {
@@ -56,8 +56,8 @@
             "desc": "Sus páginas están rasgadas. Solamente es posible leer fragmentos inconexos.",
             "icon": "📘",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 11,
+                "sell": 6
             }
         },
         "mysterious_egg": {
@@ -66,8 +66,8 @@
             "desc": "Un huevo que emite calor, tal vez eclosione en algo interesante. Ayuda a no pasar frío.",
             "icon": "🥚",
             "price": {
-                "buy": 30,
-                "sell": 15
+                "buy": 90,
+                "sell": 45
             }
         },
         "zircon": {
@@ -96,8 +96,8 @@
             "desc": "Un hongo venenoso común. Es mejor no tocarlo. Puede llegar a ser mortal en altas dosis.",
             "icon": "🍄",
             "price": {
-                "buy": 8,
-                "sell": 4
+                "buy": 4,
+                "sell": 2
             }
         },
         "rare_mushroom": {
@@ -106,8 +106,8 @@
             "desc": "Un hongo raro con propiedades mayormente desconocidas. Bastante codiciados por alquimistas.",
             "icon": "🍄",
             "price": {
-                "buy": 8,
-                "sell": 4
+                "buy": 24,
+                "sell": 12
             }
         },
         "ashrium": {
@@ -116,8 +116,8 @@
             "desc": "Mineral utilizado para mejorar equipamiento. Está en todas partes.",
             "icon": "🌑",
             "price": {
-                "buy": 75,
-                "sell": 10
+                "buy": 82,
+                "sell": 12
             }
         },
         "ferralium": {
@@ -126,8 +126,8 @@
             "desc": "Mineral utilizado para mejorar armas. Es más ligero y consistente que el hierro.",
             "icon": "🌑",
             "price": {
-                "buy": 75,
-                "sell": 10
+                "buy": 114,
+                "sell": 18
             }
         },
         "celerium": {
@@ -136,8 +136,8 @@
             "desc": "Mineral utilizado para mejorar la eficiencia de piezas de armadura y utensilios gracias a su firmeza, flexibilidad y ligereza.",
             "icon": "🌑",
             "price": {
-                "buy": 125,
-                "sell": 10
+                "buy": 178,
+                "sell": 26
             }
         },
         "broken_sword": {
@@ -146,8 +146,8 @@
             "desc": "Una vieja espada oxidada, casi inservible.",
             "icon": "🗡️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 5,
+                "sell": 3
             }
         },
         "rusty_helmet": {
@@ -156,8 +156,8 @@
             "desc": "Un trozo de chatarra oxidada que una vez fue un casco.",
             "icon": "⬜️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 9,
+                "sell": 5
             }
         },
         "moldy_bread": {
@@ -166,8 +166,8 @@
             "desc": "Parece comestible... pero no es buena idea.",
             "icon": "🍞",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 2,
+                "sell": 1
             }
         },
         "rolling_pin": {
@@ -176,8 +176,8 @@
             "desc": "Un rodillo de cocina hecho de madera.",
             "icon": "⬜️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 11,
+                "sell": 5
             }
         },
         "wooden_spoon": {
@@ -186,8 +186,8 @@
             "desc": "",
             "icon": "🥄",
             "price": {
-                "buy": 15,
-                "sell": 7
+                "buy": 7,
+                "sell": 3
             }
         },
         "wooden_chalice": {
@@ -196,8 +196,8 @@
             "desc": "",
             "icon": "🥃",
             "price": {
-                "buy": 15,
-                "sell": 7
+                "buy": 9,
+                "sell": 4
             }
         },
         "wooden_dish": {
@@ -206,8 +206,8 @@
             "desc": "",
             "icon": "⬜️",
             "price": {
-                "buy": 15,
-                "sell": 7
+                "buy": 8,
+                "sell": 4
             }
         },
 
@@ -217,8 +217,8 @@
             "desc": "Podría ser útil para guardar líquidos.",
             "icon": "⚗️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 6,
+                "sell": 3
             }
         },
         "ancient_coin": {
@@ -227,8 +227,8 @@
             "desc": "Una vieja moneda que ya no se usa como dinero.",
             "icon": "💰",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 231,
+                "sell": 116
             }
         },
 
@@ -238,8 +238,8 @@
             "desc": "Un pequeño trozo de mineral de hierro.",
             "icon": "🌑",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 78,
+                "sell": 12
             }
         },
         "iron_ingot": {
@@ -248,8 +248,8 @@
             "desc": "Un simple lingote de hierro para la forja.",
             "icon": "⬜️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 134,
+                "sell": 21
             }
         },
         "steel_ingot": {
@@ -258,8 +258,8 @@
             "desc": "Un simple lingote de acero para la forja.",
             "icon": "⬜️",
             "price": {
-                "buy": 50,
-                "sell": 25
+                "buy": 176,
+                "sell": 26
             }
         }
     }

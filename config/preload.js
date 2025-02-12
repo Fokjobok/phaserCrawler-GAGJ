@@ -1,22 +1,33 @@
 import { Player } from '../src/character/player.js'
 
+
 export function preload_textBox(scene) {
     const link = document.createElement('link')
     link.rel = 'stylesheet'
     link.href = 'assets/textbox.css'
+
     document.head.appendChild(link)
     
+
     console.log('TextBox cargada')
+    
 }
+
+
 
 export function preload_styleMenu(scene) {
     const link = document.createElement('link')
     link.rel = 'stylesheet'
     link.href = 'assets/menus.css'
+
     document.head.appendChild(link)
     
+
     console.log('TextBox cargada')
+
 }
+
+
 
 export function preload_bgScenario(scene) {
     scene.load.image('black', 'assets/backgrounds/black.png')
@@ -33,9 +44,11 @@ export function preload_bgScenario(scene) {
     scene.load.image('town', 'assets/backgrounds/town.png')
     scene.load.image('narrow', 'assets/backgrounds/narrow.png')
 
-    console.log('🔹 Imágenes VnScene cargadas')
+
+    console.log('✅ Imágenes VnScene cargadas')
     
 }
+
 
 
 export function preload_IntroScene(scene) {
@@ -47,8 +60,10 @@ export function preload_IntroScene(scene) {
     scene.load.image('treasure', 'assets/backgrounds/treasure.webp')
     scene.load.image('battle', 'assets/backgrounds/battle.webp')
 
-    console.log("🔹 Imágenes IntroScene cargadas")
+    console.log("✅ Imágenes IntroScene cargadas")
+
 }
+
 
 
 export function preload_charStats(scene) {
@@ -58,5 +73,6 @@ export function preload_charStats(scene) {
     scene.load.json('armor_db', 'src/database/items/gear/db/armor_db.json')
     scene.load.json('accessory_db', 'src/database/items/gear/db/accessory_db.json')
 
-    console.log("🔹 Base de datos cargada:", scene.jobStats, scene.weaponDb, scene.shieldDb, scene.armorDb, scene.accessoryDb)
+    console.log("✅ Base de datos cargada:", scene.jobStats, scene.weaponDb, scene.shieldDb, scene.armorDb, scene.accessoryDb)
+
 }

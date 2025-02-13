@@ -116,7 +116,7 @@ export class SelectClassScene extends Phaser.Scene {
                 let player = new Player(this.playerName, selectedClassKey)
 
                 // Transición a IntroScene pasando el objeto Player
-                this.scene.start('IntroScene', { player: player })
+                this.scene.start('VnScene', { player: player })
 
 
                 break
@@ -151,7 +151,7 @@ export class SelectClassScene extends Phaser.Scene {
 
         currentClasses.forEach((classKey, index) => {
 
-                // Aquí se calculan posX, posY, cardColor, subColor, etc.
+            // Aquí se calculan posX, posY, cardColor, subColor, etc.
             let job = this.jobStats[classKey]
 
             let colorArray = CONFIG.COLOR_MAP[job.color]

@@ -1,3 +1,4 @@
+import CONFIG from '../../config/config.js'
 import { job_stats } from '../character/player_db.js'
 
 export class Player {
@@ -11,6 +12,12 @@ export class Player {
         this.fatigue = fatigue
         this.max_fatigue = 5
         this.gold = 25
+
+        // Color
+        const jobData = job_stats[this.job] || {}
+        const colorKey = jobData.color || "gray"
+        this.color = CONFIG.COLOR_MAP[colorKey] || [200, 200, 200]
+        this.bgcolor = CONFIG.COLOR_MAP[colorKey + "_pastel"] || [200, 200, 200, 0.6]
 
         // Bases de datos
         this.weaponDb = weaponDb
@@ -92,7 +99,23 @@ export class Player {
         this.sou = stats.sou
         console.log(`Estadísticas añadidas: STR=${this.str}, VIT=${this.vit}, AGI=${this.agi}, DEX=${this.dex}, WIS=${this.wis}, SOU=${this.sou}`)
     }
-                
+        
+    getColorAsHex() {
+        if (!this.color || this.color.length !== 3) {
+            console.error("❌ Error: No se pudo convertir el color a HEX.", this.color)
+            return "#CCCCCC" // Gris por defecto
+        }
+        return `#${this.color.map(c => c.toString(16).padStart(2, '0')).join('')}`
+    }
+
+    getColorAsRGBA(alpha = 1) {
+        if (!this.bgcolor || this.bgcolor.length < 3) {
+            console.error("❌ Error: No se pudo convertir el background a RGBA.", this.bgcolor)
+            return `rgba(200, 200, 200, ${alpha})` // Gris por defecto
+        }
+        return `rgba(${this.bgcolor[0]}, ${this.bgcolor[1]}, ${this.bgcolor[2]}, ${alpha})`
+    }
+
     equipWeapon(weapon_name) {
         const weapon = this.weaponDb[weapon_name]
         console.log(`Intentando equipar weapon:`, weapon)

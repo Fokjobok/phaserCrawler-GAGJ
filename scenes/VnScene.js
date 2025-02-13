@@ -7,11 +7,17 @@ import { showDialog, resize_bg } from "../config/dialogs_config.js"
 
 import { initNpcData, generateNpc, generatePredefinedNpc } from "../src/character/npc.js"
 
+import { createHUD } from "../config/hud.js"
+import { Player } from '../src/character/player.js'
+
 import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu } from "../config/menus.js"
+
+
 
 export function visitScenario(scene, scenarioKey) {
     if (!scene.scenarioData) {
         console.error("❌ Error: scene.scenarioData no está definido antes de visitar un escenario.")
+
         return
     }
 
@@ -19,6 +25,7 @@ export function visitScenario(scene, scenarioKey) {
 
     if (!scenarioObj) {
         console.error(`❌ Escenario '${scenarioKey}' no existe en scenario_db.json`)
+
         return
     }
 
@@ -27,12 +34,16 @@ export function visitScenario(scene, scenarioKey) {
     if (scene.textures.exists(bgScenario)) {
         if (!scene.bg) {
             scene.bg = scene.add.image(640, 360, bgScenario).setOrigin(0.5, 0.5)
+
         } else {
             scene.bg.setTexture(bgScenario)
+
         }
         resize_bg(scene)
+
     } else {
         console.error(`❌ Error: La imagen de fondo '${bgScenario}' no está cargada.`)
+
     }
 
     if (!scenarioObj.visited) {
@@ -41,10 +52,13 @@ export function visitScenario(scene, scenarioKey) {
         if (scenarioObj.force_dialogue && scenarioObj.permanent_npc_ids?.length > 0) {
             let firstId = scenarioObj.permanent_npc_ids[0]
             let npc = generatePredefinedNpc(firstId)
+
             if (npc) {
                 scene.startScenarioIntro(npc, scenarioObj)
+
             }
         }
+
     } else {
         console.log(`🔹 Escenario '${scenarioKey}' ya visitado: no forzamos nueva conversación.`)
     }
@@ -58,19 +72,26 @@ export function visitScenario(scene, scenarioKey) {
     if (scenarioObj.permanent_npc_ids && scenarioObj.permanent_npc_ids.length > 0) {
         scenarioObj.permanent_npc_ids.forEach(id => {
             let npc = generatePredefinedNpc(id)
+
             if (npc) {
                 scene.npcs.push(npc)
+
             }
         })
     }
 
+
     // Si el total de NPCs (npc_count) es mayor que la cantidad de permanentes, se generan NPC efímeros
     while (scene.npcs.length < scenarioObj.npc_count) {
         let ephemeral = generateNpc(scenarioObj.role_category, scenarioObj.npc_type)
+
         if (ephemeral) {
             scene.npcs.push(ephemeral)
+
         } else {
             console.warn("No se pudo generar un NPC efímero; saliendo del bucle")
+
+
             break
         }
     }
@@ -82,7 +103,7 @@ export class VnScene extends Phaser.Scene {
     constructor() {
         super({ key: "VnScene" })
 
-        this.currentScenarioKey = "el mercado"  
+        this.currentScenarioKey = "la herrería"  
 
     }
 
@@ -111,25 +132,29 @@ export class VnScene extends Phaser.Scene {
         
         // 2) Cargamos imágenes
         preload_bgScenario(this)
-
-
-
+        
+        
+        
 		// Cargar el CSS para la textbox
         preload_textBox(this)
         preload_styleMenu(this)
     }
+    
+    create(data) {
 
-    create() {
+
         // ✅ Cargar la caja de diálogo y demás elementos
         create_dialogContainer(this)
         create_textBox(this)
         create_npcImage(this)
+
         this.scale.on('resize', () => resize_bg(this))
         create_speakerNameBox(this)
         
         // ✅ Cargar datos de escenarios y NPCs
         create_scenarioData(this)
         
+
         const dataForNPCs = {
             npcNames: this.cache.json.get("npc_names"),
             npcRole: this.cache.json.get("npc_roles"),
@@ -137,7 +162,9 @@ export class VnScene extends Phaser.Scene {
             npcDialogs: this.cache.json.get("npc_dialogs"),
             npcAppearance: this.cache.json.get("npc_appearances"),
             predefinedNpcs: this.cache.json.get("npc_predefined")
+
         }
+
 
         window.itemDB = {
             consumible: this.cache.json.get("consumible"),     // desde /database/items/common/db/consumible.json
@@ -147,22 +174,27 @@ export class VnScene extends Phaser.Scene {
             armor: this.cache.json.get("armor_db"),            // desde /database/items/gear/db/armor_db.json
             weapon: this.cache.json.get("weapon_db"),          // desde /database/items/gear/db/weapon_db.json
             shield: this.cache.json.get("shield_db")           // desde /database/items/gear/db/shield_db.json
+
         }
 
 
         initNpcData(dataForNPCs)
 
         this.npcs = []
+
+
         // ✅ Cargar fondo dinámicamente basado en el escenario
         visitScenario(this, this.currentScenarioKey)
         
 
         console.log("dataForNPCs:", dataForNPCs)
         initNpcData(dataForNPCs)
-        
-        
 
+        this.player = data.player
+        this.groupMembers = []
 
+        
+        createHUD(this)
 
 
 
@@ -176,13 +208,13 @@ export class VnScene extends Phaser.Scene {
 
 
     // startNPCDialog(npc): Crea this.dialogs y llama a showDialog(this)
-
     startNPCDialog(npc) {
         console.log(`🔸 Iniciando diálogo con NPC: ${npc.name}`)
         
         this.currentIndex = 0
         const randomIndex = Math.floor(Math.random() * npc.dialogues.length)
         const randomLine = npc.dialogues[randomIndex]
+
         this.dialogs = [{
             text: [randomLine],
             speakerName: npc.name,
@@ -192,6 +224,7 @@ export class VnScene extends Phaser.Scene {
         showDialog(this)
     }
 
+    
     startScenarioIntro(npc, scenarioObj) {
         console.log(`🔸 Iniciando introducción del escenario: ${scenarioObj.name}`)
     
@@ -213,6 +246,7 @@ export class VnScene extends Phaser.Scene {
     
         this.dialogs = [...introDialogues, ...npcForceDialogues]
     
+
         showDialog(this)
     }
 

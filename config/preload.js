@@ -14,7 +14,6 @@ export function preload_textBox(scene) {
 }
 
 
-
 export function preload_styleMenu(scene) {
     const link = document.createElement('link')
     link.rel = 'stylesheet'

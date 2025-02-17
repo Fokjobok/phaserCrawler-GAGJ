@@ -26,7 +26,7 @@ export class SelectClassScene extends Phaser.Scene {
     }
 
     preload() {
-
+        
     }
 
     create() {
@@ -106,17 +106,39 @@ export class SelectClassScene extends Phaser.Scene {
 
 
             case 'KeyZ':
+
+                console.log(this.getCurrentPageClasses())
                 let selectedClassKey = this.getCurrentPageClasses()[this.selectedIndex]
+
+                let remainingClasses = this.classKeys.filter(job => job !== selectedClassKey)
+                let selectedClassKey2 = remainingClasses[Math.floor(Math.random() * remainingClasses.length)]
+                remainingClasses = remainingClasses.filter(job => job !== selectedClassKey2)
+                let selectedClassKey3 = remainingClasses[Math.floor(Math.random() * remainingClasses.length)]
+
+
                 let selectedClassData = this.jobStats[selectedClassKey]
+                let selectedClassData2 = this.jobStats[selectedClassKey2]
+                let selectedClassData3 = this.jobStats[selectedClassKey3]
 
-                console.log('Clase seleccionada:', selectedClassKey, selectedClassData)
+                console.log('Clase seleccionada:', selectedClassKey)
+                console.log('Clase seleccionada:', selectedClassData)
 
+                console.log('Clase seleccionada:', selectedClassKey2)
+                console.log('Clase seleccionada:', selectedClassData2)
+
+                console.log('Clase seleccionada:', selectedClassKey3)
+                console.log('Clase seleccionada:', selectedClassData3)
+                
 
                 // Crear el objeto Player (asumiendo que el constructor de Player espera (name, job))
                 let player = new Player(this.playerName, selectedClassKey)
+                let player2 = new Player(this.playerName, selectedClassKey2)
+                let player3 = new Player(this.playerName, selectedClassKey3)
+
+
 
                 // Transición a IntroScene pasando el objeto Player
-                this.scene.start('VnScene', { player: player })
+                this.scene.start('VnScene', { player: player, player2, player3 })
 
 
                 break
@@ -127,7 +149,7 @@ export class SelectClassScene extends Phaser.Scene {
         let start = this.currentPage * this.cardsPerPage
         let end = start + this.cardsPerPage
 
-
+        console.log(`getCurrentPageClasses: ${this.classKeys.slice(start, end)}`)
         return this.classKeys.slice(start, end)
 
     }

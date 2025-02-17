@@ -51,11 +51,21 @@
 .npcImage {
     position: absolute;
     transform: translateX(-50%);
-    width: 20%;
+
+    width: auto;
+    min-width: 34%; /* Se adapta al ancho mínimo */
+    min-height: 200px; /* Ajusta esto según el tamaño mínimo deseado */
+    width: auto; /* Se ajusta automáticamente */
+    height: auto; /* Mantiene la relación de aspecto */
+    max-width: 42%; /* Se adapta al ancho máximo */
+    max-height: 625px;
     left: 50%;
     bottom: 180px;
 
     display: none;
+
+    
+
 
 }
 
@@ -97,7 +107,7 @@
 }
 
 #storeMenuContainer button {
-    font-family: 'Roboto Mono', monospace;
+
     font-weight: bold;
     font-size: 20px;
     margin: 0rem;
@@ -107,9 +117,13 @@
 }
 
 #storeMenuContainer .backButton {
+    width: 100px;
     margin-top: 10px;
     
 }
+
+
+
 
 
 
@@ -120,32 +134,48 @@
     top: 2rem;
     left: 2rem; /* O la posición que desees */
     display: flex;
-    gap: 2rem;
-    border-radius: 100px;
+    gap: 1rem;
+    font-family: Arial, sans-serif;
+
 }
 
 /* Cada miembro se muestra como un bloque con imagen y detalles */
 .hudMember {
     display: flex;
     align-items: center;
+
     overflow: hidden; /* Para ocultar los detalles cuando no estén expandidos */
     transition: width 0.5s ease;
-    width: 100px; /* Ancho fijo para la miniatura */
-    height: 100px;
+    width: 5rem;
+    height: 8rem;
     cursor: pointer;
     position: relative;
-    border-radius: 5rem;
+    border-radius: 4rem;
     background-blend-mode: multiply;
+    box-shadow: 
+    8px 12px 8px rgba(0, 0, 0, 0.5),  /* Sombra fuerte abajo y derecha */
+    4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hudImage {
+    width: 100%;
+    height: 8rem;
+    border-radius: 4rem;
+    background-size: cover;
+    background-position: center;
+    transition: width 0.3s ease-in;
+    flex-shrink: 0;
 }
 
 /* El bloque de imagen siempre se muestra y tiene tamaño fijo */
-.hudImage {
-    width: 100px;
-    height: 100px;
-    border-radius: 5rem;
+.hudImage.expanded {
+    width: 45%;
+    transition: width 1s ease;
+
     background-size: cover;
     background-position: center;
     flex-shrink: 0;
+
 }
 
 /* Contenedor de detalles, inicialmente oculto */
@@ -153,35 +183,41 @@
     overflow: hidden;
     white-space: nowrap;
     width: 0; /* Se oculta inicialmente */
-    transition: width 0.3s ease;
+    
+    
+    
 }
 
 /* Al expandir el miembro, se asigna un ancho al contenedor de detalles */
 .hudMember.expanded {
-    width: 400px; /* Ancho total del miembro expandido (imagen + detalle) */
+    width: 550px; /* Ancho total del miembro expandido (imagen + detalle) */
 }
 
 .hudMember.expanded .hudDetail {
-    width: 300px; /* Ancho asignado para la información; la imagen conserva 100px */
+    width: 200px; /* Ancho asignado para la información; la imagen conserva 100px */
+
 }
 
 /* Para las columnas dentro del detalle */
 .hudDetailColumn {
-    
-    color: white;
-    display: inline-block;
+    display: grid;
+    color: black;
+    flex: 1;          /* Hace que cada columna tome el mismo espacio disponible */
+    font-size: 1.5rem;
     vertical-align: top;
     width: 100%; /* Se reparte el espacio entre dos columnas */
-
+    gap: 0.4rem; /* Ajusta el espacio entre líneas */
 }
+
+
 
 /* Opcional: estilos adicionales para lockOverlay y otros elementos */
 .lockOverlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 5rem;
+    height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,8 +226,106 @@
     background: rgba(0, 0, 0, 0.7);
 }
 
+
 .hudInfo {
-    display: flex;
-    flex-direction: row;
-    padding-left: 2rem;
+    display: none;
+    transition: all 0.3 ease-in-out;
+    
 }
+
+.hudMember.expanded .hudInfo {
+    display: flex;
+    justify-content: flex-start; /* Distribuye el espacio entre columnas */
+    font-size: 26px;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    flex-direction: row;
+
+    text-shadow:
+        -4px -4px 4px rgba(255, 255, 255, 0.1),
+        4px -4px 4px rgba(255, 255, 255, 0.8),
+        -4px  4px 4px rgba(255, 255, 255, 0.8),
+        4px  4px 4px rgba(255, 255, 255, 0.8),
+        0px -4px 4px rgba(255, 255, 255, 0.8),
+        0px  4px 4px rgba(255, 255, 255, 0.8),
+        -4px  0px 4px rgba(255, 255, 255, 0.8),
+        4px  0px 4px rgba(255, 255, 255, 0.8),
+        0px  0px 4px rgba(255, 255, 255, 0.9);
+}
+
+.hudInfo .hudDetailColumn:first-child {
+    padding-left: 1rem;
+}
+
+
+
+
+
+
+/* Contenedor principal del menú de viaje */
+#travelMenuContainer {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+
+  }
+  
+  /* Fila de cada escenario */
+  .travelRow {
+    min-height: 4rem;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Nombre del escenario en la fila */
+  .travelRow span {
+    color: white;
+    font-size: 28px;
+    flex: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    text-shadow:
+    -4px -4px 4px rgba(0, 0, 0, 0.8),
+     4px -4px 4px rgba(0, 0, 0, 0.8),
+    -4px  4px 4px rgba(0, 0, 0, 0.8),
+     4px  4px 4px rgba(0, 0, 0, 0.8),
+     0px -4px 4px rgba(0, 0, 0, 0.8),
+     0px  4px 4px rgba(0, 0, 0, 0.8),
+    -4px  0px 4px rgba(0, 0, 0, 0.8),
+     4px  0px 4px rgba(0, 0, 0, 0.8),
+     0px  0px 4px rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Botón "Visitar" dentro de la fila */
+  .travelRow button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 10px;
+  }
+  
+  /* Botón "Volver" en el contenedor */
+  #travelMenuContainer button.backBtn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 10px;
+  }

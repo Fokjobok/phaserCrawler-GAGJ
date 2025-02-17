@@ -12,19 +12,7 @@ let npcAppearance = null
 let predefinedNpcs = null
 
 export function initNpcData(data) {
-	/*
-	 data es un objeto con todas las referencias a JSON. Ej:
-	 {
-	  npcNames: {...},
-	  npcRole: {...},
-	  npcChance: {...},
-	  npcDialogs: {...},
-	  npcAppearance: {...},
-	  predefinedNpcs: {...}
-	 }
-	 Este método debe llamarse al iniciar tu juego o escena,
-	 para inyectar en npc.js los datos cargados con this.load.json
-	*/
+
 	npcNames = data.npcNames
 	npcRole = data.npcRole
 	npcChance = data.npcChance
@@ -194,89 +182,64 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
         return null
     }
 
-	if (npcId) {
-		// Generar un NPC predefinido
-		let npc = generatePredefinedNpc(npcId)
-		allNpcs[npc.id_npc] = npc
-		return npc
-	}
+    if (npcId) {
+        // Generar un NPC predefinido (permanente)
+        let npc = generatePredefinedNpc(npcId)
+        allNpcs[npc.id_npc] = npc
+        return npc
+    }
 
-	// Generar un ID único
-	let genId = cryptoRandomUUID()
-	
-	// Seleccionar género y nombre
-	let genderKeys = Object.keys(npcNames)
-	let randomGender = genderKeys[Math.floor(Math.random() * genderKeys.length)]
-	let nameArray = npcNames[randomGender]
-	let randomName = nameArray[Math.floor(Math.random() * nameArray.length)]
-	let name = randomName.charAt(0).toUpperCase() + randomName.slice(1)
+    // Para NPC efímeros, se ignoran npcType y se genera todo de forma aleatoria
+    let genId = cryptoRandomUUID()
 
-	// Determinar role_category y rol
-	let determinedCategory = roleCategory
-	let determinedRole = npcType
+    // Seleccionar género y nombre
+    let genderKeys = Object.keys(npcNames)
+    let randomGender = genderKeys[Math.floor(Math.random() * genderKeys.length)]
+    let nameArray = npcNames[randomGender]
+    let randomName = nameArray[Math.floor(Math.random() * nameArray.length)]
+    let name = randomName.charAt(0).toUpperCase() + randomName.slice(1)
 
-	if (npcType) {
-		// Buscar el npcType en npcRole
-		let foundCategory = null
-		Object.keys(npcRole).forEach(category => {
-			let roles = npcRole[category]
-			if (roles.includes(npcType.toLowerCase())) {
-				foundCategory = category
-			}
-		})
-		if (!foundCategory) {
-			throw new Error(`npcType '${npcType}' no se encuentra en npcRole. Revisar la db.`)
-		}
-		determinedCategory = foundCategory
-		determinedRole = npcType.charAt(0).toUpperCase() + npcType.slice(1)
-	} else {
-		// Elección aleatoria
-		let categories = Object.keys(npcRole)
-		let randCat = categories[Math.floor(Math.random() * categories.length)]
-		determinedCategory = roleCategory || randCat
+    // Elección aleatoria (ignorando npcType)
+    let determinedCategory = roleCategory ? roleCategory : Object.keys(npcRole)[Math.floor(Math.random() * Object.keys(npcRole).length)]
+    let possibleRoles = npcRole[determinedCategory]
+    let randRole = possibleRoles[Math.floor(Math.random() * possibleRoles.length)]
+    let determinedRole = randRole.charAt(0).toUpperCase() + randRole.slice(1)
 
-		let possibleRoles = npcRole[determinedCategory]
-		let randRole = possibleRoles[Math.floor(Math.random() * possibleRoles.length)]
-		determinedRole = randRole.charAt(0).toUpperCase() + randRole.slice(1)
-	}
+    // Días que el NPC permanecerá (-1 = permanente)
+    let daysLeftArray = [-1, -1, 2, 3, 4]
+    let days_left = daysLeftArray[Math.floor(Math.random() * daysLeftArray.length)]
 
-	// Días que el NPC permanecerá (-1 = permanente)
-	let daysLeftArray = [-1, -1, 2, 3, 4]
-	let days_left = daysLeftArray[Math.floor(Math.random() * daysLeftArray.length)]
+    // Seleccionar apariencia basada en el rol y género
+    let roleKey = determinedRole.toLowerCase()
+    let appearanceList = ["un individuo misterioso"]
+    if (npcAppearance[roleKey]) {
+        let data = npcAppearance[roleKey]
+        if (Array.isArray(data)) {
+            appearanceList = data
+        } else {
+            if (data[randomGender]) {
+                appearanceList = data[randomGender]
+            } else {
+                appearanceList = data['neutral'] || ["un individuo misterioso"]
+            }
+        }
+    }
+    let randomAppearance = appearanceList[Math.floor(Math.random() * appearanceList.length)]
 
-	// Seleccionar apariencia basada en el rol y género
-	let roleKey = determinedRole.toLowerCase()
-	let appearanceList = ["un individuo misterioso"]
+    let newNpc = new NPC({
+        id_npc: genId,
+        name: name,
+        gender: randomGender,
+        role_category: determinedCategory,
+        role: determinedRole,
+        days_left: days_left,
+        appearance: randomAppearance
+    })
 
-	if (npcAppearance[roleKey]) {
-		let data = npcAppearance[roleKey]
-		// data podría ser un array o un dict con male/female
-		if (Array.isArray(data)) {
-			appearanceList = data
-		} else {
-			// data es un dict
-			if (data[randomGender]) {
-				appearanceList = data[randomGender]
-			} else {
-				appearanceList = data['neutral'] || ["un individuo misterioso"]
-			}
-		}
-	}
-	let randomAppearance = appearanceList[Math.floor(Math.random() * appearanceList.length)]
-
-	let newNpc = new NPC({
-		id_npc: genId,
-		name: name,
-		gender: randomGender,
-		role_category: determinedCategory,
-		role: determinedRole,
-		days_left: days_left,
-		appearance: randomAppearance
-	})
-
-	allNpcs[newNpc.id_npc] = newNpc
-	return newNpc
+    allNpcs[newNpc.id_npc] = newNpc
+    return newNpc
 }
+
 
 // En navegadores modernos, crypto.randomUUID(). 
 // O puedes usar un fallback con Date.now + random, etc.

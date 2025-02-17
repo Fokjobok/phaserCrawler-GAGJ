@@ -6,6 +6,12 @@
         "role": "Posadero",
         "days_left": -1,
         "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
             "Tenemos las mejores bebidas de la región.",
@@ -38,6 +44,12 @@
         "role": "Posadero",
         "days_left": -1,
         "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
             "Tenemos las mejores bebidas de la región.",
@@ -73,6 +85,12 @@
         "role": "tejedor",
         "days_left": -1,
         "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
             "Tenemos las mejores bebidas de la región.",
@@ -128,6 +146,12 @@
         "role": "escribano",
         "days_left": -1,
         "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
             "Tenemos las mejores bebidas de la región.",
@@ -263,6 +287,8 @@
         "role": "Mercader",
         "days_left": -1,
         "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "intro": [],
+        "dialogues_force": [],
         "dialogues": [
             "¡Ah, un cliente! ¿Qué necesitas que forje hoy?",
             "El acero puro es la clave para una buena espada.",
@@ -296,6 +322,12 @@
         "role": "Mendigo",
         "days_left": -1,
         "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "Perdona amigo... ¿Me das una moneda?"
         ],
@@ -308,6 +340,12 @@
         "role": "Soldado",
         "days_left": -1,
         "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",
@@ -323,6 +361,10 @@
         "role": "Soldado",
         "days_left": -1,
         "appearance": "Una soldado poderosamente equipada con una gran espada y una pesada armadura.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [],
         "dialogues": [
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",
@@ -338,6 +380,12 @@
         "role": "Guardia real",
         "days_left": -1,
         "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "intro": [
+            "Intro del narrador"
+        ],
+        "dialogues_force": [
+            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+        ],
         "dialogues": [
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",
@@ -353,6 +401,8 @@
         "role": "Guardia real",
         "days_left": -1,
         "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "intro": [],
+        "dialogues_force": [],
         "dialogues": [
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",

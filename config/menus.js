@@ -72,8 +72,8 @@ export function showScenarioMenu(scene) {
 
 
             case '🛤️ Viajar':
-                alert(`Funcionalidad "${selection}" no implementada aún.`)
-                showScenarioMenu(scene)
+
+                showTravelMenu(scene)
 
                 break
 
@@ -152,7 +152,7 @@ export function showNPCSubMenu(scene) {
 
             sellBtn.textContent = '💰'
             sellBtn.onclick = () => {
-                 alert(`${npc.name} no implementada aún`)
+                 alert(`Vender no implementada aún`)
 
             }
 
@@ -190,18 +190,13 @@ export function showNPCSubMenu(scene) {
     const backBtn = document.createElement('button')
     backBtn.textContent = 'Volver'
     backBtn.className = 'backButton'
-
     backBtn.onclick = () => {
-        document.body.removeChild(container)
+        container.remove()
+        // Llamar a showScenarioMenu importada, no como método de scene
         showScenarioMenu(scene)
-
     }
-
-
-
     container.appendChild(backBtn)
     document.body.appendChild(container)
-
 }
 
 
@@ -301,7 +296,73 @@ export function showStoreMenu(scene, npc) {
 }
 
 
-
+export function showTravelMenu(scene) {
+    // Elimina menú anterior si existe
+    const existing = document.getElementById('travelMenuContainer')
+    if (existing) existing.remove()
+  
+    const container = document.createElement('div')
+    container.id = 'travelMenuContainer'
+  
+    // Función auxiliar para obtener la URL del fondo según la extensión
+    function getBackgroundURL(background) {
+      // Si ya tiene extensión, se usa directamente
+      if (background.endsWith('.webp') || background.endsWith('.png'))
+        return `assets/backgrounds/${background}`
+      // Lista de fondos que se asumen en formato webp (ajusta según tu proyecto)
+      const webpBackgrounds = ['dungate', 'nforest']
+      return webpBackgrounds.includes(background)
+        ? `assets/backgrounds/${background}.webp`
+        : `assets/backgrounds/${background}.png`
+    }
+  
+    // Filtrar escenarios: se excluye el actual
+    const scenarioKeys = Object.keys(scene.scenarioData).filter(key => key !== scene.currentScenarioKey)
+  
+    scenarioKeys.forEach(key => {
+      const scenario = scene.scenarioData[key]
+      const row = document.createElement('div')
+      row.classList.add('travelRow')
+      if (scenario.background)
+        row.style.backgroundImage = `url(${getBackgroundURL(scenario.background)})`
+  
+      // Nombre del escenario
+      const nameSpan = document.createElement('span')
+      nameSpan.textContent = scenario.name
+      row.appendChild(nameSpan)
+  
+      // Botón "Visitar"
+      const visitBtn = document.createElement('button')
+      visitBtn.textContent = 'Visitar'
+      visitBtn.onclick = () => {
+        container.remove()
+        scene.currentScenarioKey = key
+        import('../scenes/VnScene.js')
+          .then(module => {
+            if (typeof module.visitScenario === 'function')
+              module.visitScenario(scene, key)
+            else
+              console.error('visitScenario no es una función')
+          })
+          .catch(error => console.error('Error al importar VnScene:', error))
+      }
+      row.appendChild(visitBtn)
+  
+      container.appendChild(row)
+    })
+  
+    // Botón "Volver"
+    const backBtn = document.createElement('button')
+    backBtn.textContent = 'Volver'
+    backBtn.className = 'backBtn'
+    backBtn.onclick = () => {
+        container.remove()
+        // Llamar a showScenarioMenu importada, no como método de scene
+        showScenarioMenu(scene)
+    }
+    container.appendChild(backBtn)
+    document.body.appendChild(container)
+}
 
 function getItemData(cat, id) {
     if (window.itemDB && window.itemDB[cat]) {

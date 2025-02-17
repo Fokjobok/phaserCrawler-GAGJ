@@ -33,12 +33,12 @@ export function preload_bgScenario(scene) {
 
     scene.load.image('forest', 'assets/backgrounds/forest.png')
     scene.load.image('market', 'assets/backgrounds/market.png')
-    scene.load.image('mgate', 'assets/backgrounds/main_door.png')
+    scene.load.image('main_door', 'assets/backgrounds/main_door.png')
 
     scene.load.image('inn', 'assets/backgrounds/inn.png')
     scene.load.image('library', 'assets/backgrounds/library.png')
-    scene.load.image('smith', 'assets/backgrounds/blacksmith.png')
-    scene.load.image('plaza', 'assets/backgrounds/main_plaza.png')
+    scene.load.image('blacksmith', 'assets/backgrounds/blacksmith.png')
+    scene.load.image('plaza', 'assets/backgrounds/plaza.png')
     scene.load.image('taylor', 'assets/backgrounds/taylor.png')
     scene.load.image('town', 'assets/backgrounds/town.png')
     scene.load.image('narrow', 'assets/backgrounds/narrow.png')
@@ -66,7 +66,7 @@ export function preload_IntroScene(scene) {
 
 
 export function preload_charStats(scene) {
-    scene.load.json('job_stats', 'src/character/player_db.js')
+
     scene.load.json('weapon_db', 'src/database/items/gear/db/weapon_db.json')
     scene.load.json('shield_db', 'src/database/items/gear/db/shield_db.json')
     scene.load.json('armor_db', 'src/database/items/gear/db/armor_db.json')

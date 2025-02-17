@@ -1,5 +1,5 @@
 import CONFIG from "./config.js"
-import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu } from "../config/menus.js"
+import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu } from "./menus.js"
 
 
 // Aplica colores a palabras clave
@@ -18,9 +18,9 @@ export function applyKeywordColor(text) {
 
 
 
-// Efecto de tipeo (letter by letter)
+// Efecto letra a letra
 export function startTyping(scene, fullText) {
-    console.log("✍️ Iniciando tipeo de texto...")
+    console.log("✍️ Iniciando texto letra a letra...")
 
     if (!fullText) {
         console.error("❌ No hay texto para mostrar.")
@@ -29,12 +29,12 @@ export function startTyping(scene, fullText) {
         return
     }
 
-    // 🔹 Asegurar que textbox sea visible
+    // Asegurar que textbox sea visible
     scene.textboxText.style.display = "block"
     console.log("📢 Haciendo visible la caja de texto.")
 
 
-    // Dividimos en palabras para controlar la paginación
+    // Dividimos en palabras para controlar las paginas
     let words = fullText.split(" ")
     let pages = []
     let currentText = ""
@@ -76,7 +76,7 @@ export function startTyping(scene, fullText) {
     scene.textboxText.innerHTML = ""
     let currentPage = 0
 
-    // Mostrar cada página con tipeo
+    // Mostrar cada página letra a letra
     const showCurrentPage = () => {
         scene.turbo = false
 
@@ -88,7 +88,8 @@ export function startTyping(scene, fullText) {
             scene.textboxText.innerHTML = ""
             console.log(`📖 Página ${currentPage + 1}/${pages.length}: "${text}"`)
 
-            // 4️⃣ Efecto letter by letter
+
+
             const typeWriter = () => {
                 if (index < text.length) {
                     currentTyping += text.charAt(index)
@@ -107,7 +108,7 @@ export function startTyping(scene, fullText) {
 
 
                         } else {
-                            // Cuando no hay más páginas, cerramos textbox y pasamos al siguiente diálogo
+                            // Cuando no hay más páginas, cerramos textbox
                             scene.textboxText.style.display = "none"
                             scene.speakerNameBox.style.display = "none"
                             scene.npcImage.style.display = "none"
@@ -115,7 +116,7 @@ export function startTyping(scene, fullText) {
 
                             if (scene.currentIndex >= scene.dialogs.length) {
 
-                                // Todos los diálogos han sido mostrados: se invoca el menú post-diálogo.
+                                // Todos los diálogos mostrados
                                 showPostDialogueMenu(scene)
 
 
@@ -198,12 +199,12 @@ export function showDialog(scene) {
         console.log(`🎨 Cambiando fondo a: ${dialog.background}`)
 
         transition_Bg(scene, dialog.background, () => {
-            console.log("📝 Iniciando tipeo de texto (con nuevo fondo).")
+            console.log("📝 Iniciando texto letra a letra con nuevo fondo.")
 
             startTyping(scene, dialog.text.join(" "))
         })
     } else {
-        console.log("📝 Iniciando tipeo de texto...")
+        console.log("📝 Iniciando texto letra a letra...")
         startTyping(scene, dialog.text.join(" "))
     }
 }

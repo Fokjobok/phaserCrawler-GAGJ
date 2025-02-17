@@ -97,7 +97,7 @@
     grid-template-rows: repeat(2, auto);
     gap: 0.5rem;
     font-size: 44px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Roboto', monospace;
     font-weight: 600;
     -webkit-text-stroke: 2px black;
 }

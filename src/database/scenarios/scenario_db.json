@@ -1,6 +1,6 @@
 {
 	"la plaza principal": {
-		"name": "la plaza principal",
+		"name": "La plaza principal",
 		"background": "plaza",
 		"description": "El corazón de la ciudad, llena de vida y comercio.",
 		"npc_count": 3,
@@ -11,7 +11,7 @@
 	},
 
 	"el mercado": {
-		"name": "el mercado",
+		"name": "El mercado",
 		"background": "market",
 		"description": "Un bullicioso mercado donde comerciantes venden sus productos. Multitud de personas sobreviven aquí\ngracias a la alta demanda.",
 		"npc_count": 4,
@@ -22,8 +22,8 @@
 	},
 
 	"la herrería": {
-		"name": "la herrería",
-		"background": "smith",
+		"name": "La herrería",
+		"background": "blacksmith",
 		"description": "El calor del horno y el sonido del martillo resuenan aquí.",
 		"npc_count": 2,
 		"role_category": "common",
@@ -33,7 +33,7 @@
 	},
 
 	"la biblioteca": {
-		"name": "la biblioteca",
+		"name": "La biblioteca",
 		"background": "library",
 		"description": "Gran cantidad de libros de todas partes del mundo se concentran aquí.",
 		"npc_count": 5,
@@ -44,7 +44,7 @@
 	},
 
 	"la posada": {
-		"name": "la posada",
+		"name": "La posada",
 		"background": "inn",
 		"description": "Una posada con pocos lujos y algo sucia y descuidada, aunque acogedora.",
 		"npc_count": 3,
@@ -55,7 +55,7 @@
 	},
 
 	"la sastrería": {
-		"name": "sastrería",
+		"name": "La sastrería",
 		"background": "taylor",
 		"description": "Muy valoradas por aventureros, entre telas, hilos y pieles fabrican ropajes dignos de héroes.",
 		"npc_count": 2,
@@ -66,8 +66,8 @@
 	},
 
 	"la puerta principal": {
-		"name": "la puerta principal",
-		"background": "mgate",
+		"name": "La puerta principal",
+		"background": "main_door",
 		"description": "El interior de una muralla fortificada de piedra para proteger al pueblo. \nParece que no existe otra entrada en kilómetros.",
 		"npc_count": 1,
 		"role_category": "military",
@@ -77,7 +77,7 @@
 	},
     
 	"la puerta hacia el castillo": {
-		"name": "la puerta hacia el castillo",
+		"name": "La puerta hacia el castillo",
 		"background": "",
 		"description": "Una puerta que conduce al interior de una muralla. En el interior hay un camino\nal castillo del rey. No puede cruzarse sin una autorización.",
 		"npc_count": 0,

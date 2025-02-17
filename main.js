@@ -3,6 +3,7 @@ import { SelectClassScene } from './scenes/SelectClassScene.js'
 import { IntroScene } from './scenes/IntroScene.js'
 import { MainMenuScene } from './scenes/MainMenuScene.js'
 import { VnScene } from './scenes/VnScene.js'
+import { DungeonScene } from './scenes/DungeonScene.js'
 
 const sConfig = {
     type: Phaser.AUTO,

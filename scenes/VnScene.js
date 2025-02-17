@@ -3,14 +3,14 @@ import CONFIG from "../config/config.js"
 import { preload_bgScenario, preload_textBox, preload_styleMenu } from "../config/preload.js"
 import { create_npcImage, create_scenarioData, create_speakerNameBox, create_textBox, create_dialogContainer } from "../config/create.js"
 
-import { showDialog, resize_bg } from "../config/dialogs_config.js"
+import { showDialog, resize_bg } from "../config/dialogs.js"
 
 import { initNpcData, generateNpc, generatePredefinedNpc } from "../src/character/npc.js"
 
 import { createHUD } from "../config/hud.js"
 import { Player } from '../src/character/player.js'
 
-import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu } from "../config/menus.js"
+import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu, showScenarioMenu } from "../config/menus.js"
 
 
 
@@ -48,19 +48,24 @@ export function visitScenario(scene, scenarioKey) {
 
     if (!scenarioObj.visited) {
         scenarioObj.visited = true
-
+    
         if (scenarioObj.force_dialogue && scenarioObj.permanent_npc_ids?.length > 0) {
             let firstId = scenarioObj.permanent_npc_ids[0]
             let npc = generatePredefinedNpc(firstId)
-
+    
             if (npc) {
                 scene.startScenarioIntro(npc, scenarioObj)
-
+            } else {
+                // Si no se genera el NPC, mostramos el menú para evitar bloqueo
+                showScenarioMenu(scene)
             }
+        } else {
+            // Si no se requiere diálogo forzado, mostramos el menú
+            showScenarioMenu(scene)
         }
-
     } else {
         console.log(`🔹 Escenario '${scenarioKey}' ya visitado: no forzamos nueva conversación.`)
+        showScenarioMenu(scene)
     }
 
     console.log("🔍 Revisando background:", scenarioObj.background) 
@@ -191,7 +196,10 @@ export class VnScene extends Phaser.Scene {
         initNpcData(dataForNPCs)
 
         this.player = data.player
-        this.groupMembers = []
+        this.player2 = data.player2
+        this.player3 = data.player3
+
+        this.groupMembers = [this.player, this.player2, this.player3]
 
         
         createHUD(this)
@@ -224,7 +232,7 @@ export class VnScene extends Phaser.Scene {
         showDialog(this)
     }
 
-    
+
     startScenarioIntro(npc, scenarioObj) {
         console.log(`🔸 Iniciando introducción del escenario: ${scenarioObj.name}`)
     

@@ -14,7 +14,7 @@
 }
 
 #menuContainer button {
-    font-family: 'Roboto Mono', monospace; /* O la fuente que definas en CONFIG.TEXT.FONT */
+
     font-size: 32px;
     padding: 10px 15px;
     cursor: pointer;
@@ -60,7 +60,7 @@
 
 /* Botones dentro del submenú de NPC */
 #npcTalkMenuContainer button {
-    font-family: 'Roboto Mono', monospace;
+
     font-size: 1.6rem;
     padding: 1rem 1rem;
     cursor: pointer;

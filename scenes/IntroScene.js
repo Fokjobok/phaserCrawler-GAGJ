@@ -1,6 +1,6 @@
 import CONFIG from "../config/config.js"
 import { Player } from '../src/character/player.js'
-import { showDialog, resize_bg } from "../config/dialogs_config.js"
+import { showDialog, resize_bg } from "../config/dialogs.js"
 import { preload_bgScenario, preload_IntroScene, preload_textBox, preload_charStats } from "../config/preload.js"
 //import { create_textBox, create_dialogContainer } from "../config/create.js"
 import { job_stats } from "../src/character/player_db.js"
@@ -14,8 +14,8 @@ export class IntroScene extends Phaser.Scene {
 
 
     preload() {
-
         // Carga los archivos db para crear el personaje
+        
         preload_charStats(this)
 
         // Carga el archivo JSON de diálogos
@@ -34,10 +34,10 @@ export class IntroScene extends Phaser.Scene {
     create() {
         console.log("✅ Ejecutando IntroScene.create()")
 
-        preload_charStats(this)
+
 
         // Obtener los datos JSON
-        this.jobStats =         this.cache.json.get('job_stats')
+        this.jobStats =         job_stats
         this.weaponDb =         this.cache.json.get('weapon_db')
         this.shieldDb =         this.cache.json.get('shield_db')
         this.armorDb =          this.cache.json.get('armor_db')
@@ -55,6 +55,7 @@ export class IntroScene extends Phaser.Scene {
 
         this.playerData = this.scene.settings.data?.player ?? { name: "Jugador", job: "barbarian" }
         this.jobData = this.jobStats?.[this.playerData.job] ?? this.jobStats?.["barbarian"]
+
         this.player = new Player(
             this.playerData.name,
             this.playerData.job,
@@ -69,6 +70,7 @@ export class IntroScene extends Phaser.Scene {
         this.dialogs = this.cache.json.get('dialogs')
         this.currentIndex = 0
     
+        
         if (!this.dialogs) {
             console.error("❌ No se han cargado diálogos. Verifica la ruta del JSON.")
 
@@ -87,7 +89,8 @@ export class IntroScene extends Phaser.Scene {
             
         }
     
-        // ✅ Usar función de flecha para evitar problemas con `this`
+ 
+        
         this.scale.on('resize', () => resize_bg(this)) 
     
         this.textboxText = document.createElement('div')
@@ -98,7 +101,7 @@ export class IntroScene extends Phaser.Scene {
         this.textboxText.style.width = "95%"
         this.textboxText.style.maxWidth = "1600px"
         this.textboxText.style.height = "160px"
-        this.textboxText.style.overflow = "hidden" // scroll
+        this.textboxText.style.overflow = "hidden" // quitar scroll
         document.body.appendChild(this.textboxText)
         
 
@@ -132,8 +135,9 @@ export class IntroScene extends Phaser.Scene {
 
 
     
-        console.log("📢 Llamando showDialog()...")
-        showDialog(this) 
+        
+        showDialog(this)
+        this.scene.start('VnScene', { player: this.player })
     }
 
 

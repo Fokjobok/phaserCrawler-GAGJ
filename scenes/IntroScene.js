@@ -2,6 +2,7 @@ import CONFIG from "../config/config.js"
 import { Player } from '../src/character/player.js'
 import { showDialog, resize_bg } from "../config/dialogs.js"
 import { preload_bgScenario, preload_IntroScene, preload_textBox, preload_charStats } from "../config/preload.js"
+
 //import { create_textBox, create_dialogContainer } from "../config/create.js"
 import { job_stats } from "../src/character/player_db.js"
 
@@ -136,8 +137,9 @@ export class IntroScene extends Phaser.Scene {
 
     
         
-        showDialog(this)
-        this.scene.start('VnScene', { player: this.player })
+        showDialog(this, () => {
+            this.scene.start('VnScene', { player: this.player })
+        })
     }
 
 

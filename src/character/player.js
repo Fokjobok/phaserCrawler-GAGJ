@@ -41,111 +41,144 @@ export class Player {
     
         // Equipa el arma si existe
         const weapon_name = gear.weapon || ''
+
         if (weapon_name && this.weaponDb[weapon_name]) {
             this.equipWeapon(weapon_name)
+
         } else {
             if (weapon_name) console.log(`Error: El arma '${weapon_name}' no existe en la base de datos.`)
+
         }
     
         // Equipa el escudo si existe
         const shield_name = gear.shield || ''
         if (shield_name && this.shieldDb[shield_name]) {
             this.equipShield(shield_name)
+
         } else {
             if (shield_name) console.log(`Error: El escudo '${shield_name}' no existe en la base de datos.`)
+
         }
     
         // Equipa la armadura si existe
         const armor_name = gear.armor || ''
         if (armor_name && this.armorDb[armor_name]) {
             this.equipArmor(armor_name)
+
         } else {
             if (armor_name) console.log(`Error: La armadura '${armor_name}' no existe en la base de datos.`)
+
         }
     
         // Equipa el accesorio si existe
         const accessory_name = gear.accessory || ''
         if (accessory_name && this.accessoryDb[accessory_name]) {
             this.equipAccessory(accessory_name)
+
         } else {
             if (accessory_name) console.log(`Error: El accesorio '${accessory_name}' no existe.`)
+
         }
     }
 
     getColor(name, alpha = 128) {
         const rgb = COLOR_MAP[name] || [200, 200, 200] // Color gris por defecto
+
         return [...rgb, alpha]
     }
 
     addStats() {
         // Usa job_stats[this.job]
         const jobData = job_stats[this.job]
+
         if (!jobData) {
             console.error(`No se encontró el job: ${this.job}`)
+
             return
         }
         const stats = jobData.stats || {}
         const required_keys = ['str', 'vit', 'agi', 'dex', 'wis', 'sou']
+
         for (const key of required_keys) {
             if (!(key in stats)) {
                 throw new Error(`Falta la estadística ${key} para la clase ${this.job}.`)
+
             }
         }
+
         this.str = stats.str
         this.vit = stats.vit
         this.agi = stats.agi
         this.dex = stats.dex
         this.wis = stats.wis
         this.sou = stats.sou
+
         console.log(`Estadísticas añadidas: STR=${this.str}, VIT=${this.vit}, AGI=${this.agi}, DEX=${this.dex}, WIS=${this.wis}, SOU=${this.sou}`)
     }
         
+
     getColorAsHex() {
         if (!this.color || this.color.length !== 3) {
             console.error("❌ Error: No se pudo convertir el color a HEX.", this.color)
+
             return "#CCCCCC" // Gris por defecto
         }
+
+
         return `#${this.color.map(c => c.toString(16).padStart(2, '0')).join('')}`
     }
 
     getColorAsRGBA(alpha = 1) {
         if (!this.bgcolor || this.bgcolor.length < 3) {
             console.error("❌ Error: No se pudo convertir el background a RGBA.", this.bgcolor)
+
             return `rgba(200, 200, 200, ${alpha})` // Gris por defecto
         }
+
+
         return `rgba(${this.bgcolor[0]}, ${this.bgcolor[1]}, ${this.bgcolor[2]}, ${alpha})`
     }
 
     equipWeapon(weapon_name) {
         const weapon = this.weaponDb[weapon_name]
         console.log(`Intentando equipar weapon:`, weapon)
+
         if (weapon) {
             this.weapon = weapon
             console.log(`✅ Weapon equipada: ${weapon.name}`)
+
         } else {
             console.log(`❌ No se pudo equipar el arma: ${weapon_name}`)
+
         }
     }
+    
     
     equipShield(shield_name) {
         const shield = this.shieldDb[shield_name]
         console.log(`Intentando equipar shield:`, shield)
+
         if (shield) {
             this.shield = shield
             console.log(`✅ Shield equipado: ${shield.name}`)
+
         } else {
             console.log(`❌ No se pudo equipar el escudo: ${shield_name}`)
+
         }
     }
     
     equipArmor(armor_name) {
         const armor = this.armorDb[armor_name]
         console.log(`Intentando equipar armor:`, armor)
+
         if (armor) {
             this.armor = armor
             console.log(`✅ Armor equipada: ${armor.name}`)
+
         } else {
             console.log(`❌ No se pudo equipar la armadura: ${armor_name}`)
+
         }
     }
     
@@ -155,11 +188,14 @@ export class Player {
         if (accessory) {
             this.accessory = accessory
             console.log(`✅ Accessory equipado: ${accessory.name}`)
+
         } else {
             console.log(`❌ No se pudo equipar el accesorio: ${accessory_name}`)
+
         }
     }
         
+
     calcStats() {
         console.log(`Calculando stats para: ${this.name}`)
 
@@ -232,25 +268,29 @@ export class Player {
         }
     }
 
+
     checkStats(jobStats) {
-        const desglose = {}
+        const statsBreakdown = {}
     
         // Para cada job en jobStats, suma todas las estadísticas
         for (const [job, data] of Object.entries(jobStats)) {
             const stats = data?.stats || {}
+
             // Suma los valores de stats
             const total = Object.values(stats).reduce((acc, val) => acc + val, 0)
-            desglose[job] = total
+            statsBreakdown[job] = total
+            
         }
     
         // Construye un string con "job: total"
-        let resultado = ""
-        for (const [job, total] of Object.entries(desglose)) {
-            resultado += `${job}: ${total}\n`
+        let result = ""
+
+        for (const [job, total] of Object.entries(statsBreakdown)) {
+            result += `${job}: ${total}\n`
     }
     
     // Muestra el resultado (similar a game_print en Python)
-    console.log(resultado)
+    console.log(result)
     }
       
     isMagicalJob(jobName) {
@@ -268,6 +308,7 @@ export class Player {
         return null
     }
     
+
     getWeaponByName(name, weaponDb) {
         return weaponDb ? weaponDb[name] || null : null
     }

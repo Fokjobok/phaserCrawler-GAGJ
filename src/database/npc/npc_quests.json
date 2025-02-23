@@ -7,7 +7,7 @@
       ],
       "conversationRoutes": [
         {
-          "label": "Preguntar por la misión 'Princesas Envenenadas'",
+          "label": "Preguntar por las princesas envenenadas",
           "questChanges": [
             {
               "questId": "poisoned_princesses",

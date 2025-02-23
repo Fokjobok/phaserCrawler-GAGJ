@@ -172,13 +172,13 @@ export class VnScene extends Phaser.Scene {
 
 
         window.itemDB = {
-            consumible: this.cache.json.get("consumible"),     // desde /database/items/common/db/consumible.json
-            misc: this.cache.json.get("misc"),                 // desde /database/items/common/db/misc.json
-            usable: this.cache.json.get("usable"),             // desde /database/items/common/db/usable.json
-            accessory: this.cache.json.get("accessory_db"),    // desde /database/items/gear/db/accessory_db.json
-            armor: this.cache.json.get("armor_db"),            // desde /database/items/gear/db/armor_db.json
-            weapon: this.cache.json.get("weapon_db"),          // desde /database/items/gear/db/weapon_db.json
-            shield: this.cache.json.get("shield_db")           // desde /database/items/gear/db/shield_db.json
+            consumible: this.cache.json.get("consumible"),     // database/items/common/db/consumible.json
+            misc: this.cache.json.get("misc"),                 // database/items/common/db/misc.json
+            usable: this.cache.json.get("usable"),             // database/items/common/db/usable.json
+            accessory: this.cache.json.get("accessory_db"),    // database/items/gear/db/accessory_db.json
+            armor: this.cache.json.get("armor_db"),            // database/items/gear/db/armor_db.json
+            weapon: this.cache.json.get("weapon_db"),          // database/items/gear/db/weapon_db.json
+            shield: this.cache.json.get("shield_db")           // database/items/gear/db/shield_db.json
 
         }
 
@@ -228,6 +228,7 @@ export class VnScene extends Phaser.Scene {
             speakerName: npc.name,
             image: `assets/npcs/${npc.image_path}.png`
         }]
+        
         
         showDialog(this)
     }

@@ -1,5 +1,5 @@
 import { Player } from '../src/character/player.js'
-
+import { availableModuleImages, availableCorridorImages } from '../src/database/exploration/dungeon_generator.js'
 
 export function preload_textBox(scene) {
     const link = document.createElement('link')
@@ -74,4 +74,19 @@ export function preload_charStats(scene) {
 
     console.log("✅ Base de datos cargada:", scene.jobStats, scene.weaponDb, scene.shieldDb, scene.armorDb, scene.accessoryDb)
 
+}
+
+
+export function preload_dungeon(scene) {
+    // Carga de imágenes de módulos
+    availableModuleImages.forEach((filename, index) => {
+        scene.load.image('module' + (index + 1), 'assets/backgrounds/modules/' + filename)
+
+    })
+
+    // Carga de imágenes de pasillos
+    availableCorridorImages.forEach((filename, index) => {
+        scene.load.image('corridor' + (index + 1), 'assets/backgrounds/corridors/' + filename)
+
+    })
 }

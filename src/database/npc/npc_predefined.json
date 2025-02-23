@@ -22,19 +22,19 @@
         "shop": true,
         "store": [
             { 
-                "id": "ale", "name": "Cerveza", 
-                "price": 3, "affinity": 0
+                "id": "ale", "cat": "consumible", 
+                "name": "Cerveza", "affinity": 0
             },
             { 
-                "id": "bread", "name": "Pan", 
-                "price": 2, "affinity": 0
+                "id": "milk", "cat": "consumible", 
+                "name": "Leche", "affinity": 0
             },
             { 
-                "id": "apple", "name": "Manzana", 
-                "price": 5, "affinity": 1
+                "id": "bread", "cat": "consumible", 
+                "name": "Pan", "affinity": 0
             }
         ],
-        "image_path": "inn"
+        "image_path": "innkeeper"
         
     },
     "innkeeper_002": {

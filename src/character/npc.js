@@ -177,8 +177,10 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
     console.log("npcDialogs:", npcDialogs)
     console.log("npcAppearance:", npcAppearance)
     console.log("predefinedNpcs:", predefinedNpcs)
+
     if (!npcNames || !npcRole || !npcChance || !npcDialogs || !npcAppearance || !predefinedNpcs) {
         console.error("No se han inicializado los JSON de NPC. Llama a initNpcData primero")
+
         return null
     }
 
@@ -195,6 +197,7 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
     // Seleccionar género y nombre
     let genderKeys = Object.keys(npcNames)
     let randomGender = genderKeys[Math.floor(Math.random() * genderKeys.length)]
+
     let nameArray = npcNames[randomGender]
     let randomName = nameArray[Math.floor(Math.random() * nameArray.length)]
     let name = randomName.charAt(0).toUpperCase() + randomName.slice(1)
@@ -212,18 +215,24 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
     // Seleccionar apariencia basada en el rol y género
     let roleKey = determinedRole.toLowerCase()
     let appearanceList = ["un individuo misterioso"]
+
     if (npcAppearance[roleKey]) {
         let data = npcAppearance[roleKey]
+
         if (Array.isArray(data)) {
             appearanceList = data
+
         } else {
             if (data[randomGender]) {
                 appearanceList = data[randomGender]
+
             } else {
                 appearanceList = data['neutral'] || ["un individuo misterioso"]
+
             }
         }
     }
+
     let randomAppearance = appearanceList[Math.floor(Math.random() * appearanceList.length)]
 
     let newNpc = new NPC({
@@ -237,16 +246,21 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
     })
 
     allNpcs[newNpc.id_npc] = newNpc
+
     return newNpc
 }
 
 
-// En navegadores modernos, crypto.randomUUID(). 
-// O puedes usar un fallback con Date.now + random, etc.
+
 function cryptoRandomUUID() {
 	if (crypto && crypto.randomUUID) {
+
 		return crypto.randomUUID()
+
+
 	} else {
+
 		return 'uuid-' + (Math.random() * 99999999).toFixed(0)
+
 	}
 }

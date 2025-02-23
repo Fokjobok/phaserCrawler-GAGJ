@@ -115,11 +115,12 @@ export function startTyping(scene, fullText) {
                             scene.currentIndex++
 
                             if (scene.currentIndex >= scene.dialogs.length) {
-
                                 // Todos los diálogos mostrados
-                                showPostDialogueMenu(scene)
-
-
+                                if (scene.scene.key === "IntroScene") {
+                                     scene.scene.start('VnScene', { player: scene.player })
+                                } else {
+                                     showPostDialogueMenu(scene)
+                                }
                             } else {
                         
 

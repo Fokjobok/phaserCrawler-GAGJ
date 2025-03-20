@@ -23,6 +23,10 @@ export class DungeonScene extends Phaser.Scene {
         preload_textBox(this)
         preload_styleMenu(this)
 
+        console.log("Iniciando precarga de assets")
+    
+
+
     }
 
     create(data) {
@@ -115,16 +119,15 @@ export class DungeonScene extends Phaser.Scene {
 
             }
 
-
+            console.log(img)
+            
             if (!this.bg) {
                 this.bg = this.add.image(640, 360, img).setOrigin(0.5, 0.5)
-
-            } else {
+            }
+            else {
                 if (this.bg.texture.key !== img) {
                     this.bg.setTexture(img)
-
                 }
-                
             }
 
             this.bg.setDepth(0)
@@ -362,36 +365,91 @@ export class DungeonScene extends Phaser.Scene {
                                         }
                                     } else if (selection.move === 'next') {
                                         if (this.corridorPartIndex < this.currentCorridor.parts.length - 1) {
-                                            this.corridorPartIndex++
-                                            this.textboxText.innerHTML = `Pasillo parte ${this.corridorPartIndex + 1} de ${this.currentCorridor.parts.length}`
-
-                                            let seg = this.currentCorridor.parts[this.corridorPartIndex]
-
+                                            // Avanzar al siguiente segmento del pasillo
+                                            this.corridorPartIndex++;
+                                            this.textboxText.innerHTML = `Pasillo parte ${this.corridorPartIndex + 1} de ${this.currentCorridor.parts.length}`;
+                                    
+                                            let seg = this.currentCorridor.parts[this.corridorPartIndex];
+                                    
                                             if (seg.event !== 'ninguno') {
-                                                console.log("Evento en pasillo:", seg.event)
-
+                                                console.log("Evento en pasillo:", seg.event);
                                             }
-
-                                            drawMap()
-                                            showDungeonMainMenu()
-
+                                    
+                                            drawMap();
+                                            showDungeonMainMenu();
+                                    
                                         } else {
-                                            // Final del pasillo: actualizar currentModule al módulo destino
-                                            currentModule = modulesDict[this.currentCorridor.to]
-
-                                            if (!moduleHistory.includes(currentModule.id)) {
-                                                moduleHistory.push(currentModule.id)
-
+                                            // **Final del pasillo: cambiar al módulo destino**
+                                            console.log(`Transición de pasillo a módulo destino: ${this.currentCorridor.to}`);
+                                    
+                                            if (!modulesDict[this.currentCorridor.to]) {
+                                                console.error("¡Error! Módulo destino no encontrado.");
+                                                return; // Evita que el código siga ejecutándose con un módulo inválido
                                             }
-
-                                            this.navigationMode = 'module'
-
-                                            updateBackground(currentModule)
-                                            startDialogue(currentModule)
-
-                                            drawMap()
-                                            showDungeonMainMenu()
+                                    
+                                            // **Actualizar currentModule correctamente**
+                                            currentModule = modulesDict[this.currentCorridor.to];
+                                    
+                                            if (!moduleHistory.includes(currentModule.id)) {
+                                                moduleHistory.push(currentModule.id);
+                                            }
+                                    
+                                            // **Reiniciar navegación y asegurar coherencia**
+                                            this.navigationMode = 'module';
+                                            this.corridorPartIndex = 0; // Reseteamos el índice del pasillo
+                                            this.currentCorridor = null; // Limpiamos el pasillo actual para evitar estados inconsistentes
+                                    
+                                            // **Actualizar entorno**
+                                            updateBackground(currentModule);
+                                            startDialogue(currentModule);
+                                            drawMap();
+                                    
+                                            // **Asegurar que el menú principal de la mazmorra reaparece**
+                                            setTimeout(() => {
+                                                showDungeonMainMenu();
+                                            }, 100); // Pequeño delay para evitar posibles bloqueos de renderizado
                                         }
+                                    } else {
+                                        // **Final del pasillo: cambiar al módulo destino**
+                                        console.log(`Intentando cambiar al módulo: ${this.currentCorridor.to}`);
+                                    
+                                        if (!modulesDict[this.currentCorridor.to]) {
+                                            console.error(`Error: El módulo destino (${this.currentCorridor.to}) no está definido en modulesDict.`);
+                                            alert(`Error crítico: El módulo destino (${this.currentCorridor.to}) no se encuentra.`);
+                                            return; // Evita continuar con una transición inválida
+                                        }
+                                    
+                                        // **Actualizar currentModule correctamente**
+                                        currentModule = modulesDict[this.currentCorridor.to];
+                                    
+                                        console.log(`Módulo actualizado: ${currentModule.id}, Nombre: ${currentModule.name || 'Sin nombre'}`);
+                                    
+                                        if (!moduleHistory.includes(currentModule.id)) {
+                                            moduleHistory.push(currentModule.id);
+                                        }
+                                    
+                                        // **Reiniciar navegación**
+                                        this.navigationMode = 'module';
+                                        this.corridorPartIndex = 0;
+                                        this.currentCorridor = null;
+                                    
+                                        // **Verificar que updateBackground no cause problemas**
+                                        if (!currentModule.background) {
+                                            console.warn(`Advertencia: El módulo ${currentModule.id} no tiene fondo definido.`);
+                                        }
+                                    
+                                        updateBackground(currentModule);
+                                        startDialogue(currentModule);
+                                    
+                                        // **Verificar que startDialogue no esté causando el problema**
+                                        console.log(`Diálogo iniciado en módulo ${currentModule.id}`);
+                                    
+                                        drawMap();
+                                    
+                                        // **Asegurar que el menú principal de la mazmorra reaparece**
+                                        setTimeout(() => {
+                                            showDungeonMainMenu();
+                                        }, 100);
                                     }
                                 }
 

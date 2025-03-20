@@ -1,17 +1,24 @@
 import CONFIG from '../../config/config.js'
 import { job_stats } from '../character/player_db.js'
 
+
+
 export class Player {
     constructor(name, job, level = 1, fatigue = 5, weaponDb = {}, shieldDb = {}, armorDb = {}, accessoryDb = {}) {
         console.log(`Inicializando Player: ${name} con job: ${job}`)
 
         this.name = name
         this.status = null
-        this.job = job
+        this.job = job.toLowerCase()
         this.level = level
         this.fatigue = fatigue
         this.max_fatigue = 5
-        this.gold = 25
+        this.gold = 1000
+        this.inventory = []
+
+
+
+
 
         // Color
         const jobData = job_stats[this.job] || {}
@@ -32,12 +39,37 @@ export class Player {
         this.accessory = null
         
         this.assignDefaultGear()
+
+        console.log("Player: Gear asignado", {
+            weapon: this.weapon,
+            shield: this.shield,
+            armor: this.armor,
+            accessory: this.accessory
+        })
+
         this.addStats()
         this.calcStats()
     }
 
+    addToInventory(item) {
+        this.inventory.push(item)
+    }
+
+
+    removeFromInventory(item) {
+        const index = this.inventory.indexOf(item)
+        if (index !== -1) {
+            this.inventory.splice(index, 1)
+        }
+    }
+
     assignDefaultGear() {
         const gear = (job_stats[this.job] && job_stats[this.job].gear) || {}
+        console.log("assignDefaultGear: gear extraído de job_stats", gear)
+        console.log("assignDefaultGear: Keys de weaponDb", Object.keys(this.weaponDb))
+        console.log("assignDefaultGear: Keys de shieldDb", Object.keys(this.shieldDb))
+        console.log("assignDefaultGear: Keys de armorDb", Object.keys(this.armorDb))
+        console.log("assignDefaultGear: Keys de accessoryDb", Object.keys(this.accessoryDb))
     
         // Equipa el arma si existe
         const weapon_name = gear.weapon || ''
@@ -82,7 +114,7 @@ export class Player {
     }
 
     getColor(name, alpha = 128) {
-        const rgb = COLOR_MAP[name] || [200, 200, 200] // Color gris por defecto
+        const rgb = CONFIG.COLOR_MAP[name] || [200, 200, 200] // Color gris por defecto
 
         return [...rgb, alpha]
     }
@@ -301,9 +333,9 @@ export class Player {
 
     getJobStats(jobName) {
         const lower = jobName.toLowerCase()
-        const jobData = jobStatsDb[lower] || null
+        const jobData = job_stats[lower] || null
         if (jobData) {
-            return jobData.stats // o jobData
+            return jobData.stats
         }
         return null
     }

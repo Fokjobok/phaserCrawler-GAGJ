@@ -5,6 +5,7 @@
             "name": "Pico",
             "desc": "Utilizado para extraer mineral.",
             "icon": "⛏️",
+            "category": "usable",
             "price": {
                 "buy": 75,
                 "sell": 25
@@ -12,9 +13,10 @@
         },
         "handshovel": {
             "id": "handshovel",
-            "name": "Pico",
+            "name": "Pala de mano",
             "desc": "Utilizado para extraer mineral.",
             "icon": "🔧",
+            "category": "usable",
             "price": {
                 "buy": 125,
                 "sell": 25
@@ -25,6 +27,7 @@
             "name": "Martillo de herrero",
             "desc": "El mejor amigo de un herrero. Usado para mejorar armas y armaduras.",
             "icon": "🔧",
+            "category": "usable",
             "price": {
                 "buy": 265,
                 "sell": 25

@@ -1,3 +1,7 @@
+/** ===================================== **/
+/** ======= SelectClassScene Card ======= **/
+/** ===================================== **/
+
 .card-content {
     width: auto;
     font-weight: bold;
@@ -5,7 +9,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 2;
+
     color: white;
 
 }
@@ -13,6 +17,7 @@
 /* Añade esta regla para que el contenido inferior se mueva a la parte inferior */
 .card-body {
     margin-top: auto;
+    text-shadow: 0.15rem 0.15rem rgba(0, 0, 0, 0.8);
 }
 
 /* El resto de tus estilos se mantienen igual */
@@ -31,12 +36,14 @@
     font-family: Arial, sans-serif;
     border-radius: 10px;
     transition: box-shadow 0.7s ease;
-    
-    
+    text-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.8);
+
 }
 
+
+
 .card-special {
-    font-size: 24px;
+    font-size: 1.5rem;
     display: flex;
     justify-content: baseline;
 }
@@ -66,7 +73,7 @@
 
 /* Título de la tarjeta */
 .card-title {
-    font-size: 68px;
+    font-size: 4.25rem;
     font-weight: bold;
     margin: 0;
     -webkit-text-stroke: 2px white;
@@ -75,15 +82,15 @@
 
 /* Resto de tus estilos para descripción, estadísticas, etc. */
 .card-description {
-    min-height: 150px;
-    max-height: 150px;
+    min-height: 9.375rem;
+    max-height: 9.375rem;
 
     display: flex;
 
     
-    font-size: 20px;
+    font-size: 1.25rem;
 
-    margin-bottom: 10px;
+    margin-bottom: .625rem;
 }
 
 .stat {
@@ -96,7 +103,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 0.5rem;
-    font-size: 44px;
+    font-size: 2.75rem;
     font-family: 'Roboto', monospace;
     font-weight: 600;
     -webkit-text-stroke: 2px black;
@@ -141,6 +148,352 @@
 }
 
 .selected {
+
+    border-radius: 10px;
+    box-shadow:
+      0 0  5px var(--neon-color),
+      0 0 10px var(--neon-color),
+      0 0 15px var(--neon-color),
+      0 0 20px var(--neon-color),
+      0 0 40px var(--neon-color);
+    
+    border-color: black !important;
+    transition: box-shadow 1s ease;
+    transition: border-color 0.7s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** ======================================== **/
+/** ============== StatusMenu ============== **/
+/** ======================================== **/
+
+.status-window {
+    display: flex;
+    flex-direction: row;
+}
+
+#statusOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Contenedor principal para la tarjeta de estado y navegación */
+#statusCardContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-shadow: 0.15rem 0.15rem rgba(0, 0, 0, 0.8);
+    width: 90%;
+    height: 65%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+/* Botones de flechas para navegar entre tarjetas */
+#statusCardContainer .arrow {
+    font-size: 3em;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Botón para cerrar el overlay (X) */
+#statusCardContainer .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2.5em;
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Contenedor para el contenido de la tarjeta de estado */
+#statusCardContent {
+    flex: 1;
+    margin: 0 20px;
+}
+
+
+.tab-bar button {
+    
+    min-width: 19.1%;
+    width: 5rem;
+    height: 3rem;
+    
+    font-size: 1.7rem;
+
+    margin: 0 0 0.5rem 0;
+
+    border-radius: 0.6rem 0.6rem 0 0;
+    margin: 0 0rem 0 0.3rem;
+
+
+    border: 1px solid black;
+    color: white;
+    text-shadow: 0.05rem 0.15rem 0.15rem rgba(0, 0, 0, 0.8);
+}
+
+.status-window .card-body {
+    margin-top: auto;
+    line-height: 0.4rem;
+}
+
+.status-window .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 50%;
+
+    height: 500px;
+    border: 4px solid;
+    outline: none;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    border-radius: 10px 0 0 10px;
+    transition: box-shadow 0.7s ease, border-color 0.7s ease;
+}
+
+.status-window .secondary-card {
+    position: relative;
+    display: flex;
+    
+    max-width: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1; /* Se ajusta automáticamente al espacio disponible */
+    border: 4px solid;
+    outline: none;
+    
+    text-indent: 1rem;
+    padding: 0.5rem 0 0 1rem;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    border-radius: 0 10px 10px 0;
+    transition: box-shadow 0.7s ease, border-color 0.7s ease;
+
+    
+}
+
+
+.status-window .card-content-stats {
+    width: auto;
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    
+}
+
+.status-window .card-content-desc {
+    width: auto;
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: white;
+
+}
+
+.status-window .card-content-desc .card-title {
+    margin: 0.5rem 1rem 0 0;
+    border-radius: 0.6rem;
+    font-size: 3.5rem;
+}
+
+.status-window .card-content-desc .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 1rem 0;
+    margin: 1rem 1rem 0 0;
+    border-radius: 0.6rem;
+    font-size: 1.3rem;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+.status-window .card-content-desc .card-body .card-parameters .player-stats {
+    margin: 1rem 0 1rem 0;
+    padding: 0.1rem 0 1rem 0;
+}
+.status-window .card-content-desc .card-body .equipment {
+    padding: 0 0 1rem 0;
+
+}   
+
+.status-window .card button {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 31%;
+    height: 1rem;
+    gap: 1rem;
+
+
+}
+
+.status-window .card button:hover {
+    border: 3px solid black;
+    border-radius: 5px;
+    color: white;
+}
+
+.status-window .card button:active {
+    background-color: red;
+}
+
+
+/* Capa de imagen de fondo */
+.status-window .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    
+    opacity: 0.8;
+}
+
+/* Capa de color overlay */
+.status-window .card-overlay {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    opacity: 0.3;
+    
+}
+
+
+/* Título de la tarjeta */
+.status-window .card-job-title {
+    font-size: 68px;
+    font-weight: bold;
+    margin: 0;
+    -webkit-text-stroke: 2px black;
+
+}
+
+
+/* Título de la tarjeta */
+.status-window .card-title {
+    font-size: 68px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+    -webkit-text-stroke: 2px black;
+    
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Resto de tus estilos para descripción, estadísticas, etc. */
+.status-window .card-description {
+    min-height: 150px;
+    max-height: 150px;
+
+    display: flex;
+
+    
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+.status-window .stat {
+    min-height: 3rem;
+    max-height: 3rem;
+   /* Centra el texto verticalmente */
+    font-size: 33px;
+
+    padding: 0rem 0rem 0rem 0rem;     /* Aumenta el espacio interno para mayor tamaño */
+
+    box-sizing: border-box;
+    margin: 0.25rem;          /* Espacio entre botones, si lo deseas */
+    /* Si es necesario, puedes ajustar el font-size o usar media queries */
+    overflow: hidden;
+
+}
+
+
+
+
+
+
+.status-window .stats-line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.status-window .card-skill-section {
+    min-height: 150px;
+    max-height: 150px;
+
+}
+
+.status-window .card-skill {
+    font-size: 48px;
+    text-shadow: 
+    -2px -1px 0 black,
+     2px -1px 0 black,
+    -2px  1px 0 black,
+     2px  1px 0 black;
+
+}
+
+.status-window .card-skill-desc {
+    font-size: 28px;
+}
+
+.status-window .card-skill, .card-skill-desc {
+    font-weight: 600;
+}
+
+.status-window .card-skill-desc, .card-description {
+    text-shadow: 
+    -2px -1px 0 black,
+     2px -1px 0 black,
+    -2px  1px 0 black,
+     2px  1px 0 black;
+}
+
+.status-window .selected {
 
     border-radius: 10px;
     box-shadow:

@@ -5,6 +5,7 @@
             "name": "Llave antigua",
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
+            "category": "misc",
             "price": {
                 "buy": 2,
                 "sell": 1
@@ -15,6 +16,7 @@
             "name": "Llave antigua oxidada",
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
+            "category": "misc",
             "price": {
                 "buy": 1,
                 "sell": 2
@@ -25,6 +27,7 @@
             "name": "Llave dorada",
             "desc": "¿Abrirá la puerta de algún lugar?",
             "icon": "🗝️",
+            "category": "misc",
             "price": {
                 "buy": 1,
                 "sell": 2
@@ -35,6 +38,7 @@
             "name": "Pergamino en blanco",
             "desc": "Es posible escribir en él. Es usado por escribanos y magos.",
             "icon": "📜",
+            "category": "misc",
             "price": {
                 "buy": 6,
                 "sell": 3
@@ -45,6 +49,7 @@
             "name": "Pergamino antiguo",
             "desc": "Contiene texto ilegible, similar a las escrituras mágicas.",
             "icon": "📜",
+            "category": "misc",
             "price": {
                 "buy": 9,
                 "sell": 4
@@ -55,6 +60,7 @@
             "name": "Libro viejo",
             "desc": "Sus páginas están rasgadas. Solamente es posible leer fragmentos inconexos.",
             "icon": "📘",
+            "category": "misc",
             "price": {
                 "buy": 11,
                 "sell": 6
@@ -65,6 +71,7 @@
             "name": "Huevo misterioso",
             "desc": "Un huevo que emite calor, tal vez eclosione en algo interesante. Ayuda a no pasar frío.",
             "icon": "🥚",
+            "category": "misc",
             "price": {
                 "buy": 90,
                 "sell": 45
@@ -75,6 +82,7 @@
             "name": "Zirconio",
             "desc": "Una piedra común en las tierras de Northaven",
             "icon": "💎",
+            "category": "misc",
             "price": {
                 "buy": 180,
                 "sell": 90
@@ -85,6 +93,7 @@
             "name": "Alcohol",
             "desc": "Alcohol casi puro extraido de las plantas. Puede usarse como ingrediente.",
             "icon": "⚗️",
+            "category": "misc",
             "price": {
                 "buy": 60,
                 "sell": 30
@@ -95,6 +104,7 @@
             "name": "Seta venenosa",
             "desc": "Un hongo venenoso común. Es mejor no tocarlo. Puede llegar a ser mortal en altas dosis.",
             "icon": "🍄",
+            "category": "misc",
             "price": {
                 "buy": 4,
                 "sell": 2
@@ -105,6 +115,7 @@
             "name": "Seta rara",
             "desc": "Un hongo raro con propiedades mayormente desconocidas. Bastante codiciados por alquimistas.",
             "icon": "🍄",
+            "category": "misc",
             "price": {
                 "buy": 24,
                 "sell": 12
@@ -115,6 +126,7 @@
             "name": "Ashrium",
             "desc": "Mineral utilizado para mejorar equipamiento. Está en todas partes.",
             "icon": "🌑",
+            "category": "misc",
             "price": {
                 "buy": 82,
                 "sell": 12
@@ -125,6 +137,7 @@
             "name": "Ferralium",
             "desc": "Mineral utilizado para mejorar armas. Es más ligero y consistente que el hierro.",
             "icon": "🌑",
+            "category": "misc",
             "price": {
                 "buy": 114,
                 "sell": 18
@@ -135,6 +148,7 @@
             "name": "Celerium",
             "desc": "Mineral utilizado para mejorar la eficiencia de piezas de armadura y utensilios gracias a su firmeza, flexibilidad y ligereza.",
             "icon": "🌑",
+            "category": "misc",
             "price": {
                 "buy": 178,
                 "sell": 26
@@ -145,6 +159,7 @@
             "name": "Espada rota",
             "desc": "Una vieja espada oxidada, casi inservible.",
             "icon": "🗡️",
+            "category": "misc",
             "price": {
                 "buy": 5,
                 "sell": 3
@@ -155,6 +170,7 @@
             "name": "casco oxidado",
             "desc": "Un trozo de chatarra oxidada que una vez fue un casco.",
             "icon": "⬜️",
+            "category": "misc",
             "price": {
                 "buy": 9,
                 "sell": 5
@@ -165,6 +181,7 @@
             "name": "Pan mohoso",
             "desc": "Parece comestible... pero no es buena idea.",
             "icon": "🍞",
+            "category": "misc",
             "price": {
                 "buy": 2,
                 "sell": 1
@@ -175,6 +192,7 @@
             "name": "Rodillo",
             "desc": "Un rodillo de cocina hecho de madera.",
             "icon": "⬜️",
+            "category": "misc",
             "price": {
                 "buy": 11,
                 "sell": 5
@@ -185,6 +203,7 @@
             "name": "Cuchara de madera",
             "desc": "",
             "icon": "🥄",
+            "category": "misc",
             "price": {
                 "buy": 7,
                 "sell": 3
@@ -195,6 +214,7 @@
             "name": "Cáliz de madera",
             "desc": "",
             "icon": "🥃",
+            "category": "misc",
             "price": {
                 "buy": 9,
                 "sell": 4
@@ -205,6 +225,7 @@
             "name": "Plato de madera",
             "desc": "",
             "icon": "⬜️",
+            "category": "misc",
             "price": {
                 "buy": 8,
                 "sell": 4
@@ -216,6 +237,7 @@
             "name": "Frasco vacío",
             "desc": "Podría ser útil para guardar líquidos.",
             "icon": "⚗️",
+            "category": "misc",
             "price": {
                 "buy": 6,
                 "sell": 3
@@ -226,6 +248,7 @@
             "name": "Moneda antigua",
             "desc": "Una vieja moneda que ya no se usa como dinero.",
             "icon": "💰",
+            "category": "misc",
             "price": {
                 "buy": 231,
                 "sell": 116
@@ -237,6 +260,7 @@
             "name": "Mineral de hierro",
             "desc": "Un pequeño trozo de mineral de hierro.",
             "icon": "🌑",
+            "category": "misc",
             "price": {
                 "buy": 78,
                 "sell": 12
@@ -247,6 +271,7 @@
             "name": "Lingote de hierro",
             "desc": "Un simple lingote de hierro para la forja.",
             "icon": "⬜️",
+            "category": "misc",
             "price": {
                 "buy": 134,
                 "sell": 21
@@ -257,6 +282,7 @@
             "name": "Lingote de acero",
             "desc": "Un simple lingote de acero para la forja.",
             "icon": "⬜️",
+            "category": "misc",
             "price": {
                 "buy": 176,
                 "sell": 26

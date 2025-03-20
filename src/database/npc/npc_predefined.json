@@ -5,32 +5,36 @@
         "role_category": "common",
         "role": "Posadero",
         "days_left": -1,
-        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "appearance": "Un hombre ancho y corpulento, con barba cuidada y sonrisa afable. Lleva un delantal ocre manchado de aguamiel y tiene manos fuertes de trabajador.",
         "intro": [
-            "Intro del narrador"
+            "El aroma a pan recién horneado y cerveza fermentada inunda tus sentidos al entrar en la posada. El calor del hogar contrasta con el frío exterior, mientras el murmullo de conversaciones te da la bienvenida.",
+            "Tras la barra, un hombre corpulento limpia jarras con un paño, levantando la mirada al notar tu presencia."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "¡Bienvenido, viajero! Soy Hesper, dueño de esta humilde posada. ¿Buscas un lugar para descansar, una buena comida caliente o quizás algo para calmar la sed del camino? Aquí encontrarás todo eso y más."
         ],
         "dialogues": [
             "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
-            "Tenemos las mejores bebidas de la región.",
-            "Si necesitas descansar, la posada está a tu disposición.",
-            "Espero que disfrutes tu estancia aquí.",
-            "No dudes en pedir si necesitas algo más."
+            "Tenemos las mejores bebidas de la región, especialmente nuestra aguamiel.",
+            "Si necesitas descansar, tenemos habitaciones limpias y camas cómodas.",
+            "Mi esposa Andreau preparó un guiso esta mañana que haría llorar a un rey.",
+            "Las noticias viajan con los viajeros. ¿Has oído algo interesante últimamente?",
+            "Cuidado con lo que hablas aquí, las paredes tienen oídos... y algunos clientes también.",
+            "Si buscas trabajo, el tablón junto a la puerta tiene algunas solicitudes.",
+            "La especialidad de la casa es nuestro pan de centeno con miel. Deberías probarlo."
         ],
         "shop": true,
         "store": [
             { 
-                "id": "ale", "cat": "consumible", 
+                "id": "ale", "cat": "consumable", 
                 "name": "Cerveza", "affinity": 0
             },
             { 
-                "id": "milk", "cat": "consumible", 
+                "id": "milk", "cat": "consumable", 
                 "name": "Leche", "affinity": 0
             },
             { 
-                "id": "bread", "cat": "consumible", 
+                "id": "bread", "cat": "consumable", 
                 "name": "Pan", "affinity": 0
             }
         ],
@@ -43,7 +47,7 @@
         "role_category": "common",
         "role": "Posadero",
         "days_left": -1,
-        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "appearance": "Una mujer robusta de mediana edad con mejillas sonrosadas y cabello castaño recogido en un moño práctico. Lleva un delantal limpio con hierbas secas en los bolsillos y manos hábiles acostumbradas a cocinar.",
         "intro": [
             "Intro del narrador"
         ],
@@ -51,11 +55,14 @@
             "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
         ],
         "dialogues": [
-            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
-            "Tenemos las mejores bebidas de la región.",
-            "Si necesitas descansar, la posada está a tu disposición.",
-            "Espero que disfrutes tu estancia aquí.",
-            "No dudes en pedir si necesitas algo más."
+            "¡Bienvenido a nuestra posada! ¿Puedo ofrecerte algo de comer?",
+            "Hesper se encarga de las bebidas, yo me ocupo de que nadie se vaya con hambre.",
+            "Si te sientes mal, conozco algunas hierbas que podrían ayudarte.",
+            "Mis guisos son famosos en tres aldeas a la redonda, ¿quieres probar?",
+            "Las camas están recién hechas y las sábanas limpias, por si necesitas descansar.",
+            "Cuida tus modales en mi posada, no toleramos alborotadores.",
+            "¿Has probado mi pan con miel? Es la receta de mi abuela.",
+            "Si necesitas provisiones para el camino, puedo prepararte algo que dure varios días."
         ],
         "shop": true,
         "store": [
@@ -79,24 +86,29 @@
         "image_path": "guard"
     },
     "tailor_001": {
-        "name": "taylor",
+        "name": "Thimble",
         "gender": "male",
         "role_category": "common",
         "role": "tejedor",
         "days_left": -1,
-        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "appearance": "Un hombre delgado y ágil con dedos largos y precisos. Viste ropas elegantes de su propia confección y lleva colgados al cuello varios hilos de medida. Sus ojos agudos parecen estar siempre tomando medidas.",
         "intro": [
-            "Intro del narrador"
+            "La tienda del tejedor está ordenada con rollos de tela de diversos colores y texturas alineados en estanterías. El sonido rítmico de un telar se mezcla con el tintineo de agujas y tijeras.",
+            "Pequeñas muestras de bordados exquisitos decoran las paredes, testimonio de la habilidad del artesano que trabaja concentrado en su mesa."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "¡Ah! Un cliente nuevo, qué maravilloso. Soy Thimble, maestro tejedor y sastre. Puedo ver con solo mirarte que necesitas algo más digno que esos harapos de viaje. ¿Buscas protección, estilo o ambos? Tengo justo lo que necesitas."
         ],
         "dialogues": [
-            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
-            "Tenemos las mejores bebidas de la región.",
-            "Si necesitas descansar, la posada está a tu disposición.",
-            "Espero que disfrutes tu estancia aquí.",
-            "No dudes en pedir si necesitas algo más."
+            "¡Bienvenido a mi taller! ¿Qué puedo confeccionar para ti hoy?",
+            "Mis túnicas están hechas con los mejores materiales, durarán mucho más que las comunes.",
+            "Un buen traje puede abrir puertas que ni la espada más afilada podría.",
+            "Cada prenda que hago tiene un poco de magia en las costuras... figurativamente, claro.",
+            "Necesito más seda del este, ¿quizás podrías traerme si encuentras en tus viajes?",
+            "El invierno se acerca, te recomendaría algo forrado en piel.",
+            "Puedo ajustar cualquier prenda a tu medida exacta, solo necesito unos minutos.",
+            "El brigadine que tengo es perfecto para aventureros como tú, protección sin sacrificar movilidad.",
+            "Las túnicas de cuero son populares entre los cazadores y exploradores, ¿es eso lo que buscas?"
         ],
         "shop": true,
         "store": [
@@ -145,19 +157,24 @@
         "role_category": "scholarly",
         "role": "escribano",
         "days_left": -1,
-        "appearance": "Un hombre anchon corpulento, peludo y sonriente.\nTiene un delantal ocre manchado de aguamiel.",
+        "appearance": "Una mujer esbelta de mediana edad con expresión concentrada y gafas pequeñas sobre la nariz. Tiene los dedos manchados de tinta y viste una túnica sencilla con múltiples bolsillos llenos de plumas y pequeños pergaminos.",
         "intro": [
-            "Intro del narrador"
+            "El aroma a tinta, pergamino viejo y cera de sellar impregna la estancia. Estanterías repletas de manuscritos y libros de todos los tamaños se extienden desde el suelo hasta el techo.",
+            "En un rincón, una mujer trabaja diligentemente copiando un texto a la luz de varias velas, tan concentrada que apenas nota tu presencia hasta que te acercas a su escritorio."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "¡Oh! Perdona, estaba absorta en mi trabajo. Soy Szejsa, escribana y guardiana de conocimientos. Si buscas información, registros históricos o quizás algo más... esotérico, has venido al lugar correcto. Tengo pergaminos en blanco también, si necesitas enviar un mensaje importante."
         ],
         "dialogues": [
-            "¡Bienvenido a la posada! ¿En qué puedo ayudarte?",
-            "Tenemos las mejores bebidas de la región.",
-            "Si necesitas descansar, la posada está a tu disposición.",
-            "Espero que disfrutes tu estancia aquí.",
-            "No dudes en pedir si necesitas algo más."
+            "¿Buscas algún conocimiento en particular? Quizás pueda ayudarte.",
+            "Estos pergaminos están hechos con la mejor calidad de papiro del sur.",
+            "La tinta que vendo no se desvanece con el tiempo, perfecta para documentos importantes.",
+            "Tengo libros sobre historia local, si te interesa conocer más sobre esta región.",
+            "Algunos textos antiguos mencionan ruinas en las montañas del este, pero nadie las ha encontrado.",
+            "La magia y la escritura están íntimamente relacionadas, ¿sabías eso?",
+            "Puedo transcribir cualquier documento por una modesta suma.",
+            "Este zirconio tiene propiedades interesantes para ciertos rituales, según he leído.",
+            "Los libros viejos a veces contienen más verdad que los nuevos tratados."
         ],
         "shop": true,
         "store": [
@@ -187,12 +204,13 @@
         "role_category": "common",
         "role": "Herrero",
         "days_left": -1,
-        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "appearance": "Un hombre fornido con brazos musculosos cubiertos de cicatrices de quemaduras menores. Su barba espesa está parcialmente chamuscada y lleva un mandil de cuero resistente. Sus manos callosas hablan de décadas trabajando el metal.",
         "intro": [
-            "Intro del narrador"
+            "a",
+            "a"
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "a"
         ],
         "dialogues": [
             "¡Bienvenido de nuevo! ¿Qué necesitas que forje hoy?",
@@ -237,7 +255,7 @@
         "role_category": "common",
         "role": "Mercader",
         "days_left": -1,
-        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "appearance": "Un hombre de mediana edad con rostro jovial y barriga prominente. Viste ropas coloridas pero prácticas y siempre tiene las manos en movimiento, ya sea organizando mercancía o contando monedas con destreza.",
         "intro": [
             "Bajo los coloridos toldos del mercado, la mercancía brilla a la espera de compradores curiosos.",
             "El bullicio de regateos y el aroma de especias llenan el aire con la promesa de buenos tratos.",
@@ -251,26 +269,32 @@
             "¡Siéntete como en casa, amigo!"
         ],
         "dialogues": [
-            "¡Ah, un cliente! ¿Qué necesitas que forje hoy?",
-            "El acero puro es la clave para una buena espada.",
-            "Si buscas una herramienta resistente, has venido al lugar correcto."
+            "¡Buenos días! Tengo los mejores precios de todo el mercado.",
+            "Estas manzanas llegaron esta mañana, frescas y jugosas.",
+            "Si buscas ingredientes para cocinar, tengo todo lo que necesitas.",
+            "Mi pan es el favorito de la guardia real, ¡pregúntales!",
+            "Para un viajero como tú, puedo hacer un precio especial.",
+            "Este rodillo es de madera de roble, durará generaciones.",
+            "La leche viene de las mejores vacas de las granjas del oeste.",
+            "¿Tienes algo interesante para intercambiar? Siempre estoy abierto a trueques justos.",
+            "Necesitarás provisiones si planeas adentrarte en el bosque, ¡peligroso lugar!"
         ],
         "shop": true,
         "store": [
             { 
-                "id": "banana", "cat": "consumible", 
+                "id": "banana", "cat": "consumable", 
                 "name": "Plátano", "affinity": 0
             },
             { 
-                "id": "apple", "cat": "consumible", 
+                "id": "apple", "cat": "consumable", 
                 "name": "Manzana", "affinity": 0
             },
             { 
-                "id": "milk", "cat": "consumible", 
+                "id": "milk", "cat": "consumable", 
                 "name": "Leche", "affinity": 0
             },
             { 
-                "id": "bread", "cat": "consumible", 
+                "id": "bread", "cat": "consumable", 
                 "name": "Pan", "affinity": 0
             },
             { 
@@ -281,23 +305,28 @@
         "image_path": "trader"
     },
     "merchant_002": {
-        "name": "mercadona",
+        "name": "Lydia",
         "gender": "male",
         "role_category": "common",
         "role": "Mercader",
         "days_left": -1,
-        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "appearance": "Un hombre delgado y nervioso con ropas sencillas pero limpias. Tiene ojos atentos que siguen cada movimiento y manos hábiles que organizan constantemente su mercancía de madera.",
         "intro": [],
         "dialogues_force": [],
         "dialogues": [
-            "¡Ah, un cliente! ¿Qué necesitas que forje hoy?",
-            "El acero puro es la clave para una buena espada.",
-            "Si buscas una herramienta resistente, has venido al lugar correcto."
+            "Tengo los mejores utensilios de madera de todo el reino, tallados a mano.",
+            "Estos harapos pueden parecer simples, pero son resistentes y baratos.",
+            "Mi cáliz de madera es perfecto para viajeros, no se rompe como los de cerámica.",
+            "Todo lo que ves está hecho por mí mismo, garantía de calidad.",
+            "Si buscas algo específico que no ves, puedo tallarlo por encargo.",
+            "Mis platos de madera no se astillan con el uso diario.",
+            "La madera de estos utensilios está tratada para resistir la humedad.",
+            "Comercio justo, precios honestos, ese es mi lema."
         ],
         "shop": true,
         "store": [
             { 
-                "id": "rags", "cat": "consumible", 
+                "id": "rags", "cat": "consumable", 
                 "name": "Harapos", "affinity": 0
             },
             { 
@@ -321,15 +350,24 @@
         "role_category": "marginal",
         "role": "Mendigo",
         "days_left": -1,
-        "appearance": "un hombre con brazos musculosos y una barba espesa",
+        "appearance": "Un hombre mayor y demacrado con barba desaliñada y ropas gastadas llenas de parches. Sus ojos, sin embargo, brillan con una inteligencia sorprendente y sus manos muestran cicatrices de antiguas batallas.",
         "intro": [
-            "Intro del narrador"
+            "En un rincón apartado de la plaza, parcialmente oculto entre sombras, un anciano se acurruca tratando de protegerse del frío.",
+            "A pesar de su apariencia deteriorada y la escudilla vacía frente a él, mantiene una dignidad en su postura que sugiere un pasado muy diferente a su presente."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "¡Eh, tú! Sí, te hablo a ti, viajero. No dejes que estas ropas te engañen, Anthonius no siempre fue lo que ves ahora. Una moneda por caridad o por información, ambas tienen valor en estos tiempos oscuros. Y créeme, sé cosas que los poderosos preferirían mantener ocultas."
         ],
         "dialogues": [
-            "Perdona amigo... ¿Me das una moneda?"
+            "Perdona amigo... ¿Me das una moneda?",
+            "Antes era como tú, un aventurero. Luego me hirieron la rodilla...",
+            "Si tienes algo de comida para compartir, tengo historias para contar a cambio.",
+            "Los guardias me ignoran, pero yo no los ignoro a ellos... veo todo lo que hacen.",
+            "He sobrevivido tres reinados y dos plagas. Los secretos tienen precio.",
+            "El frío es lo peor, peor que el hambre incluso.",
+            "No confíes en todo lo que dice el pregonero, la verdad siempre está en las calles.",
+            "Ayer vi algo extraño en el callejón junto al herrero. Figuras en la noche...",
+            "Una moneda por un secreto, un pan por una historia. Así funciona mi comercio."
         ],
         "image_path": "villager"
     },
@@ -339,18 +377,24 @@
         "role_category": "military",
         "role": "Soldado",
         "days_left": -1,
-        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "appearance": "Un soldado robusto con armadura brillante y mirada alerta. Tiene una cicatriz que cruza su mejilla izquierda y porta su arma con la confianza de un veterano experimentado.",
         "intro": [
-            "Intro del narrador"
+            "Los guardias de la ciudad patrullan con paso firme, sus armaduras captando destellos de luz mientras mantienen el orden.",
+            "Su presencia es tanto tranquilizadora para los ciudadanos como intimidante para posibles malhechores, un recordatorio constante de la ley del reino."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "Alto ahí, viajero. Soy Guillaume, cabo de la guardia de esta ciudad. Si vienes en paz y respetas nuestras leyes, no tendremos problemas. Mantén tus armas envainadas dentro de las murallas y no causes problemas. Si necesitas asistencia oficial, búscame a mí o a mis compañeros."
         ],
         "dialogues": [
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",
             "La disciplina es clave en el campo de batalla.",
-            "Si ves algo inusual, repórtalo inmediatamente."
+            "Si ves algo inusual, repórtalo inmediatamente.",
+            "No toleramos ladrones ni alborotadores en esta ciudad.",
+            "El toque de queda comienza al sonar la campana nocturna.",
+            "Llevo diez años en la guardia y cada día trae nuevos desafíos.",
+            "Mantén tus armas enfundadas mientras estés dentro de las murallas.",
+            "Nuestro capitán es estricto pero justo, no lo olvides."
         ],
         "image_path": "guard"
     },
@@ -360,7 +404,7 @@
         "role_category": "military",
         "role": "Soldado",
         "days_left": -1,
-        "appearance": "Una soldado poderosamente equipada con una gran espada y una pesada armadura.",
+        "appearance": "Una soldado alta y atlérica con armadura bien mantenida. Su cabello corto y práctico enmarca un rostro determinado, y porta una gran espada con la facilidad que da años de entrenamiento.",
         "intro": [
             "Intro del narrador"
         ],
@@ -369,7 +413,12 @@
             "Mantén la calma y sigue las órdenes.",
             "Estamos protegiendo la ciudad de cualquier amenaza.",
             "La disciplina es clave en el campo de batalla.",
-            "Si ves algo inusual, repórtalo inmediatamente."
+            "Si ves algo inusual, repórtalo inmediatamente.",
+            "No me subestimes por ser mujer, he derribado a hombres el doble de grandes.",
+            "Seis años en la guardia y todavía encuentro sorpresas cada día.",
+            "Respeta las leyes y nos llevaremos bien, así de simple.",
+            "Mi espada no discrimina entre nobles o plebeyos si quebrantan la ley.",
+            "El capitán asigna las patrullas al amanecer, somos precisos como un reloj."
         ],
         "image_path": "guard"
     },
@@ -379,18 +428,24 @@
         "role_category": "military",
         "role": "Guardia real",
         "days_left": -1,
-        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "appearance": "Un soldado imponente con armadura ornamentada de alta calidad. Su porte es regio y su mirada severa. La insignia real brilla en su pecho y su equipo está inmaculado.",
         "intro": [
-            "Intro del narrador"
+            "La guardia real se distingue del resto de soldados por sus armaduras finamente trabajadas y su porte impecable.",
+            "Son la élite militar del reino, elegidos por su habilidad y lealtad inquebrantable al monarca, y su mera presencia impone respeto y cautela."
         ],
         "dialogues_force": [
-            "¡Ah! Un cliente nuevo. No todos los días veo caras frescas en mi forja."
+            "Ciudadano, estás en presencia de la guardia real. Soy el oficial Croix, encargado de la seguridad de la corona. Cualquier asunto que tengas con la realeza debe pasar por mí primero. Te aconsejo mantener la compostura y la distancia apropiada."
         ],
         "dialogues": [
-            "Mantén la calma y sigue las órdenes.",
-            "Estamos protegiendo la ciudad de cualquier amenaza.",
-            "La disciplina es clave en el campo de batalla.",
-            "Si ves algo inusual, repórtalo inmediatamente."
+            "Por orden real, mantén la distancia.",
+            "La seguridad del monarca es nuestra única prioridad.",
+            "Solo los convocados pueden solicitar audiencia.",
+            "No toleramos comportamientos sospechosos cerca de la realeza.",
+            "Diez años sirviendo a la corona, y seguiré hasta mi último aliento.",
+            "La guardia real ve lo que otros no pueden ver.",
+            "Mantén tus manos visibles cuando te dirijas a mí.",
+            "El protocolo existe por una razón, respétalo.",
+            "La traición se paga con la vida, recuérdalo siempre."
         ],
         "image_path": "guard"
     },
@@ -400,14 +455,19 @@
         "role_category": "military",
         "role": "Guardia real",
         "days_left": -1,
-        "appearance": "Un soldado robusto con armadura brillante y mirada alerta.",
+        "appearance": "Un hombre alto y fornido con armadura ceremonial pulida hasta brillar. Su postura es perfectamente erguida y su rostro impasible revela años de entrenamiento en el autocontrol. La insignia real destaca prominentemente en su uniforme.",
         "intro": [],
         "dialogues_force": [],
         "dialogues": [
-            "Mantén la calma y sigue las órdenes.",
-            "Estamos protegiendo la ciudad de cualquier amenaza.",
-            "La disciplina es clave en el campo de batalla.",
-            "Si ves algo inusual, repórtalo inmediatamente."
+            "Por orden real, esta área está restringida.",
+            "La guardia real protege, observa y actúa cuando es necesario.",
+            "Cualquier amenaza a la corona será neutralizada inmediatamente.",
+            "El protocolo debe seguirse al pie de la letra, sin excepciones.",
+            "Mi juramento es a la corona, más allá de mi propia vida.",
+            "Solicita permiso antes de acercarte a cualquier miembro de la realeza.",
+            "La familia real merece tu máximo respeto y deferencia.",
+            "Mantén tus armas enfundadas o enfrentarás consecuencias inmediatas.",
+            "Los rumores sobre la familia real se consideran traición menor."
         ],
         "image_path": "guard"
     }

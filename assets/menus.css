@@ -2,7 +2,7 @@
 #menuContainer {
     position: relative;
     bottom: 15%;
-
+    
 
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
@@ -14,29 +14,44 @@
 }
 
 #menuContainer button {
-
-    font-size: 32px;
+    border-radius: 5px;
+    font-size: 2rem;
     padding: 10px 15px;
     cursor: pointer;
-    
+    border: 2px solid black;
+}
+
+#menuContainer button:hover {
+    padding: 10px 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: rgba(0, 200, 230, 0.5);
+    border: 2px solid black;
+    color: white;
+    border-radius: 0.3rem;
 }
 
 /* Estilos para el submenú de NPC para hablar */
 #npcTalkMenuContainer {
     position: absolute;
-    top: 5%;
+    top: 20%;
     left: 50%;
-    width: 45%;
+    width: 46%;
+    font-family: 'Roboto', sans-serif;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
-    border-radius: 0.4rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
     font-size: 1.5rem;
-    font-weight: bold;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 650px;
+}
+
+#npcTalkMenuContainer .headerNpcText {
+    color: white;
 }
 
 /* Cada fila del submenú de NPC */
@@ -45,31 +60,447 @@
     justify-content: space-between;
 
     align-items: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.2rem 0.2rem 0.2rem 0.8rem;
+
+
     border-radius: 0.4rem;
+}
+
+#storeMenuContainer button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+
+.npcRow span {
+    color: black;
+}
+
+.npcDesc {
+    background: rgba(220, 220, 220, 1);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0 1rem 0 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.3rem;
 }
 
 /* Contenedor de botones en cada fila */
 .npcBtnContainer {
     display: flex;
     gap: 0.3rem;
-    
 
 }
 
+.npcBtnContainer button {
+    background: rgba(220, 220, 220, 1);
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0;
+    border: 0px;
+    border-radius: 0.3rem;
+}
+.npcBtnContainer button:disabled {
+    background: rgba(120, 120, 120, 0.6);
+    border: 0px;
+    border-radius: 0.3rem;
+
+}
+
+.npcBtnContainer button:not(:disabled):hover {
+    background: rgba(0, 200, 230, 0.5);
+    border: 0px;
+    border-radius: 0.3rem;
+}
+
+
 /* Botones dentro del submenú de NPC */
-#npcTalkMenuContainer button {
+#npcTalkMenuContainer .npcBtnContainer button {
 
     font-size: 1.6rem;
-    padding: 1rem 1rem;
+
     cursor: pointer;
 }
 
 
 /* Estilo específico para el botón "Volver" */
-#npcTalkMenuContainer .backBtn {
+#npcTalkMenuContainer button .backBtn {
+    padding: 0;
+    
     margin-top: 10px;
 }
 
 
+.itemRow {
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    margin: 0 10px 0 0;
+    padding: 0.25rem;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+#storeMenuContainer {
+    position: absolute;
+    min-height: 15%;
+    min-width: 35%;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+#storeMenuContainer .buyBtn {
+
+    background: rgba(220, 220, 220, 1);
+    padding: 10px 15px;
+    color: black;
+}
+#storeMenuContainer .buyBtn:hover {
+
+    background: rgba(0, 200, 230, 0.5);
+    color: white;
+}
+.sellBtn, .buyBtn {
+    width: 25%;
+    
+}
+
+.storeButtons {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+}
+
+#storeMenuContainer .backBtn {
+    font-size: 1.25rem;
+    margin: 0rem;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#storeMenuContainer .backBtn:hover {
+    font-size: 1.25rem;
+    background: rgba(0, 200, 230, 0.5);
+    color: white;
+    cursor: pointer;
+}
+.storeRow {
+    display: flex;
+    min-width: 50vh;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px;
+    border-radius: 5px;
+}
+.storeRow span {
+    
+    margin: 0rem;
+
+    border-radius: .625rem;
+    cursor: pointer;
+    
+}
+.storeRow .quantityControl {
+    font-family: 'Roboto', monospace;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+
+}
+.storeRow .quantityDisplay {
+    font-size: 2rem;
+    color: white;
+    padding: 0 0.5rem 0 0.5rem;
+    cursor: default;
+}
+.storeRow .plus-btn {
+    background-color: green;
+    border: 2px solid black;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0 0.6rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Roboto', monospace;
+}
+.storeRow .minus-btn {
+    background-color: red;
+    border: 2px solid black;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0 0.6rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Roboto', monospace;
+}
+
+.storeRow .plus-btn:hover {
+    border: 2px solid black;
+    background: rgba(0, 200, 230, 0.5);
+    color: white;
+}
+.storeRow .minus-btn:hover {
+    border: 2px solid black;
+    background: rgba(0, 200, 230, 0.5);
+    color: white;
+}
+.storeSummary {
+    display: flex;
+    
+}
+
+
+
+#sellMenuContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+/* Cabecera y pie fijos del menú de venta */
+#sellHeader,
+#sellFooter {
+    flex: 0 0 auto;
+    padding: 10px;
+    background: #f0f0f0;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+/* Área de contenido con scroll del menú de venta */
+#sellContent {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Cada botón de objeto en el menú de venta */
+.sellRow {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    margin-bottom: 5px;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.sellRow:hover {
+    background: rgba(230, 230, 230, 0.9);
+}
+
+
+#inventoryMenuContainer {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    background: rgba(0, 0, 0, 0.8);
+
+}
+
+
+
+/* Cabecera y pie fijos */
+#inventoryHeader,
+#inventoryFooter {
+    flex: 0 0 auto;
+    padding: 10px;
+}
+#inventoryFooter button {
+    width: 100%;
+    height: 2rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+#inventoryFooter button:hover {
+    background-color: rgba(0, 200, 230, 0.5);
+    border: 2px solid black;
+    border-radius: 0.3rem;
+    color: white;
+}
+/* Área de contenido con scroll */
+#inventoryContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 10px;
+}
+/* Barra de pestañas */
+#inventoryTabBar {
+    display: flex;
+    justify-content: space-between;
+    
+}
+#inventoryTabBar button {
+    flex: 1;
+    margin: 0 2px;
+    font-size: 1.6rem;
+    padding: 1rem;
+    cursor: pointer;
+
+}
+#inventoryTabBar button:hover {
+
+    border: 2px solid black;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    background-color: rgba(0, 200, 230, 0.5);
+}
+/* Botón de pestaña seleccionado */
+#inventoryTabBar button.selected {
+    background-color: rgba(0, 200, 230, 0.5);
+    border: 1px solid black;
+    border-radius: 0.3rem;
+
+}
+/* Cada botón de objeto en el inventario */
+.inventoryRow {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.3rem;
+    margin-bottom: 5px;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,1);
+    text-align: left;
+    color: black;
+}
+.inventoryRow:hover {
+    background-color: rgba(0, 200, 230, 0.5);
+}
+
+
+
+
+
+
+
+
+#travelMenuContainer {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+}
+
+/* Estilo para las filas de opciones en el menú de movimiento */
+.travelRow {
+    min-height: 4rem;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+}
+
+.travelRow span {
+    color: white;
+    font-size: 1.75rem;
+    flex: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7),
+                 -4px -4px 4px rgba(0, 0, 0, 0.8),
+                  4px -4px 4px rgba(0, 0, 0, 0.8),
+                 -4px  4px 4px rgba(0, 0, 0, 0.8),
+                  4px  4px 4px rgba(0, 0, 0, 0.8),
+                  0px -4px 4px rgba(0, 0, 0, 0.8),
+                  0px  4px 4px rgba(0, 0, 0, 0.8),
+                 -4px  0px 4px rgba(0, 0, 0, 0.8),
+                  0px  0px 4px rgba(0, 0, 0, 0.9);
+}
+
+.travelRow button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #fff;
+    color: #000;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.travelRow button:hover {
+    background-color: rgba(0, 200, 230, 0.5);
+    color: white;
+}
+
+.backBtn, .buyBtn, .sellBtn {
+    margin-top: 15px;
+    font-size: 1.25rem;
+    padding: 8px 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.backBtn {
+    width: 100%;
+}
+
+
+.backBtn:hover, .buyBtn:hover, .sellBtn:hover {
+    background-color: rgba(0, 200, 230, 0.5);
+    color: white;
+}
+
+/* Última definición de #movementMenuContainer */
+#movementMenuContainer {
+    position: absolute;
+    top: 54%; /* o el valor que desees para la vertical */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    max-height: 40%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+}

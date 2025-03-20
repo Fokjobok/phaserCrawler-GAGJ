@@ -131,7 +131,7 @@ export class VnScene extends Phaser.Scene {
         this.load.json("weapon_db", "src/database/items/gear/db/weapon_db.json")
         this.load.json("shield_db", "src/database/items/gear/db/shield_db.json")
 
-        this.load.json("consumible", "src/database/items/common/db/consumible.json")
+        this.load.json("consumable", "src/database/items/common/db/consumable.json")
         this.load.json("usable", "src/database/items/common/db/usable.json")
         this.load.json("misc", "src/database/items/common/db/misc.json")
         
@@ -172,7 +172,7 @@ export class VnScene extends Phaser.Scene {
 
 
         window.itemDB = {
-            consumible: this.cache.json.get("consumible"),     // database/items/common/db/consumible.json
+            consumable: this.cache.json.get("consumable"),     // database/items/common/db/consumable.json
             misc: this.cache.json.get("misc"),                 // database/items/common/db/misc.json
             usable: this.cache.json.get("usable"),             // database/items/common/db/usable.json
             accessory: this.cache.json.get("accessory_db"),    // database/items/gear/db/accessory_db.json

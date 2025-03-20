@@ -64,29 +64,34 @@ export function preload_IntroScene(scene) {
 }
 
 
-
 export function preload_charStats(scene) {
-
+    console.log("preload_charStats: Starting to load JSON files")
     scene.load.json('weapon_db', 'src/database/items/gear/db/weapon_db.json')
     scene.load.json('shield_db', 'src/database/items/gear/db/shield_db.json')
     scene.load.json('armor_db', 'src/database/items/gear/db/armor_db.json')
     scene.load.json('accessory_db', 'src/database/items/gear/db/accessory_db.json')
 
-    console.log("✅ Base de datos cargada:", scene.jobStats, scene.weaponDb, scene.shieldDb, scene.armorDb, scene.accessoryDb)
+    scene.load.on('loaderror', (file) => {
+        console.error("preload_charStats: Error loading", file.key)
+    })
 
+    scene.load.once('complete', () => {
+        console.log("preload_charStats: Database loaded:")
+        console.log("weapon_db:", JSON.stringify(scene.cache.json.get('weapon_db')))
+        console.log("shield_db:", JSON.stringify(scene.cache.json.get('shield_db')))
+        console.log("armor_db:", JSON.stringify(scene.cache.json.get('armor_db')))
+        console.log("accessory_db:", JSON.stringify(scene.cache.json.get('accessory_db')))
+    })
 }
 
 
 export function preload_dungeon(scene) {
-    // Carga de imágenes de módulos
-    availableModuleImages.forEach((filename, index) => {
-        scene.load.image('module' + (index + 1), 'assets/backgrounds/modules/' + filename)
-
+    availableModuleImages.forEach(image => {
+        console.log("Cargando asset:", image, "ruta:", `assets/backgrounds/modules/${image}`)
+        scene.load.image(image, `assets/backgrounds/modules/${image}`)
     })
-
-    // Carga de imágenes de pasillos
-    availableCorridorImages.forEach((filename, index) => {
-        scene.load.image('corridor' + (index + 1), 'assets/backgrounds/corridors/' + filename)
-
+    availableCorridorImages.forEach(image => {
+        console.log("Cargando asset:", image, "ruta:", `assets/backgrounds/corridors/${image}`)
+        scene.load.image(image, `assets/backgrounds/corridors/${image}`)
     })
 }

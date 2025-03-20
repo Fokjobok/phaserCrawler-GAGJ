@@ -2,6 +2,8 @@ import moduleChances from './module_chances.js'
 import moduleBio from './module_bio.js'
 import moduleSecret from './module_secret.js'
 import { showMenu } from '../../../config/menus.js'
+
+
 // Arrays de imágenes disponibles (no se repetirán)
 const availableModuleImages = [
     'module_01.webp', 'module_02.webp', 'module_03.webp',
@@ -15,7 +17,6 @@ const availableCorridorImages = [
 
 function getRandomImage(availableImages, folderPath) {
     if (availableImages.length === 0) {
-        // Reabastecemos según la carpeta
         if (folderPath.includes('modules')) {
             availableImages.push(
                 'module_01.webp', 'module_02.webp', 'module_03.webp',
@@ -32,18 +33,9 @@ function getRandomImage(availableImages, folderPath) {
     const index = Math.floor(Math.random() * availableImages.length)
     const image = availableImages[index]
     availableImages.splice(index, 1)
-    if (folderPath.includes('modules')) {
-        const match = image.match(/module_(\d+)\.webp/)
-        if (match) return 'module' + parseInt(match[1], 10)
-        else return image
-    } else if (folderPath.includes('corridors')) {
-        const match = image.match(/corridor_(\d+)\.webp/)
-        if (match) return 'corridor' + parseInt(match[1], 10)
-        else return image
-    }
-    return folderPath + image
+    // Retornamos el nombre original, ej. "module_01.webp"
+    return image
 }
-
 
 
 function getRandomBio(eventType) {
@@ -93,7 +85,7 @@ export function generateCorridor(fromModule, toModule) {
     const length = getRandomInt(1, 3)
     const parts = []
     const images = []  // Se generan imágenes para cada segmento
-    const defaultCorridorProb = { enemigo: 0.1, trampa: 0.05, evento: 0.05 }
+    const defaultCorridorProb = { enemigo: 0.52, trampa: 0.08, evento: 0.1 }
     for (let i = 0; i < length; i++) {
         const event = generateProbabilisticEvent(defaultCorridorProb)
         parts.push({

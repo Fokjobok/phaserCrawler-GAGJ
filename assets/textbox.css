@@ -3,8 +3,6 @@
     position: absolute;
     top: 0;
     left: 0;
-
-
 }
 
 /* Main textbox for dialogues */
@@ -17,56 +15,42 @@
     bottom: 20px;
     background: rgba(5, 5, 5, 0.8);
     color: white;
-    font-size: 18px;
+    font-size: 1.125rem;
     padding: 12px;
     box-sizing: border-box;
     overflow-y: auto;
-
 }
 
 /* Speaker name box nested inside the textbox, positioned above it */
 .speakerNameBox {
     position: absolute;
-
-
-
     min-width: 6rem;
     height: 1.5rem;
     left: 2rem;
     bottom: 180px;
-
     background: rgba(5, 5, 5, 0.8);
     color: gold;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     text-align: center;
-
     padding: 15px 15px;
     border-radius: 0px 8px;
     display: none;
     font-weight: bold;
-
 }
 
 /* NPC image style */
 .npcImage {
     position: absolute;
     transform: translateX(-50%);
-
     width: auto;
     min-width: 34%; /* Se adapta al ancho mínimo */
     min-height: 200px; /* Ajusta esto según el tamaño mínimo deseado */
-    width: auto; /* Se ajusta automáticamente */
     height: auto; /* Mantiene la relación de aspecto */
     max-width: 42%; /* Se adapta al ancho máximo */
     max-height: 625px;
     left: 50%;
     bottom: 180px;
-
     display: none;
-
-    
-
-
 }
 
 /* Narrator text style */
@@ -74,52 +58,8 @@
     font-style: italic;
 }
 
-
-
-
-
-#storeMenuContainer {
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-}
-
-.storeRow {
-    display: flex;
-    min-width: 500px;
-    font-weight: bold;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-
-}
-
-#storeMenuContainer button {
-
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0rem;
-    padding: 10px 15px;
-    cursor: pointer;
-
-}
-
-#storeMenuContainer .backBtn {
-    width: 100px;
-    margin-top: 10px;
-    
+.headerTitle {
+    color: white;
 }
 
 
@@ -132,19 +72,16 @@
 #hudContainer {
     position: absolute;
     top: 2rem;
-    left: 2rem; /* O la posición que desees */
+    left: 2rem;
     display: flex;
     gap: 1rem;
     font-family: Arial, sans-serif;
-
 }
-
 /* Cada miembro se muestra como un bloque con imagen y detalles */
 .hudMember {
     display: flex;
     align-items: center;
-
-    overflow: hidden; /* Para ocultar los detalles cuando no estén expandidos */
+    overflow: hidden;
     transition: width 0.5s ease;
     width: 5rem;
     height: 8rem;
@@ -152,11 +89,8 @@
     position: relative;
     border-radius: 4rem;
     background-blend-mode: multiply;
-    box-shadow: 
-    8px 12px 8px rgba(0, 0, 0, 0.5),  /* Sombra fuerte abajo y derecha */
-    4px 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 8px 12px 8px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
-
 .hudImage {
     width: 100%;
     height: 8rem;
@@ -166,51 +100,34 @@
     transition: width 0.3s ease-in;
     flex-shrink: 0;
 }
-
-/* El bloque de imagen siempre se muestra y tiene tamaño fijo */
 .hudImage.expanded {
     width: 45%;
     transition: width 1s ease;
-
     background-size: cover;
     background-position: center;
     flex-shrink: 0;
-
 }
-
-/* Contenedor de detalles, inicialmente oculto */
 .hudDetail {
     overflow: hidden;
     white-space: nowrap;
-    width: 0; /* Se oculta inicialmente */
-    
-    
-    
+    width: 0;
 }
-
-/* Al expandir el miembro, se asigna un ancho al contenedor de detalles */
 .hudMember.expanded {
-    width: 550px; /* Ancho total del miembro expandido (imagen + detalle) */
+    width: 32rem;
 }
-
 .hudMember.expanded .hudDetail {
-    width: 200px; /* Ancho asignado para la información; la imagen conserva 100px */
-
+    width: 12.5rem;
 }
-
 /* Para las columnas dentro del detalle */
 .hudDetailColumn {
     display: grid;
     color: black;
-    flex: 1;          /* Hace que cada columna tome el mismo espacio disponible */
+
     font-size: 1.5rem;
     vertical-align: top;
-    width: 100%; /* Se reparte el espacio entre dos columnas */
-    gap: 0.4rem; /* Ajusta el espacio entre líneas */
+    width: 100%;
+    gap: 0.3rem;
 }
-
-
-
 /* Opcional: estilos adicionales para lockOverlay y otros elementos */
 .lockOverlay {
     position: absolute;
@@ -221,39 +138,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 3rem;
     color: white;
     background: rgba(0, 0, 0, 0.7);
 }
-
-
 .hudInfo {
     display: none;
     transition: all 0.3 ease-in-out;
     
 }
-
 .hudMember.expanded .hudInfo {
     display: flex;
-    justify-content: flex-start; /* Distribuye el espacio entre columnas */
-    font-size: 26px;
+    justify-content: flex-start;
+    font-size: 1.625rem;
     align-items: center;
     width: 100%;
     font-weight: bold;
     flex-direction: row;
-
-    text-shadow:
-        -4px -4px 4px rgba(255, 255, 255, 0.1),
-        4px -4px 4px rgba(255, 255, 255, 0.8),
-        -4px  4px 4px rgba(255, 255, 255, 0.8),
-        4px  4px 4px rgba(255, 255, 255, 0.8),
-        0px -4px 4px rgba(255, 255, 255, 0.8),
-        0px  4px 4px rgba(255, 255, 255, 0.8),
-        -4px  0px 4px rgba(255, 255, 255, 0.8),
-        4px  0px 4px rgba(255, 255, 255, 0.8),
-        0px  0px 4px rgba(255, 255, 255, 0.9);
+    text-shadow: -4px -4px 4px rgba(255, 255, 255, 0.1),
+                 4px -4px 4px rgba(255, 255, 255, 0.8),
+                 -4px  4px 4px rgba(255, 255, 255, 0.8),
+                 4px  4px 4px rgba(255, 255, 255, 0.8),
+                 0px -4px 4px rgba(255, 255, 255, 0.8),
+                 0px  4px 4px rgba(255, 255, 255, 0.8),
+                 -4px  0px 4px rgba(255, 255, 255, 0.8),
+                 4px  0px 4px rgba(255, 255, 255, 0.8),
+                 0px  0px 4px rgba(255, 255, 255, 0.9);
 }
-
 .hudInfo .hudDetailColumn:first-child {
     padding-left: 1rem;
 }
@@ -262,133 +173,9 @@
 
 
 
-
-/* Contenedor principal del menú de viaje */
-#travelMenuContainer {
-    position: absolute;
-    top: 10%;
-    left: 30%;
-    width: 40%;
-    max-height: 80%;
-    overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 1.5rem;
-
-  }
-  
-  /* Fila de cada escenario */
-  .travelRow {
-    min-height: 4rem;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /* Nombre del escenario en la fila */
-  .travelRow span {
-    color: white;
-    font-size: 28px;
-    flex: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    text-shadow:
-    -4px -4px 4px rgba(0, 0, 0, 0.8),
-     4px -4px 4px rgba(0, 0, 0, 0.8),
-    -4px  4px 4px rgba(0, 0, 0, 0.8),
-     4px  4px 4px rgba(0, 0, 0, 0.8),
-     0px -4px 4px rgba(0, 0, 0, 0.8),
-     0px  4px 4px rgba(0, 0, 0, 0.8),
-    -4px  0px 4px rgba(0, 0, 0, 0.8),
-     4px  0px 4px rgba(0, 0, 0, 0.8),
-     0px  0px 4px rgba(0, 0, 0, 0.9);
-  }
-  
-  /* Botón "Visitar" dentro de la fila */
-  .travelRow button {
-    background-color: #fff;
-    color: #333;
-    border: none;
-    font-size: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    margin-left: 10px;
-  }
-  
-  /* Botón "Volver" en el contenedor */
-  #travelMenuContainer button.backBtn {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    margin-top: 10px;
-  }
-
-
-  #movementMenuContainer {
-    position: absolute;
-    bottom: 15%; /* Ubicado similar al menú principal */
-    left: 50%;
-    transform: translateX(-50%);
+/* Última definición de #movementMap */
+#movementMap {
     background: rgba(0, 0, 0, 0.7);
-    padding: 15px;
-    border-radius: 0.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    z-index: 10000;
-}
-
-#movementMap {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.nodeBox {
-    width: 30px;
-    height: 30px;
-    background: #ccc;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #000;
-}
-
-.currentNode {
-    background: #f00;
-    color: #fff;
-}
-
-#movementMap {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 4px;
-}
-
-
-#movementMenuContainer {
-    position: absolute;
-    top: 10%;
-
-    width: 40%;
-    max-height: 40%;
-    overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 1.5rem;
-}
-
-/* Caja semitransparente para el mapa de nodos */
-#movementMap {
-    background: rgba(0, 0, 0, 0.7);  /* Fondo oscuro semitransparente */
     padding: 15px;
     border-radius: 8px;
     text-align: center;
@@ -396,7 +183,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilo para cada nodo del mapa */
+/* Última definición de .nodeBox */
 .nodeBox {
     display: inline-block;
     width: 5rem;
@@ -404,81 +191,17 @@
     line-height: 40px;
     margin: 5px;
     background: #ccc;
-
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #000;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Nodo actual resaltado */
+/* Última definición de .nodeBox.currentNode */
 .nodeBox.currentNode {
     background: #00ff00;
     border-color: #fff;
     font-weight: bold;
     color: #000;
-}
-
-/* Estilo para las filas de opciones en el menú de movimiento */
-.travelRow {
-    min-height: 4rem;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    background-size: cover;
-    background-position: center;
-}
-
-.travelRow span {
-    color: white;
-    font-size: 28px;
-    flex: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    text-shadow:
-    -4px -4px 4px rgba(0, 0, 0, 0.8),
-     4px -4px 4px rgba(0, 0, 0, 0.8),
-    -4px  4px 4px rgba(0, 0, 0, 0.8),
-     4px  4px 4px rgba(0, 0, 0, 0.8),
-     0px -4px 4px rgba(0, 0, 0, 0.8),
-     0px  4px 4px rgba(0, 0, 0, 0.8),
-    -4px  0px 4px rgba(0, 0, 0, 0.8),
-     4px  0px 4px rgba(0, 0, 0, 0.8),
-     0px  0px 4px rgba(0, 0, 0, 0.9);
-}
-
-.travelRow button {
-
-    padding: 0.5rem 1rem;
-    border: none;
-    background: #fff;
-    color: #000;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.travelRow button:hover {
-    background: #777;
-}
-
-/* Botón "Volver" */
-.backBtn {
-    margin-top: 15px;
-    font-size: 16px;
-    padding: 8px 12px;
-    border: none;
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.backBtn:hover {
-    background: #222;
 }

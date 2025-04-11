@@ -42,7 +42,7 @@ export class SelectClassScene extends Phaser.Scene {
         this.totalPages = Math.ceil(this.classKeys.length / this.cardsPerPage)
         this.currentPage = 0    // Página de tarjetas
         this.selectedIndex = 0  // Tarjeta seleccionada
-        this.cards = []         // Array para almacenar las tarjetas (elementos DOM)
+        this.cards = []         // Almacenar las tarjetas
 
         // Configurar teclas de control
         this.cursors = this.input.keyboard.createCursorKeys()
@@ -86,9 +86,8 @@ export class SelectClassScene extends Phaser.Scene {
 
             case 'KeyZ':
                 let selectedClassKey = this.getCurrentPageClasses()[this.selectedIndex]
-                let selectedClassKey2 = this.getCurrentPageClasses()[this.selectedIndex + 1]
-                let selectedClassKey3 = this.getCurrentPageClasses()[this.selectedIndex - 1]
                 let selectedClassData = this.jobStats[selectedClassKey]
+
                 console.log('Clase seleccionada:', selectedClassKey)
                 console.log('Clase seleccionada:', selectedClassData)
 
@@ -103,38 +102,20 @@ export class SelectClassScene extends Phaser.Scene {
                     this.playerName,
                     selectedClassKey,
                     1,      // nivel por defecto
-                    5,      // fatigue por defecto
+                    5,      // fatiga por defecto
+                    5,
                     weaponDb,
                     shieldDb,
                     armorDb,
                     accessoryDb
                 )
+
+
                 console.log("SelectClassScene: Nuevo player creado", player.toString())
 
-                let player2 = new Player(
-                    this.playerName,
-                    selectedClassKey2,
-                    1,      // nivel por defecto
-                    5,      // fatigue por defecto
-                    weaponDb,
-                    shieldDb,
-                    armorDb,
-                    accessoryDb
-                )
-
-                let player3 = new Player(
-                    this.playerName,
-                    selectedClassKey3,
-                    1,      // nivel por defecto
-                    5,      // fatigue por defecto
-                    weaponDb,
-                    shieldDb,
-                    armorDb,
-                    accessoryDb
-                )
 
                 // Transición a IntroScene pasando el objeto Player
-                this.scene.start('VnScene', { player: player, player2, player3 })
+                this.scene.start('VnScene', { player: player })
                 break
         }
     }
@@ -154,17 +135,22 @@ export class SelectClassScene extends Phaser.Scene {
         let currentClasses = this.getCurrentPageClasses()
         let cardWidth = 550
         let cardHeight = 550
+
         let spacing = 40
+
         let totalWidth = currentClasses.length * cardWidth + (currentClasses.length - 1) * spacing
         let startX = (this.cameras.main.width - totalWidth) / 2
         let centerY = this.cameras.main.height / 2
 
         currentClasses.forEach((classKey, index) => {
             let job = this.jobStats[classKey]
+
             let colorArray = CONFIG.COLOR_MAP[job.color]
             let subColorArray = CONFIG.COLOR_MAP[job.color + "_pastel"]
+
             let cardColor = colorArray ? rgbToHex(colorArray) : job.color
             let subColor = subColorArray ? rgbToRGBA(subColorArray, 0.6) : "rgba(192, 192, 192, 0.6)"
+
             let title = classKey.charAt(0).toUpperCase() + classKey.slice(1)
             let stats = job.stats
             let statsStr = `
@@ -195,14 +181,15 @@ export class SelectClassScene extends Phaser.Scene {
 
             let posX = startX + index * (cardWidth + spacing) + cardWidth / 2
             let posY = centerY
-            let domElement = this.add.dom(posX, posY).createFromHTML(cardHTML)
-            let cardElement = domElement.node.querySelector('.card')
+            
+            let container = this.add.dom(posX, posY).createFromHTML(cardHTML)
+            let cardElement = container.node.querySelector('.card')
             if (cardElement) {
                 cardElement.setAttribute('data-card-color', cardColor)
             }
-            domElement.node.classList.add('card-container')
-            domElement.node.dataset.cardColor = cardColor
-            this.cards.push(domElement)
+            container.node.classList.add('card-container')
+            container.node.dataset.cardColor = cardColor
+            this.cards.push(container)
         })
 
         this.updateSelection()
@@ -228,6 +215,6 @@ export class SelectClassScene extends Phaser.Scene {
     }
 
     update() {
-        // Actualizaciones periódicas, si se requieren
+        
     }
 }

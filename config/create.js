@@ -22,8 +22,7 @@ export function create_textBox(scene) {
 	scene.textboxText.style.fontFamily = CONFIG.TEXT.FONT
 	scene.textboxText.style.fontSize = CONFIG.TEXT.SIZE
 	scene.textboxText.style.color = CONFIG.TEXT.COLOR
-	scene.textboxText.style.width = "95%"
-	scene.textboxText.style.maxWidth = "1600px"
+	scene.textboxText.style.width = "92%"
 	scene.textboxText.style.height = "160px"
 	scene.textboxText.style.overflow = "hidden"
 
@@ -41,6 +40,7 @@ export function create_npcImage(scene) {
 	scene.dialogContainer.appendChild(scene.npcImage)
 	console.log("☑️ Imagen NPC creada.")
 }
+
 
 
 

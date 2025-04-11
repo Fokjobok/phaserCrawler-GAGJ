@@ -7,8 +7,20 @@
 		"role_category": "marginal",
 		"npc_type": "mendigo",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["wanderman_001"]
+		"permanent_npc_ids": ["wanderman_001"],
+		"warps": ["el mercado", "la posada", "la biblioteca", "la herrería", "la puerta principal"]
 	},
+		"el callejón oscuro": {
+			"name": "el callejón oscuro",
+			"background": "",
+			"description": "Un famoso e imponente callejón oscuro con más de mil rumores a sus espaldas.",
+			"npc_count": 0,
+			"role_category": "dangerous",
+			"npc_type": "bandido",
+			"force_dialogue": false,
+			"permanent_npc_ids": ["bandit_001"],
+			"warps": ["la plaza principal"]
+		},
 
 	"el mercado": {
 		"name": "El mercado",
@@ -18,7 +30,8 @@
 		"role_category": "common",
 		"npc_type": "mercader",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["merchant_001", "merchant_002"]
+		"permanent_npc_ids": ["merchant_001", "merchant_002"],
+		"warps": ["la plaza principal", "la sastrería", "la puerta principal"]
 	},
 
 	"la herrería": {
@@ -29,8 +42,20 @@
 		"role_category": "common",
 		"npc_type": "herrero",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["blacksmith_001"]
+		"permanent_npc_ids": ["blacksmith_001"],
+		"warps": ["la plaza principal", "el patio trasero de la herrería"]
 	},
+		"el patio trasero de la herrería": {
+			"name": "El patio trasero de la herrería",
+			"background": "blacksmith-loft",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": ["la herrería"]
+		},
 
 	"la biblioteca": {
 		"name": "La biblioteca",
@@ -40,7 +65,8 @@
 		"role_category": "scholarly",
 		"npc_type": "escribano",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["librarian_001"]
+		"permanent_npc_ids": ["librarian_001"],
+		"warps": ["la plaza principal"]
 	},
 
 	"la posada": {
@@ -51,8 +77,100 @@
 		"role_category": "common",
 		"npc_type": "posadero",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["innkeeper_001"]
+		"permanent_npc_ids": ["innkeeper_001"],
+		"warps": ["la plaza principal", "la bodega", "habitación 1", "habitación 2", "habitación 3"]
 	},
+		"la bodega": {
+			"name": "La bodega",
+			"background": "",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": []
+		},
+		"habitación 1": {
+			"name": "Habitación 1",
+			"background": "",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": []
+		},
+		"habitación 2": {
+			"name": "Habitación 2",
+			"background": "",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": []
+		},
+		"habitación 3": {
+			"name": "Habitación 3",
+			"background": "",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": []
+		},
+
+	"la iglesia": {
+		"name": "La iglesia",
+		"background": "church",
+		"description": "El patio de Majaz es una iglesia improvisada en tiempos de guerra.",
+		"npc_count": 2,
+		"role_type": "religious",
+		"npc_type": "sacerdote",
+		"force_dialogue": true,
+		"permanent_npc_ids": ["priest_001"],
+		"warps": ["la plaza principal", "altar", "zona trasera de la iglesia"]
+	},
+		"": {
+			"name": "",
+			"background": "",
+			"description": "",
+			"npc_count": 0,
+			"role_category": "common",
+			"npc_type": "",
+			"force_dialogue": false,
+			"permanent_npc_ids": [],
+			"warps": []
+		},
+		
+	"el faro (exterior)": {
+		"name": "el faro",
+		"background": "lighthouse",
+		"description": "Un antiguo faro abandonado que fue usado para guiar a los barcos mercantiles en épocas pasadas.",
+		"npc_count": 3,
+		"role_type": "dangerous",
+		"npc_type": "bandido",
+		"force_dialogue": false,
+		"permanent_npc_ids": [],
+		"warps": ["la puerta principal", "el faro"]
+	},
+		"el faro": {
+			"name": "el faro",
+			"background": "lighthouse",
+			"description": "Un antiguo faro abandonado que fue usado para guiar a los barcos mercantiles en épocas pasadas.",
+			"npc_count": 3,
+			"role_type": "dangerous",
+			"npc_type": "bandido",
+			"force_dialogue": true,
+			"permanent_npc_ids": ["bandit_002", "wanderman_002"],
+			"warps": ["el faro (exterior)"]
+		},
+
 
 	"la sastrería": {
 		"name": "La sastrería",
@@ -62,7 +180,8 @@
 		"role_category": "common",
 		"npc_type": "tejedor",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["tailor_001"]
+		"permanent_npc_ids": ["tailor_001"],
+		"warps": ["el mercado"]
 	},
 
 	"la puerta principal": {
@@ -73,9 +192,22 @@
 		"role_category": "military",
 		"npc_type": "guardia",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["guard_001", "guard_002"]
+		"permanent_npc_ids": ["guard_001", "guard_002"],
+		"warps": ["la plaza principal", "el mercado", "el faro (exterior)", "las ruinas", "la puerta hacia el castillo"]
 	},
     
+	"las ruinas": {
+		"name": "las ruinas",
+		"background": "dungate",
+		"description": "La entrada a la mazmorra de Kael’Tharok. La gran puerta metálica pareciera inamovible al paso de los siglos.",
+		"npc_count": 0,
+		"role_category": "common",
+		"npc_type": "military",
+		"force_dialogue": false,
+		"permanent_npc_ids": [],
+		"warps": ["la puerta principal", "el interior de la mazmorra"]
+	},
+
 	"la puerta hacia el castillo": {
 		"name": "La puerta hacia el castillo",
 		"background": "",
@@ -84,7 +216,8 @@
 		"role_category": "military",
 		"npc_type": "guardia real",
 		"force_dialogue": true,
-		"permanent_npc_ids": ["royalguard_001", "royalguard_002"]
+		"permanent_npc_ids": ["royalguard_001", "royalguard_002"],
+		"warps": ["la puerta principal"]
 	}
 }
 

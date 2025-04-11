@@ -189,7 +189,12 @@ export function showDialog(scene) {
         if (dialog.image) {
             scene.npcImage.style.display = "block"
             scene.npcImage.src = dialog.image
-
+            
+            scene.npcImage.style.objectFit = "contain"
+            scene.npcImage.style.width = "100%"
+            scene.npcImage.style.height = "auto"
+            //borde negro
+            scene.npcImage.style.filter = "drop-shadow(0 15px 15px rgba(0,0,0,1))"            
         } else {
             scene.npcImage.style.display = "none"
         }
@@ -221,13 +226,15 @@ export function resize_bg(scene) {
     }
     const width = scene.scale.width
     const height = scene.scale.height
-    let newWidth = width, newHeight = width * CONFIG.SCREEN.RATIO
-
-    if (newHeight > height) {
-        newHeight = height
-        newWidth = height * CONFIG.SCREEN.RATIO
-    }
-
+    // Dimensiones originales de la imagen de fondo
+    const bgWidth = scene.bg.width
+    const bgHeight = scene.bg.height
+    // Calcular factores de escala para cubrir la pantalla
+    const scaleX = width / bgWidth
+    const scaleY = height / bgHeight
+    const scale = Math.max(scaleX, scaleY)
+    const newWidth = bgWidth * scale
+    const newHeight = bgHeight * scale
 
     scene.bg.setPosition(width / 2, height / 2)
     scene.bg.setDisplaySize(newWidth, newHeight)

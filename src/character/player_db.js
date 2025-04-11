@@ -14,6 +14,7 @@ export const job_stats = {
         stats: { str: 25, vit: 20, agi: 8, dex: 12, wis: 8, sou: 15 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "barbarian",
+        battle_image: "barbarian_idle",
         description: {
             class: 'La definición perfecta de fuerza bruta.\nProveniente del norte profundo. Probablemente una figura que no pasa desapercibida.\n',
             card: ''
@@ -35,6 +36,7 @@ export const job_stats = {
         stats: { str: 5, vit: 10, agi: 14, dex: 13, wis: 25, sou: 19 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "wizard",
+        battle_image: "wizard_idle",
         description: {
             class: 'Su insuperable potencia mágica con un posicionamiento estratégico les brinda a los grupos de aventureros la posibilidad de gestionar situaciones de peligro normalmente inviables.\n',
             card: ''
@@ -56,6 +58,7 @@ export const job_stats = {
         stats: { str: 10, vit: 12, agi: 20, dex: 25, wis: 11, sou: 11 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "archer",
+        battle_image: "archer_idle",
         description: {
             class: 'Combina su gran maestría, destreza, artilugios como trampas y su alto conocimiento del terreno con una gran capacidad de supervivencia.\n',
             card: ''
@@ -77,6 +80,7 @@ export const job_stats = {
         stats: { str: 9, vit: 11, agi: 23, dex: 21, wis: 16, sou: 13 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "rogue",
+        battle_image: "_idle",
         description: {
             class: 'Maestro de las sombras, especialista en venenos, agilidad y sigilo.\nSus rápidos movimientos y ataques críticos lo convierten en un peligro constante para sus enemigos.\n',
             card: ''
@@ -98,6 +102,7 @@ export const job_stats = {
         stats: { str: 8, vit: 16, agi: 11, dex: 11, wis: 18, sou: 25 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "sorcerer",
+        battle_image: "_idle",
         description: {
             class: 'Canaliza su espíritu para desatar poderosos conjuros defensivos.\nEs capaz de manejar energía espiritual para ataque o defensa.\n',
             card: ''
@@ -119,6 +124,7 @@ export const job_stats = {
         stats: { str: 10, vit: 25, agi: 9, dex: 10, wis: 15, sou: 16 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "cleric",
+        battle_image: "_idle",
         description: {
             class: 'El mejor y más robusto pilar de apoyo y supervivencia.\nPosee habilidades curativas y una gran vitalidad que lo convierten en el protector ideal de cualquier grupo.\n',
             card: ''
@@ -140,6 +146,7 @@ export const job_stats = {
         stats: { str: 21, vit: 22, agi: 10, dex: 12, wis: 7, sou: 13 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "warrior",
+        battle_image: "_idle",
         description: {
             class: 'Fuerza bruta y fortaleza en partes iguales.\nMaestro con hachas arrojadizas y ataques furtivos.\n',
             card: ''
@@ -161,6 +168,7 @@ export const job_stats = {
         stats: { str: 15, vit: 15, agi: 15, dex: 15, wis: 15, sou: 15 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "fighter",
+        battle_image: "_idle",
         description: {
             class: 'Luchador nacido en el fragor de incontables guerras. Versátil y eficiente.\nSu capacidad de adaptación le ha permitido sobrevivir en campos de batalla interminables.\n',
             card: ''
@@ -182,6 +190,7 @@ export const job_stats = {
         stats: { str: 18, vit: 13, agi: 16, dex: 14, wis: 12, sou: 15 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "monk",
+        battle_image: "_idle",
         description: {
             class: 'Combina una poderosa fuerza física y espiritual.\nCanaliza y dirige el Ki para endurecer su cuerpo como el acero.\nEs versátil, con habilidadades para desempeñar cualquier rol.\n',
             card: ''
@@ -203,6 +212,7 @@ export const job_stats = {
         stats: { str: 12, vit: 12, agi: 14, dex: 21, wis: 15, sou: 11 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "bard",
+        battle_image: "bard_idle",
         description: {
             class: 'Inspira a sus aliados con canciones y cuentos heróicos.\nEs una clase de soporte con alta destreza y utilidad táctica en combate.\n',
             card: ''
@@ -224,6 +234,7 @@ export const job_stats = {
         stats: { str: 11, vit: 13, agi: 20, dex: 20, wis: 9, sou: 12 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "ranger",
+        battle_image: "ranger_idle",
         description: {
             class: 'Domina el terreno con su velocidad y habilidad.\nExperto en supervivencia y maestro con ballestas.\n',
             card: ''
@@ -245,6 +256,7 @@ export const job_stats = {
         stats: { str: 18, vit: 10, agi: 17, dex: 18, wis: 12, sou: 11 },
         role_stats: { cha: '', per: '', ins: '', kno: '' },
         job_image: "slayer",
+        battle_image: "slayer_idle",
         description: {
             class: 'Combina la versatilidad de un luchador con una velocidad y astucia implacables.\nEspecialista en armas duales.',
             card: ''

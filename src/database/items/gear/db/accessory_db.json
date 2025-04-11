@@ -2,55 +2,109 @@
     "ring": {
         "name": "Anillo",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 1,
         "mdef": 0,
         "stats": { "str": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "💍",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+
     },
     "earring": {
         "name": "Pendiente",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 0,
         "mdef": 2,
         "stats": { "wis": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "💍",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+        
     },
     "bracelet": {
         "name": "Brazalete",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 2,
         "mdef": 0,
         "stats": { "sou": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "💍",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+        
     },
     "circlet": {
         "name": "Diadema",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 1,
         "mdef": 1,
         "stats": { "dex": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "💍",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+        
     },
     "glasses": {
         "name": "Gafas",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 0,
         "mdef": 0,
         "stats": { "wis": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "👓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+        
     },
     "blinker": {
         "name": "Cinta",
         "type": "accessory",
+        "desc": "",
         "class": ["all"],
         "def": 0,
         "mdef": 1,
         "stats": { "vit": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "👓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
+        
     }
 }

@@ -4,12 +4,72 @@
             "id": 1,
             "name": "Esqueleto",
             "icon": "💀",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
+            "image": "skeleton",
+            "scale": 0.25,
+            "offsetY": 0,
+
+            "hp": 37,
+            "atk": 8, "matk": 1,
+            "def": 4, "mdef": 1,
             "stats": {
-                "str": 12, "agi": 6, "vit": 1,
-                "wis": 3, "dex": 6, "sou": 4
+                "str": 6, "agi": 6, "vit": 1,
+                "wis": 3, "dex": 5, "sou": 4
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "short_sword": 7,
+                "skel-bone": 0.5,
+                "skeleton_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Corte",
+                "skill_02": "Golpe"
+            }
+        },
+        "elite_skeleton": {
+            "id": 22,
+            "name": "Esqueleto",
+            "icon": "💀",
+            "image": "eliteskeleton",
+            "scale": 0.25,
+            "offsetY": 0,
+
+            "hp": 51,
+            "atk": 12, "matk": 1,
+            "def": 7, "mdef": 1,
+            "stats": {
+                "str": 9, "agi": 8, "vit": 1,
+                "wis": 4, "dex": 6, "sou": 5
+            },
+            "magical_basic_hit": false,
+            "element": "undead",
+            "element_level": 1,
+            "loot": {
+                "short_sword": 7,
+                "skel-bone": 0.5,
+                "skeleton_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Corte",
+                "skill_02": "Golpe"
+            }
+        },
+        "nightmare_skeleton": {
+            "id": 23,
+            "name": "Esqueleto",
+            "icon": "💀",
+            "image": "nightmareskeleton",
+            "scale": 0.3,
+            "offsetY": 0,
+
+            "hp": 69,
+            "atk": 15, "matk": 3,
+            "def": 8, "mdef": 4,
+            "stats": {
+                "str": 11, "agi": 11, "vit": 1,
+                "wis": 5, "dex": 8, "sou": 5
             },
             "magical_basic_hit": false,
             "element": "undead",
@@ -28,6 +88,10 @@
             "id": 2,
             "name": "Momia",
             "icon": "🧟",
+            "image": "mummy",
+            "scale": 0.3,
+            "offsetY": 0,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -48,10 +112,14 @@
                 "skill_02": "Empujón"
             }
         },
-        "zombie": {
+        "ragged_zombie": {
             "id": 3,
             "name": "Zombi",
             "icon": "🧟",
+            "image": "raggedzombie",
+            "scale": 0.3,
+            "offsetY": 0,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -71,15 +139,18 @@
                 "skill_02": "Golpe"
             }
         },
-        "bat": {
+        "barpy": {
             "id": 4,
-            "name": "Murciélago",
+            "name": "Barpi",
             "icon": "🦇",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
+            "image": "barpy",
+            "scale": 0.4,
+            "offsetY": 60,
+            "hp": 19,
+            "atk": 4, "matk": 1,
+            "def": 2, "mdef": 1,
             "stats": {
-                "str": 3, "agi": 5, "vit": 1,
+                "str": 5, "agi": 8, "vit": 3,
                 "dex": 2, "wis": 0, "sou": 0
             },
             "magical_basic_hit": false,
@@ -94,57 +165,14 @@
                 "skill_01": "Ultrasonido"
             }
         },
-        "archer_skeleton": {
-            "id": 6,
-            "name": "Esqueleto Arquero",
-            "icon": "💀",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 4, "agi": 9, "vit": 1,
-                "wis": 2, "dex": 10, "sou": 5
-            },
-            "magical_basic_hit": false,
-            "element": "undead",
-            "element_level": 1,
-            "loot": {
-                "bone_arrow": 0.4,
-                "archer_skeleton_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Flechazo",
-                "skill_02": "Disparo Certero",
-                "skill_03": "Lluvia de flechas"
-            }
-        },
-        "skeleton_shielder": {
-            "id": 7,
-            "name": "Esqueleto Escudero",
-            "icon": "💀",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 10, "agi": 3, "vit": 1,
-                "dex": 9, "wis": 2, "sou": 3
-            },
-            "magical_basic_hit": false,
-            "element": "undead",
-            "element_level": 1,
-            "loot": {
-                "shield_fragment": 0.25,
-                "shielder_card": 0.02
-            },
-            "skill": {
-                "skill_02": "Corte",
-                "skill_01": "Bloqueo"
-            }
-        },
         "skeleton_crossbowman": {
             "id": 8,
             "name": "Esqueleto Ballestero",
             "icon": "💀",
+            "image": "skeletoncrossbowman",
+            "scale": 0.3,
+            "offsetY": 0,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -168,6 +196,62 @@
             "id": 9,
             "name": "Slime",
             "icon": "🦠",
+            "image": "slime",
+            "scale": 0.3,
+            "offsetY": 165,
+
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 7, "vit": 1,
+                "dex": 8, "wis": 2, "sou": 3
+            },
+            "magical_basic_hit": true,
+            "element": "neutral",
+            "element_level": 1,
+            "loot": {
+                "slime_jelly": 0.4,
+                "slime_card": 0.02
+            },
+                "skill": {
+                "skill_01": "Escupir"
+            }
+        },
+        "elite_slime": {
+            "id": 24,
+            "name": "Slime",
+            "icon": "🦠",
+            "image": "eliteslime",
+            "scale": 0.5,
+            "offsetY": 165,
+
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 1, "agi": 7, "vit": 1,
+                "dex": 8, "wis": 2, "sou": 3
+            },
+            "magical_basic_hit": true,
+            "element": "fire",
+            "element_level": 1,
+            "loot": {
+                "slime_jelly": 0.4,
+                "slime_card": 0.02
+            },
+                "skill": {
+                "skill_01": "Escupir"
+            }
+        },
+        "poisonous_slime": {
+            "id": 25,
+            "name": "Slime",
+            "icon": "🦠",
+            "image": "poisonousslime",
+            "scale": 0.4,
+            "offsetY": 165,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -190,6 +274,10 @@
             "id": 10,
             "name": "Lobo",
             "icon": "🐺",
+            "image": "wolf",
+            "scale": 0.3,
+            "offsetY": 165,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -211,83 +299,43 @@
                 "skill_04": "Huida"
             }
         },
-        "spider": {
-            "id": 5,
-            "name": "Araña",
-            "icon": "🕷️",
+        "ice_wolf": {
+            "id": 26,
+            "name": "Lobo de hielo",
+            "icon": "🐺",
+            "image": "icewolf",
+            "scale": 0.35,
+            "offsetY": 165,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
             "stats": {
-                "str": 4, "agi": 9, "vit": 9,
-                "wis": 1, "dex": 3, "sou": 3
+                "str": 7, "agi": 8, "vit": 3,
+                "wis": 2, "dex": 6, "sou": 5
             },
             "magical_basic_hit": false,
-            "element": "poison",
-            "element_level": 1,
+            "element": "neutral",
+            "element_level": 0,
             "loot": {
-                "spider_silk": 0.3,
-                "spider_leg": 0.35,
-                "spider_card": 0.02
+                "wolf_skin": 0.25,
+                "wolf_card": 0.02
             },
             "skill": {
-                "skill_01": "Picadura",
-                "skill_02": "Telaraña pegajosa"
+                "skill_01": "Mordisco",
+                "skill_02": "Aullido",
+                "skill_03": "Mofa",
+                "skill_04": "Huida"
             }
         },
-        "giant_spider": {
-            "id": 11,
-            "name": "Araña Gigante",
-            "icon": "🕷️",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 6, "agi": 6, "vit": 12,
-                "wis": 1, "dex": 2, "sou": 4
-            },
-            "magical_basic_hit": false,
-            "element": "poison",
-            "element_level": 1,
-            "loot": {
-                "spider_silk": 0.55,
-                "spider_leg": 0.35,
-                "giant_spider_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Picadura",
-                "skill_02": "Escupir"
-            }
-        },
-        "living_armor": {
-            "id": 12,
-            "name": "Armadura Viviente",
-            "icon": "⚔️",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 14, "agi": 5, "vit": 8,
-                "wis": 4, "dex": 11, "sou": 1
-            },
-            "magical_basic_hit": false,
-            "element": "dark",
-            "element_level": 2,
-            "loot": {
-                "armor_scrap": 0.3,
-                "long_sword": 0.1,
-                "living_armor_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Corte",
-                "skill_02": "Corte circular",
-                "skill_03": "Culatazo"
-            }
-        },
-        "stone_gargoyle": {
+        "gargoyle": {
             "id": 13,
             "name": "Gárgola de Piedra",
             "icon": "🦇",
+            "image": "gargoyle",
+            "scale": 0.3,
+            "offsetY": 0,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
@@ -308,191 +356,60 @@
                 "skill_03": "Mirada Pétrea"
             }
         },
-        "fliying_head": {
+        "kobold": {
             "id": 14,
-            "name": "Cabeza Voladora",
+            "name": "Kobold",
             "icon": "🦇",
+            "image": "kobold",
+            "scale": 0.3,
+            "offsetY": 165,
+
             "hp": 1,
             "atk": 1, "matk": 1,
             "def": 1, "mdef": 1,
             "stats": {
-                "str": 4, "agi": 9, "vit": 5,
-                "wis": 5, "dex": 6, "sou": 1
-            },
-            "magical_basic_hit": false,
-            "element": "dark",
-            "element_level": 1,
-            "loot": {
-                "flying_head_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Mordisco",
-                "skill_02": "Alarido",
-                "skill_03": "Impulso"
-            }
-        },
-        "dwarf": {
-            "id": 15,
-            "name": "Enano",
-            "icon": "🧝",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 14, "agi": 3, "vit": 15,
-                "wis": 2, "dex": 7, "sou": 5
-            },
-            "magical_basic_hit": false,
-            "element": "neutral",
-            "element_level": 1,
-            "loot": {
-                "dwarf_axe": 10,
-                "dwarf_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Hachazo",
-                "skill_02": "Cabezazo"
-            }
-        },
-        "shadow": {
-            "id": 16,
-            "name": "Sombra",
-            "icon": "👻",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 1, "agi": 11, "vit": 1,
-                "wis": 9, "dex": 11, "sou": 14
-            },
-            "magical_basic_hit": true,
-            "element": "dark",
-            "element_level": 3,
-            "loot": {
-                "shadow_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Maldición",
-                "skill_02": "Forma etérea",
-                "skill_03": "Persecución"
-            }
-        },
-        "giant_mushroom": {
-            "id": 17,
-            "name": "Hongo Gigante",
-            "icon": "🍄",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 1, "agi": 1, "vit": 7,
-                "wis": 5, "dex": 1, "sou": 1
-            },
-            "magical_basic_hit": false,
-            "element": "poison",
-            "element_level": 3,
-            "loot": {
-                "mushroom_spore": 0.35,
-                "giant_mushroom_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Golpe",
-                "skill_02": "Disparo de esporas",
-                "skill_03": "Tormenta venenosa"
-            }
-        },
-        "fire_elemental": {
-            "id": 18,
-            "name": "Elemental de Fuego",
-            "icon": "🌋",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 1, "agi": 8, "vit": 14,
-                "wis": 11, "dex": 9, "sou": 13
-            },
-            "magical_basic_hit": true,
-            "element": "fire",
-            "element_level": 1,
-            "loot": {
-                "fire_elemental_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Bola de fuego",
-                "skill_02": "Presión"
-            }
-        },
-        "water_elemental": {
-            "id": 19,
-            "name": "Elemental de Agua",
-            "icon": "🌊",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 8, "agi": 2, "vit": 19,
-                "wis": 7, "dex": 2, "sou": 9
-            },
-            "magical_basic_hit": true,
-            "element": "water",
-            "element_level": 1,
-            "loot": {
-                "ice_stone": 0.45,
-                "water": 1
-            },
-            "skill": {
-                "skill_01": "Disparo a presión",
-                "skill_02": "Humedad"
-            }
-        },
-        "chobekko": {
-            "id": 20,
-            "name": "Chobekko",
-            "icon": "🦩",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 7, "agi": 14, "vit": 8,
-                "wis": 3, "dex": 8, "sou": 2
-            },
-            "magical_basic_hit": false,
-            "element": "fire",
-            "element_level": 2,
-            "loot": {
-                "bird_wing": 0.55,
-                "bird_claw": 0.25,
-                "chobekko_card": 0.02
-            },
-            "skill": {
-                "skill_01": "Picotazo",
-                "skill_02": "Golpe rápido"
-            }
-        },
-        "golem": {
-            "id": 21,
-            "name": "Gólem",
-            "icon": "🏔️",
-            "hp": 1,
-            "atk": 1, "matk": 1,
-            "def": 1, "mdef": 1,
-            "stats": {
-                "str": 25, "agi": 1, "vit": 20,
-                "wis": 1, "dex": 1, "sou": 1
+                "str": 12, "agi": 3, "vit": 9,
+                "wis": 5, "dex": 3, "sou": 8
             },
             "magical_basic_hit": false,
             "element": "earth",
-            "element_level": 3,
+            "element_level": 2,
             "loot": {
-                "stone": 1,
-                "sand": 1,
-                "golem_card": 0.02
+                "gargoyle_fragment": 0.3,
+                "stone_gargoyle_card": 0.02
             },
             "skill": {
-                "skill_01": "Pedrada",
-                "skill_02": "Golpe sísmico",
-                "skill_03": "Endurecer"
+                "skill_01": "Mordisco",
+                "skill_02": "Pedrada",
+                "skill_03": "Mirada Pétrea"
+            }
+        },
+        "draco": {
+            "id": 15,
+            "name": "Draco",
+            "icon": "🦇",
+            "image": "draco",
+            "scale": 0.3,
+            "offsetY": 165,
+
+            "hp": 1,
+            "atk": 1, "matk": 1,
+            "def": 1, "mdef": 1,
+            "stats": {
+                "str": 12, "agi": 3, "vit": 9,
+                "wis": 5, "dex": 3, "sou": 8
+            },
+            "magical_basic_hit": false,
+            "element": "earth",
+            "element_level": 2,
+            "loot": {
+                "gargoyle_fragment": 0.3,
+                "stone_gargoyle_card": 0.02
+            },
+            "skill": {
+                "skill_01": "Mordisco",
+                "skill_02": "Pedrada",
+                "skill_03": "Mirada Pétrea"
             }
         }
     }

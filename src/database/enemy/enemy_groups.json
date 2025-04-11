@@ -1,0 +1,298 @@
+{
+    "enemy_groups": [
+        {
+            "name": "crypts_low_01",
+            "weight": 0,
+            "members": [
+                { "monster_name": "skeleton", "position": "enemy" }
+            ]
+        },
+        {
+            "name": "crypts_low_02",
+            "weight": 0,
+            "members": [
+                { "monster_name": "mummy", "position": "enemy" }
+            ]
+        },
+        {
+            "name": "crypts_low_03",
+            "weight": 0,
+            "members": [
+                { "monster_name": "ragged_zombie", "position": "enemy" }
+            ]
+        },
+        {
+            "name": "crypts_low_04",
+            "weight": 0,
+            "members": [
+                { "monster_name": "slime", "position": "enemy" }
+            ]
+        },
+        {
+            "name": "crypts_low_05",
+            "weight": 0,
+            "members": [
+                { "monster_name": "ragged_zombie", "position": "enemy" },
+                { "monster_name": "mummy", "position": "enemy2" }
+            ]
+        },
+        {
+            "name": "crypts_low_06",
+            "weight": 0,
+            "members": [
+                { "monster_name": "skeleton", "position": "enemy" },
+                { "monster_name": "skeleton", "position": "enemy2" }
+            ]
+        },
+        {
+            "name": "crypts_low_07",
+            "weight": 0,
+            "members": [
+                { "monster_name": "wolf", "position": "enemy" },
+                { "monster_name": "ragged_zombie", "position": "enemy2" }
+            ]
+        },
+        {
+            "name": "crypts_low_08",
+            "weight": 0,
+            "members": [
+                { "monster_name": "wolf", "position": "enemy" },
+                { "monster_name": "elite_skeleton", "position": "enemy2" }
+            ]
+        },
+        {
+            "name": "crypts_low_09",
+            "weight": 0,
+            "members": [
+                { "monster_name": "slime", "position": "enemy" },
+                { "monster_name": "skeleton", "position": "enemy2" }
+            ]
+        },
+        {
+            "name": "crypts_low_10",
+            "weight": 0,
+            "members": [
+                { "monster_name": "slime", "position": "enemy" },
+                { "monster_name": "slime", "position": "enemy2" },
+                { "monster_name": "slime", "position": "enemy3" }
+            ]
+        },
+        {
+            "name": "crypts_low_11",
+            "weight": 0,
+            "members": [
+                { "monster_name": "wolf", "position": "enemy" },
+                { "monster_name": "wolf", "position": "enemy2" },
+                { "monster_name": "wolf", "position": "enemy3" }
+            ]
+        },
+        {
+            "name": "crypts_low_12",
+            "weight": 0,
+            "members": [
+                { "monster_name": "skeleton", "position": "enemy" },
+                { "monster_name": "ragged_zombie", "position": "enemy2" },
+                { "monster_name": "mummy", "position": "enemy3" }
+            ]
+        },
+        {
+            "name": "crypts_low_13",
+            "weight": 0,
+            "members": [
+                { "monster_name": "wolf", "position": "enemy" },
+                { "monster_name": "slime", "position": "enemy2" },
+                { "monster_name": "skeleton", "position": "enemy3" }
+            ]
+        },
+
+
+
+        {
+            "name": "crypts_mid_01",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_02",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_03",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_04",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_05",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_06",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_07",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_08",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_09",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_mid_10",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+
+
+
+        {
+            "name": "crypts_high_01",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_02",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_03",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_04",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_05",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_06",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_07",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_08",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_09",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_10",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_11",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_12",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        },
+        {
+            "name": "crypts_high_13",
+            "weight": 0,
+            "members": [
+                { "monster_name": "", "position": "enemy" }
+
+            ]
+        }
+    ]
+}

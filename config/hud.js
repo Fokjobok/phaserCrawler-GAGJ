@@ -17,7 +17,7 @@ export function createHUD(scene) {
   
         if (member) {
             // Obtener la imagen y colores
-            let imageUrl = `assets/characters/hud/${member.job}.png`
+            let imageUrl = `assets/characters/hud/${member.job}.webp`
             let borderColor = member.getColorAsHex ? member.getColorAsHex() : 'white'
             let bgColor = member.getColorAsRGBA ? member.getColorAsRGBA(0.3) : 'rgba(0, 0, 0, 0.8)'
 
@@ -54,7 +54,10 @@ export function createHUD(scene) {
             const line11 = document.createElement('div')
             line11.textContent = `${member.name}`
             const line12 = document.createElement('div')
-            line12.textContent = `${member.job}`
+
+            const jobCapitalized = member.job.charAt(0).toUpperCase() + member.job.slice(1)
+
+            line12.textContent = `${(jobCapitalized)}`
             const line13 = document.createElement('div')
             line13.textContent = `Nv: ${member.level || 1}`
 

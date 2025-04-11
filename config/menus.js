@@ -53,7 +53,7 @@ export function showShopMenu(scene) {
 }
 
 export function showScenarioMenu(scene) {
-    showMenu(['🗣️ Hablar', '🔍 Explorar', '🛤️ Viajar', '🎒 Inventario', '📊 Estado'], selection => {
+    showMenu(['🗣️ Hablar', '🔍 Explorar', '🛤️ Viajar', '🎒 Inventario', '📊 Estado', '❓ Misiones'], selection => {
         console.log(`Opción de escenario seleccionada: ${selection}`)
         switch (selection) {
 
@@ -76,6 +76,11 @@ export function showScenarioMenu(scene) {
 
             case '📊 Estado':
                 showStatusCards(scene)
+                break
+
+            case '❓ Misiones':
+                showQuestLog(scene, scene.player)
+                break
 
             default:
                 showScenarioMenu(scene)
@@ -144,19 +149,48 @@ export function showInventoryMenu(scene, player) {
             msg.textContent = ""
             contentArea.appendChild(msg)
         } else {
-            filteredItems.forEach(item => {
+                // Agrupar los items que no sean de tipo "armor"
+                let stackable = {}
+                let nonStackable = []
+
+                filteredItems.forEach(item => {
+                    // Si el item es de tipo "equipment" no se agrupa, sino, se agrupa
+                    if (item.category !== 'armor') {
+                        let key = item.id || item.name
+                        if (stackable[key]) {
+                            stackable[key].quantity += item.quantity || 1
+                        }
+                        else {
+                            // Clonar el item y forzar la cantidad
+                            stackable[key] = { ...item }
+                            stackable[key].quantity = item.quantity || 1
+                        }
+                    }
+                    else {
+                        nonStackable.push(item)
+                    }
+            })
+
+            // Renderizar los items agrupados
+            for (let key in stackable) {
+                const aggItem = stackable[key]
                 const btn = document.createElement('button')
                 btn.className = 'inventoryRow'
-
+                btn.textContent = `${aggItem.icon} ${aggItem.name} x${aggItem.quantity}`
+                btn.title = `Cantidad: ${aggItem.quantity}\n${aggItem.desc || 'Sin descripción.'}`
+                contentArea.appendChild(btn)
+            }
+            // Renderizar los items no agrupados (por ejemplo, armor)
+            nonStackable.forEach(item => {
+                const btn = document.createElement('button')
+                btn.className = 'inventoryRow'
                 const quantity = item.quantity || 1
-                btn.textContent = `${item.icon} ${item.name} x${quantity}`
+                btn.textContent = `${item.icon} ${item.name}`
                 btn.title = `Cantidad: ${quantity}\n${item.desc || 'Sin descripción.'}`
-
-
-                
-
                 contentArea.appendChild(btn)
             })
+
+
         }
     }
 
@@ -181,6 +215,97 @@ export function showInventoryMenu(scene, player) {
 
 
 
+
+function getQuestIcon(npc, player) {
+    // Prioridad máxima: el jugador tiene una misión completada (hay que cobrarla)
+    if (player && player.mission && player.mission.completed) {
+        return "❓"
+    }
+    // Si el NPC tiene asignada una misión y es diferente a la que tiene el jugador (o el jugador no tiene ninguna),
+    // entonces se muestra la misión del NPC según su tipo
+    if (npc && npc.mission) {
+        if (!player.mission || (player.mission && player.mission.id !== npc.mission.id)) {
+            if (npc.mission.type === 'main') {
+                return "❗️"
+            }
+            if (npc.mission.type === 'secondary') {
+                return "❕"
+            }
+        }
+    }
+    // Si el jugador tiene una misión pendiente sin completar
+    if (player && player.mission && !player.mission.completed) {
+        return "❔"
+    }
+    return ""
+}
+
+function showQuestDialogue(npc, scene) {
+    const quest = npc.mission
+    // Prepara el texto de la misión con título y detalles
+    const questText = `${npc.name} te está ofreciendo la misión:\n"${quest.title}"\n\nDetalles:\n${quest.steps.join("\n")}\n\nPresiona Z para leer y luego se te preguntará: ¿Aceptas la misión?`
+    
+    // Crea un objeto diálogo para la misión
+    const questDialog = {
+        text: [questText],
+        speakerName: npc.name,
+        image: `assets/npcs/${npc.image_path}.webp`
+    }
+    // Guarda la conversación original para restaurarla después
+    const originalDialogs = scene.dialogs
+    scene.dialogs = [questDialog]
+    scene.currentIndex = 0
+    // Llama a showDialog para mostrar el texto letra a letra
+    showDialog(scene)
+    
+    // Después de un delay (ajusta el tiempo según la longitud del texto)
+    setTimeout(() => {
+        // Crea un modal para elegir "Aceptar" o "Rechazar"
+        const container = document.createElement('div')
+        container.id = 'questChoiceContainer'
+        container.style.position = 'fixed'
+        container.style.top = '50%'
+        container.style.left = '50%'
+        container.style.transform = 'translate(-50%, -50%)'
+        container.style.backgroundColor = '#333'
+        container.style.color = '#fff'
+        container.style.padding = '20px'
+        container.style.border = '2px solid #fff'
+        container.style.zIndex = 1001
+
+        const choiceText = document.createElement('p')
+        choiceText.innerText = "¿Aceptas la misión?"
+        container.appendChild(choiceText)
+        
+        const acceptBtn = document.createElement('button')
+        acceptBtn.textContent = 'Aceptar'
+        acceptBtn.style.marginRight = '10px'
+        acceptBtn.onclick = () => {
+            // Asigna la misión al jugador (se hace una copia simple)
+            scene.player.mission = Object.assign({}, quest)
+            console.log(`Misión "${quest.title}" aceptada por el jugador`)
+            document.body.removeChild(container)
+            // Restaura los diálogos originales y continúa la interacción
+            scene.dialogs = originalDialogs
+            scene.startNPCDialog(npc)
+        }
+        container.appendChild(acceptBtn)
+        
+        const rejectBtn = document.createElement('button')
+        rejectBtn.textContent = 'Rechazar'
+        rejectBtn.onclick = () => {
+            console.log(`Misión "${quest.title}" rechazada por el jugador`)
+            document.body.removeChild(container)
+            // Restaura los diálogos originales y continúa la interacción
+            scene.dialogs = originalDialogs
+            scene.startNPCDialog(npc)
+        }
+        container.appendChild(rejectBtn)
+        
+        document.body.appendChild(container)
+    }, 6000) // Delay en milisegundos; ajustar según sea necesario
+}
+
 export function showNPCSubMenu(scene, player) {
     const container = document.createElement('div')
     container.id = 'npcTalkMenuContainer'
@@ -195,85 +320,67 @@ export function showNPCSubMenu(scene, player) {
         const row = document.createElement('div')
         row.className = 'npcRow'
         const affinity = (npc.affinity !== undefined) ? npc.affinity : '0'
-        
+    
         const npcDesc = document.createElement('div')
         npcDesc.className = 'npcDesc'
-        // Usar flex para distribuir el contenido a los extremos
         npcDesc.style.display = 'flex'
         npcDesc.style.justifyContent = 'space-between'
         npcDesc.style.width = '100%'
-        
+    
         const leftSpan = document.createElement('span')
         leftSpan.innerHTML = `<strong>${npc.name}</strong> - ${npc.role}`
-        
+    
         const rightSpan = document.createElement('span')
-        rightSpan.textContent = `❓: 0   💕: ${affinity}`
-        
+        rightSpan.textContent = `💞: ${affinity}`
         npcDesc.appendChild(leftSpan)
         npcDesc.appendChild(rightSpan)
         row.appendChild(npcDesc)
     
-
         const btnContainer = document.createElement('div')
         btnContainer.className = 'npcBtnContainer'
-
+    
+        // Botón de hablar: se asigna el icono solo una vez al crear el menú.
         const talkBtn = document.createElement('button')
-        talkBtn.textContent = '🗣️'
-
+        const questIcon = getQuestIcon(npc, scene.player)
+        talkBtn.textContent = questIcon ? questIcon : "🗣️"
         talkBtn.onclick = () => {
             document.body.removeChild(container)
             scene.startNPCDialog(npc)
-
         }
-
-
         btnContainer.appendChild(talkBtn)
-
+    
+        // Botones de tienda o venta se mantienen igual...
         if (npc.shop) {
             const buyBtn = document.createElement('button')
             buyBtn.textContent = '🛒'
-
             buyBtn.onclick = () => {
                 document.body.removeChild(container)
-
-
                 showStoreMenu(scene, npc)
             }
-
             btnContainer.appendChild(buyBtn)
-
-            
+    
             const sellBtn = document.createElement('button')
             sellBtn.textContent = '💰'
-
             sellBtn.onclick = () => {
                 document.body.removeChild(container)
-
-
                 showSellMenu(scene, scene.player)
-
             }
-
             btnContainer.appendChild(sellBtn)
-
-        } else {
+        }
+        else {
             const buyBtn = document.createElement('button')
             buyBtn.textContent = '🛒'
             buyBtn.disabled = true
             buyBtn.title = 'No disponible'
-
             btnContainer.appendChild(buyBtn)
-
-
+    
             const sellBtn = document.createElement('button')
             sellBtn.textContent = '💰'
             sellBtn.disabled = true
             sellBtn.title = 'No disponible'
-
             btnContainer.appendChild(sellBtn)
         }
-
-
+    
         row.appendChild(btnContainer)
         container.appendChild(row)
     })
@@ -353,10 +460,15 @@ export function showStoreMenu(scene, npc) {
             const minusBtn = document.createElement('button')
             minusBtn.textContent = '-'
             minusBtn.classList.add('minus-btn')
+            purchaseQuantities[itemKey] = purchaseQuantities[itemKey] || 0
+
             minusBtn.onclick = () => {
-                if (purchaseQuantities[itemKey] > 0) {
-                    purchaseQuantities[itemKey]--
-                    quantityDisplay.textContent = purchaseQuantities[itemKey]
+                // Convertir a número (por si acaso)
+                let currentQuantity = Number(purchaseQuantities[itemKey]) || 0
+                if (currentQuantity > 0) {
+                    currentQuantity--
+                    purchaseQuantities[itemKey] = currentQuantity
+                    quantityDisplay.textContent = currentQuantity
                     updateTotalCost()
                 }
             }
@@ -369,9 +481,15 @@ export function showStoreMenu(scene, npc) {
             plusBtn.textContent = '+'
             plusBtn.classList.add('plus-btn')
             plusBtn.onclick = () => {
-                purchaseQuantities[itemKey]++
-                quantityDisplay.textContent = purchaseQuantities[itemKey]
-                updateTotalCost()
+                // Comprobamos explícitamente si storeItem.quantity es un número
+                if (typeof storeItem.quantity === 'number' ? purchaseQuantities[itemKey] < storeItem.quantity : true) {
+                    purchaseQuantities[itemKey]++
+                    quantityDisplay.textContent = purchaseQuantities[itemKey]
+                    updateTotalCost()
+                }
+                else {
+                    alert("Has alcanzado el límite de compra para este artículo.")
+                }
             }
             
             quantityControl.appendChild(minusBtn)
@@ -395,7 +513,7 @@ export function showStoreMenu(scene, npc) {
     storeBtn.className = 'storeButtons'
 
     const buyBtn = document.createElement('button')
-    buyBtn.textContent = 'Comprar'
+    buyBtn.textContent = '🛒 Comprar'
     buyBtn.className = 'buyBtn'
     buyBtn.onclick = () => {
         const totalCost = calculateTotalCost()
@@ -404,14 +522,27 @@ export function showStoreMenu(scene, npc) {
             availableItems.forEach(storeItem => {
                 const itemData = getItemData(storeItem.cat, storeItem.id)
                 const itemKey = storeItem.id || (storeItem.cat + '_' + storeItem.name)
-                const quantity = purchaseQuantities[itemKey]
+                const quantity = purchaseQuantities[itemKey] || 0
+
                 for (let i = 0; i < quantity; i++) {
                     scene.player.addToInventory(itemData)
                 }
+
+                if (typeof storeItem.quantity === 'number') {
+                    storeItem.quantity -= quantity
+                    if (storeItem.quantity < 0) {
+                        storeItem.quantity = 0
+                    }
+                }
+                purchaseQuantities[itemKey] = 0
             })
             scene.player.gold -= totalCost
             alert(`Has comprado los artículos por un total de ${totalCost}`)
             updateTotalCost() // Actualizar el resumen
+
+            container.querySelectorAll('.quantityDisplay').forEach(display => {
+                display.textContent = '0'
+            })
         } else {
             alert('No tienes suficiente dinero')
         }
@@ -420,7 +551,7 @@ export function showStoreMenu(scene, npc) {
 
     const backBtn = document.createElement('button')
     backBtn.textContent = 'Volver'
-    backBtn.className = 'backBtn'
+    backBtn.className = '🔙 backBtn'
     backBtn.onclick = () => {
         container.remove()
         showNPCSubMenu(scene)
@@ -434,7 +565,7 @@ export function showStoreMenu(scene, npc) {
         let total = 0
         availableItems.forEach(storeItem => {
             const itemData = getItemData(storeItem.cat, storeItem.id)
-            const price = Number(itemData.price.buy)
+            const price = itemData && itemData.price && itemData.price.buy ? Number(itemData.price.buy) : 0
             const itemKey = storeItem.id || (storeItem.cat + '_' + storeItem.name)
             total += price * purchaseQuantities[itemKey]
         })
@@ -481,33 +612,33 @@ export function showSellMenu(scene, player) {
         container.appendChild(header)
 
         // Agrupar objetos por id (o nombre si no existe id)
-        const aggregated = {}
+        const stackable = {}
         player.inventory.forEach(item => {
             const key = item.id || item.name
             const qty = item.quantity || 1
-            if (aggregated[key]) {
-                aggregated[key].quantity += qty
+            if (stackable[key]) {
+                stackable[key].quantity += qty
             } else {
-                aggregated[key] = Object.assign({}, item)
-                aggregated[key].quantity = qty
+                stackable[key] = Object.assign({}, item)
+                stackable[key].quantity = qty
             }
         })
 
-        const aggregatedItems = Object.values(aggregated)
+        const stackableItems = Object.values(stackable)
         // Objeto para almacenar la cantidad a vender por cada artículo
         const sellQuantities = {}
-        aggregatedItems.forEach(group => {
+        stackableItems.forEach(group => {
             const key = group.id || group.name
             sellQuantities[key] = 0
         })
 
-        if (aggregatedItems.length === 0) {
+        if (stackableItems.length === 0) {
             const msg = document.createElement('p')
             msg.textContent = "Tu inventario está vacío."
             msg.style.color = 'white';
             container.appendChild(msg)
         } else {
-            aggregatedItems.forEach(group => {
+            stackableItems.forEach(group => {
                 const sellPrice = (group.price && group.price.sell) ? group.price.sell : 0
                 const row = document.createElement('div')
                 row.className = 'storeRow'
@@ -570,7 +701,7 @@ export function showSellMenu(scene, player) {
         storeBtn.className = 'storeButtons'
         const sellBtn = document.createElement('button')
         sellBtn.className = 'sellBtn'
-        sellBtn.textContent = 'Vender'
+        sellBtn.textContent = '💰 Vender'
         sellBtn.onclick = () => {
             const totalRevenue = calculateTotalRevenue()
             // Recorrer cada clave en sellQuantities y eliminar del inventario
@@ -594,14 +725,18 @@ export function showSellMenu(scene, player) {
             updateContent()
             updateTotalRevenue()
         }
-        storeBtn.appendChild(sellBtn)
+        if (stackableItems.length > 0) {
+            storeBtn.appendChild(sellBtn)
+        }
         storeBtn.appendChild(backBtn)
         container.appendChild(storeBtn)
+
         document.body.appendChild(container)
+
 
         function calculateTotalRevenue() {
             let total = 0
-            aggregatedItems.forEach(group => {
+            stackableItems.forEach(group => {
                 const sellPrice = (group.price && group.price.sell) ? group.price.sell : 0
                 const key = group.id || group.name
                 total += sellPrice * sellQuantities[key]
@@ -613,7 +748,7 @@ export function showSellMenu(scene, player) {
             const totalRevenue = calculateTotalRevenue()
             const goldTotal = player.gold
             const totalAfterSale = goldTotal + totalRevenue
-            if (aggregatedItems.length === 0) {
+            if (stackableItems.length === 0) {
                 summaryText.textContent = ""
             } else {
                 summaryText.textContent = `Dinero: ${goldTotal} + Ganancias: ${totalRevenue} = Total: ${totalAfterSale}`
@@ -633,10 +768,10 @@ export function showSellMenu(scene, player) {
 export function showTravelMenu(scene) {
     const existing = document.getElementById('travelMenuContainer')
     if (existing) existing.remove()
-  
+
     const container = document.createElement('div')
     container.id = 'travelMenuContainer'
-  
+
     function getBackgroundURL(background) {
         if (background.endsWith('.webp') || background.endsWith('.png')) {
             if (background.includes("module_"))
@@ -650,63 +785,48 @@ export function showTravelMenu(scene) {
             ? `assets/backgrounds/${background}.webp`
             : `assets/backgrounds/${background}.png`
     }
-    
-    // Uso en showTravelMenu para asignar el fondo:
-  
-    const scenarioKeys = Object.keys(scene.scenarioData).filter(key => key !== scene.currentScenarioKey)
 
-    scenarioKeys.forEach(key => {
+    // Obtenemos el escenario actual y su lista de warps
+    const currentScenario = scene.scenarioData[scene.currentScenarioKey]
+    const availableWarps = currentScenario.warps || []
+
+    availableWarps.forEach(key => {
         const scenario = scene.scenarioData[key]
+        if (!scenario) {
+            console.error(`El escenario "${key}" no existe en scenarioData`)
+            return
+        }
         const row = document.createElement('div')
         row.classList.add('travelRow')
-
+        row.style.cursor = "pointer"
         if (scenario.background) {
             row.style.backgroundImage = `url(${getBackgroundURL(scenario.background)})`
         }
-
         const nameSpan = document.createElement('span')
         nameSpan.textContent = scenario.name
         row.appendChild(nameSpan)
-
-        const visitBtn = document.createElement('button')
-        visitBtn.textContent = 'Visitar'
-
-        visitBtn.onclick = () => {
+        row.onclick = () => {
             container.remove()
             scene.currentScenarioKey = key
             import('../scenes/VnScene.js')
-
                 .then(module => {
                     if (typeof module.visitScenario === 'function')
                         module.visitScenario(scene, key)
-
                     else
                         console.error('visitScenario no es una función')
-
                 })
-
-
                 .catch(error => console.error('Error al importar VnScene:', error))
         }
-
-
-        row.appendChild(visitBtn)
         container.appendChild(row)
     })
-  
 
     const backBtn = document.createElement('button')
     backBtn.textContent = 'Volver'
     backBtn.className = 'backBtn'
-
     backBtn.onclick = () => {
         container.remove()
-
-
         showScenarioMenu(scene)
     }
-
-
     container.appendChild(backBtn)
     document.body.appendChild(container)
 }
@@ -855,10 +975,9 @@ export function showStatusCards(scene) {
     closeBtn.textContent = "X"
     closeBtn.onclick = () => {
         overlay.remove()
-        if (typeof scene.showMainMenu === "function")
-            scene.showMainMenu()
-        else
-            console.log("Volviendo al menú principal")
+        showScenarioMenu(scene)
+        console.log("Volviendo al menú de escenario")
+
     }
     container.appendChild(closeBtn)
 
@@ -960,7 +1079,7 @@ export function showStatusCards(scene) {
         // Se añade un bloque de pestañas en la "secondary-card"
         let cardHTML = `
             <div class="tab-bar">
-                <button class="tab" id="tab-info" style="background-color: ${subColor}; color: ${cardColor};">DETALLES</button>
+                <button class="tab" id="tab-info" style="background-color: ${cardColor}; color: ${subColor};">DETALLES</button>
                 <button class="tab" id="tab-tutorial" style="background-color: ${subColor}; color: ${cardColor};">TUTORIAL</button>
                 <button class="tab" id="tab-status-vit" style="background-color: ${subColor}; color: ${cardColor};">RESISTENCIA</button>
                 <button class="tab" id="tab-status-agi" style="background-color: ${subColor}; color: ${cardColor};">VERSATILIDAD</button>
@@ -1000,19 +1119,32 @@ export function showStatusCards(scene) {
 
         // Asignar eventos a las pestañas para cambiar el contenido
         const tabInfo = cardContent.querySelector('#tab-info')
-        const tabDetails = cardContent.querySelector('#tab-details')
-        const tabContent = cardContent.querySelector('#tab-content')
+        const tabTutorial = cardContent.querySelector('#tab-tutorial')
         const tabVIT = cardContent.querySelector('#tab-status-vit')
         const tabAGI = cardContent.querySelector('#tab-status-agi')
         const tabWIS = cardContent.querySelector('#tab-status-wis')
-
-
-        if (tabInfo && tabDetails && tabContent && tabVIT && tabAGI && tabWIS) {
+        const tabContent = cardContent.querySelector('#tab-content')
+        
+        function setActiveTab(activeTabId) {
+            const tabs = cardContent.querySelectorAll('.tab')
+            tabs.forEach(tab => {
+                if (tab.id === activeTabId) {
+                    tab.style.backgroundColor = cardColor
+                    tab.style.color = subColor
+                } else {
+                    tab.style.backgroundColor = subColor
+                    tab.style.color = cardColor
+                }
+            })
+        }
+        
+        if (tabInfo && tabTutorial && tabVIT && tabAGI && tabWIS && tabContent) {
             tabInfo.onclick = () => {
+                setActiveTab('tab-info')
                 tabContent.innerHTML = `
                 <div class="info-content">
                     <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};"> ${player.name} </h2>
+                        <h2 class="card-title" style="color: ${cardColor};">${player.name}</h2>
                         <div class="card-body">
                             <div class="card-parameters">
                                 ${parametersHTML}
@@ -1024,12 +1156,51 @@ export function showStatusCards(scene) {
                     </div>
                 </div>`
             }
-            tabDetails.onclick = () => {
+            tabTutorial.onclick = () => {
+                setActiveTab('tab-tutorial')
                 tabContent.innerHTML = `
-                <div class="details-content">
-                <h2 class="card-title" style="color: ${cardColor};">DETALLES</h2>
-                    <div class="card-body">
-                        <p>Aquí se muestran instrucciones y consejos para utilizar la interfaz y gestionar tu personaje.</p>
+                <div class="tutorial-content">
+                    <div class="card-content-desc">
+                        <h2 class="card-title" style="color: ${cardColor};">Tutorial</h2>
+                        <div class="card-body">
+                            <p>Aquí se muestra la información del tutorial.</p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            tabVIT.onclick = () => {
+                setActiveTab('tab-status-vit')
+                tabContent.innerHTML = `
+                <div class="vit-content">
+                    <div class="card-content-desc">
+                        <h2 class="card-title" style="color: ${cardColor};">Resistencia</h2>
+                        <div class="card-body">
+                            <p>Información detallada sobre la resistencia del personaje.</p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            tabAGI.onclick = () => {
+                setActiveTab('tab-status-agi')
+                tabContent.innerHTML = `
+                <div class="agi-content">
+                    <div class="card-content-desc">
+                        <h2 class="card-title" style="color: ${cardColor};">Versatilidad</h2>
+                        <div class="card-body">
+                            <p>Información detallada sobre la agilidad y versatilidad del personaje.</p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            tabWIS.onclick = () => {
+                setActiveTab('tab-status-wis')
+                tabContent.innerHTML = `
+                <div class="wis-content">
+                    <div class="card-content-desc">
+                        <h2 class="card-title" style="color: ${cardColor};">Mentalidad</h2>
+                        <div class="card-body">
+                            <p>Información detallada sobre la sabiduría y mentalidad del personaje.</p>
+                        </div>
                     </div>
                 </div>`
             }
@@ -1037,6 +1208,143 @@ export function showStatusCards(scene) {
     }
 
     renderCard()
+}
+
+
+export function showQuestLog(scene, player) {
+    const container = document.createElement('div')
+    container.id = 'inventoryMenuContainer'  // Reutiliza el estilo del inventario
+
+    const header = document.createElement('div')
+    header.id = 'inventoryHeader'
+    header.textContent = 'Registro de Misiones - Activas'
+    container.appendChild(header)
+
+
+    // Crear barra de pestañas para filtrar las misiones
+    const tabBar = document.createElement('div')
+    tabBar.id = 'inventoryTabBar'
+    const tabs = [
+        { label: '', name: 'Activas', category: 'active', icon: '☀️' },
+        { label: '', name: 'Principales', category: 'main', icon: '🥇' },
+        { label: '', name: 'Secundarias', category: 'secondary', icon: '🥈' },
+        { label: '', name: 'Especiales', category: 'special', icon: '⭐️' },
+        { label: '', name: 'Completadas', category: 'completed', icon: '🏆' }
+    ]
+    tabs.forEach(tab => {
+        const btn = document.createElement('button')
+        btn.textContent = `${tab.icon} ${tab.label}`
+        btn.onclick = () => {   
+            Array.from(tabBar.children).forEach(child => child.classList.remove('selected'))
+            btn.classList.add('selected')
+            header.textContent = `Registro de Misiones - ${tab.name}`
+            updateContent(tab.category)
+        }
+        tabBar.appendChild(btn)
+    })
+    container.appendChild(tabBar)
+
+    const contentArea = document.createElement('div')
+    contentArea.id = 'inventoryContent'
+    container.appendChild(contentArea)
+
+    function updateContent(selectedCategory) {
+        contentArea.innerHTML = ''
+
+        let filteredQuests = []
+        if (selectedCategory === 'active') {
+            filteredQuests = player.quests.filter(q => !q.completed)
+        } else if (selectedCategory === 'main') {
+            filteredQuests = player.quests.filter(q => q.type === 'main' && !q.completed)
+        } else if (selectedCategory === 'secondary') {
+            filteredQuests = player.quests.filter(q => q.type === 'secondary' && !q.completed)
+        } else if (selectedCategory === 'special') {
+            filteredQuests = player.quests.filter(q => q.type === 'special' && !q.completed)
+        } else if (selectedCategory === 'completed') {
+            filteredQuests = player.quests.filter(q => q.completed)
+        } else {
+            filteredQuests = player.quests
+        }
+
+        if (filteredQuests.length === 0) {
+            const msg = document.createElement('p')
+            msg.textContent = "No tienes misiones en esta categoría."
+            contentArea.appendChild(msg)
+        } else {
+            filteredQuests.forEach(quest => {
+                const btn = document.createElement('button')
+                btn.className = 'inventoryRow'  // Reutiliza el estilo existente
+                const icon = getQuestLogIcon(quest)
+                btn.textContent = `${icon} ${quest.title}`
+                btn.title = `Detalles: ${quest.description}\nRecompensas: ${quest.rewards}`
+                btn.onclick = () => {
+                    showQuestDetail(scene, player, quest)
+                }
+                contentArea.appendChild(btn)
+            })
+        }
+    }
+    
+    updateContent('active')  // Por defecto, mostrar misiones activas
+
+    const footer = document.createElement('div')
+    footer.id = 'inventoryFooter'
+    const backBtn = document.createElement('button')
+    backBtn.textContent = 'Volver'
+    backBtn.onclick = () => {
+        const detail = document.getElementById('questDetailContainer')
+        if (detail) detail.remove()
+        container.remove()
+        showScenarioMenu(scene)
+    }
+    footer.appendChild(backBtn)
+    container.appendChild(footer)
+
+    document.body.appendChild(container)
+}
+
+function getQuestLogIcon(quest) {
+    if (quest.completed) return "❓"           // Misión completada: entregar para cobrar recompensas
+    if (quest.type === 'main') return "❗️"      // Misión principal activa
+    if (quest.type === 'secondary') return "❕" // Misión secundaria activa
+    if (quest.type === 'special') return "⭐️"   // Misión especial activa
+    return "❔"                                 // Por defecto, misión pendiente
+}
+
+function showQuestDetail(scene, player, quest) {
+    const detailContainer = document.createElement('div')
+    detailContainer.id = 'questDetailContainer'  // Reutiliza el estilo del menú de inventario
+
+    // Cabecera con el título de la misión
+    const header = document.createElement('div')
+    header.id = 'inventoryHeader'
+    header.textContent = quest.title
+    detailContainer.appendChild(header)
+
+    // Área de contenido para la descripción, recompensas y estado
+    const contentArea = document.createElement('div')
+    contentArea.id = 'inventoryContent'
+    contentArea.innerHTML = `
+        <p>${quest.description}</p>
+        <p><strong>Recompensa:</strong> ${quest.rewards}</p>
+        <p><strong>Estado:</strong> ${quest.completed ? 'Completada' : 'En progreso'}</p>
+    `
+    detailContainer.appendChild(contentArea)
+
+    // Contenedor de pie para el botón "Volver"
+    const footer = document.createElement('div')
+    footer.id = 'inventoryFooter'
+    const detailsBackBtn = document.createElement('button')
+    detailsBackBtn.textContent = 'Volver'
+    detailsBackBtn.onclick = () => {
+        detailContainer.remove()
+        // Al cerrar el detalle, se puede volver al registro de misiones
+
+    }
+    footer.appendChild(detailsBackBtn)
+    detailContainer.appendChild(footer)
+
+    document.body.appendChild(detailContainer)
 }
 
 

@@ -70,6 +70,29 @@ const CONFIG = {
             gold1_pastel:               [255, 235, 150],
             dark_green_pastel:          [170, 190, 160],
             dark_red_pastel:            [190, 150, 150],
+    },
+
+    // Sistema de batalla
+    // Posicionamiento de sprites
+    BATTLER_POSITIONS: {
+        player: { x: 400, y: 350 },
+        player2: { x: 280, y: 460 },
+        player3: { x: 60, y: 400 },
+        
+        enemy: { x: 1220, y: 280 },
+        enemy2: { x: 1420, y: 180 },
+        enemy3: { x: 970, y: 210 },
+    },
+
+    // Posicionamiento de barras de vida
+    HEALTHBAR_POSITIONS: {
+        player: { x: 620, y: 320 },
+        player2: { x: 310, y: 360 },
+        player3: { x: 90, y: 300 },
+
+        enemy: { x: 1400, y: 100 },
+        enemy2: { x: 1350, y: 200 },
+        enemy3: { x: 1250, y: 600 },
     }
 }
 

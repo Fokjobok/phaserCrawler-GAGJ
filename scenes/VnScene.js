@@ -108,7 +108,7 @@ export class VnScene extends Phaser.Scene {
     constructor() {
         super({ key: "VnScene" })
 
-        this.currentScenarioKey = "la herrería"  
+        this.currentScenarioKey = "la sastrería"  
 
     }
 
@@ -166,10 +166,12 @@ export class VnScene extends Phaser.Scene {
             npcChance: this.cache.json.get("npc_chances"),
             npcDialogs: this.cache.json.get("npc_dialogs"),
             npcAppearance: this.cache.json.get("npc_appearances"),
-            predefinedNpcs: this.cache.json.get("npc_predefined")
+            predefinedNpcs: this.cache.json.get("npc_predefined").predefinedNpcs,
+            storesDatabase: this.cache.json.get("npc_predefined").storesDatabase
 
         }
 
+        window.storesDatabase = dataForNPCs.storesDatabase
 
         window.itemDB = {
             consumable: this.cache.json.get("consumable"),     // database/items/common/db/consumable.json
@@ -193,7 +195,6 @@ export class VnScene extends Phaser.Scene {
         
 
         console.log("dataForNPCs:", dataForNPCs)
-        initNpcData(dataForNPCs)
 
         this.player = data.player
         this.player2 = data.player2
@@ -205,7 +206,9 @@ export class VnScene extends Phaser.Scene {
         createHUD(this)
 
 
+        this.player.quests = [
 
+        ]
 
         this.input.keyboard.on("keydown-Z", () => {
             console.log("🟢 Libre movimiento.")
@@ -226,7 +229,7 @@ export class VnScene extends Phaser.Scene {
         this.dialogs = [{
             text: [randomLine],
             speakerName: npc.name,
-            image: `assets/npcs/${npc.image_path}.png`
+            image: `assets/npcs/${npc.image_path}.webp`
         }]
         
         
@@ -250,7 +253,7 @@ export class VnScene extends Phaser.Scene {
         let npcForceDialogues = npc.dialogues_force?.map(line => ({
             text: [line],
             speakerName: npc.name,
-            image: `assets/npcs/${npc.image_path}.png`
+            image: `assets/npcs/${npc.image_path}.webp`
         })) || []
     
         this.dialogs = [...introDialogues, ...npcForceDialogues]

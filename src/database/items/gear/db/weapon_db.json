@@ -8,7 +8,14 @@
         "atk": 4,
         "damage_type": ["pierce"],
         "stats": {},
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🔪",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "rondel_dagger": {
         "name": "Daga rodela",
@@ -19,7 +26,14 @@
         "atk": 5,
         "damage_type": ["pierce"],
         "stats": {},
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🔪",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
 
 
@@ -32,7 +46,14 @@
         "atk": 7,
         "damage_type": ["slash", "pierce"],
         "stats": {},
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🔪",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "rapier": {
         "name": "Ropera",
@@ -42,7 +63,14 @@
         "atk": 8,
         "damage_type": ["pierce"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "armin_sword": {
         "name": "Espada de armar",
@@ -53,7 +81,14 @@
         "atk": 11,
         "damage_type": ["slash", "pierce"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "falchion": {
         "name": "Bracamarte",
@@ -63,7 +98,14 @@
         "atk": 14,
         "damage_type": ["slash"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
 
 
@@ -74,7 +116,14 @@
         "atk": 9,
         "damage_type": ["slash"],
         "stats": {},
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🪓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "axe": {
         "name": "Hacha Skeggox",
@@ -83,7 +132,14 @@
         "atk": 12,
         "damage_type": ["slash", "blunt"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🪓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "battle_axe": {
         "name": "Hacha de batalla",
@@ -92,7 +148,14 @@
         "atk": 14,
         "damage_type": ["slash"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🪓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "double_axe": {
         "name": "Hacha de doble filo",
@@ -101,7 +164,14 @@
         "atk": 18,
         "damage_type": ["slash", "blunt"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🪓",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     
 
@@ -112,7 +182,14 @@
         "atk": 9,
         "damage_type": ["blunt"],
         "stats": {},
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🔨",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "flanged_mace": {
         "name": "Maza bridada",
@@ -121,7 +198,14 @@
         "atk": 11,
         "damage_type": ["blunt"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🔨",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "morning_star": {
         "name": "Lucero del alba",
@@ -130,7 +214,14 @@
         "atk": 13,
         "damage_type": ["blunt"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🔨",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "long_sword": {
         "name": "Espada larga",
@@ -139,7 +230,14 @@
         "atk": 10,
         "damage_type": ["pierce", "slash"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "zweihander": {
         "name": "Espada zweihander",
@@ -148,7 +246,14 @@
         "atk": 14,
         "damage_type": ["slash", "pierce"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "bastard_sword": {
         "name": "Espada bastarda",
@@ -157,7 +262,14 @@
         "atk": 16,
         "damage_type": ["slash"],
         "stats": {},
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "⚔️",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
 
 
@@ -168,7 +280,14 @@
         "atk": 6,
         "damage_type": ["pierce"],
         "stats": { "agi": 1 },
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🏹",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "composite_bow": {
         "name": "Arco compuesto",
@@ -177,7 +296,14 @@
         "atk": 8,
         "damage_type": ["pierce"],
         "stats": { "dex": 1 },
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🏹",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "long_bow": {
         "name": "Arco largo",
@@ -186,7 +312,14 @@
         "atk": 11,
         "damage_type": ["pierce"],
         "stats": { "str": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🏹",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "hand_crossbow": {
         "name": "Ballesta de mano",
@@ -195,7 +328,14 @@
         "atk": 11,
         "damage_type": ["pierce"],
         "stats": {},
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🏹",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "crossbow": {
         "name": "Ballesta",
@@ -204,7 +344,14 @@
         "atk": 11,
         "damage_type": ["pierce"],
         "stats": { "dex": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🏹",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
 
 
@@ -215,7 +362,14 @@
         "atk": 12,
         "damage_type": ["pierce"],
         "stats": { "vit": 1 },
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🦯",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "halberd": {
         "name": "Alabarda",
@@ -224,7 +378,14 @@
         "atk": 14,
         "damage_type": ["slash", "pierce"],
         "stats": { "dex": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🦯",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
 
 
@@ -235,7 +396,14 @@
         "matk": 3,
         "damage_type": ["magic"],
         "stats": { "dex": 1 },
-        "slots": [2, 3]
+        "slots": [2, 3],
+        
+        "icon": "🦯",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "crystal_ball": {
         "name": "Bola de cristal",
@@ -244,7 +412,14 @@
         "matk": 5,
         "damage_type": ["magic"],
         "stats": { "sou": 2 },
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🔮",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "staff": {
         "name": "Bastón",
@@ -254,7 +429,14 @@
         "matk": 6,
         "damage_type": ["blunt", "magic"],
         "stats": { "wis": 1 },
-        "slots": [1, 2]
+        "slots": [1, 2],
+        
+        "icon": "🦯",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "arc_wand": {
         "name": "Bastón de mago",
@@ -264,6 +446,13 @@
         "matk": 6,
         "damage_type": ["blunt", "magic"],
         "stats": { "wis": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🦯",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     }
 }

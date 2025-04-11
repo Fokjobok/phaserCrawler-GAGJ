@@ -1,5 +1,5 @@
 export let allNpcs = {}
-
+import { assignMainMission, assignSecondaryMission, updateMissionProgress } from './mission_storyline.js'
 // Datos externos (JSON) que debes cargar en tu escena o en index.js antes de usar estas funciones
 // Ejs: npcNames, npcRole, npcChance, npcDialogs, npcAppearance, predefinedNpcs
 // Se asume que tu escena Phaser los importará o los guardará en variables globales
@@ -19,6 +19,14 @@ export function initNpcData(data) {
 	npcDialogs = data.npcDialogs
 	npcAppearance = data.npcAppearance
 	predefinedNpcs = data.predefinedNpcs
+
+    Object.keys(predefinedNpcs).forEach(npcKey => {
+        let npcData = predefinedNpcs[npcKey]
+        if (npcData.shop && npcData.store) {
+            npcData.store = assignStoreQuantity(npcData.store)
+        }
+    })
+
 	console.log("initNpcData cargó la info de NPCs:", data)
 }
 
@@ -64,9 +72,19 @@ export class NPC {
         this.shop = shop
         this.store = store
 
+        this.mission = null
+
         this.determineInteraction()
         this.generateDialog()
     }
+
+    // Método para asignar una misión al NPC
+    setMission(mission) {
+        this.mission = mission
+    }
+
+
+
 
 	daysReducer() {
 		this.days_left--
@@ -162,6 +180,8 @@ export function generatePredefinedNpc(npcId) {
         store: npcData.store || []
     })
 
+    assignMainMission(newNpc)
+
     allNpcs[newNpc.id_npc] = newNpc
     return newNpc
 }
@@ -235,6 +255,28 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
 
     let randomAppearance = appearanceList[Math.floor(Math.random() * appearanceList.length)]
 
+
+    const shopChance = 0.3
+    const hasShop = Math.random() < shopChance
+    let storeItems = []
+
+    if (hasShop && window.storesDatabase && typeof window.storesDatabase === 'object') {
+        const storeKeys = Object.keys(window.storesDatabase)
+        // Intentamos asignar hasta 3 artículos
+        for (let i = 0; i < 3; i++) {
+            // Elegir una tienda aleatoria a partir de las claves
+            const randomStoreKey = storeKeys[Math.floor(Math.random() * storeKeys.length)]
+            const selectedStoreArray = window.storesDatabase[randomStoreKey]
+            if (selectedStoreArray && selectedStoreArray.length > 0) {
+                // Seleccionar un ítem aleatorio de la tienda seleccionada
+                const rIndex = Math.floor(Math.random() * selectedStoreArray.length)
+                // Asignar al ítem la cantidad usando la función de asignación
+                const assignedItem = assignStoreQuantity([selectedStoreArray[rIndex]])[0]
+                storeItems.push(assignedItem)
+            }
+        }
+    }
+
     let newNpc = new NPC({
         id_npc: genId,
         name: name,
@@ -242,7 +284,9 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
         role_category: determinedCategory,
         role: determinedRole,
         days_left: days_left,
-        appearance: randomAppearance
+        appearance: randomAppearance,
+        shop: hasShop,
+        store: storeItems
     })
 
     allNpcs[newNpc.id_npc] = newNpc
@@ -250,17 +294,24 @@ export function generateNpc(roleCategory = null, npcType = null, npcId = null) {
     return newNpc
 }
 
+function assignStoreQuantity(storeItems) {
+    if (!storeItems || !Array.isArray(storeItems)) return []
 
+    return storeItems.map(item => {
+        if ('min_quantity' in item && 'max_quantity' in item) {
+            const quantity = Math.floor(Math.random() * (item.max_quantity - item.min_quantity + 1)) + item.min_quantity
+            return { ...item, quantity }
+        }
+
+        return item
+    })
+}
 
 function cryptoRandomUUID() {
 	if (crypto && crypto.randomUUID) {
-
 		return crypto.randomUUID()
 
-
 	} else {
-
 		return 'uuid-' + (Math.random() * 99999999).toFixed(0)
-
 	}
 }

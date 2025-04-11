@@ -6,7 +6,14 @@
         "def": 0,
         "mdef": 0,
         "stats": { "agi": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+
+        "icon": "👚",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "archer_suit": {
         "name": "Traje de arquero",
@@ -17,7 +24,14 @@
         "def": 1,
         "mdef": 0,
         "stats": { "agi": 1, "dex": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🧥",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "coat": {
         "name": "Abrigo",
@@ -25,7 +39,14 @@
         "class": ["all"],
         "def": 5,
         "mdef": 0,
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🧥",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "jacket": {
         "name": "Chaqueta",
@@ -33,7 +54,14 @@
         "class": ["all"],
         "def": 3,
         "mdef": 0,
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🧥",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "leather_tunic": {
         "name": "Túnica de cuero",
@@ -42,7 +70,14 @@
         "def": 3,
         "mdef": 0,
         "stats": { "vit": 2, "dex": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🧥",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "regal_gambeson": {
         "name": "Gambesón real",
@@ -53,7 +88,14 @@
         "def": 4,
         "mdef": 4,
         "stats": { "dex": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "brigadine": {
         "name": "Brigadina",
@@ -64,7 +106,14 @@
         "def": 5,
         "mdef": 0,
         "stats": { "str": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "padded_armor": {
         "name": "Armadura acolchada",
@@ -74,7 +123,14 @@
         "def": 6,
         "mdef": 0,
         "stats": { "str": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "breastplate": {
         "name": "Coraza",
@@ -83,7 +139,14 @@
         "def": 6,
         "mdef": -3,
         "stats": { "vit": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "chain_mail": {
         "name": "Cota de malla",
@@ -92,7 +155,14 @@
         "def": 8,
         "mdef": -5,
         "stats": { "agi": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "full_plate": {
         "name": "Armadura de placas",
@@ -101,7 +171,14 @@
         "def": 10,
         "mdef": -5,
         "stats": { "vit": 2 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥻",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "saint_robe": {
         "name": "Ropa santa",
@@ -110,7 +187,14 @@
         "def": 1,
         "mdef": 5,
         "stats": { "sou": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "🥼",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     },
     "mage_coat": {
         "name": "Abrigo de mago",
@@ -119,6 +203,13 @@
         "def": 0,
         "mdef": 7,
         "stats": { "vit": 1, "wis": 1 },
-        "slots": [0, 1]
+        "slots": [0, 1],
+        
+        "icon": "👘",
+        "category": "armor",
+        "price": {
+            "buy": 20,
+            "sell": 5
+        }
     }
 }

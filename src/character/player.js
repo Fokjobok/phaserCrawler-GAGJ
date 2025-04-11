@@ -4,18 +4,21 @@ import { job_stats } from '../character/player_db.js'
 
 
 export class Player {
-    constructor(name, job, level = 1, fatigue = 5, weaponDb = {}, shieldDb = {}, armorDb = {}, accessoryDb = {}) {
+    constructor(name, job, level = 1, fatigue = 5, affinity = 5, weaponDb = {}, shieldDb = {}, armorDb = {}, accessoryDb = {}) {
         console.log(`Inicializando Player: ${name} con job: ${job}`)
 
         this.name = name
         this.status = null
         this.job = job.toLowerCase()
+        this.battle_image = job_stats[this.job]?.battle_image || '_idle'
         this.level = level
         this.fatigue = fatigue
         this.max_fatigue = 5
         this.gold = 1000
         this.inventory = []
 
+        // Registro de misiones
+        this.quests = []
 
 
 
@@ -25,6 +28,7 @@ export class Player {
         const colorKey = jobData.color || "gray"
         this.color = CONFIG.COLOR_MAP[colorKey] || [200, 200, 200]
         this.bgcolor = CONFIG.COLOR_MAP[colorKey + "_pastel"] || [200, 200, 200, 0.6]
+        
 
         // Bases de datos
         this.weaponDb = weaponDb

@@ -208,7 +208,7 @@
     align-items: center;
     text-shadow: 0.15rem 0.15rem rgba(0, 0, 0, 0.8);
     width: 90%;
-    height: 65%;
+    height: 75%;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
     border-radius: 10px;
@@ -242,6 +242,10 @@
     margin: 0 20px;
 }
 
+.stats-box {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
 
 .tab-bar button {
     
@@ -249,9 +253,9 @@
     width: 5rem;
     height: 3rem;
     
-    font-size: 1.7rem;
+    font-size: 185%;
 
-    margin: 0 0 0.5rem 0;
+
 
     border-radius: 0.6rem 0.6rem 0 0;
     margin: 0 0rem 0 0.3rem;
@@ -260,6 +264,9 @@
     border: 1px solid black;
     color: white;
     text-shadow: 0.05rem 0.15rem 0.15rem rgba(0, 0, 0, 0.8);
+}
+.tab {
+    -webkit-text-stroke: 1px black;
 }
 
 .status-window .card-body {
@@ -272,9 +279,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 50%;
+    min-width: 20%;
 
-    height: 500px;
+    height: 36rem;
     border: 4px solid;
     outline: none;
     padding: 20px;
@@ -306,10 +313,13 @@
 }
 
 
-.status-window .card-content-stats {
+
+
+.card-content-stats {
     width: auto;
     font-weight: bold;
     height: 100%;
+    
     display: flex;
     flex-direction: column;
     position: relative;

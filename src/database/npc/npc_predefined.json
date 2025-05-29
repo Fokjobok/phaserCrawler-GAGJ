@@ -222,11 +222,12 @@
             "days_left": -1,
             "appearance": "Un hombre fornido con brazos musculosos cubiertos de cicatrices de quemaduras menores. Su barba espesa está parcialmente chamuscada y lleva un mandil de cuero resistente. Sus manos callosas hablan de décadas trabajando el metal.",
             "intro": [
-                "a",
-                "a"
+                "El sonido del martillo golpeando el yunque resuena en la herrería, mezclándose con el crepitar del fuego. El aire está impregnado de olor a metal caliente y carbón.",
+                "Un hombre robusto trabaja con una espada recién forjada, su mirada fija en el brillo del acero mientras lo pule con esmero."
             ],
             "dialogues_force": [
-                "a"
+                "Bienvenido a mi herrería. Mi nombre es Baldric, y aquí forjo las mejores armas y armaduras de la región. El calor del fuego y el sonido del martillo son mi vida.",
+                "No dudes en pedirme lo que necesites, ya sea reparar tu equipo o forjar algo nuevo. Estoy aquí para ayudarte a estar preparado para cualquier aventura."
             ],
             "dialogues": [
                 "¡Bienvenido de nuevo! ¿Qué necesitas que forje hoy?",
@@ -245,22 +246,22 @@
                 { 
                     "id": "pickaxe", "cat": "usable", 
                     "name": "Pico", "affinity": 0,
-                    "min_quantity": 0, "max_quantity": 3
+                    "min_quantity": 3, "max_quantity": 3
                 },
                 { 
                     "id": "handshovel", "cat": "usable", 
                     "name": "Pala de mano", "affinity": 0,
-                    "min_quantity": 0, "max_quantity": 2
+                    "min_quantity": 2, "max_quantity": 2
                 },
                 { 
                     "id": "smith_hammer", "cat": "usable", 
                     "name": "Martillo de herrero", "affinity": 0,
-                    "min_quantity": 0, "max_quantity": 1
+                    "min_quantity": 3, "max_quantity": 3
                 },
                 { 
                     "id": "iron_ore", "cat": "misc", 
                     "name": "Mineral de hierro", "affinity": 1,
-                    "min_quantity": 0, "max_quantity": 4
+                    "min_quantity": 4, "max_quantity": 4
                 },
                 { 
                     "id": "steel_ingot", "cat": "misc", 

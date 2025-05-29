@@ -94,6 +94,7 @@ export class IntroScene extends Phaser.Scene {
         })
 
         console.log("IntroScene: Before calling showDialog")
+        this.dialogContainer = document.body
         showDialog(this, () => {
             console.log("IntroScene: Transicionando a VnScene")
             this.scene.start('VnScene', { player: this.player })

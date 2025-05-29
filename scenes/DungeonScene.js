@@ -105,7 +105,7 @@ export class DungeonScene extends Phaser.Scene {
         this.mapGraphics = this.add.graphics()
         this.mapGraphics.visible = false
 
-        // Actualiza la imagen de fondo; si es un pasillo, usa la imagen del segmento actual
+        // Actualiza la imagen de fondo
         const updateBackground = (node) => {
             let img
 
@@ -450,6 +450,16 @@ export class DungeonScene extends Phaser.Scene {
                 }
             })
         }
+
+        // Randomizar grupo de enemigos
+        this.input.keyboard.on("keydown-G", () => {
+            if (window.monsterDB) {
+                const enemies = getRandomEnemyGroup(window.monsterDB, Phaser.Math.Between(1, 3))
+                this.startBattle(enemies)
+            } else {
+                console.warn("monsterDB no cargado aún.")
+            }
+        })
 
         // Avanzar diálogos con "Z"
         this.input.keyboard.on("keydown-Z", () => {

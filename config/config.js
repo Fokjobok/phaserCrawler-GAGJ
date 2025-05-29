@@ -84,15 +84,16 @@ const CONFIG = {
         enemy3: { x: 970, y: 210 },
     },
 
+    
     // Posicionamiento de barras de vida
     HEALTHBAR_POSITIONS: {
-        player: { x: 620, y: 320 },
-        player2: { x: 310, y: 360 },
-        player3: { x: 90, y: 300 },
+        player: { x: 800, y: 350 },
+        player2: { x: 620, y: 320 },
+        player3: { x: 200, y: 350 },
 
-        enemy: { x: 1400, y: 100 },
-        enemy2: { x: 1350, y: 200 },
-        enemy3: { x: 1250, y: 600 },
+        enemy: { x: 1400, y: 250 },
+        enemy2: { x: 1550, y: 220 },
+        enemy3: { x: 1200, y: 220 },
     }
 }
 

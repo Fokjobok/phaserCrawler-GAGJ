@@ -100,19 +100,19 @@ export function preload_enemies_crypt(scene) {
 }
 
 export function preload_bgScenario(scene) {
-    scene.load.image('black', 'assets/backgrounds/black.png')
+    scene.load.image('black', 'assets/backgrounds/black.webp')
 
-    scene.load.image('forest', 'assets/backgrounds/forest.png')
-    scene.load.image('market', 'assets/backgrounds/market.png')
-    scene.load.image('main_door', 'assets/backgrounds/main_door.png')
-    scene.load.image('inn', 'assets/backgrounds/inn.png')
-    scene.load.image('library', 'assets/backgrounds/library.png')
-    scene.load.image('blacksmith', 'assets/backgrounds/blacksmith.png')
-    scene.load.image('plaza', 'assets/backgrounds/plaza.png')
-    scene.load.image('taylor', 'assets/backgrounds/taylor.png')
-    scene.load.image('town', 'assets/backgrounds/town.png')
-    scene.load.image('narrow', 'assets/backgrounds/narrow.png')
-    scene.load.image('blacksmith-loft', 'assets/backgrounds/blacksmith-loft.png')
+    scene.load.image('forest', 'assets/backgrounds/forest.webp')
+    scene.load.image('market', 'assets/backgrounds/market.webp')
+    scene.load.image('main_door', 'assets/backgrounds/main_door.webp')
+    scene.load.image('inn', 'assets/backgrounds/inn.webp')
+    scene.load.image('library', 'assets/backgrounds/library.webp')
+    scene.load.image('blacksmith', 'assets/backgrounds/blacksmith.webp')
+    scene.load.image('plaza', 'assets/backgrounds/plaza.webp')
+    scene.load.image('taylor', 'assets/backgrounds/taylor.webp')
+    scene.load.image('town', 'assets/backgrounds/town.webp')
+    scene.load.image('narrow', 'assets/backgrounds/narrow.webp')
+    scene.load.image('blacksmith-loft', 'assets/backgrounds/blacksmith-loft.webp')
 
     console.log('✅ Imágenes VnScene cargadas')
     
@@ -121,9 +121,9 @@ export function preload_bgScenario(scene) {
 
 
 export function preload_IntroScene(scene) {
-    scene.load.image('black', 'assets/backgrounds/black.png')
+    scene.load.image('black', 'assets/backgrounds/black.webp')
 
-    scene.load.image('nforest', 'assets/backgrounds/northaven_forest.webp')
+    scene.load.image('nforest', 'assets/backgrounds/norhaven_forest.webp')
     scene.load.image('dungate', 'assets/backgrounds/dungeon_gate.webp')
     scene.load.image('goddess', 'assets/backgrounds/goddess.webp')
     scene.load.image('treasure', 'assets/backgrounds/treasure.webp')

@@ -9,6 +9,7 @@ const sConfig = {
     type: Phaser.AUTO,
     width: CONFIG.SCREEN.WIDTH,
     height: CONFIG.SCREEN.HEIGHT,
+    canvasStyle: 'display:block',
     pixelArt: false,
     parent: 'game-container',
     dom: { createContainer: true },

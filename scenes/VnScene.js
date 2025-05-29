@@ -10,6 +10,8 @@ import { initNpcData, generateNpc, generatePredefinedNpc } from "../src/characte
 import { createHUD } from "../config/hud.js"
 import { Player } from '../src/character/player.js'
 
+import { questDB } from "../src/database/npc/npc_quest_db.js"
+
 import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu, showScenarioMenu } from "../config/menus.js"
 
 
@@ -108,7 +110,7 @@ export class VnScene extends Phaser.Scene {
     constructor() {
         super({ key: "VnScene" })
 
-        this.currentScenarioKey = "la sastrería"  
+        this.currentScenarioKey = "la puerta principal" // Escenario por defecto
 
     }
 
@@ -121,10 +123,11 @@ export class VnScene extends Phaser.Scene {
         this.load.json("npc_roles", "src/database/npc/npc_roles.json")
         this.load.json("npc_chances", "src/database/npc/npc_chances.json")
         this.load.json("npc_dialogs", "src/database/npc/npc_dialogs.json")
+        
         this.load.json("npc_appearances", "src/database/npc/npc_appearances.json")
-
         this.load.json("npc_predefined", "src/database/npc/npc_predefined.json")
-
+        this.load.json("npc_quests", "src/database/npc/npc_quests.json")
+        this.load.json("quest_defs", "src/database/npc/quest_definitions.json")
 
         this.load.json("accessory_db", "src/database/items/gear/db/accessory_db.json")
         this.load.json("armor_db", "src/database/items/gear/db/armor_db.json")
@@ -146,20 +149,30 @@ export class VnScene extends Phaser.Scene {
     }
     
     create(data) {
+        this.npcQuests = this.cache.json.get("npc_quests") || {}
+        console.log("🗺️ npcQuests cargado:", this.npcQuests)
 
+        const jsonDefs = this.cache.json.get("quest_defs") || {}
+        console.log("🔍 quest_defs (JSON) cargado:", jsonDefs)
+        
+        this.questDefs = {
+            ...jsonDefs,
+            ...questDB.mainQuests
+        }
+        console.log("🔍 quest_defs creado:", this.questDefs)
 
         // ✅ Cargar la caja de diálogo y demás elementos
         create_dialogContainer(this)
         create_textBox(this)
         create_npcImage(this)
-
+        
         this.scale.on('resize', () => resize_bg(this))
         create_speakerNameBox(this)
         
         // ✅ Cargar datos de escenarios y NPCs
         create_scenarioData(this)
         
-
+        
         const dataForNPCs = {
             npcNames: this.cache.json.get("npc_names"),
             npcRole: this.cache.json.get("npc_roles"),
@@ -167,9 +180,11 @@ export class VnScene extends Phaser.Scene {
             npcDialogs: this.cache.json.get("npc_dialogs"),
             npcAppearance: this.cache.json.get("npc_appearances"),
             predefinedNpcs: this.cache.json.get("npc_predefined").predefinedNpcs,
-            storesDatabase: this.cache.json.get("npc_predefined").storesDatabase
-
+            storesDatabase: this.cache.json.get("npc_predefined").storesDatabase,
+            npcQuests: this.npcQuests,
+            questDefs: this.questDefs
         }
+
 
         window.storesDatabase = dataForNPCs.storesDatabase
 
@@ -215,6 +230,10 @@ export class VnScene extends Phaser.Scene {
 
 
         })
+
+
+
+
     }
 
 

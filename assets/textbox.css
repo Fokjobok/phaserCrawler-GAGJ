@@ -1,3 +1,8 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Dialog container overlaying the Phaser canvas */
 .dialogContainer {
     position: absolute;
@@ -24,20 +29,39 @@
 }
 
 /* Speaker name box nested inside the textbox, positioned above it */
-.speakerNameBox {
-    position: absolute;
+.speakerNameBox-dialog {
+
     min-width: 6rem;
     width: 7rem;
     height: 1.5rem;
+    position: absolute;
     left: 4.5%;
-    bottom: 180px;
+    bottom: 25%;
     background: rgba(0, 0, 0, 0.8);
     color: gold;
     font-size: 1.5rem;
     text-align: center;
     padding: 15px 15px;
     border-radius: 0.5rem 0.5rem 0 0;
-    display: none;
+    display: block;
+    font-weight: bold;
+}
+
+.speakerNameBox-menu {
+
+    min-width: 6rem;
+    width: 7rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 28.5%;
+    bottom: 24.5%;
+    background: rgba(0, 0, 0, 0.8);
+    color: gold;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 15px 15px;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: block;
     font-weight: bold;
 }
 

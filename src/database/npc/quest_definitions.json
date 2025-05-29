@@ -1,0 +1,113 @@
+{
+    "poisoned_princesses": {
+        "id": "poisoned_princesses",
+        "type": "main",
+        "title": "Princesas Envenenadas",
+        "description": "Investiga el envenenamiento de las princesas en el castillo.",
+        "steps": [
+            "Habla con la Hermana Clarisa en la Catedral.",
+            "Recoge muestras de hierbas para el análisis.",
+            "Enfrenta al sospechoso en la mazmorra.",
+            "Informa a la reina en el trono real."
+        ],
+        "rewards": ["100 XP", "Poción roja"]
+    },
+    "find_the_lost_ring": {
+        "id": "find_the_lost_ring",
+        "type": "secondary",
+        "title": "Anillo Perdido",
+        "description": "Localiza el anillo perdido del herrero.",
+        "steps": [
+            "Pregunta en la taberna", 
+            "Revisa el bosque cercano"
+        ],
+        "rewards": ["50 XP", "Anillo de Cobre"]
+    },
+    "help_the_villager": {
+        "id": "help_the_villager",
+        "type": "side",
+        "title": "Ayuda al aldeano",
+        "description": "Ayuda a un aldeano a encontrar su ganado perdido.",
+        "steps": [
+            "Habla con el aldeano en la plaza",
+            "Busca el ganado en el bosque",
+            "Regresa al aldeano con el ganado"
+        ],
+        "rewards": ["30 XP", "Poción roja"]
+        },
+
+    "rescue_the_princess": {
+        "id": "rescue_the_princess",
+        "type": "main",
+        "title": "Rescata a la Princesa",
+        "description": "Rescata a la princesa secuestrada por los bandidos.",
+        "steps": [
+            "Habla con el rey en el castillo",
+            "Entra en la cueva de los bandidos",
+            "Enfrenta al jefe bandido",
+            "Libera a la princesa"
+        ],
+        "rewards": ["200 XP", "500g"]
+        },
+
+    "find_the_missing_child": {
+        "id": "find_the_missing_child",
+        "type": "side",
+        "title": "Encuentra al niño perdido",
+        "description": "Ayuda a encontrar al niño que se perdió en el bosque.",
+        "steps": [
+            "Habla con la madre en la plaza",
+            "Busca en el bosque cercano",
+            "Regresa a la madre con el niño"
+        ],
+        "rewards": ["20 XP", "500g"]
+    },
+    "defend_the_village": {
+        "id": "defend_the_village",
+        "type": "main",
+        "title": "Defiende la aldea",
+        "description": "Defiende la aldea de un ataque de bandidos.",
+        "steps": [
+            "Habla con el jefe de la aldea",
+            "Prepara la defensa",
+            "Enfrenta a los bandidos"
+        ],
+        "rewards": ["150 XP", "500g"]
+    },
+    "explore_the_cave": {
+        "id": "explore_the_cave",
+        "type": "side",
+        "title": "Explora la cueva",
+        "description": "Explora la cueva cercana y encuentra tesoros ocultos.",
+        "steps": [
+            "Entra en la cueva",
+            "Busca tesoros",
+            "Regresa a la aldea"
+        ],
+        "rewards": ["40 XP", "500g"]
+    },
+    "collect_herbs": {
+        "id": "collect_herbs",
+        "type": "side",
+        "title": "Recolección de hierbas",
+        "description": "Recolecta hierbas medicinales para el herbolario.",
+        "steps": [
+            "Habla con el herbolario en la plaza",
+            "Busca hierbas en el bosque",
+            "Regresa al herbolario"
+        ],
+        "rewards": ["25 XP", "500g"]
+    },
+    "deliver_message": {
+        "id": "deliver_message",
+        "type": "side",
+        "title": "Entrega de mensaje",
+        "description": "Entrega un mensaje importante a un comerciante en la ciudad vecina.",
+        "steps": [
+            "Habla con el mensajero en la plaza",
+            "Viaja a la ciudad vecina",
+            "Entregue el mensaje"
+        ],
+        "rewards": ["15 XP", "500g"]
+    }
+}

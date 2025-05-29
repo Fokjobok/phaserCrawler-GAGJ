@@ -1,3 +1,5 @@
+
+
 /* Estilos para el menú principal */
 #menuContainer {
     position: relative;
@@ -142,6 +144,23 @@
 
 
 
+#missionChoiceMenuContainer {
+
+    position: absolute;         /* igual que #npcTalkMenuContainer, etc */
+    top: 20%;                   /* ajusta para centrarlo verticalmente */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    padding: 16px;
+    border-radius: 6px;
+            /* por encima del canvas */
+
+    /* ancho, sombras, fuentes… igual que tus otros menús */
+}
+
+
+
+
 
 
 #storeMenuContainer {
@@ -161,13 +180,15 @@
 }
 
 
-#storeMenuContainer .buyBtn .sellBtn {
+#storeMenuContainer .buyBtn,
+#storeMenuContainer .sellBtn {
 
     background: rgba(220, 220, 220, 1);
     padding: 10px 15px;
     color: black;
 }
-#storeMenuContainer .buyBtn:hover {
+#storeMenuContainer .buyBtn:hover,
+#storeMenuContainer .sellBtn:hover {
 
     background: rgba(0, 200, 230, 0.5);
     color: white;
@@ -207,12 +228,8 @@
     border-radius: 5px;
 }
 .storeRow span {
-    
     margin: 0rem;
-
     border-radius: .625rem;
-
-    
 }
 .storeRow .quantityControl {
     font-family: 'Roboto', monospace;
@@ -228,37 +245,35 @@
     cursor: default;
 }
 .storeRow .plus-btn {
-    background-color: green;
-    border: 2px solid black;
+    all: unset;
+    user-select: none;
     font-size: 1.5rem;
     margin: 0;
-    padding: 0 0.6rem;
+    padding: 0 0.4rem;
     font-weight: bold;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
     font-family: 'Roboto', monospace;
 }
 .storeRow .minus-btn {
-    background-color: red;
-    border: 2px solid black;
+    all: unset;
+    user-select: none;
     font-size: 1.5rem;
     margin: 0;
-    padding: 0 0.6rem;
+    padding: 0 0.4rem;
     font-weight: bold;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
     font-family: 'Roboto', monospace;
 }
 
 .storeRow .plus-btn:hover {
-    border: 2px solid black;
     background: rgba(0, 200, 230, 0.5);
     color: white;
 }
 .storeRow .minus-btn:hover {
-    border: 2px solid black;
     background: rgba(0, 200, 230, 0.5);
     color: white;
 }
@@ -493,7 +508,7 @@
 
 
 
-.backBtn, .buyBtn, .sellBtn {
+.backBtn, .buyBtn, .sellBtn, .acceptBtn {
     margin-top: 15px;
     font-size: 1.25rem;
     padding: 8px 12px;
@@ -560,4 +575,67 @@
     filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.7));
 
 
+}
+
+#questChoiceContainer {
+
+
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    display: flex;
+    border-radius: 5px;
+    width: 30rem;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    gap: 10px;
+}
+
+#questChoiceContainer button {
+    width: 100%;
+    padding: 0.5rem 0;
+    height: auto;
+    font-size: 1.25rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#missionChoiceMenuContainer {
+
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+
+    margin-top: 15px;
+
+    padding: 1rem;
+    border-radius: 5px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 35rem;
+    
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#missionChoiceMenuContainer button {
+    width: 100%;
+    padding: 0.5rem 0;
+    height: auto;
+    font-size: 1.25rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#missionChoiceMenuContainer button:hover {
+    background-color: rgba(0, 200, 230, 0.5);
+    border: 2px solid black;
+    border-radius: 0.3rem;
+    color: white;
 }

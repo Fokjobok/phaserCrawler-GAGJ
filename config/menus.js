@@ -1,4 +1,7 @@
 import CONFIG from "./config.js"
+import { showDialog, showDialogLines, resize_bg } from "../config/dialogs.js"
+import { assignQuest, applyQuestChanges, advanceQuest } from "../src/questManager.js"
+
 
 function rgbToHex(rgbArray) {
     return '#' + rgbArray.map(component => {
@@ -14,6 +17,15 @@ function rgbToRGBA(rgbArray, alpha = 0.5) {
 function formatStat(value) {
     return value < 10 ? "\u00A0" + value : value
 }
+
+function playerHasQuest(player, questId) {
+    return Array.isArray(player.quests)
+        && player.quests.some(q => q.id === questId)
+}
+
+
+
+
 
 export function showMenu(options, onSelect) {
     const menuContainer = document.createElement('div')
@@ -53,7 +65,7 @@ export function showShopMenu(scene) {
 }
 
 export function showScenarioMenu(scene) {
-    showMenu(['🗣️ Hablar', '🔍 Explorar', '🛤️ Viajar', '🎒 Inventario', '📊 Estado', '❓ Misiones'], selection => {
+    showMenu(['🗣️ Hablar', /* '🔍 Explorar', */ '🛤️ Viajar', '🎒 Inventario', /* '📊 Estado', */ '❓ Misiones'], selection => {
         console.log(`Opción de escenario seleccionada: ${selection}`)
         switch (selection) {
 
@@ -61,10 +73,10 @@ export function showScenarioMenu(scene) {
                 showNPCSubMenu(scene)
                 break
 
-            case '🔍 Explorar':
+/*             case '🔍 Explorar':
                 alert(`Funcionalidad "${selection}" no implementada aún.`)
                 showScenarioMenu(scene)
-                break
+                break */
 
             case '🛤️ Viajar':
                 showTravelMenu(scene)
@@ -74,9 +86,9 @@ export function showScenarioMenu(scene) {
                 showInventoryMenu(scene, scene.player)
                 break
 
-            case '📊 Estado':
+/*             case '📊 Estado':
                 showStatusCards(scene)
-                break
+                break */
 
             case '❓ Misiones':
                 showQuestLog(scene, scene.player)
@@ -208,197 +220,328 @@ export function showInventoryMenu(scene, player) {
     footer.appendChild(backBtn)
     container.appendChild(footer)
 
-    document.body.appendChild(container)
+    scene.dialogContainer.appendChild(container)
 
 
 }
 
+export function showSubOptionsMenu(scene, npc, subOptions) {
+    const container = document.createElement('div')
+    container.id = 'conversationMenuContainer'
+
+    // Para cada opción (Aceptar, Rechazar…)
+    subOptions.forEach(opt => {
+        const btn = document.createElement('button')
+        btn.textContent = opt.label
+        btn.onclick = () => {
+            container.remove()
+
+            // Sólo aplicar cambios de misión si la opción los define
+            if (opt.questChanges?.length) {
+                opt.questChanges.forEach(({ questId, nextStep }) => {
+                    if (!playerHasQuest(scene.player, questId)) {
+                        assignQuest(scene, scene.player, questId)
+                    }
+                    advanceQuest(scene, scene.player, questId, nextStep)
+                })
+            }
+
+            // Ajustar afinidad si procede
+            if (typeof opt.affinityChange === 'number') {
+                npc.affinity = (npc.affinity || 0) + opt.affinityChange
+            }
+
+            // Mostrar líneas y, al acabar, volver al menú del NPC
+            showDialogLines(scene, npc, opt.lines, () => {
+                showNPCSubMenu(scene)
+            })
+        }
+        container.appendChild(btn)
+    })
+
+    scene.dialogContainer.appendChild(container)
+}
+
+// Menú de rutas de conversación
+export function showConversationMenu(scene, npc) {
+    const container = document.createElement('div')
+    container.id = 'conversationMenuContainer'
+
+    const routes = (questData?.conversationRoutes) 
+    ? questData.conversationRoutes 
+    : (npc.conversationRoutes || [])
+
+    routes.forEach(route => {
+        const btn = document.createElement('button')
+        btn.textContent = route.label
+        btn.onclick = () => {
+            container.remove()
 
 
+            ;(route.questChanges || []).forEach(({ questId, nextStep }) => {
+                if (!playerHasQuest(scene.player, questId)) {
+                    assignQuest(scene, scene.player, questId)
+                }
+                advanceQuest(scene, scene.player, questId, nextStep)
+            })
+
+
+
+            showDialogLines(scene, npc, route.lines, () => {
+                if (route.subOptions?.length) {
+                    showSubOptionsMenu(scene, npc, route.subOptions)
+                } else {
+                    showNPCSubMenu(scene)
+                }
+            })
+        }
+        container.appendChild(btn)
+    })
+
+    scene.dialogContainer.appendChild(container)
+}
+
+
+export function showMissionChoiceMenu(scene, npc, questData) {
+    // 1. Crear y adjuntar contenedor principal
+    const container = document.createElement('div')
+    container.id = 'missionChoiceMenuContainer'
+    scene.dialogContainer.appendChild(container)
+
+
+    function renderOptions(options) {
+        container.innerHTML = ''  // limpia contenido previo
+        options.forEach(opt => {
+            const btn = document.createElement('button')
+            btn.textContent = opt.label
+            btn.onclick = () => handleChoice(opt)
+            container.appendChild(btn)
+        })
+    }
+
+    /**
+     * Gestiona la selección de una opción:
+     *  - aplica questChanges
+     *  - ajusta afinidad
+     *  - muestra sus líneas
+     *  - avanza a subOptions o cierra menú
+     */
+    function handleChoice(opt) {
+        container.remove()
+        container.innerHTML = ''
+
+        // aplicar cambios de misión
+        ;(opt.questChanges || []).forEach(({ questId, nextStep }) => {
+            const exist = playerHasQuest(scene.player, questId)
+            if (!exist) {
+                assignQuest(scene, scene.player, questId)    // la crea en step=0
+            }
+            advanceQuest(scene, scene.player, questId, nextStep)
+        })
+
+        // ajustar afinidad
+        if (typeof opt.affinityChange === 'number') {
+            npc.affinity = (npc.affinity || 0) + opt.affinityChange
+        }
+
+        // mostrar diálogo letra a letra y tras terminar...
+        showDialogLines(scene, npc, opt.lines, () => {
+            scene.dialogContainer.appendChild(container)
+            if (Array.isArray(opt.subOptions) && opt.subOptions.length) {
+                renderOptions(opt.subOptions)
+            } else {
+                container.remove()
+
+            }
+        })
+    }
+
+    // arrancar con las rutas principales definidas en JSON
+    renderOptions(questData.conversationRoutes)
+}
 
 function getQuestIcon(npc, player) {
-    // Prioridad máxima: el jugador tiene una misión completada (hay que cobrarla)
-    if (player && player.mission && player.mission.completed) {
-        return "❓"
+    // Si este NPC no ofrece ninguna misión
+    if (!npc?.mission?.id) {
+        return '🗣️'
     }
-    // Si el NPC tiene asignada una misión y es diferente a la que tiene el jugador (o el jugador no tiene ninguna),
-    // entonces se muestra la misión del NPC según su tipo
-    if (npc && npc.mission) {
-        if (!player.mission || (player.mission && player.mission.id !== npc.mission.id)) {
-            if (npc.mission.type === 'main') {
-                return "❗️"
-            }
-            if (npc.mission.type === 'secondary') {
-                return "❕"
-            }
-        }
+    // Buscamos la misión activa en el array player.quests
+    const quest = Array.isArray(player.quests)
+        ? player.quests.find(q => q.id === npc.mission.id)
+        : null
+    // Si ya la tiene, mostramos ❔ en progreso o ❓ completada
+    if (quest) {
+        return quest.completed ? '❓' : '❔'
     }
-    // Si el jugador tiene una misión pendiente sin completar
-    if (player && player.mission && !player.mission.completed) {
-        return "❔"
-    }
-    return ""
+    // Si aún no la aceptó, ❗ para principales, ❕ para secundarias
+    return npc.mission.type === 'main'
+        ? '❗️'
+        : npc.mission.type === 'secondary'
+            ? '❕'
+            : '🗣️'
 }
 
-function showQuestDialogue(npc, scene) {
-    const quest = npc.mission
-    // Prepara el texto de la misión con título y detalles
-    const questText = `${npc.name} te está ofreciendo la misión:\n"${quest.title}"\n\nDetalles:\n${quest.steps.join("\n")}\n\nPresiona Z para leer y luego se te preguntará: ¿Aceptas la misión?`
-    
-    // Crea un objeto diálogo para la misión
-    const questDialog = {
-        text: [questText],
+export function showQuestDialogue(scene, npc, questData) {
+    // 1) Preparamos un array de diálogos a partir de introLines
+    const dialogs = (questData.introLines || []).map(text => ({
+        text:      [ text ],
         speakerName: npc.name,
-        image: `assets/npcs/${npc.image_path}.webp`
-    }
-    // Guarda la conversación original para restaurarla después
-    const originalDialogs = scene.dialogs
-    scene.dialogs = [questDialog]
-    scene.currentIndex = 0
-    // Llama a showDialog para mostrar el texto letra a letra
-    showDialog(scene)
-    
-    // Después de un delay (ajusta el tiempo según la longitud del texto)
-    setTimeout(() => {
-        // Crea un modal para elegir "Aceptar" o "Rechazar"
-        const container = document.createElement('div')
-        container.id = 'questChoiceContainer'
-        container.style.position = 'fixed'
-        container.style.top = '50%'
-        container.style.left = '50%'
-        container.style.transform = 'translate(-50%, -50%)'
-        container.style.backgroundColor = '#333'
-        container.style.color = '#fff'
-        container.style.padding = '20px'
-        container.style.border = '2px solid #fff'
-        container.style.zIndex = 1001
+        image:     `assets/npcs/${npc.image_path}.webp`
+    }))
 
-        const choiceText = document.createElement('p')
-        choiceText.innerText = "¿Aceptas la misión?"
-        container.appendChild(choiceText)
-        
-        const acceptBtn = document.createElement('button')
-        acceptBtn.textContent = 'Aceptar'
-        acceptBtn.style.marginRight = '10px'
-        acceptBtn.onclick = () => {
-            // Asigna la misión al jugador (se hace una copia simple)
-            scene.player.mission = Object.assign({}, quest)
-            console.log(`Misión "${quest.title}" aceptada por el jugador`)
-            document.body.removeChild(container)
-            // Restaura los diálogos originales y continúa la interacción
-            scene.dialogs = originalDialogs
-            scene.startNPCDialog(npc)
-        }
-        container.appendChild(acceptBtn)
-        
-        const rejectBtn = document.createElement('button')
-        rejectBtn.textContent = 'Rechazar'
-        rejectBtn.onclick = () => {
-            console.log(`Misión "${quest.title}" rechazada por el jugador`)
-            document.body.removeChild(container)
-            // Restaura los diálogos originales y continúa la interacción
-            scene.dialogs = originalDialogs
-            scene.startNPCDialog(npc)
-        }
-        container.appendChild(rejectBtn)
-        
-        document.body.appendChild(container)
-    }, 6000) // Delay en milisegundos; ajustar según sea necesario
+    // 2) Sustituimos la cola de diálogos actual
+    scene.dialogs       = dialogs
+    scene.currentIndex  = 0
+
+    // 3) Iniciamos la presentación letra a letra
+    showDialog(scene)
+
+    // 4) Al completar el último diálogo, abrimos el menú de elecciones
+    scene.events.once('dialogComplete', () => {
+        showMissionChoiceMenu(scene, npc, questData)
+    })
+}
+function getNpcQuestState(npc, player) {
+    if (!npc.mission?.id) {
+        return 'none'
+    }
+    const quest = player.quests.find(q => q.id === npc.mission.id)
+    if (!quest) {
+        return 'offerable'
+    }
+    return quest.completed ? 'completed' : 'inProgress'
 }
 
-export function showNPCSubMenu(scene, player) {
-    const container = document.createElement('div')
-    container.id = 'npcTalkMenuContainer'
+export function showNPCSubMenu(scene) {
+    const container = document.createElement("div")
+    container.id = "npcTalkMenuContainer"
 
-    const headerNpcText = document.createElement('div')
-    headerNpcText.className = 'headerNpcText'
-    headerNpcText.textContent = 'Selecciona a alguien para interactuar:'
-    container.appendChild(headerNpcText)
+    const npcQuestsMap = scene.cache.json.get('npc_quests') || {}
 
+    // Cabecera fija
+    const header = document.createElement("div")
+    header.className = "headerNpcText"
+    header.textContent = "Selecciona a alguien para interactuar:"
+    container.appendChild(header)
 
+    // Para cada NPC disponible en la escena
     scene.npcs.forEach(npc => {
-        const row = document.createElement('div')
-        row.className = 'npcRow'
-        const affinity = (npc.affinity !== undefined) ? npc.affinity : '0'
-    
-        const npcDesc = document.createElement('div')
-        npcDesc.className = 'npcDesc'
-        npcDesc.style.display = 'flex'
-        npcDesc.style.justifyContent = 'space-between'
-        npcDesc.style.width = '100%'
-    
-        const leftSpan = document.createElement('span')
-        leftSpan.innerHTML = `<strong>${npc.name}</strong> - ${npc.role}`
-    
-        const rightSpan = document.createElement('span')
-        rightSpan.textContent = `💞: ${affinity}`
-        npcDesc.appendChild(leftSpan)
-        npcDesc.appendChild(rightSpan)
-        row.appendChild(npcDesc)
-    
-        const btnContainer = document.createElement('div')
-        btnContainer.className = 'npcBtnContainer'
-    
-        // Botón de hablar: se asigna el icono solo una vez al crear el menú.
-        const talkBtn = document.createElement('button')
-        const questIcon = getQuestIcon(npc, scene.player)
-        talkBtn.textContent = questIcon ? questIcon : "🗣️"
+        const row = document.createElement("div")
+        row.className = "npcRow"
+
+        // Descripción con nombre y rol, más afinidad
+        const desc = document.createElement("div")
+        desc.className = "npcDesc"
+        desc.style.display = "flex"
+        desc.style.justifyContent = "space-between"
+        desc.style.width = "100%"
+        desc.innerHTML = `
+            <span><strong>${npc.name}</strong> - ${npc.role}</span>
+            <span>💞: ${npc.affinity ?? 0}</span>
+        `
+        row.appendChild(desc)
+
+        // Contenedor de botones de acción
+        const btns = document.createElement("div")
+        btns.className = "npcBtnContainer"
+
+        // Botón principal: conversación o misión
+        const talkBtn = document.createElement("button")
+        talkBtn.textContent = getQuestIcon(npc, scene.player)
+
         talkBtn.onclick = () => {
-            document.body.removeChild(container)
-            scene.startNPCDialog(npc)
+            // 1) Cerramos el menú actual
+            container.remove()
+
+            // 2) Obtenemos la info de misión para este NPC, si existe
+            const questData = npcQuestsMap[npc.id_npc]
+            const state     = getNpcQuestState(npc, scene.player)
+
+            // 3) Si aún no la aceptó → ofrecerla
+            if (state === 'offerable' && questData) {
+                showQuestDialogue(scene, npc, questData)
+                return
+            }
+
+            // 4) Si está en progreso → mostrar recordatorio del paso actual
+            if (state === 'inProgress' && npc.mission) {
+                const questId = npc.mission.id
+                // buscamos la misión en player.quests
+                const q = scene.player.quests.find(x => x.id === questId)
+                if (!q) {
+                    // por seguridad, si no la encontramos, volvemos al menú de NPCs
+                    showNPCSubMenu(scene)
+                    return
+                }
+                // extraemos el texto del paso actual
+                const stepText = scene.questDefs[questId]?.steps?.[q.currentStep] || ''
+                showDialogLines(
+                    scene,
+                    npc,
+                    [`Recuerda, ${q.description}`],
+                    () => showNPCSubMenu(scene)
+                )
+                return
+            }
+
+            // 5) Si ya la completó → mostrar menú de entrega / continuación
+            if (state === 'completed' && questData) {
+                showMissionChoiceMenu(scene, npc, questData)
+                return
+            }
+
+            // 6) Si no hay misión que ofrecer/recordar, diálogo genérico o rutas custom
+            if (npc.conversationRoutes?.length) {
+                showConversationMenu(scene, npc)
+            } else {
+                scene.startNPCDialog(npc)
+            }
         }
-        btnContainer.appendChild(talkBtn)
-    
-        // Botones de tienda o venta se mantienen igual...
+        btns.appendChild(talkBtn)
+
+        // Botones de tienda / venta
         if (npc.shop) {
-            const buyBtn = document.createElement('button')
-            buyBtn.textContent = '🛒'
+            const buyBtn = document.createElement("button")
+            buyBtn.textContent = "🛒"
             buyBtn.onclick = () => {
-                document.body.removeChild(container)
+                container.remove()
                 showStoreMenu(scene, npc)
             }
-            btnContainer.appendChild(buyBtn)
-    
-            const sellBtn = document.createElement('button')
-            sellBtn.textContent = '💰'
+            btns.appendChild(buyBtn)
+
+            const sellBtn = document.createElement("button")
+            sellBtn.textContent = "💰"
             sellBtn.onclick = () => {
-                document.body.removeChild(container)
+                container.remove()
                 showSellMenu(scene, scene.player)
             }
-            btnContainer.appendChild(sellBtn)
+            btns.appendChild(sellBtn)
+        } else {
+            // botones deshabilitados si no hay tienda
+            ;[ "🛒", "💰" ].forEach(icon => {
+                const btn = document.createElement("button")
+                btn.textContent = icon
+                btn.disabled = true
+                btn.title = "No disponible"
+                btns.appendChild(btn)
+            })
         }
-        else {
-            const buyBtn = document.createElement('button')
-            buyBtn.textContent = '🛒'
-            buyBtn.disabled = true
-            buyBtn.title = 'No disponible'
-            btnContainer.appendChild(buyBtn)
-    
-            const sellBtn = document.createElement('button')
-            sellBtn.textContent = '💰'
-            sellBtn.disabled = true
-            sellBtn.title = 'No disponible'
-            btnContainer.appendChild(sellBtn)
-        }
-    
-        row.appendChild(btnContainer)
+
+        row.appendChild(btns)
         container.appendChild(row)
     })
 
-    const backBtn = document.createElement('button')
-    backBtn.textContent = 'Volver'
-    backBtn.className = 'backBtn'
-
+    // Botón volver
+    const backBtn = document.createElement("button")
+    backBtn.className = "backBtn"
+    backBtn.textContent = "Volver"
     backBtn.onclick = () => {
         container.remove()
-
-
         showScenarioMenu(scene)
     }
-
-
     container.appendChild(backBtn)
-    document.body.appendChild(container)
+
+    scene.dialogContainer.appendChild(container)
 }
 
 
@@ -408,8 +551,6 @@ export function showPostDialogueMenu(scene) {
 
     return (lastDialog && lastDialog.shop) ? showShopMenu(scene) : showScenarioMenu(scene)
 }
-
-
 
 export function showStoreMenu(scene, npc) {
     const container = document.createElement('div')
@@ -458,7 +599,7 @@ export function showStoreMenu(scene, npc) {
             quantityControl.className = 'quantityControl'
             
             const minusBtn = document.createElement('button')
-            minusBtn.textContent = '-'
+            minusBtn.textContent = '⇐'
             minusBtn.classList.add('minus-btn')
             purchaseQuantities[itemKey] = purchaseQuantities[itemKey] || 0
 
@@ -478,7 +619,7 @@ export function showStoreMenu(scene, npc) {
             quantityDisplay.className = 'quantityDisplay'
             
             const plusBtn = document.createElement('button')
-            plusBtn.textContent = '+'
+            plusBtn.textContent = '⇒'
             plusBtn.classList.add('plus-btn')
             plusBtn.onclick = () => {
                 // Comprobamos explícitamente si storeItem.quantity es un número
@@ -486,9 +627,6 @@ export function showStoreMenu(scene, npc) {
                     purchaseQuantities[itemKey]++
                     quantityDisplay.textContent = purchaseQuantities[itemKey]
                     updateTotalCost()
-                }
-                else {
-                    alert("Has alcanzado el límite de compra para este artículo.")
                 }
             }
             
@@ -559,7 +697,7 @@ export function showStoreMenu(scene, npc) {
     storeBtn.appendChild(buyBtn)
     storeBtn.appendChild(backBtn)
     container.appendChild(storeBtn)
-    document.body.appendChild(container)
+    scene.dialogContainer.appendChild(container)
 
     function calculateTotalCost() {
         let total = 0
@@ -586,9 +724,6 @@ export function showStoreMenu(scene, npc) {
     // Inicializar el resumen
     updateTotalCost()
 }
-
-
-
 
 export function showSellMenu(scene, player) {
     const container = document.createElement('div')
@@ -642,27 +777,33 @@ export function showSellMenu(scene, player) {
                 const sellPrice = (group.price && group.price.sell) ? group.price.sell : 0
                 const row = document.createElement('div')
                 row.className = 'storeRow'
+
                 const itemRow = document.createElement('div')
                 itemRow.className = 'itemRow'
+
                 const infoSpan = document.createElement('span')
                 infoSpan.textContent = `${group.icon} ${group.name} (x${group.quantity}) - ${sellPrice}s/u`
                 infoSpan.title = group.desc || 'Sin descripción.'
+
+
                 itemRow.appendChild(infoSpan)
                 row.appendChild(itemRow)
 
-                // Crear el control de cantidad: botón "-", campo de cantidad y botón "+"
+
+                // Crear el control de cantidad: botón "⇐", campo de cantidad y botón "⇒"
                 const quantityControl = document.createElement('div')
                 quantityControl.className = 'quantityControl'
 
                 const minusBtn = document.createElement('button')
-                minusBtn.textContent = '-'
+                minusBtn.textContent = '⇐'
                 minusBtn.classList.add('minus-btn')
+
                 const quantityDisplay = document.createElement('span')
                 const key = group.id || group.name
                 quantityDisplay.textContent = sellQuantities[key]
                 quantityDisplay.className = 'quantityDisplay'
                 const plusBtn = document.createElement('button')
-                plusBtn.textContent = '+'
+                plusBtn.textContent = '⇒'
                 plusBtn.classList.add('plus-btn')
 
                 minusBtn.onclick = () => {
@@ -693,8 +834,10 @@ export function showSellMenu(scene, player) {
         const summaryRow = document.createElement('div')
         summaryRow.className = 'storeSummary'
         const summaryText = document.createElement('p')
+
         summaryRow.appendChild(summaryText)
         container.appendChild(summaryRow)
+
 
         // Botón final de venta para vender todos los artículos seleccionados
         const storeBtn = document.createElement('div')
@@ -731,7 +874,7 @@ export function showSellMenu(scene, player) {
         storeBtn.appendChild(backBtn)
         container.appendChild(storeBtn)
 
-        document.body.appendChild(container)
+        scene.dialogContainer.appendChild(container)
 
 
         function calculateTotalRevenue() {
@@ -763,7 +906,6 @@ export function showSellMenu(scene, player) {
 
     updateContent()
 }
-
 
 export function showTravelMenu(scene) {
     const existing = document.getElementById('travelMenuContainer')
@@ -828,10 +970,8 @@ export function showTravelMenu(scene) {
         showScenarioMenu(scene)
     }
     container.appendChild(backBtn)
-    document.body.appendChild(container)
+    scene.dialogContainer.appendChild(container)
 }
-
-
 
 export function showMovementMenu(currentNode, modulePositions, onSelect) {
     const existing = document.getElementById('movementMenuContainer')
@@ -947,7 +1087,7 @@ export function showMovementMenu(currentNode, modulePositions, onSelect) {
         onSelect("volver")
     }
     container.appendChild(backBtn)
-    document.body.appendChild(container)
+    scene.dialogContainer.appendChild(container)
 }
 
 export function showStatusCards(scene) {
@@ -1211,6 +1351,7 @@ export function showStatusCards(scene) {
 }
 
 
+
 export function showQuestLog(scene, player) {
     const container = document.createElement('div')
     container.id = 'inventoryMenuContainer'  // Reutiliza el estilo del inventario
@@ -1300,7 +1441,7 @@ export function showQuestLog(scene, player) {
     footer.appendChild(backBtn)
     container.appendChild(footer)
 
-    document.body.appendChild(container)
+    scene.dialogContainer.appendChild(container)
 }
 
 function getQuestLogIcon(quest) {

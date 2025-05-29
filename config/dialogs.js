@@ -1,7 +1,6 @@
 import CONFIG from "./config.js"
 import { showMenu, showShopMenu, showNPCSubMenu, showPostDialogueMenu } from "./menus.js"
 
-
 // Aplica colores a palabras clave
 export function applyKeywordColor(text) {
     let coloredText = text
@@ -115,11 +114,23 @@ export function startTyping(scene, fullText) {
                             scene.currentIndex++
 
                             if (scene.currentIndex >= scene.dialogs.length) {
+                                if (!document.getElementById('questChoiceContainer')) {
+                                    scene.textboxText.style.display = 'none'
+                                    scene.speakerNameBox.style.display = 'none'
+                                    scene.npcImage.style.display = 'none'
+                                }
+                                scene.events.emit('dialogComplete')
                                 // Todos los diálogos mostrados
                                 if (scene.scene.key === "IntroScene") {
                                      scene.scene.start('VnScene', { player: scene.player })
                                 } else {
-                                     showPostDialogueMenu(scene)
+                                    const hasQuestMenu = document.getElementById('missionChoiceMenuContainer')
+                                    const hasConvMenu  = document.getElementById('conversationMenuContainer')
+                                    const hasNpcMenu   = document.getElementById('npcTalkMenuContainer')
+                                    
+                                    if (!hasQuestMenu && !hasConvMenu && !hasNpcMenu) {
+                                        showPostDialogueMenu(scene)
+                                    }
                                 }
                             } else {
                         
@@ -155,10 +166,11 @@ export function startTyping(scene, fullText) {
 export function showDialog(scene) {
     console.log("✅ Ejecutando showDialog()")
     const dialog = scene.dialogs[scene.currentIndex]
-
+    scene.speakerNameBox.style.transform = 'translateY(0%)'
+    scene.dialogContainer.appendChild(scene.speakerNameBox)
     if (!dialog) {
         console.log("🔴 Fin del diálogo. Fin de scene.dialogs.")
-
+        scene.events.emit('dialogComplete')
 
         return
     }
@@ -182,11 +194,14 @@ export function showDialog(scene) {
         // Si es otro personaje, muestra su nombre y su imagen
         scene.speakerNameBox.style.display = "block"
         scene.speakerNameBox.innerHTML = dialog.speakerName
+        scene.speakerNameBox.style.left = '5%'    // ejemplo: centrar horizontal
+        scene.speakerNameBox.style.bottom = '18.8%'
 
         // Remueve la clase "narrador" en caso de que estuviera
         scene.textboxText.classList.remove("narratorText")
 
         if (dialog.image) {
+            scene.speakerNameBox.style.display = "block"
             scene.npcImage.style.display = "block"
             scene.npcImage.src = dialog.image
             
@@ -215,7 +230,31 @@ export function showDialog(scene) {
     }
 }
 
+export function showDialogLines(scene, npc, lines, onComplete) {
+    // 1) Guardamos el diálogo actual para restaurar después
+    const original = scene.dialogs
 
+    // 2) Preparamos las nuevas líneas de diálogo
+    scene.dialogs = lines.map(text => ({
+        text: [ text ],
+        speakerName: npc.name,
+        image: `assets/npcs/${npc.image_path}.webp`
+    }))
+    scene.currentIndex = 0
+
+    // 3) Handler que se ejecuta al completar el diálogo
+    function finishHandler() {
+        scene.events.off('dialogComplete', finishHandler)  // desuscribimos
+        scene.dialogs = original                           // restauramos
+        onComplete()                                       // seguimos el flujo
+    }
+
+    // 4) Nos suscribimos al evento que dispara showDialog
+    scene.events.on('dialogComplete', finishHandler)
+
+    // 5) Iniciamos la presentación
+    showDialog(scene)
+}
 
 
 // Ajustar el fondo fullscreen
@@ -224,6 +263,13 @@ export function resize_bg(scene) {
         console.error("❌ resize_bg() `scene` undefined.")
         return
     }
+
+    // ❗ Evitar error si no hay background definido
+    if (!scene || !scene.bg) {
+        console.error("❌ resize_bg() `scene.bg` undefined.")
+        return
+    }
+
     const width = scene.scale.width
     const height = scene.scale.height
     // Dimensiones originales de la imagen de fondo

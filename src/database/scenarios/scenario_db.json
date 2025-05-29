@@ -78,98 +78,8 @@
 		"npc_type": "posadero",
 		"force_dialogue": true,
 		"permanent_npc_ids": ["innkeeper_001"],
-		"warps": ["la plaza principal", "la bodega", "habitación 1", "habitación 2", "habitación 3"]
+		"warps": ["la plaza principal"]
 	},
-		"la bodega": {
-			"name": "La bodega",
-			"background": "",
-			"description": "",
-			"npc_count": 0,
-			"role_category": "common",
-			"npc_type": "",
-			"force_dialogue": false,
-			"permanent_npc_ids": [],
-			"warps": []
-		},
-		"habitación 1": {
-			"name": "Habitación 1",
-			"background": "",
-			"description": "",
-			"npc_count": 0,
-			"role_category": "common",
-			"npc_type": "",
-			"force_dialogue": false,
-			"permanent_npc_ids": [],
-			"warps": []
-		},
-		"habitación 2": {
-			"name": "Habitación 2",
-			"background": "",
-			"description": "",
-			"npc_count": 0,
-			"role_category": "common",
-			"npc_type": "",
-			"force_dialogue": false,
-			"permanent_npc_ids": [],
-			"warps": []
-		},
-		"habitación 3": {
-			"name": "Habitación 3",
-			"background": "",
-			"description": "",
-			"npc_count": 0,
-			"role_category": "common",
-			"npc_type": "",
-			"force_dialogue": false,
-			"permanent_npc_ids": [],
-			"warps": []
-		},
-
-	"la iglesia": {
-		"name": "La iglesia",
-		"background": "church",
-		"description": "El patio de Majaz es una iglesia improvisada en tiempos de guerra.",
-		"npc_count": 2,
-		"role_type": "religious",
-		"npc_type": "sacerdote",
-		"force_dialogue": true,
-		"permanent_npc_ids": ["priest_001"],
-		"warps": ["la plaza principal", "altar", "zona trasera de la iglesia"]
-	},
-		"": {
-			"name": "",
-			"background": "",
-			"description": "",
-			"npc_count": 0,
-			"role_category": "common",
-			"npc_type": "",
-			"force_dialogue": false,
-			"permanent_npc_ids": [],
-			"warps": []
-		},
-		
-	"el faro (exterior)": {
-		"name": "el faro",
-		"background": "lighthouse",
-		"description": "Un antiguo faro abandonado que fue usado para guiar a los barcos mercantiles en épocas pasadas.",
-		"npc_count": 3,
-		"role_type": "dangerous",
-		"npc_type": "bandido",
-		"force_dialogue": false,
-		"permanent_npc_ids": [],
-		"warps": ["la puerta principal", "el faro"]
-	},
-		"el faro": {
-			"name": "el faro",
-			"background": "lighthouse",
-			"description": "Un antiguo faro abandonado que fue usado para guiar a los barcos mercantiles en épocas pasadas.",
-			"npc_count": 3,
-			"role_type": "dangerous",
-			"npc_type": "bandido",
-			"force_dialogue": true,
-			"permanent_npc_ids": ["bandit_002", "wanderman_002"],
-			"warps": ["el faro (exterior)"]
-		},
 
 
 	"la sastrería": {
@@ -193,31 +103,8 @@
 		"npc_type": "guardia",
 		"force_dialogue": true,
 		"permanent_npc_ids": ["guard_001", "guard_002"],
-		"warps": ["la plaza principal", "el mercado", "el faro (exterior)", "las ruinas", "la puerta hacia el castillo"]
-	},
-    
-	"las ruinas": {
-		"name": "las ruinas",
-		"background": "dungate",
-		"description": "La entrada a la mazmorra de Kael’Tharok. La gran puerta metálica pareciera inamovible al paso de los siglos.",
-		"npc_count": 0,
-		"role_category": "common",
-		"npc_type": "military",
-		"force_dialogue": false,
-		"permanent_npc_ids": [],
-		"warps": ["la puerta principal", "el interior de la mazmorra"]
-	},
-
-	"la puerta hacia el castillo": {
-		"name": "La puerta hacia el castillo",
-		"background": "",
-		"description": "Una puerta que conduce al interior de una muralla. En el interior hay un camino\nal castillo del rey. No puede cruzarse sin una autorización.",
-		"npc_count": 0,
-		"role_category": "military",
-		"npc_type": "guardia real",
-		"force_dialogue": true,
-		"permanent_npc_ids": ["royalguard_001", "royalguard_002"],
-		"warps": ["la puerta principal"]
+		"warps": ["la plaza principal", "el mercado"]
 	}
+
 }
 

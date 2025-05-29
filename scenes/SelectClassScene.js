@@ -85,7 +85,10 @@ export class SelectClassScene extends Phaser.Scene {
                 break
 
             case 'KeyZ':
+            case 'Enter':
                 let selectedClassKey = this.getCurrentPageClasses()[this.selectedIndex]
+                //let selectedClassKey2 = this.getCurrentPageClasses()[this.selectedIndex +1]
+                //let selectedClassKey3 = this.getCurrentPageClasses()[this.selectedIndex -1]
                 let selectedClassData = this.jobStats[selectedClassKey]
 
                 console.log('Clase seleccionada:', selectedClassKey)
@@ -110,12 +113,35 @@ export class SelectClassScene extends Phaser.Scene {
                     accessoryDb
                 )
 
+/*                 let player2 = new Player(
+                    this.playerName,
+                    selectedClassKey2,
+                    1,      // nivel por defecto
+                    5,      // fatiga por defecto
+                    5,
+                    weaponDb,
+                    shieldDb,
+                    armorDb,
+                    accessoryDb
+                )
+                let player3 = new Player(
+                    this.playerName,
+                    selectedClassKey3,
+                    1,      // nivel por defecto
+                    5,      // fatiga por defecto
+                    5,
+                    weaponDb,
+                    shieldDb,
+                    armorDb,
+                    accessoryDb
+                )  */
+
 
                 console.log("SelectClassScene: Nuevo player creado", player.toString())
 
 
                 // Transición a IntroScene pasando el objeto Player
-                this.scene.start('VnScene', { player: player })
+                this.scene.start('IntroScene', { player: player })
                 break
         }
     }

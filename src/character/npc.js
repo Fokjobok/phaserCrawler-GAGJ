@@ -1,5 +1,5 @@
 export let allNpcs = {}
-import { assignMainMission, assignSecondaryMission, updateMissionProgress } from './mission_storyline.js'
+import { assignQuest, applyQuestChanges } from "../questManager.js"
 // Datos externos (JSON) que debes cargar en tu escena o en index.js antes de usar estas funciones
 // Ejs: npcNames, npcRole, npcChance, npcDialogs, npcAppearance, predefinedNpcs
 // Se asume que tu escena Phaser los importará o los guardará en variables globales
@@ -10,15 +10,19 @@ let npcChance = null
 let npcDialogs = null
 let npcAppearance = null
 let predefinedNpcs = null
+let npcQuests = null
+let questDefs = null
 
 export function initNpcData(data) {
 
-	npcNames = data.npcNames
-	npcRole = data.npcRole
-	npcChance = data.npcChance
-	npcDialogs = data.npcDialogs
-	npcAppearance = data.npcAppearance
-	predefinedNpcs = data.predefinedNpcs
+    if (data.npcNames       !== undefined) npcNames       = data.npcNames
+    if (data.npcRole        !== undefined) npcRole        = data.npcRole
+    if (data.npcChance      !== undefined) npcChance      = data.npcChance
+    if (data.npcDialogs     !== undefined) npcDialogs     = data.npcDialogs
+    if (data.npcAppearance  !== undefined) npcAppearance  = data.npcAppearance
+    if (data.predefinedNpcs !== undefined) predefinedNpcs = data.predefinedNpcs
+    if (data.npcQuests      !== undefined) npcQuests      = data.npcQuests
+    if (data.questDefs      !== undefined) questDefs      = data.questDefs
 
     Object.keys(predefinedNpcs).forEach(npcKey => {
         let npcData = predefinedNpcs[npcKey]
@@ -26,13 +30,12 @@ export function initNpcData(data) {
             npcData.store = assignStoreQuantity(npcData.store)
         }
     })
-
 	console.log("initNpcData cargó la info de NPCs:", data)
+    console.log("initNpcData:", { npcQuests, questDefs })
 }
 
 /*
 Clase NPC que representa un personaje no jugable,
-similar al @dataclass en Python
 */
 export class NPC {
     constructor({
@@ -111,7 +114,7 @@ export class NPC {
 		let interactions = []
 		Object.keys(chances).forEach(interactionType => {
 			let probability = chances[interactionType]
-			// Usamos Math.random() ~ random.random() de Python
+			
 			if (Math.random() < probability) {
 				interactions.push(interactionType)
 			}
@@ -180,7 +183,32 @@ export function generatePredefinedNpc(npcId) {
         store: npcData.store || []
     })
 
-    assignMainMission(newNpc)
+    
+    const cfg = npcQuests[npcId]
+    
+    if (cfg && Array.isArray(cfg.conversationRoutes)) {
+      // Buscamos la ruta que ofrezca la misión (primer questChanges)
+      const route = cfg.conversationRoutes.find(r => r.questChanges?.length)
+
+      if (route) {
+        const { questId, nextStep } = route.questChanges[0]
+        const def = questDefs[questId]
+
+        if (def) {
+          newNpc.setMission({
+            id:           def.id,
+            type:         def.type,
+            title:        def.title,
+            description:  def.description,
+            steps:        def.steps,
+            currentStep:  Math.max(0, nextStep - 1),
+            completed:    false,
+            rewards:      def.rewards
+          })
+        }
+      }
+    }
+
 
     allNpcs[newNpc.id_npc] = newNpc
     return newNpc

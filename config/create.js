@@ -9,8 +9,11 @@ export function create_dialogContainer(scene) {
 	scene.dialogContainer = document.createElement('div')
 	scene.dialogContainer.className = 'dialogContainer'
 
-	scene.dialogContainer.style.position = 'relative'
-	scene.dialogContainer.style.width = '100%'
+	scene.dialogContainer.style.position = 'absolute'
+	scene.dialogContainer.style.top      = '0'
+	scene.dialogContainer.style.left     = '0'
+	scene.dialogContainer.style.width    = '100%'
+	scene.dialogContainer.style.height   = '100%'
 	document.body.appendChild(scene.dialogContainer)
 	console.log("✅ Dialog container created.")
 }
@@ -46,7 +49,7 @@ export function create_npcImage(scene) {
 
 export function create_speakerNameBox(scene) {
 	scene.speakerNameBox = document.createElement("div")
-	scene.speakerNameBox.className = "speakerNameBox"
+	scene.speakerNameBox.className = "speakerNameBox-dialog"
 
 	scene.dialogContainer.appendChild(scene.speakerNameBox)
 	console.log("☑️ speakerNameBox creado.")
@@ -58,24 +61,20 @@ export function create_speakerNameBox(scene) {
 // Carga los datos del escenario y de los NPCs
 export function create_scenarioData(scene) {
     scene.scenarioData = scene.cache.json.get("scenario_db")
-    const npcPredefinedData = scene.cache.json.get("npc_predefined") // Carga los NPCs permanentes
+	const raw = scene.cache.json.get("npc_predefined")
 
     if (!scene.scenarioData) {
-        console.error("❌ Error: No se pudo cargar scenario_db.json")
+		console.error("❌ No se pudo cargar scenario_db.json"); return
+	}
+    if (!raw) {
+		console.error("❌ No se pudo cargar npc_predefined.json"); return
+	}
 
+	initNpcData({
+        predefinedNpcs: raw.predefinedNpcs,
+        storesDatabase: raw.storesDatabase
+    })
 
-        return
-    }
-
-    if (!npcPredefinedData) {
-        console.error("❌ Error: No se pudo cargar npc_predefined.json")
-
-
-        return
-    }
-
-
-    initNpcData({ predefinedNpcs: npcPredefinedData }) // Inicializa NPC data
 
     console.log("☑️ Datos del escenario y NPCs inicializados correctamente.")
 }

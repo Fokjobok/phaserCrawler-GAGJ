@@ -73,10 +73,10 @@ export function showScenarioMenu(scene) {
                 showNPCSubMenu(scene)
                 break
 
-/*             case '🔍 Explorar':
+            case '🔍 Explorar':
                 alert(`Funcionalidad "${selection}" no implementada aún.`)
                 showScenarioMenu(scene)
-                break */
+                break
 
             case '🛤️ Viajar':
                 showTravelMenu(scene)
@@ -86,9 +86,9 @@ export function showScenarioMenu(scene) {
                 showInventoryMenu(scene, scene.player)
                 break
 
-/*             case '📊 Estado':
+             case '📊 Estado':
                 showStatusCards(scene)
-                break */
+                break
 
             case '❓ Misiones':
                 showQuestLog(scene, scene.player)
@@ -101,7 +101,7 @@ export function showScenarioMenu(scene) {
     })
 }
 
-export function showInventoryMenu(scene, player) {
+export function showInventoryMenu(scene, player, opts = {}) {
     const container = document.createElement('div')
     container.id = 'inventoryMenuContainer'
 
@@ -215,7 +215,8 @@ export function showInventoryMenu(scene, player) {
     backBtn.textContent = 'Volver'
     backBtn.onclick = () => {
         container.remove()
-        showScenarioMenu(scene)
+        if (typeof opts.onBack === 'function') opts.onBack()
+        else showScenarioMenu(scene)
     }
     footer.appendChild(backBtn)
     container.appendChild(footer)
@@ -276,16 +277,16 @@ export function showConversationMenu(scene, npc) {
         btn.textContent = route.label
         btn.onclick = () => {
             container.remove()
-
-
-            ;(route.questChanges || []).forEach(({ questId, nextStep }) => {
-                if (!playerHasQuest(scene.player, questId)) {
-                    assignQuest(scene, scene.player, questId)
-                }
-                advanceQuest(scene, scene.player, questId, nextStep)
-            })
-
-
+            // Si la ruta tiene subOpciones (p.ej. Aceptar / Rechazar),
+            // NO aplicamos questChanges aquí. Se aplicarán en la sub-opción elegida.
+            if (!Array.isArray(route.subOptions) || route.subOptions.length === 0) {
+                ;(route.questChanges || []).forEach(({ questId, nextStep }) => {
+                    if (!playerHasQuest(scene.player, questId)) {
+                        assignQuest(scene, scene.player, questId)
+                    }
+                    advanceQuest(scene, scene.player, questId, nextStep)
+                })
+            }
 
             showDialogLines(scene, npc, route.lines, () => {
                 if (route.subOptions?.length) {
@@ -330,14 +331,17 @@ export function showMissionChoiceMenu(scene, npc, questData) {
         container.remove()
         container.innerHTML = ''
 
-        // aplicar cambios de misión
-        ;(opt.questChanges || []).forEach(({ questId, nextStep }) => {
-            const exist = playerHasQuest(scene.player, questId)
-            if (!exist) {
-                assignQuest(scene, scene.player, questId)    // la crea en step=0
-            }
-            advanceQuest(scene, scene.player, questId, nextStep)
-        })
+        // Aplicar cambios de misión SOLO si no hay subOpciones.
+        // Si hay subOpciones (Aceptar/Rechazar), se aplicarán al elegir una de ellas.
+        if (!Array.isArray(opt.subOptions) || opt.subOptions.length === 0) {
+            ;(opt.questChanges || []).forEach(({ questId, nextStep }) => {
+                const exist = playerHasQuest(scene.player, questId)
+                if (!exist) {
+                    assignQuest(scene, scene.player, questId)    // la crea en step=0
+                }
+                advanceQuest(scene, scene.player, questId, nextStep)
+            })
+        }
 
         // ajustar afinidad
         if (typeof opt.affinityChange === 'number') {
@@ -601,6 +605,8 @@ export function showStoreMenu(scene, npc) {
             const minusBtn = document.createElement('button')
             minusBtn.textContent = '⇐'
             minusBtn.classList.add('minus-btn')
+            // Forzar símbolo profesional
+            try { minusBtn.textContent = '-' } catch(e) {}
             purchaseQuantities[itemKey] = purchaseQuantities[itemKey] || 0
 
             minusBtn.onclick = () => {
@@ -621,6 +627,8 @@ export function showStoreMenu(scene, npc) {
             const plusBtn = document.createElement('button')
             plusBtn.textContent = '⇒'
             plusBtn.classList.add('plus-btn')
+            // Forzar símbolo profesional
+            try { plusBtn.textContent = '+' } catch(e) {}
             plusBtn.onclick = () => {
                 // Comprobamos explícitamente si storeItem.quantity es un número
                 if (typeof storeItem.quantity === 'number' ? purchaseQuantities[itemKey] < storeItem.quantity : true) {
@@ -797,6 +805,7 @@ export function showSellMenu(scene, player) {
                 const minusBtn = document.createElement('button')
                 minusBtn.textContent = '⇐'
                 minusBtn.classList.add('minus-btn')
+                try { minusBtn.textContent = '-' } catch(e) {}
 
                 const quantityDisplay = document.createElement('span')
                 const key = group.id || group.name
@@ -805,6 +814,7 @@ export function showSellMenu(scene, player) {
                 const plusBtn = document.createElement('button')
                 plusBtn.textContent = '⇒'
                 plusBtn.classList.add('plus-btn')
+                try { plusBtn.textContent = '+' } catch(e) {}
 
                 minusBtn.onclick = () => {
                     if (sellQuantities[key] > 0) {
@@ -973,7 +983,7 @@ export function showTravelMenu(scene) {
     scene.dialogContainer.appendChild(container)
 }
 
-export function showMovementMenu(currentNode, modulePositions, onSelect) {
+export function showMovementMenu(scene, currentNode, modulePositions, onSelect) {
     const existing = document.getElementById('movementMenuContainer')
     if (existing) existing.remove()
 
@@ -1036,11 +1046,20 @@ export function showMovementMenu(currentNode, modulePositions, onSelect) {
             })
         }
     } else {
-        if (currentNode.prev) {
-            options.push({ text: "Anterior", option: currentNode.prev })
-        }
-        if (currentNode.next) {
-            options.push({ text: "Siguiente", option: currentNode.next })
+        // Si recibimos un listado de conexiones desde el módulo, lo usamos
+        if (currentNode.module && Array.isArray(currentNode.connections) && currentNode.connections.length) {
+            options = currentNode.connections.map(conn => ({
+                text: `Ir a módulo ${conn.toModule.id}`,
+                option: conn
+            }))
+        } else {
+            // Compatibilidad con prev/next en ruta principal
+            if (currentNode.prev) {
+                options.push({ text: "Anterior", option: currentNode.prev })
+            }
+            if (currentNode.next) {
+                options.push({ text: "Siguiente", option: currentNode.next })
+            }
         }
     }
     
@@ -1051,7 +1070,8 @@ export function showMovementMenu(currentNode, modulePositions, onSelect) {
         if (item.option.fromModule && item.option.toModule) {
             if (item.text === "Anterior") {
                 bgUrl = getBackgroundURL(item.option.fromModule.image)
-            } else if (item.text === "Siguiente") {
+            } else {
+                // Para "Siguiente" y opciones genéricas de conexión mostramos el destino
                 bgUrl = getBackgroundURL(item.option.toModule.image)
             }
         } else if (item.option.type === 'corridor' && currentNode.corridor) {
@@ -1090,271 +1110,11 @@ export function showMovementMenu(currentNode, modulePositions, onSelect) {
     scene.dialogContainer.appendChild(container)
 }
 
-export function showStatusCards(scene) {
-    // Usa groupMembers si existen; de lo contrario, usa scene.player
-    const players = (scene.groupMembers && scene.groupMembers.length > 0)
-        ? scene.groupMembers.filter(p => p !== undefined)
-        : (scene.player ? [scene.player] : [])
-    if (!players || players.length === 0) {
-        console.error("No hay datos de jugadores disponibles")
-        return
-    }
-
-    let currentIndex = 0
-
-    // Crear overlay y contenedor usando los IDs definidos en el CSS
-    const overlay = document.createElement("div")
-    overlay.id = "statusOverlay"
-
-    const container = document.createElement("div")
-    container.id = "statusCardContainer"
-
-    // Botón de cerrar para volver al menú principal
-    const closeBtn = document.createElement("button")
-    closeBtn.className = "close-btn"
-    closeBtn.textContent = "X"
-    closeBtn.onclick = () => {
-        overlay.remove()
-        showScenarioMenu(scene)
-        console.log("Volviendo al menú de escenario")
-
-    }
-    container.appendChild(closeBtn)
-
-    // Botón flecha izquierda
-    const leftArrow = document.createElement("button")
-    leftArrow.className = "arrow"
-    leftArrow.textContent = "⇚"
-    leftArrow.onclick = () => {
-        currentIndex = (currentIndex - 1 + players.length) % players.length
-        renderCard()
-    }
-
-    // Botón flecha derecha
-    const rightArrow = document.createElement("button")
-    rightArrow.className = "arrow"
-    rightArrow.textContent = "⇛"
-    rightArrow.onclick = () => {
-        currentIndex = (currentIndex + 1) % players.length
-        renderCard()
-    }
-
-    // Contenedor para el contenido de la tarjeta
-    const cardContent = document.createElement("div")
-    cardContent.id = "statusCardContent"
-
-    // Agregar flechas y contenido al contenedor principal
-    container.appendChild(leftArrow)
-    container.appendChild(cardContent)
-    container.appendChild(rightArrow)
-
-    overlay.appendChild(container)
-    document.body.appendChild(overlay)
-
-    function renderCard() {
-        cardContent.innerHTML = ""
-        const player = players[currentIndex]
-        // Obtener colores usando métodos del Player, con fallback
-        let cardColor = (player.getColorAsHex && typeof player.getColorAsHex === 'function')
-            ? player.getColorAsHex() : '#CCCCCC'
-        let subColor = (player.getColorAsRGBA && typeof player.getColorAsRGBA === 'function')
-            ? player.getColorAsRGBA(1) : 'rgba(200,200,200,1)'
-        // Derivar la imagen a partir del job del jugador
-        let imagePath = `assets/characters/${player.job}.webp`
-        // Parte superior: estadísticas fijas
-        let statsStr = `
-            <div class="status-card-stats-grid">
-                <button class="stat" data-stat="str" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">STR: ${formatStat(player.str)}</button>
-                <button class="stat" data-stat="vit" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">VIT: ${formatStat(player.vit)}</button>
-                <button class="stat" data-stat="agi" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">AGI: ${formatStat(player.agi)}</button>
-                <button class="stat" data-stat="dex" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">DEX: ${formatStat(player.dex)}</button>
-                <button class="stat" data-stat="wis" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">WIS: ${formatStat(player.wis)}</button>
-                <button class="stat" data-stat="sou" 
-                    onmouseover="this.style.backgroundColor='${cardColor}'" 
-                    onmouseout="this.style.backgroundColor=''" 
-                    onclick="increaseStat(event)">SOU: ${formatStat(player.sou)}</button>
-            </div>
-            `
-        // Parte inferior: datos dinámicos y equipamiento
-        let parametersHTML = `
-            <div class="player-stats">
-                <p>Jugador: ${player.name} (${player.job.charAt(0).toUpperCase() + player.job.slice(1)}) - Nivel: ${player.level}</p>
-                <p>HP: ${player.hp}/${player.hp_max} &nbsp;&nbsp;&nbsp; SP: ${player.sp}/${player.sp_max}</p>
-                <p>ATK: ${player.total_atk} &nbsp;&nbsp;&nbsp; MATK: ${player.total_matk}</p>
-                <p>DEF: ${player.total_def} &nbsp;&nbsp;&nbsp; MDEF: ${player.total_mdef}</p>
-            </div>
-        `
-        let equipmentHTML = `
-            <div class="equipment">
-                <p><strong>Equipamiento:</strong></p>
-                <p>Arma: ${player.weapon && player.weapon.name ? player.weapon.name : 'Ninguno'} &nbsp;&nbsp;
-                Atk: ${player.weapon && player.weapon.atk ? player.weapon.atk : '0'} &nbsp;&nbsp;
-                Matk: ${player.weapon && player.weapon.matk ? player.weapon.matk : '0'}</p>
-                <p>Escudo: ${player.shield && player.shield.name ? player.shield.name : 'Ninguno'} &nbsp;&nbsp;
-                Def: ${player.shield && player.shield.def ? player.shield.def : '0'} &nbsp;&nbsp;
-                Mdef: ${player.shield && player.shield.mdef ? player.shield.mdef : '0'}</p>
-                <p>Armadura: ${player.armor && player.armor.name ? player.armor.name : 'Ninguno'} &nbsp;&nbsp;
-                Def: ${player.armor && player.armor.def ? player.armor.def : '0'} &nbsp;&nbsp;
-                Mdef: ${player.armor && player.armor.mdef ? player.armor.mdef : '0'}</p>
-                <p>Accesorio: ${player.accessory && player.accessory.name ? player.accessory.name : 'Ninguno'} &nbsp;&nbsp;
-                Def: ${player.accessory && player.accessory.def ? player.accessory.def : '0'} &nbsp;&nbsp;
-                Mdef: ${player.accessory && player.accessory.mdef ? player.accessory.mdef : '0'}</p>
-            </div>
-        `
-        // Se añade un bloque de pestañas en la "secondary-card"
-        let cardHTML = `
-            <div class="tab-bar">
-                <button class="tab" id="tab-info" style="background-color: ${cardColor}; color: ${subColor};">DETALLES</button>
-                <button class="tab" id="tab-tutorial" style="background-color: ${subColor}; color: ${cardColor};">TUTORIAL</button>
-                <button class="tab" id="tab-status-vit" style="background-color: ${subColor}; color: ${cardColor};">RESISTENCIA</button>
-                <button class="tab" id="tab-status-agi" style="background-color: ${subColor}; color: ${cardColor};">VERSATILIDAD</button>
-                <button class="tab" id="tab-status-wis" style="background-color: ${subColor}; color: ${cardColor};">MENTALIDAD</button>
-            </div>
-            <div class="status-window">
-                <div class="card" style="border-color: ${cardColor};">
-                <div class="card-bg" style="background-image: url('${imagePath}'); border-radius: 6px;"></div>
-                <div class="card-overlay" style="background-color: ${subColor};"></div>
-                    <div class="card-content-stats">
-                        <h2 class="card-job-title" style="color: ${cardColor};">${player.job.charAt(0).toUpperCase() + player.job.slice(1)}</h2>
-                        <div class="card-body">
-                            <div class="stats-box">${statsStr}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="secondary-card" style="border-color: ${cardColor}; background-color: ${cardColor};">
-                    <div class="tab-content" id="tab-content">
-                        <div class="info-content">
-                            <div class="card-content-desc">
-                                <h2 class="card-title" style="color: ${cardColor};"> ${player.name} </h2>
-                                <div class="card-body">
-                                    <div class="card-parameters">
-                                        ${parametersHTML}
-                                    </div>
-                                    <div class="card-gear">
-                                        ${equipmentHTML}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
-        cardContent.innerHTML = cardHTML
-
-        // Asignar eventos a las pestañas para cambiar el contenido
-        const tabInfo = cardContent.querySelector('#tab-info')
-        const tabTutorial = cardContent.querySelector('#tab-tutorial')
-        const tabVIT = cardContent.querySelector('#tab-status-vit')
-        const tabAGI = cardContent.querySelector('#tab-status-agi')
-        const tabWIS = cardContent.querySelector('#tab-status-wis')
-        const tabContent = cardContent.querySelector('#tab-content')
-        
-        function setActiveTab(activeTabId) {
-            const tabs = cardContent.querySelectorAll('.tab')
-            tabs.forEach(tab => {
-                if (tab.id === activeTabId) {
-                    tab.style.backgroundColor = cardColor
-                    tab.style.color = subColor
-                } else {
-                    tab.style.backgroundColor = subColor
-                    tab.style.color = cardColor
-                }
-            })
-        }
-        
-        if (tabInfo && tabTutorial && tabVIT && tabAGI && tabWIS && tabContent) {
-            tabInfo.onclick = () => {
-                setActiveTab('tab-info')
-                tabContent.innerHTML = `
-                <div class="info-content">
-                    <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};">${player.name}</h2>
-                        <div class="card-body">
-                            <div class="card-parameters">
-                                ${parametersHTML}
-                            </div>
-                            <div class="card-gear">
-                                ${equipmentHTML}
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-            }
-            tabTutorial.onclick = () => {
-                setActiveTab('tab-tutorial')
-                tabContent.innerHTML = `
-                <div class="tutorial-content">
-                    <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};">Tutorial</h2>
-                        <div class="card-body">
-                            <p>Aquí se muestra la información del tutorial.</p>
-                        </div>
-                    </div>
-                </div>`
-            }
-            tabVIT.onclick = () => {
-                setActiveTab('tab-status-vit')
-                tabContent.innerHTML = `
-                <div class="vit-content">
-                    <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};">Resistencia</h2>
-                        <div class="card-body">
-                            <p>Información detallada sobre la resistencia del personaje.</p>
-                        </div>
-                    </div>
-                </div>`
-            }
-            tabAGI.onclick = () => {
-                setActiveTab('tab-status-agi')
-                tabContent.innerHTML = `
-                <div class="agi-content">
-                    <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};">Versatilidad</h2>
-                        <div class="card-body">
-                            <p>Información detallada sobre la agilidad y versatilidad del personaje.</p>
-                        </div>
-                    </div>
-                </div>`
-            }
-            tabWIS.onclick = () => {
-                setActiveTab('tab-status-wis')
-                tabContent.innerHTML = `
-                <div class="wis-content">
-                    <div class="card-content-desc">
-                        <h2 class="card-title" style="color: ${cardColor};">Mentalidad</h2>
-                        <div class="card-body">
-                            <p>Información detallada sobre la sabiduría y mentalidad del personaje.</p>
-                        </div>
-                    </div>
-                </div>`
-            }
-        }
-    }
-
-    renderCard()
-}
 
 
-
-export function showQuestLog(scene, player) {
+export function showQuestLog(scene, player, opts = {}) {
     const container = document.createElement('div')
-    container.id = 'inventoryMenuContainer'  // Reutiliza el estilo del inventario
+    container.id = 'inventoryMenuContainer'  // Contenedor dedicado para el registro de misiones
 
     const header = document.createElement('div')
     header.id = 'inventoryHeader'
@@ -1436,7 +1196,8 @@ export function showQuestLog(scene, player) {
         const detail = document.getElementById('questDetailContainer')
         if (detail) detail.remove()
         container.remove()
-        showScenarioMenu(scene)
+        if (typeof opts.onBack === 'function') opts.onBack()
+        else showScenarioMenu(scene)
     }
     footer.appendChild(backBtn)
     container.appendChild(footer)
@@ -1504,4 +1265,139 @@ function getItemData(cat, id) {
 
     
     return null
+}
+
+// Nuevo menú de Estado del personaje (ficha rediseñada)
+export function showStatusCards(scene, opts = {}) {
+    const player = scene.player
+    const container = document.createElement('div')
+    container.id = 'statusMenuContainer'
+    container.style.position = 'absolute'
+    container.style.inset = '0'
+    container.style.display = 'flex'
+    container.style.flexDirection = 'column'
+    container.style.alignItems = 'center'
+    container.style.justifyContent = 'center'
+    container.style.backdropFilter = 'blur(2px)'
+
+    const cardColor = player.getColorAsHex()
+    const bgRGBA = player.getColorAsRGBA(0.2)
+
+    const frame = document.createElement('div')
+    frame.style.width = 'min(960px, 90vw)'
+    frame.style.maxHeight = '80vh'
+    frame.style.border = `2px solid ${cardColor}`
+    frame.style.borderRadius = '14px'
+    frame.style.background = bgRGBA
+    frame.style.color = '#e5e7eb'
+    frame.style.boxShadow = '0 8px 30px rgba(0,0,0,0.35)'
+    frame.style.display = 'flex'
+    frame.style.flexDirection = 'column'
+
+    const header = document.createElement('div')
+    header.style.padding = '12px 16px'
+    header.style.background = 'rgba(0,0,0,0.25)'
+    header.style.borderBottom = `1px solid ${cardColor}`
+    header.textContent = 'Estado del Personaje'
+    frame.appendChild(header)
+
+    const body = document.createElement('div')
+    body.style.display = 'grid'
+    body.style.gridTemplateColumns = '1fr 1fr'
+    body.style.gap = '16px'
+    body.style.padding = '16px'
+
+    const left = document.createElement('div')
+    left.innerHTML = `
+      <div style="display:flex; gap:16px; align-items:center;">
+        <img src="assets/characters/hud/${player.job}.webp" alt="${player.job}" style="width:96px; height:96px; object-fit:contain; border-radius:10px; border:1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.2);"/>
+        <div>
+          <div style="font-size:22px; font-weight:700; color:${cardColor}">${player.name}</div>
+          <div style="opacity:0.8;">Clase: ${player.job.toUpperCase()}</div>
+          <div style="opacity:0.8;">Nivel: ${player.level}</div>
+          <div style="opacity:0.8;">Oro: ${player.gold}</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; padding:12px; border-radius:10px; background: rgba(0,0,0,0.2);">
+        <div style="margin-bottom:6px;">Vida</div>
+        <div style="height:12px; background:#1f2937; border-radius:8px; overflow:hidden;">
+          <div style="height:100%; width:${Math.max(5, Math.min(100, Math.round((player.hp/player.hp_max)*100)))}%; background:${cardColor};"></div>
+        </div>
+        <div style="margin-top:6px; font-size:12px; opacity:0.85;">${player.hp} / ${player.hp_max}</div>
+      </div>
+    `
+
+    const right = document.createElement('div')
+    const statRow = (label, value) => {
+      const row = document.createElement('div')
+      row.style.display = 'grid'
+      row.style.gridTemplateColumns = '120px 1fr 50px'
+      row.style.alignItems = 'center'
+      row.style.gap = '10px'
+      row.style.margin = '6px 0'
+
+      const l = document.createElement('div')
+      l.textContent = label
+      l.style.opacity = '0.9'
+      const bar = document.createElement('div')
+      bar.style.height = '10px'
+      bar.style.background = '#111827'
+      bar.style.borderRadius = '8px'
+      bar.style.overflow = 'hidden'
+      const fill = document.createElement('div')
+      const pct = Math.max(5, Math.min(100, Math.round((value/30)*100)))
+      fill.style.width = pct + '%'
+      fill.style.height = '100%'
+      fill.style.background = cardColor
+      bar.appendChild(fill)
+      const v = document.createElement('div')
+      v.textContent = String(value)
+      v.style.textAlign = 'right'
+
+      row.appendChild(l); row.appendChild(bar); row.appendChild(v)
+      return row
+    }
+
+    const statsWrap = document.createElement('div')
+    statsWrap.style.padding = '8px 12px'
+    statsWrap.style.borderRadius = '10px'
+    statsWrap.style.background = 'rgba(0,0,0,0.2)'
+    statsWrap.appendChild(statRow('Fuerza', player.str))
+    statsWrap.appendChild(statRow('Resistencia', player.vit))
+    statsWrap.appendChild(statRow('Versatilidad', player.agi))
+    statsWrap.appendChild(statRow('Destreza', player.dex))
+    statsWrap.appendChild(statRow('Sabiduría', player.wis))
+    statsWrap.appendChild(statRow('Espíritu', player.sou))
+
+    right.appendChild(statsWrap)
+
+    body.appendChild(left)
+    body.appendChild(right)
+    frame.appendChild(body)
+
+    const footer = document.createElement('div')
+    footer.style.display = 'flex'
+    footer.style.justifyContent = 'flex-end'
+    footer.style.gap = '8px'
+    footer.style.padding = '12px 16px'
+    footer.style.borderTop = `1px solid ${cardColor}`
+    footer.style.background = 'rgba(0,0,0,0.25)'
+
+    const backBtn = document.createElement('button')
+    backBtn.textContent = 'Volver'
+    backBtn.style.padding = '8px 14px'
+    backBtn.style.borderRadius = '8px'
+    backBtn.style.border = `1px solid ${cardColor}`
+    backBtn.style.background = 'rgba(0,0,0,0.2)'
+    backBtn.style.color = '#e5e7eb'
+    backBtn.onclick = () => {
+      container.remove()
+      if (typeof opts.onBack === 'function') opts.onBack()
+      else showScenarioMenu(scene)
+    }
+
+    footer.appendChild(backBtn)
+    frame.appendChild(footer)
+    container.appendChild(frame)
+    scene.dialogContainer.appendChild(container)
 }

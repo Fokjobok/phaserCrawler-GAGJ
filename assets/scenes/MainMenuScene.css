@@ -1,0 +1,147 @@
+/* Main Menu Styles */
+.main-menu-root {
+  position: fixed;
+
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-menu-bg-gradient { 
+    position:absolute; 
+    inset:0; background: 
+    radial-gradient(ellipse at top, #1f2937 0%, #0b1020 60%, #070b16 100%); 
+}
+
+.main-menu-bg-image { 
+    position:absolute; inset:0; background-image: url('../backgrounds/plaza.webp'); background-size: cover; background-position: center; filter: brightness(0.5) blur(2px); }
+
+.main-menu-bg-vignette { 
+    position:absolute; inset:0; 
+    background: linear-gradient( to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.6) ); 
+}
+
+.main-menu-title-wrap { 
+    position: absolute; top: 8vh; width: 100%; text-align: center; 
+}
+
+.main-menu-title-box { 
+    display:inline-block; 
+    padding: 12px 24px; 
+    border: 2px solid rgba(255,255,255,0.25); 
+    border-radius: 12px; 
+    background: rgba(10,14,28,0.55); 
+}
+
+.main-menu-title { 
+    margin:0; 
+    font-family: 'Georgia', serif; font-size: 48px; 
+    letter-spacing: 3px; 
+    color:#f3f4f6; 
+    text-shadow: 0 4px 16px rgba(0,0,0,0.7); 
+}
+
+.main-menu-subtitle { 
+    margin-top:6px; 
+    color:#c7d2fe; 
+    font-size: 16px; 
+    font-style: italic; 
+}
+
+.main-menu-panel { 
+    position:absolute; left:50%; 
+    top:48%; 
+    transform: translate(-50%, -50%); 
+    width: min(720px, 86vw); 
+}
+
+.main-menu-card { 
+    flex:1; 
+    padding: 30px 60px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(255,255,255,0.12); 
+    background: rgba(17,24,39,0.6); 
+    backdrop-filter: blur(2px); 
+    color:#e5e7eb; 
+}
+
+.main-menu-input-label { 
+    display:block; 
+    margin-bottom:8px; 
+    color:#c7d2fe; 
+}
+
+.main-menu-input { 
+    width:95%; 
+    padding:20px 15px; 
+    border-radius:10px; 
+    border:1px solid rgba(255,255,255,0.25); 
+    background: rgba(3,7,18,0.65); 
+    color:#f9fafb; font-size:18px; 
+    outline:none; 
+}
+
+.main-menu-input-hint { 
+    margin-top:16px; 
+    font-size: 14px; 
+    color:#9ca3af; 
+}
+
+.main-menu-buttons {
+    
+    width: 50%;
+    display:flex; 
+    flex-direction:column; 
+    
+    gap:12px;
+    margin: 5% auto 0;
+}
+
+.btn-primary {
+    padding:14px 18px; 
+    font-size:20px; 
+    color:#111827; 
+    background:#a7f3d0; 
+    border:none; 
+    border-radius:10px; 
+    cursor:pointer; 
+    font-weight:700; 
+}
+
+.btn-secondary { 
+    padding:12px 18px; 
+    font-size:18px; 
+    color:#111827; 
+    background:#93c5fd; 
+    border:none; 
+    border-radius:10px; 
+    cursor:pointer; 
+    font-weight:600; 
+    opacity:0.9; 
+}
+
+.btn-ghost { 
+    padding:12px 18px; 
+    font-size:18px; 
+    color:#e5e7eb; 
+    background: 
+    rgba(17,24,39,0.6); 
+    border:1px solid rgba(255,255,255,0.15); 
+    border-radius:10px; 
+    cursor:pointer; 
+}
+
+.btn-disabled { 
+    opacity:0.4; 
+    pointer-events:none; 
+}
+
+.main-menu-footer { 
+    position:absolute; 
+    bottom:24px; 
+    width:100%; 
+    text-align:center; 
+    color:#9ca3af; 
+    font-size:12px; 
+    opacity:0.8; 
+}

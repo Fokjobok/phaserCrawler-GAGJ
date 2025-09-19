@@ -155,9 +155,11 @@ export class VnScene extends Phaser.Scene {
         const jsonDefs = this.cache.json.get("quest_defs") || {}
         console.log("🔍 quest_defs (JSON) cargado:", jsonDefs)
         
+        // Mezcla definiciones: priorizamos las del JSON (que contienen steps)
+        // sobre las del npc_quest_db (muchas no traen steps completos).
         this.questDefs = {
-            ...jsonDefs,
-            ...questDB.mainQuests
+            ...questDB.mainQuests,
+            ...jsonDefs
         }
         console.log("🔍 quest_defs creado:", this.questDefs)
 

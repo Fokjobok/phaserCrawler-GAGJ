@@ -1,121 +1,172 @@
 export function createHUD(scene) {
-    // Crear contenedor HUD
-    const hudContainer = document.createElement('div')
-    hudContainer.id = 'hudContainer'
-    
-    document.body.appendChild(hudContainer)
-  
-    // Obtener miembros del grupo (hasta 3)
-    const group = scene.groupMembers || []
-    
- 
+  // Contenedor HUD
+  const hudContainer = document.createElement('div')
+  hudContainer.id = 'hudContainer'
+  document.body.appendChild(hudContainer)
 
-    for (let i = 0; i < 3; i++) {
-        const member = group[i]
-        const memberBox = document.createElement('div')
-        memberBox.className = 'hudMember'
-  
-        if (member) {
-            // Obtener la imagen y colores
-            let imageUrl = `assets/characters/hud/${member.job}.webp`
-            let borderColor = member.getColorAsHex ? member.getColorAsHex() : 'white'
-            let bgColor = member.getColorAsRGBA ? member.getColorAsRGBA(0.3) : 'rgba(0, 0, 0, 0.8)'
+  // Miembros del grupo (hasta 3)
+  const group = scene.groupMembers || []
 
-            // Crear un div interno para el fondo
-            const bgOverlay = document.createElement("div")
-            bgOverlay.className = "hudOverlay"
-            bgOverlay.style.position = "absolute"
-            bgOverlay.style.bottom = "0"
-            bgOverlay.style.right = "0"
-            bgOverlay.style.width = "100%"
-            bgOverlay.style.height = "100%"
-            bgOverlay.style.backgroundColor = bgColor
-            bgOverlay.style.pointerEvents = "none"  // Para que no interfiera con clics
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v))
+  const pct = (val, max) => {
+    const m = Number(max) || 0
+    if (m <= 0) return 0
+    return clamp(Math.round((Number(val) || 0) * 100 / m), 0, 100)
+  }
 
+  for (let i = 0; i < 3; i++) {
+    const member = group[i]
+    const memberBox = document.createElement('div')
+    memberBox.className = 'hudMember'
 
-            // Contenedor de imagen
-            const imageBox = document.createElement('div')
-            imageBox.className = 'hudImage'
-            imageBox.style.maxHeight = "200px"
-            imageBox.style.maxWidth = "200px"
-            imageBox.style.borderWidth = "12px 8px 12px 0px"
-            imageBox.style.borderStyle = "solid"
-            imageBox.style.borderColor = borderColor
-            imageBox.style.backgroundImage = `url(${imageUrl})`
-  
+    if (member) {
+      const imageUrl = `assets/characters/hud/${member.job}.webp`
 
-            // Contenedor de información
-            const infoBox = document.createElement('div')
-            infoBox.className = 'hudInfo'
-  
-            const col1 = document.createElement('div')
-            col1.className = 'hudDetailColumn'
-            
-            const line11 = document.createElement('div')
-            line11.textContent = `${member.name}`
-            const line12 = document.createElement('div')
+      // Imagen
+      const imageBox = document.createElement('div')
+      imageBox.className = 'hudImage'
 
-            const jobCapitalized = member.job.charAt(0).toUpperCase() + member.job.slice(1)
+      imageBox.style.backgroundImage = `url(${imageUrl})`
+      // Cristal de color de clase
+      const tint = document.createElement('div')
+      tint.className = 'hudImageTint'
+      if (typeof member.getColorAsRGBA === 'function') {
+          tint.style.backgroundColor = member.getColorAsRGBA(0.85)
+      } else {
+          tint.style.backgroundColor = 'rgba(0,0,0,0.25)'
+      }
+      imageBox.appendChild(tint)
 
-            line12.textContent = `${(jobCapitalized)}`
-            const line13 = document.createElement('div')
-            line13.textContent = `Nv: ${member.level || 1}`
+      // Info
+      const infoBox = document.createElement('div')
+      infoBox.className = 'hudInfo'
 
-            col1.appendChild(line11)
-            col1.appendChild(line12)
-            col1.appendChild(line13)
+      // Cabecera con nombre, clase y nivel
+      const nameRow = document.createElement('div')
+      nameRow.className = 'hudNameRow'
+      const nameEl = document.createElement('div')
+      nameEl.className = 'hudName'
+      nameEl.textContent = member.name || '—'
+      const jobEl = document.createElement('div')
+      jobEl.className = 'hudJob'
+      const jobCapitalized = member.job ? member.job.charAt(0).toUpperCase() + member.job.slice(1) : ''
+      jobEl.textContent = jobCapitalized
+      const lvlEl = document.createElement('div')
+      lvlEl.className = 'hudLvl'
+      lvlEl.textContent = `Nv ${member.level || 1}`
+      nameRow.appendChild(nameEl)
+      nameRow.appendChild(jobEl)
+      nameRow.appendChild(lvlEl)
 
+      // Barras PV / PM / EXP
+      const bars = document.createElement('div')
+      bars.className = 'hudBars'
 
+      const hpMax = member.hp_max || 100
+      const hpCur = clamp(member.hp ?? hpMax, 0, hpMax)
+      const hpRow = document.createElement('div')
+      hpRow.className = 'hudBar'
+      const hpFill = document.createElement('div')
+      hpFill.className = 'hudBarFill bar-hp'
+      hpFill.style.width = pct(hpCur, hpMax) + '%'
+      const hpText = document.createElement('div')
+      hpText.className = 'hudBarText'
+      hpText.textContent = `PV ${hpCur}/${hpMax}`
+      hpRow.appendChild(hpFill)
+      hpRow.appendChild(hpText)
 
-            const col2 = document.createElement('div');
-            col2.className = 'hudDetailColumn';
-            
-            const line21 = document.createElement('div');
-            line21.textContent = `PV: ${member.hp || 100}/${member.hp_max || 100}`;
-            
-            const line22 = document.createElement('div');
-            line22.textContent = `PM: ${member.sp || 50}/${member.sp_max || 50}`;
-            
-            const line23 = document.createElement('div');
-            line23.textContent = `EXP: ${member.exp || 0}`;
-            
-            col2.appendChild(line21);
-            col2.appendChild(line22);
-            col2.appendChild(line23);
-  
+      const spMax = member.sp_max || 50
+      const spCur = clamp(member.sp ?? spMax, 0, spMax)
+      const spRow = document.createElement('div')
+      spRow.className = 'hudBar'
+      const spFill = document.createElement('div')
+      spFill.className = 'hudBarFill bar-sp'
+      spFill.style.width = pct(spCur, spMax) + '%'
+      const spText = document.createElement('div')
+      spText.className = 'hudBarText'
+      spText.textContent = `PM ${spCur}/${spMax}`
+      spRow.appendChild(spFill)
+      spRow.appendChild(spText)
 
+      const expCur = Number(member.exp) || 0
+      const expMax = Number(member.exp_max) || 100
+      const expRow = document.createElement('div')
+      expRow.className = 'hudBar'
+      const expFill = document.createElement('div')
+      expFill.className = 'hudBarFill bar-exp'
+      expFill.style.width = pct(expCur, expMax) + '%'
+      const expText = document.createElement('div')
+      expText.className = 'hudBarText'
+      expText.textContent = `EXP ${expCur}/${expMax}`
+      expRow.appendChild(expFill)
+      expRow.appendChild(expText)
 
-            infoBox.appendChild(col1)
-            infoBox.appendChild(col2)
-  
+      bars.appendChild(hpRow)
+      bars.appendChild(spRow)
+      bars.appendChild(expRow)
 
+      infoBox.appendChild(nameRow)
+      infoBox.appendChild(bars)
 
-            // Agregar imagen y caja de info al contenedor del miembro
-            memberBox.appendChild(imageBox)
-            memberBox.appendChild(infoBox)
-  
+      memberBox.appendChild(imageBox)
+      memberBox.appendChild(infoBox)
 
-            // Estilos de color
-            memberBox.style.border = `4px solid ${borderColor}`
-            memberBox.style.bgColor = bgColor
-            memberBox.appendChild(bgOverlay)
+      // Borde con color de clase
+      try {
+          if (typeof member.getColorAsHex === 'function') {
+              memberBox.style.borderColor = member.getColorAsHex()
+          }
+      } catch(e) {}
 
+      // Guardar refs para refresco
+      memberBox._refs = {
+          hpFill, hpText,
+          spFill, spText,
+          expFill, expText
+      }
 
-            // Evento para expandir detalles
-            memberBox.addEventListener('click', () => {
-                memberBox.classList.toggle('expanded')
-                imageBox.classList.toggle('expanded')
-            })
-  
-        } else {
-            // Si no hay miembro, mostrar candado
-            const lockOverlay = document.createElement('div')
-            lockOverlay.className = 'lockOverlay'
-            lockOverlay.textContent = '🔒'
-            memberBox.appendChild(lockOverlay)
-            memberBox.style.border = '4px solid gray'
-        }
-  
-        hudContainer.appendChild(memberBox)
+      // Toggle expandir/contraer
+      memberBox.addEventListener('click', () => {
+        memberBox.classList.toggle('expanded')
+      })
+
+    } else {
+      // Slot bloqueado
+      const lockOverlay = document.createElement('div')
+      lockOverlay.className = 'lockOverlay'
+      lockOverlay.textContent = '🔒'
+      memberBox.appendChild(lockOverlay)
     }
+
+    hudContainer.appendChild(memberBox)
+  }
+  // Actualizador de HUD
+  const updateHUD = () => {
+      const groupNow = scene.groupMembers || []
+      const children = hudContainer.children
+      for (let i = 0; i < Math.min(children.length, 3); i++) {
+          const box = children[i]
+          const p = groupNow[i]
+          if (!p || !box || !box._refs) continue
+          const hpMax = p.hp_max || 100
+          const hpCur = clamp(p.hp ?? hpMax, 0, hpMax)
+          box._refs.hpFill.style.width = pct(hpCur, hpMax) + '%'
+          box._refs.hpText.textContent = `PV ${hpCur}/${hpMax}`
+
+          const spMax = p.sp_max || 50
+          const spCur = clamp(p.sp ?? spMax, 0, spMax)
+          box._refs.spFill.style.width = pct(spCur, spMax) + '%'
+          box._refs.spText.textContent = `PM ${spCur}/${spMax}`
+
+          const expCur = Number(p.exp) || 0
+          const expMax = Number(p.exp_max) || 100
+          box._refs.expFill.style.width = pct(expCur, expMax) + '%'
+          box._refs.expText.textContent = `EXP ${expCur}/${expMax}`
+      }
+  }
+  // Exponer y suscribirse a eventos
+  scene.refreshHUD = updateHUD
+  if (scene.events && typeof scene.events.on === 'function') {
+      scene.events.on('stats:update', updateHUD)
+  }
 }

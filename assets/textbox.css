@@ -1,6 +1,21 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Ensure the Phaser container fills the viewport */
+#game-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Canvas should not create extra baseline spacing */
+canvas {
+  display: block;
 }
 
 /* Dialog container overlaying the Phaser canvas */
@@ -14,43 +29,55 @@ html, body {
 .textbox {
     position: absolute;
     transform: translateX(-50%);
-    width: 50%;
+    width: 60%;
     height: 170px;
     left: 50%;
     bottom: 20px;
-    background: rgba(5, 5, 5, 0.8);
+
     color: white;
     font-size: 1.125rem;
     padding: 12px;
     border: 3px solid rgba(0, 200, 230, 0.4 );
     border-radius: 0.5rem;
     box-sizing: border-box;
+    /* Permite que elementos hijos sobresalgan (p. ej. speakerNameBox) */
+    overflow: visible;
+    background: linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(15,15,18,0.75) 100%);
+    -webkit-backdrop-filter: blur(4px) saturate(120%);
+    backdrop-filter: blur(3px) saturate(120%);
+}
+
+/* Contenido scrollable dentro de la textbox */
+.textbox-content {
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
 }
 
 /* Speaker name box nested inside the textbox, positioned above it */
 .speakerNameBox-dialog {
-
+    position: absolute;
+    /* Anclar al interior de la textbox pero sobresaliendo por arriba */
+    left: 1.5rem;
+    top: -2.89rem;
     min-width: 6rem;
     width: 7rem;
-    height: 1.5rem;
-    position: absolute;
-    left: 4.5%;
-    bottom: 25%;
-    background: rgba(0, 0, 0, 0.8);
+    height: 1.7rem;
+    background: rgba(0, 0, 0, 0.9);
     color: gold;
     font-size: 1.5rem;
     text-align: center;
-    padding: 15px 15px;
+    padding: 8px 15px;
     border-radius: 0.5rem 0.5rem 0 0;
-    display: block;
+    display: none; /* visible sólo cuando hay speaker */
     font-weight: bold;
+    z-index: 2;
 }
 
 .speakerNameBox-menu {
 
-    min-width: 6rem;
-    width: 7rem;
+    min-width: 12rem;
+    width: 12rem;
     height: 1.5rem;
     position: absolute;
     left: 28.5%;
@@ -75,9 +102,13 @@ html, body {
     height: auto; /* Mantiene la relación de aspecto */
     max-width: 42%; /* Se adapta al ancho máximo */
     max-height: 625px;
-    left: 50%;
-    bottom: 180px;
+    left: 60%;
+    bottom: 191px;
     display: none;
+    /* Sombra en contorno superior y laterales, evitando la parte inferior para no interferir con la textbox */
+    filter: drop-shadow(0 -12px 14px rgba(0,0,0,0.65))
+            drop-shadow(12px 0 14px rgba(0,0,0,0.65))
+            drop-shadow(-12px 0 14px rgba(0,0,0,0.65));
 }
 
 /* Narrator text style */
@@ -102,101 +133,129 @@ html, body {
     left: 2rem;
     display: flex;
     gap: 1rem;
-
     font-family: Arial, sans-serif;
+    z-index: 100;
 }
-/* Cada miembro se muestra como un bloque con imagen y detalles */
+/* Tarjeta HUD por miembro */
 .hudMember {
     display: flex;
-    align-items: center;
-    overflow: hidden;
-    transition: width 0.5s ease;
-    width: 5rem;
-    height: 8rem;
+    align-items: stretch;
     cursor: pointer;
-    position: relative;
-    border-radius: 4rem;
-    background-blend-mode: multiply;
-    box-shadow: 8px 12px 8px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);
-}
-.hudImage {
-    width: 100%;
-    height: 8rem;
-    border-radius: 5rem;
-    background-size: cover;
-    background-position: center;
-    transition: width 0.3s ease-in;
-    flex-shrink: 0;
-    
-}
-.hudImage.expanded {
-    width: 45%;
-    transition: width 1s ease;
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-}
-.hudDetail {
     overflow: hidden;
-    white-space: nowrap;
-    width: 0;
+    width: 6rem;   /* colapsado */
+    height: 8.5rem;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(15,15,18,0.8) 0%, rgba(15,15,18,0.65) 100%);
+    backdrop-filter: blur(6px) saturate(120%);
+    border: 3px solid transparent; /* color por clase aplicado dinámicamente */
+    box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+    transition: width .35s ease;
 }
-.hudMember.expanded {
-    width: 30rem;
-    border-radius: 4rem 1rem 1rem 4rem;
-}
-.hudMember.expanded .hudDetail {
-    width: 12.5rem;
-}
-/* Para las columnas dentro del detalle */
-.hudDetailColumn {
-    display: grid;
-    color: black;
+.hudMember.expanded { width: 28rem; }
 
-    font-size: 1.4rem;
-    vertical-align: top;
-    width: 100%;
-    gap: 0.3rem;
+.hudImage {
+    position: relative;
+    width: 6rem;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: border-radius .35s ease;
+    flex-shrink: 0;
 }
-/* Opcional: estilos adicionales para lockOverlay y otros elementos */
-.lockOverlay {
+
+/* (Siempre redondeado; se anima durante la transición) */
+
+.hudImageTint {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 5rem;
-    height: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
+    inset: 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    pointer-events: none;
 }
+
 .hudInfo {
     display: none;
-    transition: all 0.3 ease-in-out;
-    
-}
-.hudMember.expanded .hudInfo {
-    display: flex;
-    justify-content: flex-start;
-    font-size: 1.625rem;
-    align-items: center;
+    padding: .75rem .9rem;
+    color: #e9eef2;
     width: 100%;
-    font-weight: bold;
-    flex-direction: row;
-    text-shadow: -4px -4px 4px rgba(255, 255, 255, 0.1),
-                 4px -4px 4px rgba(255, 255, 255, 0.8),
-                 -4px  4px 4px rgba(255, 255, 255, 0.8),
-                 4px  4px 4px rgba(255, 255, 255, 0.8),
-                 0px -4px 4px rgba(255, 255, 255, 0.8),
-                 0px  4px 4px rgba(255, 255, 255, 0.8),
-                 -4px  0px 4px rgba(255, 255, 255, 0.8),
-                 4px  0px 4px rgba(255, 255, 255, 0.8),
-                 0px  0px 4px rgba(255, 255, 255, 0.9);
 }
-.hudInfo .hudDetailColumn:first-child {
-    padding-left: 1rem;
+.hudMember.expanded .hudInfo { 
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+
+.hudNameRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .75rem;
+}
+.hudNameRow .hudName {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.hudNameRow .hudJob {
+    opacity: .85;
+    font-size: 1.1rem;
+}
+.hudNameRow .hudLvl {
+    opacity: .9;
+    font-size: 1.1rem;
+}
+
+.hudBars {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+}
+.hudBar {
+    position: relative;
+    height: 20px; border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    overflow: hidden;
+}
+.hudBarFill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    border-radius: 10px 8px 8px 10px;
+}
+.hudBarText {
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0; display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #e9eef2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.65);
+}
+
+/* Colores de barras */
+.bar-hp {
+    background: linear-gradient(90deg, rgba(210,30,30,0.95), rgba(255,80,80,0.9));
+}
+.bar-sp {
+    background: linear-gradient(90deg, rgba(25,110,220,0.95), rgba(80,170,255,0.9));
+}
+.bar-exp {
+    background: linear-gradient(90deg, rgba(210,170,30,0.95), rgba(255,215,80,0.9));
+}
+
+/* Opcional: estilos adicionales para lockOverlay */
+.lockOverlay { position: absolute;
+    inset: 0; display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #e9eef2;
+    background: rgba(0,0,0,0.5);
 }
 
 

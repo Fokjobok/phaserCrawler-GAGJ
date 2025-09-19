@@ -89,7 +89,7 @@
 
     
     font-size: 1.25rem;
-
+    padding-bottom: 1rem;
     margin-bottom: .625rem;
 }
 
@@ -161,20 +161,6 @@
     transition: box-shadow 1s ease;
     transition: border-color 0.7s ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -432,7 +418,7 @@
 }
 
 
-/* Resto de tus estilos para descripción, estadísticas, etc. */
+/* Resto de estilos para descripción, estadísticas, etc. */
 .status-window .card-description {
     min-height: 150px;
     max-height: 150px;
@@ -448,14 +434,16 @@
 .status-window .stat {
     min-height: 3rem;
     max-height: 3rem;
-   /* Centra el texto verticalmente */
+    /* Centra el texto verticalmente */
     font-size: 33px;
-
-    padding: 0rem 0rem 0rem 0rem;     /* Aumenta el espacio interno para mayor tamaño */
+    /* Aumenta el espacio interno para mayor tamaño */
+    padding: 0rem 0rem 0rem 0rem;
 
     box-sizing: border-box;
-    margin: 0.25rem;          /* Espacio entre botones, si lo deseas */
-    /* Si es necesario, puedes ajustar el font-size o usar media queries */
+
+    /* Espacio entre botones */
+    margin: 0.25rem;
+
     overflow: hidden;
 
 }

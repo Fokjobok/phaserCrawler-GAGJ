@@ -47,7 +47,7 @@
         "spider_card": {
             "id": 5,
             "name": "Carta de Araña",
-            "desc": "Añade un 7% de probabilidad de envenenar a un objetivo con un ataque básico.",
+            "desc": "Añade un 15% de probabilidad de envenenar a un objetivo con un ataque básico.",
             "slot": "weapon",
             "icon": "🃏",
             "price": {
@@ -58,7 +58,7 @@
         "archer_skeleton_card": {
             "id": 6,
             "name": "Carta de Esqueleto Arquero",
-            "desc": "Incrementa en 5% el daño a distancia.",
+            "desc": "Incrementa en 10% el daño a distancia.",
             "slot": "weapon",
             "icon": "🃏",
             "price": {
@@ -80,7 +80,7 @@
         "skeleton_crossbowman": {
             "id": 8,
             "name": "Carta de Ballestero",
-            "desc": "Añade un 15% de probabilidad de obtener 'virote' al golpear a un enemigo.",
+            "desc": "AGI +3 con ballestas.",
             "slot": "weapon",
             "icon": "🃏",
             "price": {
@@ -102,7 +102,7 @@
         "wolf_card": {
             "id": 10,
             "name": "Carta de Lobo",
-            "desc": "Incrementa en 5% el daño con dagas. Añade un 7% probabilidad de obtener 'moneda de plata' al golpear a un enemigo.",
+            "desc": "Incrementa en 5% el daño con dagas. Añade un 25% probabilidad de obtener 'moneda de plata' al golpear a un enemigo.",
             "slot": "armor",
             "icon": "🃏",
             "price": {
@@ -135,7 +135,7 @@
         "stone_gargoyle_card": {
             "id": 13,
             "name": "Carta de Gárgola de Piedra",
-            "desc": "Aumenta en 25% la resistencia al elemento 'earth'",
+            "desc": "Aumenta en 25% la resistencia al elemento 'tierra'",
             "slot": "armor",
             "icon": "🃏",
             "price": {
@@ -157,7 +157,7 @@
         "dwarf_card": {
             "id": 15,
             "name": "Carta de Enano",
-            "desc": "+50 HP, +1 STR",
+            "desc": "+25 HP, +2 STR",
             "slot": "armor",
             "icon": "🃏",
             "price": {
@@ -190,7 +190,7 @@
         "fire_elemental_card": {
             "id": 18,
             "name": "Carta de Elemental de Fuego",
-            "desc": "Incrementa en 12% el daño a distancia infligido a enemigos tipo 'Tierra'.",
+            "desc": "Incrementa en 15% el daño a distancia infligido a enemigos tipo 'Tierra'.",
             "slot": "weapon",
             "icon": "🃏",
             "price": {
@@ -201,7 +201,7 @@
         "water_elemental_card": {
             "id": 19,
             "name": "Carta de Elemental de Agua",
-            "desc": "Incrementa en 12% el daño a distancia infligido a enemigos tipo 'Fuego'.",
+            "desc": "Incrementa en 15% el daño a distancia infligido a enemigos tipo 'Fuego'.",
             "slot": "weapon",
             "icon": "🃏",
             "price": {
@@ -212,7 +212,7 @@
         "chobekko_card": {
             "id": 20,
             "name": "Carta de Chobekko",
-            "desc": "+25 SP, +1 AGI",
+            "desc": "+25 SP, +2 AGI",
             "slot": "accessory",
             "icon": "🃏",
             "price": {
@@ -223,7 +223,7 @@
         "golem_card": {
             "id": 21,
             "name": "Carta de Gólem",
-            "desc": "+3 DEF",
+            "desc": "+10 DEF",
             "slot": "accessory",
             "icon": "🃏",
             "price": {

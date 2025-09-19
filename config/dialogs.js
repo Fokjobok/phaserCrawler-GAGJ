@@ -29,6 +29,9 @@ export function startTyping(scene, fullText) {
     }
 
     // Asegurar que textbox sea visible
+    if (scene.textbox) {
+        scene.textbox.style.display = "block"
+    }
     scene.textboxText.style.display = "block"
     console.log("📢 Haciendo visible la caja de texto.")
 
@@ -108,6 +111,9 @@ export function startTyping(scene, fullText) {
 
                         } else {
                             // Cuando no hay más páginas, cerramos textbox
+                            if (scene.textbox) {
+                                scene.textbox.style.display = "none"
+                            }
                             scene.textboxText.style.display = "none"
                             scene.speakerNameBox.style.display = "none"
                             scene.npcImage.style.display = "none"
@@ -129,7 +135,12 @@ export function startTyping(scene, fullText) {
                                     const hasNpcMenu   = document.getElementById('npcTalkMenuContainer')
                                     
                                     if (!hasQuestMenu && !hasConvMenu && !hasNpcMenu) {
-                                        showPostDialogueMenu(scene)
+                                        // En DcScene no usamos el menú inferior heredado
+                                        if (scene.scene && scene.scene.key === 'DcScene') {
+                                            // no abrir menú post-diálogo
+                                        } else {
+                                            showPostDialogueMenu(scene)
+                                        }
                                     }
                                 }
                             } else {
@@ -166,8 +177,10 @@ export function startTyping(scene, fullText) {
 export function showDialog(scene) {
     console.log("✅ Ejecutando showDialog()")
     const dialog = scene.dialogs[scene.currentIndex]
-    scene.speakerNameBox.style.transform = 'translateY(0%)'
-    scene.dialogContainer.appendChild(scene.speakerNameBox)
+    // Asegurar el speakerNameBox dentro de la textbox para posicionamiento relativo
+    if (scene.textbox && scene.speakerNameBox && scene.speakerNameBox.parentElement !== scene.textbox) {
+        scene.textbox.appendChild(scene.speakerNameBox)
+    }
     if (!dialog) {
         console.log("🔴 Fin del diálogo. Fin de scene.dialogs.")
         scene.events.emit('dialogComplete')
@@ -194,8 +207,7 @@ export function showDialog(scene) {
         // Si es otro personaje, muestra su nombre y su imagen
         scene.speakerNameBox.style.display = "block"
         scene.speakerNameBox.innerHTML = dialog.speakerName
-        scene.speakerNameBox.style.left = '5%'    // ejemplo: centrar horizontal
-        scene.speakerNameBox.style.bottom = '18.8%'
+        // Usar posiciones definidas en CSS; no sobreescribir left/bottom aquí
 
         // Remueve la clase "narrador" en caso de que estuviera
         scene.textboxText.classList.remove("narratorText")
@@ -208,8 +220,7 @@ export function showDialog(scene) {
             scene.npcImage.style.objectFit = "contain"
             scene.npcImage.style.width = "100%"
             scene.npcImage.style.height = "auto"
-            //borde negro
-            scene.npcImage.style.filter = "drop-shadow(0 15px 15px rgba(0,0,0,1))"            
+            // Sombra definida por CSS (.npcImage) para evitar sombra inferior
         } else {
             scene.npcImage.style.display = "none"
         }

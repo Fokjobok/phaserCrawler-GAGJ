@@ -42,7 +42,7 @@ export class MainMenuScene extends Phaser.Scene {
           </div>
         </div>
 
-        <div class="main-menu-footer">© Oseibalamaner Studio · v0.1</div>
+        <div class="main-menu-footer">© FaneStudio · v0.1</div>
       </div>`
 
     const container = this.add.dom(0, 0).createFromHTML(html).setOrigin(0, 0)
